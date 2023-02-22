@@ -1,0 +1,12 @@
+book:
+  chapters:
+    # Edit this to include links to markdowns, which may be organised in different parts
+    - part: "Introduction"
+      chapters:
+        - materials/00-template.md
+    - part: "Reference-based"
+      chapters: 
+        - materials/00-template.md
+    - part: "De-novo Assembly"
+      chapters: 
+        - materials/00-template.md
