@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Introduction to Bacterial Genomics",
+    "section": "Overview",
+    "text": "Overview\nInclude a one-paragraph summary of the course here.\n\n\n\n\n\n\nLearning Objectives\n\n\n\n\nList course learning objectives here.\nThese describe concepts the learners should grasp and techniques they should be able to use by the end of the course.\nYou can think of these as completing the phrase “after this course, the participant should be able to…”\nThey are not supposed to be as detailed as the learning objectives of each section, but more high-level.\n\n\n\n\nTarget Audience\nBrief description of target audience here.\n\n\nPrerequisites\nDetail any prerequisite skills needed to attend this course, with links to other relevant materials/courses if possible.\n\n\n\nExercises\nExercises in these materials are labelled according to their level of difficulty:\n\n\n\n\n\n\n\nLevel\nDescription\n\n\n\n\n  \nExercises in level 1 are simpler and designed to get you familiar with the concepts and syntax covered in the course.\n\n\n  \nExercises in level 2 combine different concepts together and apply it to a given task.\n\n\n  \nExercises in level 3 require going beyond the concepts and syntax introduced to solve new problems."
+  },
+  {
+    "objectID": "index.html#authors",
+    "href": "index.html#authors",
+    "title": "Introduction to Bacterial Genomics",
+    "section": "Authors",
+    "text": "Authors\n\nAbout the authors:\n\nAndries van Tonder  \nAffiliation: Department of Veterinary Medicine, University of Cambridge\nRoles: writing - original draft; conceptualisation; coding\nHugo Tavares  \nAffiliation: Bioinformatics Training Facility, University of Cambridge\nRoles: writing - review & editing"
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "Introduction to Bacterial Genomics",
+    "section": "Citation",
+    "text": "Citation\n\nPlease cite these materials if:\n\nYou adapted or used any of them in your own teaching.\nThese materials were useful for your research work. For example, you can cite us in the methods section of your paper: “We carried our analyses based on the recommendations in TODO.”.\n\nYou can cite these materials as:\n\nTODO\n\nOr in BibTeX format:\n@Misc{,\n  author = {},\n  title = {},\n  month = {},\n  year = {},\n  url = {},\n  doi = {}\n}"
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Introduction to Bacterial Genomics",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\n\nList any other sources of materials that were used.\nOr other people that may have advised during the material development (but are not authors)."
+  },
+  {
+    "objectID": "setup.html#data",
+    "href": "setup.html#data",
+    "title": "2  Data & Setup",
+    "section": "Data",
+    "text": "Data\nThe data used in these materials is provided as a zip file. Download and unzip the folder to your Desktop to follow along with the materials.\n\n  Download"
+  },
+  {
+    "objectID": "setup.html#setup",
+    "href": "setup.html#setup",
+    "title": "2  Data & Setup",
+    "section": "Setup",
+    "text": "Setup\nTODO"
+  },
+  {
+    "objectID": "materials/00-template.html",
+    "href": "materials/00-template.html",
+    "title": "3  Concise Title",
+    "section": "",
+    "text": "Learning Objectives\n\n\n\n\nList skills and concepts that learners should grasp after this lesson."
+  }
+]
