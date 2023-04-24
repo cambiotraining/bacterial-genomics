@@ -3,10 +3,62 @@ book:
     # Edit this to include links to markdowns, which may be organised in different parts
     - part: "Introduction"
       chapters:
-        - materials/00-template.md
-    - part: "Reference-based"
+        - materials/01-introduction.md
+        - materials/02-intro_wgs.md
+        - materials/03-unix_recap.md
+        - materials/04-know_your_bug.md
+        - materials/05-nextflow.md
+        - materials/06-nf_core.md
+    - part: "Sequence QC"
       chapters: 
-        - materials/00-template.md
+        - materials/07-intro_qc.md
+        - materials/08-run_bacqc.md
+        - materials/09-bacqc_results.md
+    - part: "Reference-based Assembly"
+      chapters: 
+        - materials/10-mapping.md
+        - materials/11-intro_tb.md
+        - materials/12-intro_bactmap.md
+        - materials/13-bactmap_results.md
+    - part: "Introduction to Phylogenetics"
+      chapters: 
+        - materials/14-intro_phylogenetics.md
+        - materials/15-alignments.md
+        - materials/16-phylogenetic_inference.md
+        - materials/17-tb_profiler.md
+        - materials/18-data_cleaning.md
+        - materials/19-tree_visualization.md
+    - part: "Transmission"
+      chapters: 
+        - materials/20-transmission.md
+        - materials/21-network_analysis.md
+        - materials/22-epi_data.md
     - part: "De-novo Assembly"
       chapters: 
-        - materials/00-template.md
+        - materials/23-de_novo_assembly.md
+        - materials/24-annotation.md
+        - materials/25-intro_staph.md
+        - materials/26-intro_assemblebac.md
+        - materials/27-run_assemblebac.md
+        - materials/28-assembly_qc.md
+    - part: "Pan-genome analysis"
+      chapters:
+        - materials/29-pan_genomes.md
+        - materials/30-intro_panaroo.md
+        - materials/31-core_gene_phylogeny.md
+        - materials/32-pathogenwatch.md
+        - materials/33-tree_visualization.md
+    - part: "Recombination"
+      chapters: 
+        - materials/34-intro_pneumo.md
+        - materials/35-run_bactmap.md
+        - materials/36-intro_recombination.md
+        - materials/37-gubbins.md
+        - materials/38-recombination_phylogeny.md
+        - materials/39-pathogenwatch.md
+        - materials/40-tree_visualization.md
+    - part: "Antimicrobial Resistance"
+      chapters:
+        - materials/41-intro_amr.md
+        - materials/42-command_line_amr.md
+        - materials/43-web_amr.md
