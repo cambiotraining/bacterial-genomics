@@ -3,13 +3,13 @@ title: "Introduction to Phylogenetics"
 ---
 
 ::: {.callout-tip}
-#### Learning Objectives
+## Learning Objectives
 
 - Understand the basics of how phylogeny trees are constructed using maximum likelihood methods.
 
 :::
 
-## 10.2 Phylogenetic tree inference
+## Phylogenetic tree inference
 
 A phylogenetic tree is a graph (structure) representing evolutionary history and shared ancestry. It depicts the lines of evolutionary descent of different species, lineages or genes from a common ancestor. A phylogenetic tree is made of nodes and edges, with one edge connecting two nodes.
 
@@ -17,7 +17,7 @@ A node can represent an extant species, and extinct one, or a sampled pathogen: 
 
 A tree also contains "internal" nodes: these usually represent most recent common ancestors (MRCAs) of groups of terminal nodes, and are typically not associated with observed data, although genome sequences and other features of these ancestors can be statistically inferred. An internal node is most often connected to 3 branches (two descendants and one ancestral), but a multifurcation node can have any number >2 of descendant branches.
 
-![Newick Format Example tree](../fig/NewickExample.png)
+![Newick Format Example tree](images/NewickExample.png)
 
 ### Tree topology
 
@@ -58,17 +58,17 @@ A few different methods exist for inferring phylogenetic trees:
 
 These are the simplest and fastest phylogenetic methods we can use and are often a useful way to have a quick look at our data before running more robust phylogenetic methods.  Here, we infer evolutionary distances from the multiple sequence alignment. In the example below there is 1 subsitution out of 16 informative columns (we exclude columns with gaps or N's) so the distance is approximately 1/16:
 
-![Evolutionary distance between two sequences](../fig/phylo_distance_alignment.png)
+![Evolutionary distance between two sequences](images/phylo_distance_alignment.png)
 
 Typically, we have multiple sequences in an alignment so here we would generate a matrix of pairwise distances between all samples (distance matrix) and then use Neighbour-Joining or UPGMA to infer our phylogeny:
 
-![Distance matrix to Neighbour-Joining tree](../fig/phylo_matrix_nj.png)
+![Distance matrix to Neighbour-Joining tree](images/phylo_matrix_nj.png)
 
 #### Parsimony methods
 
 Maximum parsimony methods assume that the best phylogenetic tree requires the fewest number of mutations to explain the data (i.e. the simplest explanation is the most likely one).  By reconstructing the ancestral sequences (at each node), maximum parsimony methods evaluate the number of mutations required by a tree then modify the tree a little bit at a time to improve it.
 
-![Maximum parsimony](../fig/phylo_max_parsimony.png)
+![Maximum parsimony](images/phylo_max_parsimony.png)
 
 Maximum parsimony is an intuitive and simple method and is reasonably fast to run.  However, because the most parsimonius tree is always the shortest tree, compared to the hypothetical "true" tree it will often underestimate the actual evolutionary change that may have occurred.
 
@@ -77,7 +77,7 @@ Maximum parsimony is an intuitive and simple method and is reasonably fast to ru
 
 The most commonly encountered phylogenetic method when working with bacterial genome datasets is maximum likelihood.  These methods use probabilistic models of genome evolution to evaluate trees and whilst similar to maximum parsimony, they allow statistical flexibility by permitting varying rates of evolution across different lineages and sites.  This additional complexity means that maximum likelihood models are much slower than the previous two models discussed.  Maximum likelihood methods make use of substitution models (models of DNA sequence evolution) that describe changes over evolutionary time. Two commonly used substitution models, Jukes-Cantor (JC69; assumes only one mutation rate) and Hasegawa, Kishino and Yano (HKY85; assumes different mutation rates - transitions have different rates) are depicted below:
 
-![Two DNA substitution models](../fig/phylo_max_likelihood.png)
+![Two DNA substitution models](images/phylo_max_likelihood.png)
 
 It is also possible to incorporate additional assumptions about your data e.g. assuming that a proportion of the the alignment columns (the invariant or constant sites) cannot mutate or that there is rate variation between the different alignment columns (columns may evolve at different rates).  The choice of which is the best model to use is often a tricky one; generally starting with one of the simpler models e.g. General time reversible (GTR) or HKY is the best way to proceed.  Accounting for rate variation and invariant sites is an important aspect to consider so using models like HKY+G4+I (G4 = four types of rate variation allowed; I = invariant sites don't mutate) should also be considered.
 
@@ -93,3 +93,10 @@ Each of these alignments has the same size as the original alignment, and is obt
 We then infer a bootstrap tree from each bootstrap alignment.
 Because the bootstrap alignments differ from each other and from the original alignment, the bootstrap trees might different between each other and from the original tree.
 The bootstrap support of a branch in the original tree is then defined as the proportion of times in which this branch is present in the bootstrap trees.
+
+## Summary
+
+::: {.callout-tip}
+## Key Points
+
+:::

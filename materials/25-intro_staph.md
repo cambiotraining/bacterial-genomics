@@ -1,11 +1,17 @@
 ---
-title: "Introduction to Staphylococcus aureus"
+title: "Introduction to *Staphylococcus aureus*"
 ---
 
 ::: {.callout-tip}
-#### Learning Objectives
+## Learning Objectives
 
 - Understand what Staphylococcus aureus is.
 
 :::
 
+## Summary
+
+::: {.callout-tip}
+## Key Points
+
+:::

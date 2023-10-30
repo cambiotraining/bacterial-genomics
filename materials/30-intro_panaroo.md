@@ -3,9 +3,15 @@ title: "Introduction to Panaroo"
 ---
 
 ::: {.callout-tip}
-#### Learning Objectives
+## Learning Objectives
 
 - Understand why to use Panaroo.
 
 :::
 
+## Summary
+
+::: {.callout-tip}
+## Key Points
+
+:::

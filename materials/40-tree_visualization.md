@@ -3,9 +3,15 @@ title: "Pneumococcus Tree Visualization"
 ---
 
 ::: {.callout-tip}
-#### Learning Objectives
+## Learning Objectives
 
 - Understand how to visualize Pneumo tree
 
 :::
 
+## Summary
+
+::: {.callout-tip}
+## Key Points
+
+:::

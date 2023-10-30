@@ -3,8 +3,15 @@ title: "Plot Transmission Networks"
 ---
 
 ::: {.callout-tip}
-#### Learning Objectives
+## Learning Objectives
 
 - Use networks to display putative transmission events.
+
+:::
+
+## Summary
+
+::: {.callout-tip}
+## Key Points
 
 :::

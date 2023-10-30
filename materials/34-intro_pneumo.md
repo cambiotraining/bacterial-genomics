@@ -1,9 +1,9 @@
 ---
-title: "Introduction to Pneumococcus"
+title: "Introduction to *Streptococcus pneumoniae*"
 ---
 
 ::: {.callout-tip}
-#### Learning Objectives
+## Learning Objectives
 
 - Learn what Pneumo is.
 
@@ -15,3 +15,10 @@ title: "Introduction to Pneumococcus"
 The Global Pneumococcal Sequencing (GPS) project was set up to help understand the global picture of pneumococcal evolution during vaccine introductions using whole-genome sequencing.  By the end of 2019, the GPS project had sequenced more than 26,000 pneumococcal genomes from more than 50 countries.  As well as investigating the pre- and post-vaccine pneumococcal population structure, 13,454 GPS genomes were combined with an additional 7,000 published pneumococcal genomes to identify clusters of sequences defined as Global Pneumococcal Sequence Clusters (GPSCs).  The study identified 621 GPSCs and 35 GPSCs contained more than 100 isolates, accounting for the majority of genomes included in the dataset.  These clusters are increasingly being used as the standard method of lineage assignment in pneumococcus as tools now exist to allow new genomes to be assigned to existing clusters or else form the basis of novel clusters.
 
 Uptake and incorporation of DNA from the environment into the pneumococcal chromosome via transformation and homologous recombination has been shown to contribute more to nucleotide variation than mutation in the pneumococcus.  As well as being biologically important, recombination obscures the true phylogenetic signal of vertical descent and needs to be accounted for when inferring pneumococcal phylogenies. 
+
+## Summary
+
+::: {.callout-tip}
+## Key Points
+
+:::

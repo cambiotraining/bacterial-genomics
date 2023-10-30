@@ -3,8 +3,15 @@ title: "Build Recombination-removed Phylogeny"
 ---
 
 ::: {.callout-tip}
-#### Learning Objectives
+## Learning Objectives
 
 - Build post-Gubbins phylogeny.
+
+:::
+
+## Summary
+
+::: {.callout-tip}
+## Key Points
 
 :::

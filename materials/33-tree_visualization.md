@@ -3,9 +3,15 @@ title: "Staphylococcus Tree Visualization"
 ---
 
 ::: {.callout-tip}
-#### Learning Objectives
+## Learning Objectives
 
 - Visualize Staph phylogeny.
 
 :::
 
+## Summary
+
+::: {.callout-tip}
+## Key Points
+
+:::

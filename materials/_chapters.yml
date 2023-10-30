@@ -3,21 +3,19 @@ book:
     # Edit this to include links to markdowns, which may be organised in different parts
     - part: "Introduction"
       chapters:
-        - materials/01-introduction.md
         - materials/02-intro_wgs.md
-        - materials/03-unix_recap.md
         - materials/04-know_your_bug.md
         - materials/05-nextflow.md
         - materials/06-nf_core.md
     - part: "Sequence QC"
       chapters: 
+        - materials/11-intro_tb.md
         - materials/07-intro_qc.md
         - materials/08-run_bacqc.md
         - materials/09-bacqc_results.md
     - part: "Reference-based Assembly"
       chapters: 
         - materials/10-mapping.md
-        - materials/11-intro_tb.md
         - materials/12-intro_bactmap.md
         - materials/13-bactmap_results.md
     - part: "Introduction to Phylogenetics"
@@ -28,18 +26,19 @@ book:
         - materials/17-tb_profiler.md
         - materials/18-data_cleaning.md
         - materials/19-tree_visualization.md
+        - materials/44-group_exercise_1.md
     - part: "Transmission"
       chapters: 
-        - materials/20-transmission.md
+        - materials/45-intro_transmission.md
+        - materials/20-tb_transmission.md
         - materials/21-network_analysis.md
         - materials/22-epi_data.md
     - part: "De-novo Assembly"
       chapters: 
+        - materials/25-intro_staph.md
         - materials/23-de_novo_assembly.md
         - materials/24-annotation.md
-        - materials/25-intro_staph.md
         - materials/26-intro_assemblebac.md
-        - materials/27-run_assemblebac.md
         - materials/28-assembly_qc.md
     - part: "Pan-genome analysis"
       chapters:
@@ -53,7 +52,6 @@ book:
         - materials/34-intro_pneumo.md
         - materials/35-run_bactmap.md
         - materials/36-intro_recombination.md
-        - materials/37-gubbins.md
         - materials/38-recombination_phylogeny.md
         - materials/39-pathogenwatch.md
         - materials/40-tree_visualization.md
@@ -61,4 +59,9 @@ book:
       chapters:
         - materials/41-intro_amr.md
         - materials/42-command_line_amr.md
-        - materials/43-web_amr.md
+        - materials/43-group_exercise_2.md
+        - materials/46-group_exercise_3.md
+        - materials/47-group_presentations.md
+  appendices: 
+    - materials/appendices/01-file_formats.md
+    - materials/appendices/02-course_software.md
