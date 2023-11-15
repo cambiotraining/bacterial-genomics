@@ -1,11 +1,11 @@
 ---
-title: "TB phylogeny visualization"
+title: "Integrating epidemiological data"
 ---
 
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Visualize and annotate your tree with `Microreact`
+- Use epidemiological data alongside genomic data.
 
 :::
 

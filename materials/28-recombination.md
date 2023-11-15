@@ -1,5 +1,5 @@
 ---
-title: "What is Recombination?"
+title: "Introduction to recombination"
 ---
 
 ::: {.callout-tip}
@@ -32,6 +32,8 @@ The outputs from `Gubbins` can be visualised using [`Phandango`](https://jamesha
 Run Gubbins
 
 :::
+
+## Build post-Gubbins phylogeny
 
 ## Summary
 

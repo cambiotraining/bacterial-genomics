@@ -1,11 +1,11 @@
 ---
-title: "Building a core gene phylogeny"
+title: "Visualising phylogenies 3"
 ---
 
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand what a core gene alignment is.
+- Understand how to visualize Pneumo tree
 
 :::
 

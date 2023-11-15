@@ -1,5 +1,5 @@
 ---
-title: "Pneumococcus & Pathogenwatch"
+title: "Pathogenwatch 2"
 ---
 
 ::: {.callout-tip}
@@ -8,6 +8,8 @@ title: "Pneumococcus & Pathogenwatch"
 - Obtain pneumo metadata from pneumowatch.
 
 :::
+
+Assemblies provided in `results/assemblebac/assemblies`
 
 ## Summary
 

@@ -1,11 +1,11 @@
 ---
-title: "Pneumococcus Tree Visualization"
+title: "Visualising phylogenies 2"
 ---
 
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand how to visualize Pneumo tree
+- Visualize Staph phylogeny.
 
 :::
 

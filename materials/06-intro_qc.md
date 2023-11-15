@@ -15,7 +15,7 @@ title: "Introduction to QC"
 
 Before we delve into having a look at our own genomic data. Lets take time to explore what to look out for when performing **Q**uality **C**ontrol **(QC)** checks on our sequence data. 
 For this course, we will largely focus on next generation sequences obtained from Illumina sequencers. 
-As you may already know from [Introduction to NGS](02-intro_wgs.md), the main output files expected from our Illumina sequencer are `.fastq` files.
+As you may already know from [Introduction to NGS](01-intro_ngs.md), the main output files expected from our Illumina sequencer are `.fastq` files.
 
 ## QC assessment of NGS data
 
@@ -87,12 +87,6 @@ Sometimes, air bubbles occur in the flow cell, which can manifest as false indel
 ![Poor run](images/indels-per-cycle.fail.png)
 
 
-In addition to the QC plots you've encountered so far, there are other metrics that are generated with very powerful tools. For this workshop, we will explore these quality metrics with the help of `fastq-scan` and `FastQC` tools.
-It is often not a good practice to carry on analysis on samples that are contaminated with sequences from other species. We will identify contamination using either one of two ways.
-As earlier mentioned, the GC content varies between species, so a shift in GC content could be an indication of sample contamination. 
-One other way of identifying sample contamination is by using specialized tools to determine/predict the species composition of your sample. For this course, we will determine species composition using the `Kraken 2` database.
-
-
 ## Summary
 
 ::: {.callout-tip}
@@ -100,7 +94,7 @@ One other way of identifying sample contamination is by using specialized tools 
 
 :::
 
-## Credit
+## References
 Information on this page has been adapted and modified from the following sources:
 
 - https://github.com/sanger-pathogens/QC-training

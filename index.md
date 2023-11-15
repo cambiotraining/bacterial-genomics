@@ -1,44 +1,49 @@
 ---
-title: "Introduction to Bacterial Genomics"
-author: "Andries van Tonder; Hugo Tavares"
+title: "Working with Bacterial Genomes"
+author: "Andries van Tonder; Hugo Tavares; Bajuna Salehe"
 date: today
 number-sections: false
 ---
 
 ## Overview 
 
-Include a one-paragraph summary of the course here. 
+This comprehensive course equips you with essential skills and knowledge in bacterial genomics analysis, primarily using Illumina-sequenced samples. You'll gain an understanding of how to select the most appropriate analysis workflow, tailored to the genome diversity of a given bacterial species. Through hands-on training, you'll apply both _de novo_ assembly and reference-based mapping approaches to obtain bacterial genomes for your isolates. You will apply standardised workflows for genome assembly and annotation, including quality assessment criteria to ensure the reliability of your results. Furthermore, you'll learn how to construct phylogenetic trees using whole genome and core genome alignments, enabling you to explore the evolutionary relationships among bacterial isolates. Lastly, you'll apply methods to detect antimicrobial resistance genes. As examples we will use _Mycobacterium tuberculosis_, _Staphylococcus aureus_ and _Streptococcus pneumoniae_, allowing you to become well-equipped to conduct bacterial genomics analyses on a range of species. 
 
 ::: {.callout-tip}
 ### Learning Objectives
 
-- List course learning objectives here.
-- These describe concepts the learners should grasp and techniques they should be able to use by the end of the course.
-- You can think of these as completing the phrase "after this course, the participant should be able to..."
-- They are not supposed to be as detailed as the learning objectives of each section, but more high-level.
+By the end of this course, you will be able to:
+
+- Choose the most suitable analysis workflow based on the genome diversity of a given bacterial species.
+- Differentiate between "_de novo_ assembly" and "reference-based mapping" approaches for reconstructing bacterial genomes.
+- Apply standardised workflows to assemble and annotate genomes using both approaches.
+- Evaluate the quality of assembled genomes and determine their suitability for downstream analysis.
+- Detect and remove recombinant regions.
+- Construct phylogenetic trees using both whole genome and core genome alignments.
+- Detect the presence of antimicrobial resistance genes in your isolates.
 :::
 
 
 ### Target Audience
 
-Brief description of target audience here.
+The course is aimed at biologists interested in microbiology, prokaryotic genomics and antimicrobial resistance.
 
 
 ### Prerequisites
 
-Detail any prerequisite skills needed to attend this course, with links to other relevant materials/courses if possible.
+#### Essential
 
+- Basic understanding of high-throughput sequencing technologies.
+  - Watch this iBiology video for an excellent overview.
+- A working knowledge of the UNIX command line (course registration page).
+  - If you are not able to attend this prerequisite course, please work through our Unix command line materials ahead of the course (up to section 7).
+- A working knowledge of R (course registration page).
+  - If you are not able to attend this prerequisite course, please work through our R materials ahead of the course.
 
-<!-- Training Developer note: comment the following section out if you did not assign levels to your exercises -->
-### Exercises
+#### Desirable
 
-Exercises in these materials are labelled according to their level of difficulty:
-
-| Level | Description |
-| ----: | :---------- |
-| {{< fa solid star >}} {{< fa regular star >}} {{< fa regular star >}} | Exercises in level 1 are simpler and designed to get you familiar with the concepts and syntax covered in the course. |
-| {{< fa solid star >}} {{< fa solid star >}} {{< fa regular star >}} | Exercises in level 2 combine different concepts together and apply it to a given task. |
-| {{< fa solid star >}} {{< fa solid star >}} {{< fa solid star >}} | Exercises in level 3 require going beyond the concepts and syntax introduced to solve new problems. |
+- A basic knowledge of phylogenetics inference methods (course registration page).
+- A working knowledge of running analysis on High Performance Computing (HPC) clusters (course registration page).
 
 
 ## Authors
@@ -59,6 +64,10 @@ About the authors:
   <a href="https://github.com/tavareshugo" target="_blank"><i class="fa-brands fa-github" style="color:#4078c0"></i></a>  
   _Affiliation_: Bioinformatics Training Facility, University of Cambridge  
   _Roles_: writing - review & editing
+- **Bajuna Salehe**
+  <a href="https://github.com/bsalehe" target="_blank"><i class="fa-brands fa-github" style="color:#4078c0"></i></a>  
+  _Affiliation_: Bioinformatics Training Facility, University of Cambridge  
+  _Roles_: writing - original content; conceptualisation; coding; data curation
 
 
 ## Citation

@@ -14,7 +14,7 @@ title: "de novo Assembly"
 
 There are two approaches for genome assembly: reference-based (or comparative)  or *de novo*.  In a reference-based assembly, we use a reference genome as a guide to map our sequence data to and thus reassemble our sequence this way (this is what we did in the previous module).  Alternatively, we can create a 'new' (*de novo*) assembly that does not rely on a map or reference and more closely reflects the actual genome structure of the isolate that was sequenced.
 
-![Genome assembly](../fig/genome-assembly.jpeg)
+![Genome assembly](images/genome-assembly.jpeg)
 
 ## Genome assemblers
 

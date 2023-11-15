@@ -28,11 +28,13 @@ Each approach has its benefits and limitations and will be appropriate to the sp
 
 Picking the best reference for your dataset is very important as this can have a large effect on the downstream analsyses such as phylogenetic tree construction. For some species with low diversity e.g. *M. tuberculosis*, it is usual to use the same reference (the lab strain H37v) regardless of what your dataset is comprised of. If your dataset is comprised of a single lineage (e.g. ST, CC), the best reference to use is one that is from the same or a closely related lineage.  For many of the most commonly sequenced bacteria, there are several different reference sequences available in public databases such as RefSeq, meaning that, in most instances, you can find a suitable reference.  However, for more diverse organisms, a single reference may not represent all the samples in your dataset.  In this instance, you may want consider comparing the similarity of your samples to a number of different reference sequences and pick the one that is similar to most samples in your dataset.
 
-## Multiple sequence alignments
-
 ## Summary
 
 ::: {.callout-tip}
 ## Key Points
 
 :::
+
+## References
+
+https://github.com/WCSCourses/GenEpiLAC2023/blob/main/Manuals/Mapping_and_Phylogenetics/Mapping%2BPhylo.md

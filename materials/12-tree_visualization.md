@@ -1,11 +1,11 @@
 ---
-title: "Introduction to Panaroo"
+title: "Visualising phylogenies"
 ---
 
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand why to use Panaroo.
+- Visualize and annotate your tree with `Microreact`
 
 :::
 

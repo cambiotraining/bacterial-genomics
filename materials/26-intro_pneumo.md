@@ -16,6 +16,10 @@ The Global Pneumococcal Sequencing (GPS) project was set up to help understand t
 
 Uptake and incorporation of DNA from the environment into the pneumococcal chromosome via transformation and homologous recombination has been shown to contribute more to nucleotide variation than mutation in the pneumococcus.  As well as being biologically important, recombination obscures the true phylogenetic signal of vertical descent and needs to be accounted for when inferring pneumococcal phylogenies. 
 
+## Dataset
+
+Chaguza 2022
+
 ## Summary
 
 ::: {.callout-tip}

@@ -6,6 +6,7 @@ title: "TB-profiler"
 ## Learning Objectives
 
 - Understand what TB-profiler does
+- Prepare TB-profiler data to plot with phylogenetic tree
 
 :::
 
@@ -36,6 +37,14 @@ Run tb-profiler
 mamba activate tb-profiler
 
 bash 06-run_tb-profiler.sh
+
+:::
+
+## Data cleaning
+
+:::{.callout-exercise}
+
+python scripts/merge_tb_data.py -s sample_info.csv -t results/tb-profiler/Nam_TB.txt
 
 :::
 
