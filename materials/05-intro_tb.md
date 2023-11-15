@@ -21,7 +21,7 @@ Increasingly, *M. tuberculosis* is resistant to many of the frontline antimicrob
 
 ## Course dataset
 
-We will be analysing a dataset of XX Namibian *M. tuberculosis* genomes that was recently published (Claasens 2022). The original dataset consisted of 136 drug-resistant TB isolates collected from patients between 2016-2018 across Namibia. For the purposes of this course and for time, we're only going to analyse 50 genomes from the dataset.
+We will be analysing a dataset of Namibian *M. tuberculosis* genomes that was recently published (Claasens 2022). The original dataset consisted of 136 drug-resistant TB isolates collected from patients between 2016-2018 across Namibia. For the purposes of this course, mainly to save time,  we're only going to analyse 50 genomes from the dataset.
 
 ## MTBC ancestral reference sequence
 

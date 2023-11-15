@@ -9,6 +9,10 @@ title: "Introduction to *Staphylococcus aureus*"
 
 :::
 
+## Course dataset
+
+van Tonder 2023
+
 ## Summary
 
 ::: {.callout-tip}

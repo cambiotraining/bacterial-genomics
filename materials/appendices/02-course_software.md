@@ -60,6 +60,10 @@ Sequence Type assignment
 
 summarises and creates visualizations for outputs from `fastQC`, `fastp` and `MultiQC`
 
+### [Nextflow](https://www.nextflow.io/)
+
+### [pairsnp](https://github.com/gtonkinhill/pairsnp)
+
 ### [Panaroo](https://gtonkinhill.github.io/panaroo/)
 
 ### [Quast](https://quast.sourceforge.net/)
@@ -70,9 +74,13 @@ assembly metrics
 
 downsamples fastq files to 100X by default (Optional)
 
+### [remove_blocks_from_aln.py](https://github.com/sanger-pathogens/remove_blocks_from_aln)
+
 ### [SAMtools](https://sourceforge.net/projects/samtools/files/samtools/)
 
 sorts and indexes alignments 
+
+### [seqtk](https://github.com/lh3/seqtk)
 
 ### [Shovill](https://github.com/tseemann/shovill) 
 

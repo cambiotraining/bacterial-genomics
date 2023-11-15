@@ -6,7 +6,6 @@ title: "de novo Assembly"
 ## Learning Objectives
 
 - Understand what *de novo* genome assembly is and how it differs from reference-based assembly.
-- Assemble sequence data with `assembleBAC`
 
 :::
 

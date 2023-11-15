@@ -304,6 +304,18 @@ With respect to potential species contamination, no samples contained more than 
 :::
 :::
 
+:::{.callout-warning}
+
+**The Nextflow work directory**
+
+Each step of the pipeline produces one or more files that are not saved to the results directory but are kept in the work directory.  This means that if, for whatever reason, the pipeline doesn't finish successfully you can resume it.  However, once the pipeline has completed successfully, you no longer need this directory (it can take up a lot of space) so you can delete it:
+
+```bash
+rm -rf work
+```
+
+:::
+
 ## Summary
 
 ::: {.callout-tip}

@@ -161,29 +161,6 @@ This section of the report shows the software run as part of nf-core/bactmap and
 
 ![nf-core/bactmap MultiQC software versions](images/bactmap_software_versions.png)
 
-### The pseudogenomes directory
-
-This directory contains the files that are most useful for our downstream analyses.  Change to the directory and list the files:
-
-```bash
-cd bactmap_results/pseudogenomes
-
-ls
-```
-
-You will see the pseudogenome fasta files (a version of the reference file where the sample variants have been inserted and low-quality or missing data has been masked) for each sample, an alignment of all the samples  and the reference sequence (`aligned_pseudogenomes.fas`), and a tsv file of genomes removed from the complete alignment due to poor mapping (`low_quality_pseudogenomes.tsv`):
-
-```bash
-aligned_pseudogenomes.fas
-low_quality_pseudogenomes.tsv
-```
-
-Let's check to see if any of our samples were removed from our alignment:
-
-```bash
-cat low_quality_pseudogenomes.tsv
-```
-This returns an empty file; all of our samples mapped well enough to the reference to be included in our complete alignment.  That means we can proceed to the next step of our analysis: phylogenetic tree inference.
 
 ## Check how much of the reference was mapped
 
@@ -218,14 +195,6 @@ remove_blocks_from_aln.py -a aligned_pseudogenomes.fas -t ../../../resources/mas
 
 bash scripts/04-mask_pseudogenome.sh
 ```
-### The work directory
-
-Each step of the pipeline produces one or more files that are not saved to the results directory but are kept in the work directory.  This means that if, for whatever reason, the pipeline doesn't finish successfully you can resume it.  However, once the pipeline has completed successfully, you no longer need this directory (it can take up a lot of space) so you can delete it:
-
-```bash
-rm -rf work
-```
-
 ## Summary
 
 ::: {.callout-tip}

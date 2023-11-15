@@ -100,8 +100,6 @@ Nextflow provides a separation between the pipeline’s functional logic and the
 
 Nextflow provides out-of-the-box support for major batch schedulers and cloud platforms such as Sun Grid Engine, SLURM job scheduler, AWS Batch service and Kubernetes. A full list can be found [here](https://www.nextflow.io/docs/latest/executor.html).
 
-## Nextflow Tower/Seqera
-
 ## Snakemake
 
 In this tutorial we've focused on Nextflow but many people in the bioinformatics community use Snakemake.  Similar to Nextflow, the Snakemake workflow management system is a tool for creating reproducible and scalable data analyses. The main difference is that workflows are described via a human readable, Python based language. They can be seamlessly scaled to server, cluster, grid and cloud environments, without the need to modify the workflow definition. Finally, Snakemake workflows can entail a description of required software, which will be automatically deployed to any execution environment.
