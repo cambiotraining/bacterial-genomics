@@ -7,8 +7,7 @@ title: "The nf-core project"
 
 - Understand what nf-core is and how it relates to Nextflow.
 - Use the nf-core helper tool to find nf-core pipelines.
-- Understand how to configuration nf-core pipelines.
-- Run a small nf-core pipeline using a test dataset.
+- Understand how to configure nf-core pipelines.
 
 :::
 
@@ -113,13 +112,6 @@ nextflow run nf-core/rnaseq -r 3.0 -profile <institutional_config_profile>, test
 
 ### Multiple Nextflow configuration locations
 Be clever with multiple Nextflow configuration locations. For example, use `-profile` for your cluster  configuration, the file `$HOME/.nextflow/config` for your personal config such as `params.email` and a working directory >`nextflow.config` file for reproducible run-specific configuration.
-
-:::{.callout-exercise}
-**Note: As we have already prepared the config file, you can skip this exercise.**
-
-Add the `params.email` to a file called `nfcore-custom.config`
-
-:::
 
 ### Running pipelines with test data
 

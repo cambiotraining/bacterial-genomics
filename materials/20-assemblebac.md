@@ -78,18 +78,22 @@ bash scripts/01-run_assemblebac.sh
 While it was running it printed a message on the screen: 
 
 ```
-N E X T F L O W  ~  version 23.04.1
-Launching `https://github.com/avantonder/assembleBAC` [ecstatic_thompson] DSL2 - revision: ddcebda467 [main]
-
-
-------------------------------------------------------
-                                        ,--./,-.
-        ___     __   __   __   ___     /,-._.--~'
-  |\ | |__  __ /  ` /  \ |__) |__         }  {
-  | \| |       \__, \__/ |  \ |___     \`-._,-`-,
-                                        `._,._,'
-  avantonder/assembleBAC v1.0
-------------------------------------------------------
+executor >  local (1), slurm (125)
+[5b/76f045] process > ASSEMBLEBAC:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv) [100%] 1 of 1 ✔
+[e6/2ea670] process > ASSEMBLEBAC:SHOVILL (ERX3876931_ERR3864878_T1)              [100%] 30 of 30 ✔
+[94/bcfb5b] process > ASSEMBLEBAC:MLST (ERX3876931_ERR3864878_T1)                 [100%] 30 of 30 ✔
+[9c/f528af] process > ASSEMBLEBAC:MLST_PARSE                                      [100%] 1 of 1 ✔
+[07/e7d6bf] process > ASSEMBLEBAC:BAKTA (ERX3876931_ERR3864878_T1)                [100%] 30 of 30 ✔
+[7f/6e833a] process > ASSEMBLEBAC:CHECKM2 (ERX3876931_ERR3864878_T1)              [100%] 30 of 30 ✔
+[dc/41e8df] process > ASSEMBLEBAC:CHECKM2_PARSE                                   [100%] 1 of 1 ✔
+[80/9598f1] process > ASSEMBLEBAC:QUAST                                           [100%] 1 of 1 ✔
+[b1/dded73] process > ASSEMBLEBAC:CUSTOM_DUMPSOFTWAREVERSIONS (1)                 [100%] 1 of 1 ✔
+[80/f2d907] process > ASSEMBLEBAC:MULTIQC (1)                                     [100%] 1 of 1 ✔
+-[avantonder/assembleBAC] Pipeline completed successfully-
+Completed at: 16-Nov-2023 11:45:37
+Duration    : 32m 24s
+CPU hours   : 41.5
+Succeeded   : 126
 ```
 
 

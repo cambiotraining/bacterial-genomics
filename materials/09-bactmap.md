@@ -111,7 +111,7 @@ Before the tea break, we left `bactmap` running.  Now, we can look at the output
 
 ### The MultiQC summary report
 
-The first thing we'll check is the `html` report file created by `MultiQC`.  Go to `File Explorer`, navigate to results/bactmap/multiqc/ and double click on `multiqc_report.html`.  This will open the file in your web browser of choice:
+The first thing we'll check is the HTML report file created by `MultiQC`.  Go to `File Explorer`, navigate to `results/bactmap/multiqc/` and double click on `multiqc_report.html`.  This will open the file in your web browser of choice:
 
 ![config](images/bactmap_multiqc.png)
 
@@ -162,42 +162,179 @@ This section of the report shows the software run as part of nf-core/bactmap and
 ![nf-core/bactmap MultiQC software versions](images/bactmap_software_versions.png)
 
 
-## Check how much of the reference was mapped
+## Check how much of the reference was mapped {#sec-seqtk}
 
-It's good practice to do an additional check of our mapping results before proceeding to the next step of our analysis, phylogenetic tree inference.  We can do this by checking how much of the reference genome was mapped in each sample and use a tool called `seqtk` to do this.  If a position in the reference genome is not found in the sample it is marked as a `N` and any regions of the reference that were not mapped to sufficient quality are marked as `-`. So we use `seqtk` to count the number of A's, C's, G's and T's, sum the totals and then divide by the length of the reference sequence.  This gives us a proportion (we can convert to a % by multiplying by 100) of the reference sequence that was mapped in each sample.  Ideally, we would like to see more than 90% of the reference mapped but this will depend on the species and how close the reference is to the samples you're analysing. However, anything more than 75% should be sufficient for most applications.  The main impact of less mapping is fewer phylogenetically informative positions for constructing phylogenetic trees.
+It's good practice to do an additional check of our mapping results before proceeding to the next step of our analysis, phylogenetic tree inference.  We can do this by checking how much of the reference genome was mapped in each sample and use a tool called `seqtk` to do this.  If a position in the reference genome is not found in the sample it is marked as a `N` and any regions of the reference that were not mapped to sufficient quality are marked as `-`. So we use `seqtk comp` to count the number of A's, C's, G's and T's, sum the totals and then divide by the length of the reference sequence.  This gives us a proportion (we can convert to a % by multiplying by 100) of the reference sequence that was mapped in each sample.  Ideally, we would like to see more than 90% of the reference mapped but this will depend on the species and how close the reference is to the samples you're analysing. However, anything more than 75% should be sufficient for most applications.  The main impact of less mapping is fewer phylogenetically informative positions for constructing phylogenetic trees.
+
+We'll start by activating the `seqtk` software environment to make `seqtk` available:
+
+```bash
+mamba activate seqtk
+```
+
+To run `seqtk comp` on a single sample (in this example we'll analyse `ERX9450498_ERR9907670`), the following commands can be used:
+
+```bash
+# create output directory
+mkdir -p results/bactmap/pseudogenomes_check
+
+# run seqtk comp
+seqtk comp results/bactmap/pseudogenomes/ERX9450498_ERR9907670.fas > results/bactmap/pseudogenomes_check/ERX9450498_ERR9907670.tsv
+```
+
+If you open the output file `ERX9450498_ERR9907670.tsv` in the terminal with `cat`:
+
+```bash
+cat results/bactmap/pseudogenomes_check/ERX9450498_ERR9907670.tsv
+```
+
+You should see output like this:
+
+```bash
+ERX9450498_ERR9907670	4435783	715550	1348517	1343684	715401	0	0	312631	1040588	0	0	0
+```
+There are no headers in the output but the important information is contained in the first six columns:
+
+- **Column 1** - our sample ID.
+- **Column 2** - the total length of the sequence (this is the length of the reference).
+- **Column 3** - the total number of 'A's in the sequence.
+- **Column 4** - the total number of 'C's in the sequence.
+- **Column 5** - the total number of 'G's in the sequence.
+- **Column 6** - the total number of 'T's in the sequence.
+
+To calculate the percentage of the reference mapped we divide the sum of 'A's, 'C's, 'G's and 'T's, divide by the total length of the sequence and multiply by 100:
+
+```
+(715550+1348517+1343684+715401)/4435783 * 100 = 92.95%
+```
+
+This is more than 90% so we can proceed with the analysis of this sample.
 
 :::{.callout-exercise}
 #### How much of the reference was mapped?
 
-`conda activate seqtk`
+We have calculated the percentage of the reference mapped for a single sample.  However, we have 50 samples that we need to repeat the analysis on. To do this, we've provided a script that runs `seqtk comp` on all the samples in the `pseudogenomes` directory using a _for loop_.
 
-`bash scripts/03-pseudogenome_check.sh`
+- In the folder `scripts` (inside your analysis directory), you'll find a script named `03-pseudogenome_check.sh`.
+- Open the script, which you will notice is composed of two sections: 
+    - `#### Settings ####` where we define some variables for input and output files names. If you were running this script on your own data, you may want to edit the directories in this section.
+    - `#### Analysis ####` this is where `seqtk comp` is run on each sample as detailed in @sec-seqtk. You should not change the code in this section, although examining it is a good way to learn about running a _for loop_.
+- Activate the software environment: `mamba activate seqtk`
+- Run the script with `bash scripts/03-pseudogenome_check.sh`. If the script is running successfully it should print a message on the screen as the samples are processed.
+- Once the analysis finishes open the `mapping_summary.tsv` file in _Excel_ from your file browser <i class="fa-solid fa-folder"></i>.
+- Sort the results by the `%ref mapped` column and identify the sample which has the lowest percentage of the reference mapped.
 
 :::{.callout-answer}
 
+We opened the script `03-pseudogenome_check.sh` and these are the settings we used:
+
+- `fasta_dir="results/bactmap/pseudogenomes"` - the name of the directory with the pseudogenomes produced by `bactmap` in it.
+- `outdir="results/bactmap/pseudogenomes_check"` - the name of the directory where we want to save our results.
+- `parser="scripts/seqtk_parser.py"` - the path to a python script that takes the `seqtk` TSV files as input and does the calculation we performed above for all the samples.
+
+We then ran the script using `bash scripts/03-pseudogenome_check.sh`. The script prints a message while it's running:
+
 ```bash
-bash scripts/03-pseudogenome_check.sh
+Processing ERX9450498_ERR9907670.fas
+Processing ERX9450499_ERR9907671.fas
+Processing ERX9450502_ERR9907674.fas
+...
 ```
+We opened the `mapping_summary.tsv` file in _Excel_ and sorted the `%ref mapped` in ascending order to identify which sample had the lowest percentage of the reference mapped. 
+
+```
+sample	ref_length	#A	#C	#G	#T	mapped	%ref mapped
+ERX9450498_ERR9907670	4435783	715550	1348517	1343684	715401	4123152	92.95206731258044
+ERX9450499_ERR9907671	4435783	711436	1338950	1334043	711328	4095757	92.33447623564994
+ERX9450502_ERR9907674	4435783	726446	1373546	1368600	726342	4194934	94.57031599607105
+ERX9450504_ERR9907676	4435783	728780	1377603	1372394	728397	4207174	94.84625375046525
+ERX9450506_ERR9907678	4435783	726076	1376188	1370635	726568	4199467	94.67250764972046
+```
+
+We can see that `ERX9450520_ERR9907692` only mapped to 79.9% of the reference. Whilst this is less than the other samples, it's still above 75% so we'll include it for now.
 
 :::
 :::
 
 ## Create final alignment
 
-aligned pseudogenomes else cat
+Now that we've mapped our sequence data to the ancestral reference, called and filtered variants and created consensus pseudogenomes that we checked, we can create the final alignment we will use for inferring a phylogenetic tree.  As we are not excluding any samples based on the pseudogenome check we did above, we can use the `aligned_pseudogenomes.fas` file that was created by `bactmap` (it's worth remembering that this alignment includes the reference as well as the pseudogenomes).  If any of the pseudogenomes contained more than 25% missing data and were removed, we could create our final alignment with `cat` as described below.
+
+:::{.callout-tip}
+### Building a final alignment from pseudogenome FASTA files
+One of the advantages of working with pseudogenome FASTA files is that the files are all the same length i.e. the length of the reference.  This means that they are effectively already aligned so we don't need to do any additional aligning like we might do with gene sequences from different isolates.  If you need to create a final alignment from the pseudogenome files, it's as simple as using `cat`:
+
+First create a `tmp` directory and move the pseudogenome files you want to include to the `tmp directory`:
+
+```bash
+mkdir tmp
+
+mv *.fas tmp
+```
+
+Now change to the `tmp` directory and `cat` the pseudogenome files to create the alignment:
+
+```bash
+cd tmp
+
+cat *.fas > aligned_pseudogenomes.fas
+```
+:::
 
 ## Mask final alignment
 
+It's standard practice to mask certain regions of the TB genome when we build alignments for building phylogenetic trees.  In particular, repetitive regions of the genome such as PE/PPE genes and regions with an abundance of SNPs are removed as they are often difficult for the mapping software to accurately align and may cause misalignments leading to errors in variant calling with may lead to inaccurate tree topologies.  There are two ways to do the masking:
+
+- Mask the regions in the VCF files before creating the pseudogenomes.
+- Create the final alignment then apply the masking to all the samples at once.
+
+As we've already created our final alignment, we're going to take the second approach and apply the mask to the `aligned_pseudogenomes.fas` file.  The co-ordinates we're going to use come from Goig _et al._ 2020 and have been transferred to the new ancestral reference sequence. We'll use a tool called `remove_blocks_from_aln.py` to do the masking. 
+
+Let's start by activating the `remove_blocks` environment:
+
 ```bash
-conda activate remove_blocks
+mamba activate remove_blocks
+```
 
-remove_blocks_from_aln.py -a aligned_pseudogenomes.fas -t ../../../resources/masking/MTBC0_Goigetal_regions_toDiscard.bed -o aligned_pseudogenomes_masked.fas
+To run `remove_blocks_from_aln.py` on `aligned_pseudogenomes.fas`, the following commands can be used:
 
+```bash
+# create output directory
+mkdir -p results/bactmap/masked_alignment
+
+# remove_blocks_from_aln.py
+remove_blocks_from_aln.py -a results/bactmap/pseudogenomes/aligned_pseudogenomes.fas -t resources/masking/MTBC0_Goigetal_regions_toDiscard.bed -o results/bactmap/masked_alignment/aligned_pseudogenomes_masked.fas
+```
+The options we used are:
+
+- `-a` - the alignment file we want to mask.
+- `-t` - a BED file containing the coordinates of the regions we wish to mask.
+- `-o` - the name of the masked alignment file.
+
+You should see output like this:
+
+```bash
+Found 1024 regions
+Adjusted 51 sequences
+Original alignment length: 4435783	New alignment length:4435783
+Done.
+```
+
+The masked final alignment will saved to the `results/bactmap/masked_alignment/` directory.  
+
+Alternatively we've provided a script, `04-mask_pseudogenome.sh` in the `scripts` directory which could be used instead with `bash`:
+
+```bash
 bash scripts/04-mask_pseudogenome.sh
 ```
+
 ## Summary
 
 ::: {.callout-tip}
 ## Key Points
 
 :::
+
+#### References
+
+Goig G, _et al._ Contaminant DNA in bacterial sequencing experiments is a major source of false genetic variability. BMC Biology. 2020. [DOI](https://doi.org/10.1186/s12915-020-0748-z)

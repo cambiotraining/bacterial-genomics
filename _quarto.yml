@@ -54,4 +54,6 @@ book:
           href: index.md
         - text: "Data & Setup"
           href: setup.md
+  sidebar: 
+    collapse-level: 1
     

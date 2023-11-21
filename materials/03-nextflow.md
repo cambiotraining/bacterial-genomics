@@ -27,11 +27,11 @@ WfMS contain multiple features that simplify the development, monitoring, execut
 
 Key features include;
 
-* **Run time management**: Management of program execution on the operating system and splitting tasks and data to run at the same time in a process called parallelisation.
-* **Software management**: Use of technology like containers, such as [Docker](https://www.docker.com) or [Singularity](https://sylabs.io/singularity), that packages up code and all its dependencies so the application runs reliably from one computing environment to another.
-* **Portability & Interoperability**: Workflows written on one system can be run on another computing infrastructure e.g., local computer, compute cluster, or cloud infrastructure.
-* **Reproducibility**: The use of software management systems and a pipeline specification means that the workflow will produce the same results when re-run, including on different computing platforms.
-* **Reentrancy**: Continuous checkpoints allow workflows to resume
+- **Run time management**: Management of program execution on the operating system and splitting tasks and data to run at the same time in a process called parallelisation.
+- **Software management**: Use of technology like containers, such as [Docker](https://www.docker.com) or [Singularity](https://sylabs.io/singularity), that packages up code and all its dependencies so the application runs reliably from one computing environment to another.
+- **Portability & Interoperability**: Workflows written on one system can be run on another computing infrastructure e.g., local computer, compute cluster, or cloud infrastructure.
+- **Reproducibility**: The use of software management systems and a pipeline specification means that the workflow will produce the same results when re-run, including on different computing platforms.
+- **Reentrancy**: Continuous checkpoints allow workflows to resume
 from the last successfully executed steps.
 
 ## Nextflow basic concepts

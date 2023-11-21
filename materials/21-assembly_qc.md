@@ -60,14 +60,11 @@ The columns are:
 - **N50** - a metric indicating the length of the shortest fragment, from the group of fragments that together represent at least 50% of the total genome. A higher N50 value suggests better contig lengths.
 
 To interpret these statistics, it helps to compare them with other well-assembled _Staphylococcus aureus_ genomes. 
-For example, let's take the first MRSA genome that was sequenced, [N315](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009645.1/), as our reference for comparison. 
-This genome is 2.8 Mb long and is composed of a single chromosome.
+For example, let's take the first MRSA genome that was sequenced, [N315](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000009645.1/), as our reference for comparison. This genome is 2.8 Mb long and is composed of a single chromosome.
 
-We can see that all of our assemblies reached a total length of around 2.7 to 2.9 Mb, which matches the expected length from our reference genome.
-This indicates that we managed to assemble most of the expected genome. 
+We can see that all of our assemblies reached a total length of around 2.7 to 2.9 Mb, which matches the expected length from our reference genome. This indicates that we managed to assemble most of the expected genome. 
 However, we can see that there is a variation in the number of fragments in the final assemblies (i.e. their contiguity). 
-For instance, isolates X and X were assembled to a small number of fragments each, suggesting good assemblies. For several other isolates our assemblies were more fragmented, in particular X and X, which had hundreds of fragments. 
-This indicates less contiguous sequences.
+For instance, isolates ERX3876936_ERR3864883 and ERX3876945_ERR3864892 were assembled to a small number of fragments each, suggesting good assemblies. For several other isolates our assemblies were more fragmented, in particular ERX3876939_ERR3864886  which had more than 200 fragments. This indicates less contiguous sequences.
 
 ## Completeness
 
