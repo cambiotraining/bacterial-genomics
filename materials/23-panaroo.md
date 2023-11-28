@@ -7,32 +7,33 @@ title: "Panaroo"
 
 - Understand why to use Panaroo.
 - Understand what a core gene alignment is.
-- Use the core genome alignment from panaroo to build a tree
+- Use the core genome alignment from Panaroo to build a tree
 
 :::
 
-## Core genome alignment: `panaroo`
+## Core genome alignment: `panaroo`  {#sec-panaroo}
 
-The software [_Panaroo_](https://gtonkinhill.github.io/panaroo/) was developed to analyse bacterial pangenomes. 
+The software [_Panaroo_](https://gtonkinhill.github.io/panaroo/) was developed to analyse bacterial pan-genomes. 
 It is able to identify orthologous sequences between a set of sequences, which it uses to produce a multiple sequence alignment of the core genome. 
-The output alignment it produces can then be used to build our phylogenetic trees in the next step.
+The output alignment it produces can then be used to build our phylogenetic tree in the next step.
 
-As input to _Panaroo_ we will use: 
+As input to _Panaroo_ we will use the gene annotations for our newly assembled genomes, which were produced by the [assembleBAC pipeline](20-assemblebac.md) using _Bakta_. 
 
-- The gene annotations for our newly assembled genomes, which were produced by the [assembleBAC pipeline](20-assemblebac.md) using _Bakta_. 
+First, let's activate the `panaroo` software environment:
 
+```bash
+mamba activate panaroo
+```
 
 To run _Panaroo_ on our samples we can use the following commands:
 
 ```bash
 # create output directory
-mamba activate panaroo
-
 mkdir results/panaroo
 
 # run panaroo
 panaroo \
-  --input results/assembleBAC/annotation/*.gff \
+  --input results/assembleBAC/annotation/*.gff3 \
   --out_dir results/panaroo \
   --clean-mode strict \
   --alignment core \
@@ -43,15 +44,15 @@ panaroo \
 
 The options used are: 
 
-- `--input` - all the input annotation files, in the _Panaroo_-compatible GFF format. Notice how we used the `*` wildcard to match all the files in the folder. 
+- `--input` - all the input annotation files, in the _Panaroo_-compatible GFF3 format. Notice how we used the `*` wildcard to match all the files in the folder. 
 - `--out_dir` - the output directory we want to save the results into.
-- `--clean-mode` - determines the stringency of _Panaroo_ in including genes within its pangenome graph for gene clustering and core gene identification. The available modes are 'strict', 'moderate', and 'sensitive'. These modes balance eliminating probable contaminants against preserving valid annotations like infrequent plasmids. In our case we used 'strict' mode, as we are interested in building a core gene alignment for phylogenetics, so including rare plasmids is less important for our downstream task.
+- `--clean-mode` - determines the stringency of _Panaroo_ in including genes within its pan-genome graph for gene clustering and core gene identification. The available modes are 'strict', 'moderate', and 'sensitive'. These modes balance eliminating probable contaminants against preserving valid annotations like infrequent plasmids. In our case we used 'strict' mode, as we are interested in building a core gene alignment for phylogenetics, so including rare plasmids is less important for our downstream task.
 - `--alignment` - whether we want to produce an alignment of core genes or all genes (pangenome alignment). In our case we want to only consider the core genes, to build a phylogeny.
 - `--core_threshold` - the fraction of input genomes where a gene has to be found to be considered a "core gene". In our case we've set this to a very high value, to ensure most of our samples have the gene.
 - `--remove-invalid-genes` - this is recommended to remove annotations that are incompatible with the annotation format expected by _Panaroo_. 
 - `--threads` - how many CPUs we want to use for parallel computations.
 
-_Panaroo_ takes a long time to run, so be prepared to wait a while for its analysis to finish <i class="fa-solid fa-mug-hot"></i>. 
+_Panaroo_ can takle a long time to run, so be prepared to wait a while for its analysis to finish <i class="fa-solid fa-mug-hot"></i>. 
 
 Once it finishes, we can see the output it produces:
 
@@ -60,7 +61,7 @@ ls results/panaroo
 ```
 
 ```
-aligned_gene_sequences/                core_alignment_header.embl        gene_presence_absence_roary.csv
+aligned_gene_sequences/               core_alignment_header.embl        gene_presence_absence_roary.csv
 alignment_entropy.csv                 core_gene_alignment.aln           pan_genome_reference.fa
 combined_DNA_CDS.fasta                core_gene_alignment_filtered.aln  pre_filt_graph.gml
 combined_protein_CDS.fasta            final_graph.gml                   struct_presence_absence.Rtab
@@ -78,19 +79,19 @@ head results/panaroo/core_gene_alignment_filtered.aln
 ```
 
 ```
->GCF_015482825.1_ASM1548282v1_genomic
-atggctatttatctgactgaattatcgccggaaacgttgacattcccctctccttttact
-gcgttagatgaccctaacggcctgcttgcatttggcggcgatctccgtcttgaacgaatt
-tgggcggcttatcaacaaggcattttcccttggtatggccctgaagacccgattttgtgg
-tggagcccttccccacgtgccgtgtttgaccctactcggtttcaacctgcc-aaaagcgt
-gaagaagttccaacgtaaacatcagtatcgggttagcgtcaatcacgcgacgtcgcaagt
-gattgagcagtgcgcgctcactcgccctgcggatcaacgttggctcaatgactcaatgcg
-ccatgcgtatggcgagttggcgaaacaaggtcgttgccattctgttgaggtgtggcaggg
-cgaacaactggtgggtgggctttatggcatttccgttggccaactgttttgtggcgaatc
-catgtttagcctcgcaaccaatgcctcgaaaattgcgctttggta-tttttgcgaccatt
+>ERX3876945_ERR3864892_T1
+atgcaacaatcagacgtcattagtgctgccaaaaaatatatggaatctattcatcaaaat
+gattatacaggccatgatattgcgcatgtatatcgtgtcactgctttagctaaatcaatc
+gctgaaaatgaaggtgttaatgatactttagtcattgaactcgcatgtttgcttcatgat
+accgttgacgaaaaagttgtagatgctaacaaacaatatgttgaattgaagtcattttta
+tcttctttatcactatcaaccgaagatcaagagcacattttatttattattaataatatg
+agctatcgcaatggcaaaaatgatcatgtcactttatctttagaaggtcaaattgtcagg
+gatgcagatcgtcttgatgctataggcgctataggtgttgcacgaacatttcaatttgca
+ggacactttggtgaaccaatgtggacagaacatatgtcactagataagattaatgatgat
+ttagttgaacagttgccaccatctgcaattaagcatttctttgaaaaattacttaagtta
 ```
 
-We can see this contains a sequence named "GCF_015482825.1_ASM1548282v1_genomic", which corresponds to one of the NCBI genomes we downloaded. 
+We can see this contains a sequence named "ERX3876945_ERR3864892_T1", which corresponds to one of the genomes we included in our dataset. 
 We can look at all the sequence names in the FASTA file: 
 
 ```bash
@@ -98,20 +99,19 @@ grep ">" results/panaroo/core_gene_alignment_filtered.aln
 ```
 
 ```
->GCF_015482825.1_ASM1548282v1_genomic
->GCF_019704235.1_ASM1970423v1_genomic
->GCF_013357625.1_ASM1335762v1_genomic
->GCF_017948285.1_ASM1794828v1_genomic
->GCF_009763825.1_ASM976382v1_genomic
->isolate01
->GCF_013357665.1_ASM1335766v1_genomic
->GCF_009762915.1_ASM976291v1_genomic
->GCF_009762985.1_ASM976298v1_genomic
+>ERX3876945_ERR3864892_T1
+>ERX3876948_ERR3864895_T1
+>ERX3876909_ERR3864856_T1
+>ERX3876942_ERR3864889_T1
+>ERX3876935_ERR3864882_T1
+>ERX3876905_ERR3864852_T1
+>ERX3876940_ERR3864887_T1
+>ERX3876954_ERR3864901_T1
 
 ... more output omitted to save space ...
 ```
 
-We can see each input genome appears once, including the "isolateXX" genomes assembled and annotated by us.
+We can see each input genomes, assembled and annotated by us, appears once.
 
 :::{.callout-note collapse=true}
 #### Preparing GFF files for _Panaroo_ (click to see details)
@@ -120,8 +120,7 @@ _Panaroo_ requires GFF files in a non-standard format.
 They are similar to standard GFF files, but they also include the genome sequence itself at the end of the file. 
 By default, _Bakta_ (which we used [earlier](20-assemblebac.md) to annotate our assembled genomes) already produces files in this non-standard GFF format. 
 
-However, GFF files downloaded from NCBI will not be in this non-standard format. 
-To convert the files to the required format, the _Panaroo_ developers provide us with a [Python script](https://raw.githubusercontent.com/gtonkinhill/panaroo/master/scripts/convert_refseq_to_prokka_gff.py) that can do this conversion: 
+However, GFF files downloaded from NCBI will not be in this non-standard format. To convert the files to the required format, the _Panaroo_ developers provide us with a [Python script](https://raw.githubusercontent.com/gtonkinhill/panaroo/master/scripts/convert_refseq_to_prokka_gff.py) that can do this conversion: 
 
 ```bash
 python3 convert_refseq_to_prokka_gff.py -g annotation.gff -f genome.fna -o new.gff
@@ -131,10 +130,135 @@ python3 convert_refseq_to_prokka_gff.py -g annotation.gff -f genome.fna -o new.g
 - `-f` is the corresponding FASTA file with the genome (also downloaded from NCBI).
 - `-o` is the name for the output file.
 
-This is a bit more advanced, and is included here for interested users. 
-We already prepared all the files for performing a phylogeny, so you don't need to worry about this for the course. 
+This is a bit more advanced, and is included here for interested users. We already prepared all the files for constructing a phylogeny, so you don't need to worry about this for the course. 
 :::
 
+:::{.callout-exercise}
+#### Core genome alignment
+
+Using Panaroo, perform a core genome alignment for your assembled sequences.
+
+- Activate the software environment: `mamba activate panaroo`.
+- Fix the script we provide in `scripts/02-run_panaroo.sh`. See @sec-panaroo if you need a hint of how to fix the code in the script.
+- Run the script using `bash scripts/02-run_panaroo.sh`.
+- When the analysis starts you will get several messages and progress bars print on the screen.
+
+This analysis takes a long time to run (~ 1 hour), so you can leave it running, open a new terminal and continue to the next exercise.
+
+:::{.callout-answer}
+
+The fixed code for our script is:
+
+```bash
+#!/bin/bash
+
+# create output directory
+mkdir -p results/panaroo/
+
+# Run panaroo
+panaroo \
+  --input results/assemblebac/annotation/*.gff3 \
+  --out_dir results/panaroo \
+  --clean-mode strict \
+  --alignment core \
+  --core_threshold 0.98 \
+  --remove-invalid-genes \
+  --threads 8
+```
+As it runs, Panaroo prints several messages to the screen.
+
+We specified results/panaroo as the output file for the core genome aligner Panaroo. We can see all the output files it generated:
+
+```bash
+ls results/panaroo
+```
+
+```
+aligned_gene_sequences                core_alignment_header.embl        gene_presence_absence_roary.csv
+alignment_entropy.csv                 core_gene_alignment.aln           pan_genome_reference.fa
+combined_DNA_CDS.fasta                core_gene_alignment_filtered.aln  pre_filt_graph.gml
+combined_protein_CDS.fasta            final_graph.gml                   struct_presence_absence.Rtab
+combined_protein_cdhit_out.txt        gene_data.csv                     summary_statistics.txt
+combined_protein_cdhit_out.txt.clstr  gene_presence_absence.Rtab
+core_alignment_filtered_header.embl   gene_presence_absence.csv
+```
+
+The script included other code - which we didn't need to fix - that extracted the variable sites from our alignment (as detailed in 10-phylogenetics.md). These steps took as input the alignment file generated by Panaroo:
+
+```bash
+# extract variable sites
+snp-sites results/panaroo/core_gene_alignment.aln > results/snp-sites/core_gene_alignment_snps.aln
+
+# count invariant sites
+snp-sites -C results/panaroo/core_gene_alignment.aln > results/snp-sites/constant_sites.txt
+```
+
+These two steps of the analysis produce the two files that we want to use in the next exercise.
+
+:::
+:::
+
+:::{.callout-exercise}
+#### Tree inference
+
+<i class="fa-solid fa-triangle-exclamation"></i> 
+Because _Panaroo_ takes a long time to run, we provide pre-processed results in the folder `preprocessed/`, which you can use as input to `IQ-TREE` in this exercise.
+
+Produce a tree from the core genome alignment from the previous step. 
+
+- Activate the software environment: `mamba activate iqtree`.
+- Fix the script provided in `scripts/03-run_iqtree.sh`. See @sec-iqtree if you need a hint of how to fix the code in the script.
+- Run the script using `bash scripts/03-run_iqtree.sh`. Several messages will be printed on the screen while `IQ-TREE` runs. 
+
+:::{.callout-hint}
+For IQ-TREE: 
+
+- The constant sites can be obtained by looking at the output of the `snp-sites` in `results/snp-sites/constant_sites.txt` (or in the `preprocessed` folder if you are still waiting for your _Panaroo_ analysis to finish).
+- The input alignment should be the output from the `snp-sites` program in `results/snp-sites/core_gene_alignment_snps.aln` (or in the `preprocessed` folder if you are still waiting for your _Panaroo_ analysis to finish).
+
+:::
+
+:::{.callout-answer}
+
+The fixed script is: 
+
+```bash
+#!/bin/bash
+
+# create output directory
+mkdir -p results/iqtree/
+
+# Run iqtree
+iqtree \
+  -fconst $(cat results/snp-sites/constant_sites.txt) \
+  -s results/snp-sites/core_gene_alignment_snps.aln \
+  --prefix results/iqtree/School_Staph \
+  -nt AUTO \
+  -ntmax 8 \
+  -mem 8G \
+  -m MFP \
+  -bb 1000
+```
+
+- We specify as input the `core_gene_alignment_snps.aln` produced in the previous exercise by running _Panaroo_ followed by _SNP-sites_.
+- We specify the number of constant sites, also generated from the previous exercise. We can use `$(cat results/snp-sites/constant_sites.txt)` to directly add the contents of `constant_sites.txt` without having to open the file to obtain these numbers.
+- We use as prefix for our output files "School_Staph" (since we are using the data from the schools Staph paper), so all the output file names will be named as such.
+- We automatically detect the number of threads/CPUs for parallel computation.
+
+After the analysis runs we get several output files in our directory: 
+
+```bash
+ls results/iqtree/
+```
+
+```
+School_Staph.bionj  School_Staph.ckp.gz  School_Staph.iqtree  
+School_Staph.log    School_Staph.mldist  School_Staph.treefile
+```
+
+The main file of interest is `School_Staph.treefile`, which contains our tree in the standard [Newick format](https://en.wikipedia.org/wiki/Newick_format). 
+:::
+:::
 
 ## Summary
 

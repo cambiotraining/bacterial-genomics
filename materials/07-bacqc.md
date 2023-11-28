@@ -110,7 +110,13 @@ Now, you can open this file in `Excel` and edit the path to the data (it's good 
 
 ## Running bacQC
 
-Now that we have the samplesheet, we can run the `bacQC` pipeline.  There are [many options](https://github.com/avantonder/bacQC/blob/main/docs/parameters.md) that can be used to customise the pipeline but a typical command is shown below:
+Now that we have the samplesheet, we can run the `bacQC` pipeline.  First, let's activate the `nextflow` software environment:
+
+```bash
+mamba activate nextflow
+```
+
+There are [many options](https://github.com/avantonder/bacQC/blob/main/docs/parameters.md) that can be used to customise the pipeline but a typical command is shown below:
 
 ```bash
 nextflow run avantonder/bacQC \

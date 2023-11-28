@@ -1,5 +1,5 @@
 ---
-title: "de novo Assembly"
+title: "de novo Assembly and Annotation"
 ---
 
 ::: {.callout-tip}
@@ -18,6 +18,10 @@ There are two approaches for genome assembly: reference-based (or comparative)  
 ## Genome assemblers
 
 Several tools are available for *de novo* genome assembly depending on whether you're trying to assemble short-read sequence data, long reads or else a combination of both.  Two of the most commonly used assemblers for short-read Illumina data are `Velvet` and `SPAdes`.  SPAdes has become the *de facto* standard de novo genome assembler for Illumina whole genome sequencing data of bacteria and is a major improvement over previous assemblers like Velvet. However, some of its components can be slow and it traditionally did not handle overlapping paired-end reads well.  `Shovill` is a pipeline which uses `SPAdes` at its core, but alters the steps before and after the primary assembly step to get similar results in less time. Shovill also supports other assemblers like `SKESA`, `Velvet` and `Megahit`.
+
+## Genome annotation
+
+Genome annotation is a multi-level process that includes prediction of protein-coding genes (CDSs), as well as other functional genome units such as structural RNAs, tRNAs, small RNAs, pseudogenes, control regions, direct and inverted repeats, insertion sequences, transposons and other mobile elements.  The most commonly used tools for annotating bacterial genomes are `Prokka` and, more recently, `Bakta`.  Both use a tool called `prodigal` to predict the protein-coding regions along with other tools for predicting other genomic features such as `Aragorn` for tRNA.  Once the genomic regions have been predicted, the tools use a database of existing bacterial genome annotations, normally generated from a large collection of genomes such as UniRef, to add this information to your genome.
 
 ## Summary
 

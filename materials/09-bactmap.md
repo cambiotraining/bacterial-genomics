@@ -42,7 +42,7 @@ Along with the outputs produced by the above tools, the pipeline produces the fo
 
 ## Running nf-core/bactmap
 
-The bactmap pipeline requires a samplesheet CSV file in the same format as the one we used for bacQC so we can re-use that samplesheet CSV file. If you decided to remove any samples because they didn't pass the QC, then edit the samplesheet CSV file accordingly. There are [many options](https://github.com/nf-core/bactmap/blob/1.0.0/docs/usage.md) that can be used to customise the pipeline but a typical command is shown below:
+The bactmap pipeline requires a samplesheet CSV file in the same format as the one we used for bacQC so we can re-use that samplesheet CSV file. If you decided to remove any samples because they didn't pass the QC, then edit the samplesheet CSV file accordingly. There are [many options](https://github.com/nf-core/bactmap/blob/1.0.0/docs/usage.md) that can be used to customise the pipeline but a typical command is shown below (check that your nextflow environment is still active):
 
 ```bash
 nextflow run nf-core/bactmap \
@@ -320,7 +320,7 @@ Original alignment length: 4435783	New alignment length:4435783
 Done.
 ```
 
-The masked final alignment will saved to the `results/bactmap/masked_alignment/` directory.  
+The masked final alignment will be saved to the `results/bactmap/masked_alignment/` directory.  
 
 Alternatively we've provided a script, `04-mask_pseudogenome.sh` in the `scripts` directory which could be used instead with `bash`:
 

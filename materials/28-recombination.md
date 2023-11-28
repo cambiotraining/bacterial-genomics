@@ -23,17 +23,178 @@ The sequences transferred via recombination can influence genome-wide measures o
 
 Gubbins (Genealogies Unbiased By recomBinations In Nucleotide Sequences) is an algorithm that iteratively identifies loci containing elevated densities of base substitutions while concurrently constructing a phylogeny based on the putative point mutations outside of these regions.  We're going to use Gubbins to identify the recombinant regions in the alignment we generated using `nf-core/bactmap`.
 
+## Running `Gubbins`
+
+We'll start by activating the `gubbins` software environment:
+
+```bash
+mamba activate gubbins
+```
+
+To run `Gubbins` on the `aligned_pseudogenomes.fas` file, the following commands can be used:
+
+```bash
+# create output directory
+mkdir -p results/gubbins/
+
+# run gubbins
+run_gubbins.py --prefix sero1 --tree-builder iqtree aligned_pseudogenomes_masked.fas
+
+# move gubbins outputs to results directory
+mv sero1.* results/gubbins/
+```
+The options we used are:
+
+- `--prefix` - prefix to use for the `Gubbins` output files.
+- `--tree-builder` - `Gubbins` can be run with different phylogenetic software including `IQ-TREE`, `FastTree` and `RAxML`.
+
+As it runs, `Gubbins` prints several messages to the screen.
+
+We moved the output files to `results/gubbins/` where we can see all the output files it generated:
+
+```bash
+ls results/panaroo
+```
+
+```
+sero1.final_tree.tre                     sero1.per_branch_statistics.csv     sero1.summary_of_snp_distribution.vcf
+sero1.branch_base_reconstruction.embl    sero1.log                           sero1.recombination_predictions.embl
+sero1.filtered_polymorphic_sites.fasta   sero1.node_labelled.final_tree.tre  sero1.recombination_predictions.gff
+sero1.filtered_polymorphic_sites.phylip       
+```
+
+## Masking recombinant regions
+
+In a similar way to how we masked the TB alignment to remove certain regions of the reference genome from downstream analyses, the next step is to mask the recombinant regions in our `aligned_pseudogenomes.fas` file so these do not influence our phylogenetic tree inference.  Instead of using `remove_blocks_from_aln.py`, we will use `mask_gubbins_aln.py`:
+
+```bash
+mask_gubbins_aln.py --aln results/bactmap/pseudogenomes/aligned_pseudogenomes.fas --gff results/gubbins/sero1.recombination_predictions.gff --out results/gubbins/aligned_pseudogenomes_masked.fas
+```
+
+The options we used are:
+
+- `--aln` - the input alignment, in this case the alignment created by `bactmap`.
+- `--gff` - the GFF file containing the coordinates for the recombinant regions identified by `Gubbins`.
+- `--out` - the masked alignment.
+
+The masked final alignment will be saved to the `results/gubbins/` directory.
+
 ## Visualizing recombinant regions
 
-The outputs from `Gubbins` can be visualised using [`Phandango`](https://jameshadfield.github.io/phandango/#/).  Click on the link then drag the following files onto the Gubbins page:
+The outputs from `Gubbins` can be visualised by running a R script included as part of `Gubbins`:
+
+```bash
+plot_gubbins.R -t results/gubbins/sero1.final_tree.tre -r results/gubbins/sero1.recombination_predictions.gff -a resources/reference/GCF_000299015.1_ASM29901v1_genomic.gff -o results/gubbins/sero1.recombination.png
+```
+The options we used are:
+
+- `-t` - the recombination free phylogenetic tree created by `Gubbins`.
+- `-r` - the GFF file containing the coordinates for the recombinant regions identified by `Gubbins`.
+- `-a` - the GFF file for the reference genome containing the coordinates for the coding regions.
+- `-o` - the figure showing the recombinant regions identified by `Gubbins`.
+
+![Recombinant regions](images/sero1.recombination.png)
+
+The panel on the left shows the maximum-likelihood phylogeny built from the clonal frame of serotype isolates. The scale below shows the length of branches in base substitutions. The tree is coloured according to the classification of isolates, each of which corresponds to a row in the panel on the right. Each column in this panel is a base in the reference annotation, the annotation of which is shown at the top of the figure. The panel shows the distribution of inferred recombination events, which are coloured blue is they are unique to a single isolate, or red, if they are shared by multiple isolates through common ancestry.
 
 :::{.callout-exercise}
+#### Run `Gubbins`
 
-Run Gubbins
+Using Gubbins, create a recombination-masked alignment.
+
+- Activate the software environment: `mamba activate gubbins`.
+- Run the script we provide in `scripts` using `bash scripts/03-run_gubbins.sh`.
+- When the analysis starts you will get several messages and progress bars print on the screen.
+
+:::{.callout-answer}
+
+We ran the script using `bash scripts/03-run_gubbins.sh`. The script prints a message while it's running:
+
+```bash
+--- Gubbins 3.3.1 ---
+
+Croucher N. J., Page A. J., Connor T. R., Delaney A. J., Keane J. A., Bentley S. D., Parkhill J., Harris S.R. "Rapid phylogenetic analysis of large samples of recombinant bacterial whole genome sequences using Gubbins". Nucleic Acids Res. 2015 Feb 18;43(3):e15. doi: 10.1093/nar/gku1196.
+
+Checking dependencies and input files...
+
+Checking input alignment file...
+
+Filtering input alignment...
+...
+```
+In the `results/gubbins` directory we can see the following files:
+
+```
+aligned_pseudogenomes_masked.fas         sero1.final_tree.tre                sero1.recombination.png
+sero1.branch_base_reconstruction.embl    sero1.log                           sero1.recombination_predictions.embl
+sero1.filtered_polymorphic_sites.fasta   sero1.node_labelled.final_tree.tre  sero1.recombination_predictions.gff
+sero1.filtered_polymorphic_sites.phylip  sero1.per_branch_statistics.csv     sero1.summary_of_snp_distribution.vcf
+```
+
+Along with the `Gubbins` outputs we also created the masked alignment file (`aligned_pseudogenomes_masked.fas`) and a figure showing the location of the recombinant regions in the reference genome (`sero1.recombination.png`).
+:::
 
 :::
 
-## Build post-Gubbins phylogeny
+:::{.callout-exercise}
+#### Build post-Gubbins phylogeny
+
+Now that we've created a recombination-masked alignment, we can extract the variant sites and count of constant sites and use these to build a recombination free phylogenetic tree with `IQ-TREE`.
+
+- Activate the software environment: `mamba activate iqtree`.
+- Fix the script provided in `scripts/04-run_iqtree.sh`. See @sec-iqtree if you need a hint of how to fix the code in the script.
+- Run the script using `bash scripts/04-run_iqtree.sh`. Several messages will be printed on the screen while `IQ-TREE` runs. 
+
+:::{.callout-answer}
+
+The fixed script is: 
+
+```bash
+#!/bin/bash
+
+# create output directory
+mkdir -p results/snp-sites/
+mkdir -p results/iqtree/
+
+# extract variable sites
+snp-sites results/gubbins/aligned_pseudogenomes_masked.fas > results/snp-sites/aligned_pseudogenomes_masked_snps.fas
+
+# count invariant sites
+snp-sites -C results/gubbins/aligned_pseudogenomes_masked.fas > results/snp-sites/constant_sites.txt
+
+# FIX!!
+# Run iqtree
+iqtree \
+  -fconst $(cat results/snp-sites/constant_sites.txt) \
+  -s results/snp-sites/aligned_pseudogenomes_masked_snps.fas \
+  --prefix results/iqtree/sero1 \
+  -nt AUTO \
+  -ntmax 8 \
+  -mem 8G \
+  -m MFP \
+  -bb 1000
+```
+
+- We specify as input the `aligned_pseudogenomes_masked_snps.fas` produced in the previous exercise by running `Gubbins` followed by `SNP-sites`.
+- We specify the number of constant sites, also generated from the previous exercise. We can use `$(cat results/snp-sites/constant_sites.txt)` to directly add the contents of `constant_sites.txt` without having to open the file to obtain these numbers.
+- We use as prefix for our output files "sero1" (since we are using the data from the Chaguza serotype 1 paper), so all the output file names will be named as such.
+- We automatically detect the number of threads/CPUs for parallel computation.
+
+After the analysis runs we get several output files in our directory: 
+
+```bash
+ls results/iqtree/
+```
+
+```
+sero1.bionj  sero1.ckp.gz  sero1.iqtree  
+sero1.log    sero1.mldist  sero1.treefile
+```
+
+The main file of interest is `sero1.treefile`, which contains our tree in the standard [Newick format](https://en.wikipedia.org/wiki/Newick_format). 
+:::
+
+:::
 
 ## Summary
 

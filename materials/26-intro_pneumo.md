@@ -20,6 +20,10 @@ Uptake and incorporation of DNA from the environment into the pneumococcal chrom
 
 Chaguza 2022
 
+## Reference
+
+For the analysis of our _S. pneumoniae_ dataset, we're going to map the sequence data to the same reference used in the Chaguza paper, XXXX. This is a serotype 1 reference and is closely related to the other samples in the dataset.
+
 ## Summary
 
 ::: {.callout-tip}

@@ -86,7 +86,7 @@ The same sample can exist in different collections.
 For example you might create a collection with only the genomes you sequenced recently, another collection with all the genomes you ever sequenced in your facility, or even a collection that includes your samples together with public samples available online (if you want to compare them with each other). 
 
 To create a collection from your sequences, check the box next to the "Name" header to select all of the uploaded genomes. 
-Then, from the top-rigth of the table, click **Selected Genomes** --> **Create Collection**:
+Then, from the top-right of the table, click **Selected Genomes** --> **Create Collection**:
 
 ![](images/pathogenwatch_collection1.png){#fig-pathogenwatch7}
 
@@ -97,8 +97,8 @@ In the next window give a name and description to your collection:
 It is highly recommended to provide details for your collection:
 
 - **Title** - give your collection a title that is meaningful to you, for example: "WBG 2023".
-- **Description** - give a brief description of your samples, for example: "Culture-based sequencing of Staphylococcus aureus  Samples were collected from patients in the outbreak in <COUNTRY> on <DATE>."
-- If your data come from a published study, provide a DOI of the study.
+- **Description** - give a brief description of your samples, for example: "Culture-based sequencing of Staphylococcus aureus.  Samples were collected from school children in Cambridgeshire in 2018."
+- If your data come from a published study, provide a DOI of the study, for example: "10.1099/mgen.0.000993".
 
 Finally, click <kbd>Create Now</kbd> button to create your collection. 
 You will be shown a table and map, with the samples you just added to the collection:
@@ -114,51 +114,90 @@ This table contains several columns:
   Note that our assembly script already performed gene annotation using _Bakta_, so this feature is also not so useful for us. 
   But again, if you were using public sequences from _Pathogenwatch_, you could download their GFF files.
 - **NAME** - your sample name. 
-- **REFERENCE** - the reference lineage that your sequence was closest to. 
-  [_Vibriowatch_](https://genomic-surveillance-for-vibrio-cholerae-using-vibriowatch.readthedocs.io/en/latest/mlst.html#compare-your-isolate-to-vibriowatch-s-reference-genomes) defines a set of 17 'reference genomes', 14 of which belong to current pandemic lineages (7PET). 
-  Their reference genomes are named 'Wi_Tj' where 'W' stands for a _Wave_ and 'T' stands for a _Transmission event_. 
-  Our samples are closest to W3_T13, which is a recent lineage. 
-  This makes sense, as our samples are from isolates collected in 2023.
-- **INC TYPES** - identification of plasmids relevant for enterobacterial strains ("inc" stands for "incompatibility", refering to [plasmid incompatibility groups](https://blog.addgene.org/plasmids-101-plasmid-incompatibility)). Inc plasmids often carry antibiotic resistance and virulence genes, making them of particular relevance for public health (e.g. [Foley et al 2021](https://doi.org/10.1128/mmbr.00031-20)).
-- **ST** and **PROFILE** - these columns refer to the "sequence type" (ST) assigned to each of our samples. 
-- **BIOTYPE** and **SEROGROUP** - refer to the biotype and serogroup our samples likely belong to, based on the genes present in their genomes 
+- **ST** and **PROFILE** - these columns refer to the "sequence type" (ST) assigned to each of our samples.- **ST** and **PROFILE** - these columns refer to the "sequence type" (ST) assigned to each of our samples.
+- **INC TYPES** - identification of plasmids relevant for Staphylococcal species ("inc" stands for "incompatibility", refering to [plasmid incompatibility groups](https://blog.addgene.org/plasmids-101-plasmid-incompatibility)). Inc plasmids often carry antibiotic resistance and virulence genes, making them of particular relevance for public health (e.g. [Foley et al 2021](https://doi.org/10.1128/mmbr.00031-20)).
+ 
+Along with the typing, we can also look at the drug susceptibility profiles of the samples by clicking on the **Typing** button on the left-hand side of the screen and changing it to **Antibiotics**:
 
-We will further analyse these results in the following chapters. 
+![](images/pathogenwatch_collection4.png){#fig-pathogenwatch10}
 
+You will see a table containing the drugs that **Pathogenwatch** is able to identify resistance to using genetic variants identified in the genomes we uploaded.  Resistance to a drug is shown by a red circle and we can see that the majority of our genomes are resistant to penicillin:
 
-## Exercises
+![](images/pathogenwatch_collection5.png){#fig-pathogenwatch11}
 
-<i class="fa-solid fa-triangle-exclamation" style="color: #1e3050;"></i> 
-For these exercises, you can either use the dataset we provide in [**Data & Setup**](../../setup.md), or your own data. 
-You also need to have completed the genome assembly exercise in .
+We will add some of this information to our phylogenetic tree in the next section. 
 
 :::{.callout-exercise}
-#### Loading data into _Pathogenwatch_
+#### Downloading data from _Pathogenwatch_
 
-- Load your newly assembled sequences to [_Pathogenwatch_](https://pathogen.watch/upload) 
-- Create a new collection from your sequences with a name of your choice.
-- Are they identified as a known biotype? Do you think these are pathogenic strains?
+For the next step, [visualising our phylogeny](25-tree_visualization), you will need to download the results of the lineage typing and antibiotic susceptibility from `Pathogenwatch`:
+
+- Download the Typing table 
+- Download the AMR profile.
+- Two CSV files will be downloaded.  Rename the appropriate files to the following as this will help with the next exercise:
+
+- `wbg-2023-typing.csv`
+- `wbg-2023-amr-profile.csv`
+
+Now, move these two files into the `S_aureus` analysis directory.
 
 :::{.callout-answer}
 
-For the "Ambroise 2023" data, we have 5 genomes saved in `results/assemblies/`, from the assembly pipeline we ran in sec-ex-assembly.
-We loaded all the FASTA files from that folder into _Pathogenwatch_:
+- Click on the **download** icon in the top right-hand corner and select **Typing table**:
 
-![](images/pathogenwatch-ambroise01.png)
+![](images/pathogenwatch_download1.png)
 
-Clicking on "View Genomes" takes us to the table of genomes, where we can select the genomes to create a new collection: 
+- Click on the **download** icon again and select **AMR profile**: 
 
-![](images/pathogenwatch-ambroise02.png)
+![](images/pathogenwatch_download2.png)
 
-We name our collection accordingly, and in this case we even added the associated [publication DOI](https://doi.org/10.1101/2023.02.17.23286076): 
+- Two files were downloaded (the longer names will likely be slightly different) to our `Downloads` directory:
 
-![](images/pathogenwatch-ambroise03.png)
+  - `pathogenwatch-saureus-pi6kp4oqdawi-wbg-2023-typing.csv`
+  - `pathogenwatch-saureus-pi6kp4oqdawi-wbg-2023-amr-profile`
 
-After clicking on "Create Now" we are shown the default analysis table:
+- We renamed the files on the command line (you could do this in the File Explorer too):
 
-![](images/pathogenwatch-ambroise05.png)
+```bash
+mv pathogenwatch-saureus-pi6kp4oqdawi-wbg-2023-typing.csv wbg-2023-typing.csv
+mv pathogenwatch-saureus-pi6kp4oqdawi-wbg-2023-amr-profile wbg-2023-amr-profile.csv
+```
 
-We will analyse some of these results in a later section, but we can see from the last two columns that our samples were assigned biotype "O1 pathogenic", confirming that these are pathogenic strains circulating in the population.
+- We moved the files from the `Downloads` directory to our `S_aureus` directory (assuming we were in the `S_aureus` directory to start):
+
+```bash
+mv ../../Downloads/wbg-2023* .
+```
+
+:::
+:::
+
+:::{.callout-exercise}
+#### Preparing data for _Microreact_
+
+Now that we have analysed our genomes with `Pathogenwatch` and downloaded the typing and AMR profiles, we need to merge this metadata with the existing information we have for the 30 _S. aureus_ genomes.  We could do this with _Excel_ or else use `Python` to do this so we've provided a python script called `merge_staph_data.py` in the `Scripts` directory.
+
+- Activate the `tb-profiler` software environment (this contains the `Python pandas` library we need)
+- Run `merge_staph_data.py` to create the final metadata file we need for `Microreact`. You will need to specify the required inputs and output if necessary
+
+:::{.callout-hint}
+
+Depending on how they are written, most `Python` scripts will print the available options if you use the help flag (`--help` or `-h`):
+
+```bash
+python scripts/merge_staph_data.py -h
+```
+
+:::
+
+:::{.callout-answer}
+
+- We activated the `tb-profiler` software environment with `mamba activate tb-profiler`
+- We ran the `merge_staph_data.py` script to create a TSV file called `staph_metadata.tsv` in your analysis directory:
+
+```bash
+python scripts/merge_staph_data.py -s sample_info.csv -t wbg-2023-typing.csv -a wbg-2023-amr-profile.csv
+```
 
 :::
 :::

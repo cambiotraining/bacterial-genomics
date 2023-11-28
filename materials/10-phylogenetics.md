@@ -184,7 +184,15 @@ We run `IQ-TREE` on the output from `snp-sites`, i.e. using the variable sites e
 mkdir results/iqtree
 
 # run iqtree2
-iqtree -s results/snp-sites/core_gene_alignment_snps.aln -fconst 692240,1310839,1306835,691662 --prefix results/iqtree/Nam_TB -nt AUTO -ntmax 8 -mem 8G -m GTR+F+I -bb 1000
+iqtree \
+  -s results/snp-sites/core_gene_alignment_snps.aln \
+  -fconst 692240,1310839,1306835,691662 \
+  --prefix results/iqtree/Nam_TB \
+  -nt AUTO \
+  -ntmax 8 \
+  -mem 8G \
+  -m GTR+F+I \
+  -bb 1000
 ```
 
 The options used are: 

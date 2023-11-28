@@ -26,11 +26,10 @@ book:
       chapters: 
         - materials/14-transmission.md
         - materials/16-epi_data.md
-    - part: "De-novo assembly"
+    - part: "De-novo assembly and annotation"
       chapters: 
         - materials/17-intro_staph.md
-        - materials/18-de_novo_assembly.md
-        - materials/19-annotation.md
+        - materials/18-assembly_annotation.md
         - materials/20-assemblebac.md
         - materials/21-assembly_qc.md
     - part: "Pan-genome analysis"
