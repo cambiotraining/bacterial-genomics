@@ -1,20 +1,17 @@
 ---
-title: "Group Exercise 2"
+title: "funcscan versus Pathogenwatch"
 ---
 
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Group exercise - web vs command line AMR
 - Apply both command line and web applications to find potential AMR genes in a set of genomes.
 :::
 
-## AMR with _Pathogenwatch_
+## AMR with `Pathogenwatch`
 
-_Pathogenwatch_ also performs AMR prediction using its own [algorithm and curated gene sequences](https://cgps.gitbook.io/pathogenwatch/technical-descriptions/antimicrobial-resistance-prediction/pw-amr). 
+`Pathogenwatch` also performs AMR prediction using its own [algorithm and curated gene sequences](https://cgps.gitbook.io/pathogenwatch/technical-descriptions/antimicrobial-resistance-prediction/pw-amr). 
 The results from this analysis can be seen from the individual sample report, or summarised in the collection view.
-
-![AMR analysis from _Pathogenwatch_. The summary table (top) can be accessed from the sample collections view, by selecting "Antibiotics" from the drop-down on the top-left. The table summarises resistance to a range of antibiotics (red = resistant; yellow = intermediate). More detailed results can be viewed for each individual sample by clicking on its name and opening the sample report (bottom).](images/amr_pathogenwatch.png){#fig-amr_pathogenwatch}
 
 
 ## Which AMR do my isolates have?

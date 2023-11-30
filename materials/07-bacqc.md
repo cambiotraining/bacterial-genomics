@@ -130,6 +130,16 @@ nextflow run avantonder/bacQC \
   --genome_size GENOME_SIZE 
 ```
 
+The options we used are: 
+
+- `-r` - tells `Nextflow` to pull the `main` version of `bacQC` from Github
+- `-profile singularity` - indicates we want to use the _Singularity_ program to manage all the software required by the pipeline (another option is to use `docker`). See [Data & Setup](../setup.md) for details about their installation.
+- `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
+- `--input` - the samplesheet with the input files, as explained above.
+- `--kraken2db` - the path to the directory containing the `Kraken 2` database files.
+- `--brackendb` - the path to the directory containing the `Kraken 2` database files. 
+- `--genome_size` - the estimated genome size of your samples - `fastq-scan` uses this to calculate the depth of coverage across the genome.  
+
 :::{.callout-exercise}
 #### Running bacQC
 
@@ -140,6 +150,21 @@ Now, run the script using `bash scripts/01-run_bacqc.sh`.
 If the script is running successfully it should start printing the progress of each job in the bacQC pipeline. This will take a little while to finish. <i class="fa-solid fa-mug-hot"></i>
 
 :::{.callout-answer}
+
+The fixed script is: 
+
+```bash
+#!/bin/bash
+
+nextflow run avantonder/bacQC \
+  -r main \
+  -profile singularity \
+  --input samplesheet.csv \
+  --outdir results/bacqc \
+  --kraken2db databases/minikraken2_v1_8GB \
+  --brackendb databases/minikraken2_v1_8GB \
+  --genome_size 4300000
+```
 
 We ran the script as instructed using:
 

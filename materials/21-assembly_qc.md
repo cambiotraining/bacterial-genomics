@@ -37,7 +37,7 @@ Let's now turn to some of the other metrics to help us assess our assemblies' qu
 
 ## Contiguity
 
-One of the outputs from running assembleBAC is a summary file containing the `Quast` outputs for each sample.  This file can be found in `results/assembleBAC/metadata/transposed_report.tsv`.
+One of the outputs from running `assembleBAC` is a summary file containing the `Quast` outputs for each sample.  This file can be found in `results/assembleBAC/metadata/transposed_report.tsv`.
 
 You can open it with a spreadsheet software such as _Excel_ from our file browser <i class="fa-solid fa-folder"></i> (for brevity, we only show the columns of most interest): 
 

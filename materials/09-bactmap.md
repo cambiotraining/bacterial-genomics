@@ -54,6 +54,15 @@ nextflow run nf-core/bactmap \
   --genome_size 4.3M
 ```
 
+The options we used are: 
+
+- `-profile singularity` - indicates we want to use the _Singularity_ program to manage all the software required by the pipeline (another option is to use `docker`). See [Data & Setup](../setup.md) for details about their installation.
+- `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
+- `--input` - the samplesheet with the input files, as explained above.
+- `--outdir` - the output directory for the results.
+- `--reference` - the path and name of the reference genome.
+- `--genome_size` - estimated size of the genome - `Rasusa` uses this value to calculate the genome coverage. 
+
 :::{.callout-exercise}
 
 #### Running nf-core/bactmap
@@ -65,6 +74,20 @@ Now, run the script using `bash scripts/02-run_bactmap.sh`.
 If the script is running successfully it should start printing the progress of each job in the bactmap pipeline. The pipeline will take a while to run so we'll have a look at the results after lunch.
 
 :::{.callout-answer}
+
+The fixed script is: 
+
+```bash
+#!/bin/bash
+
+nextflow run nf-core/bactmap \
+  -profile singularity \
+  --max_memory '16.GB' --max_cpus 8 \
+  --input samplesheet.csv \
+  --outdir results/bactmap \
+  --reference resources/reference/MTBC0.fasta \
+  --genome_size 4.3M
+```
 
 We ran the script as instructed using:
 

@@ -49,10 +49,10 @@ book:
       chapters:
         - materials/31-intro_amr.md
         - materials/32-command_line_amr.md
-        - materials/33-group_exercise_2.md
+        - materials/33-funcscan_pathogenwatch.md
     - part: "Reporting"
       chapters:
-        - materials/34-group_exercise_3.md
+        - materials/34-group_exercise_2.md
   appendices: 
     - materials/appendices/01-file_formats.md
     - materials/appendices/02-course_software.md

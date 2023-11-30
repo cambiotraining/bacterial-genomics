@@ -1,5 +1,5 @@
 ---
-title: "Group Exercise 3"
+title: "Group Exercise 2"
 ---
 
 ::: {.callout-tip}

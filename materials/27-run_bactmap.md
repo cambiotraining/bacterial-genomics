@@ -13,7 +13,7 @@ title: "Run bactmap"
 
 **Remember to QC your data!**
 
-Remember, the first step of any analysis of a new sequence dataset is to perform Quality Control. For the purposes of time, we've run bacQC for you and the results are in `results/bacqc`.  Before you run assembleBAC, have a look at the read stats and species composition TSV files and make sure that the data looks good before we go ahead and map it to our reference. 
+Remember, the first step of any analysis of a new sequence dataset is to perform Quality Control. For the purposes of time, we've run bacQC for you and the results are in `preprocessed/bacqc`.  Before you run `bactmap`, have a look at the read stats and species composition TSV files and make sure that the data looks good before we go ahead and map it to our reference. 
 
 :::
 
@@ -28,6 +28,20 @@ Remember, the first step of any analysis of a new sequence dataset is to perform
 - Have a look at the MultiQC report. Do any of the samples look to be poor quality?
 
 :::{.callout-answer}
+
+The fixed script is: 
+
+```bash
+#!/bin/bash
+
+nextflow run nf-core/bactmap \
+  -profile singularity \
+  --max_memory '16.GB' --max_cpus 8 \
+  --input samplesheet.csv \
+  --outdir results/bactmap \
+  --reference resources/reference/GCF_000299015.1_ASM29901v1_genomic.fna \
+  --genome_size 2.0M
+```
 
 - We ran the script as instructed using:
 
