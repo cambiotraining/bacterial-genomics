@@ -37,7 +37,7 @@ In our case, we will load the assemblies we produced with [assembleBAC](20-assem
 
 ![](images/pathogenwatch_upload1.png){#fig-pathogenwatch1}
 
-2. Click in the **Upload FASTA(s)** button, on the "Single Genome FASTAs" section: 
+2. Click in the **Upload FASTA(s)** button, in the "Single Genome FASTAs" section: 
 
 ![](images/pathogenwatch_upload2.png){#fig-pathogenwatch2}
 
@@ -45,7 +45,7 @@ In our case, we will load the assemblies we produced with [assembleBAC](20-assem
 
 ![](images/pathogenwatch_upload3.png){#fig-pathogenwatch3}
 
-4. This will open a file browser, where you can select the FASTA files from your local machine. Go to the `results/assembleBAC/assemblies` folder where you have the results from your earlier genome assembly analysis. You can upload several files at once by clicking and selecting several FASTA files while holding the <kbd>Ctrl</kbd> key. Click open on the dialogue window after you have selected all of your FASTA files.
+4. This will open a file browser, where you can select the FASTA files from your local machine. Go to the `results/assembleBAC/assemblies` folder where you have the results from your earlier genome assembly analysis. You can upload several files at once by clicking and selecting several FASTA files while holding the <kbd>Ctrl</kbd> key. Click **Open** on the dialogue window after you have selected all of your FASTA files.
 
 ![](images/pathogenwatch_upload4.png){#fig-pathogenwatch4}
 
@@ -175,7 +175,7 @@ mv ../../Downloads/wbg-2023* .
 :::{.callout-exercise}
 #### Preparing data for _Microreact_
 
-Now that we have analysed our genomes with `Pathogenwatch` and downloaded the typing and AMR profiles, we need to merge this metadata with the existing information we have for the 30 _S. aureus_ genomes.  We could do this with _Excel_ or else use `Python` to do this so we've provided a python script called `merge_staph_data.py` in the `Scripts` directory.
+Now that we have analysed our genomes with `Pathogenwatch` and downloaded the typing and AMR profiles, we need to merge this metadata with the existing information we have for the 30 _S. aureus_ genomes.  We could do this with _Excel_ or else use `Python` to do this so we've provided a python script called `merge_staph_data.py` in the `scripts` directory.
 
 - Activate the `tb-profiler` software environment (this contains the `Python pandas` library we need)
 - Run `merge_staph_data.py` to create the final metadata file we need for `Microreact`. You will need to specify the required inputs and output if necessary

@@ -290,5 +290,5 @@ All of them are quite similar, with resistance to a similar set of drugs.
 
 ::: {.callout-tip}
 ## Key Points
-
+- The `nf-core/funcscan` workflow performs AMR analysis using several software tools and producing a summary of their results as a CSV file.
 :::
