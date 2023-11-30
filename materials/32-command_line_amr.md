@@ -11,20 +11,36 @@ title: "Command-line AMR prediction"
 
 ## _Funcscan_ workflow {#sec-funcscan}
 
-Here, we introduce an automated workflow called **[`nf-core/funcscan`](https://nf-co.re/funcscan/1.1.2)** (@fig-funcscan), which uses _Nextflow_ to manage all the software and analysis steps (see information box above).
-This pipeline uses five different AMR screening tools: **[ABRicate](https://github.com/tseemann/abricate)**, **[AMRFinderPlus (NCBI Antimicrobial Resistance Gene Finder)](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/)**, **[fARGene (Fragmented Antibiotic Resistance Gene idENntifiEr)](https://github.com/fannyhb/fargene)**, **[RGI (Resistance Gene Identifier)](https://card.mcmaster.ca/analyze/rgi)**, and **[DeepARG](https://readthedocs.org/projects/deeparg/)**.
+Here, we introduce an automated workflow called [`nf-core/funcscan`](https://nf-co.re/funcscan/1.1.2) (@fig-funcscan), which uses `Nextflow` to manage all the software and analysis steps (see information box above).
+
+This pipeline uses five different AMR screening tools: 
+- [`ABRicate`](https://github.com/tseemann/abricate) 
+- [`AMRFinderPlus` (NCBI Antimicrobial Resistance Gene Finder)](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/) 
+- [`fARGene` (Fragmented Antibiotic Resistance Gene idENntifiEr)](https://github.com/fannyhb/fargene) 
+- [`RGI` (Resistance Gene Identifier)](https://card.mcmaster.ca/analyze/rgi)
+- [`DeepARG`](https://readthedocs.org/projects/deeparg/)
+
+See [Course Software](appendices/02-course_software.md) for a more detailed description of each tool.
+
+Along with the outputs produced by the above tools, the pipeline produces a TSV file, which contains a summary of the results from all the AMR tools used:
+
+- `hamronization_combined_report.tsv` - produced by a software called [_hAMRonization_](https://github.com/pha4ge/hAMRonization)
+
 This is convenient, as we can obtain the results from multiple approaches in one step. 
+
+## Running nf-core/funcscan
 
 ![Overview of the `nf-core/funcscan` workflow. In our case we will run the "Antimicrobial Resistance Genes (ARGs)" analysis, shown in yellow. Image source: https://nf-co.re/funcscan/1.1.2](https://raw.githubusercontent.com/nf-core/funcscan/1.1.2/docs/images/funcscan_metro_workflow.png){#fig-funcscan}
 
-This pipeline requires us to prepare a samplesheet CSV file with information about the samples we want to analyse. 
+We are going to use the assemblies we generated for _S. pneumoniae_ using the `assembleBAC` pipeline as input for `funcscan` and these are located in `preprocessed/assemblebac/assemblies`
+
+The `funcscan` pipeline requires us to prepare a samplesheet CSV file with information about the samples we want to analyse. 
 Two columns are required: 
 
 - `sample` --> a sample name of our choice (we will use the same name that we used for the assembly).
 - `fasta` --> the path to the FASTA file corresponding to that sample.
 
-You can create this file using a spreadsheet software such as _Excel_, making sure to save the file as a CSV.
-Here is an example of our samplesheet, which we saved in a file called `samplesheet_funcscan.csv`: 
+You can create this file using a spreadsheet software such as _Excel_, making sure to save the file as a CSV. Here is an example of our samplesheet, which we saved in a file called `samplesheet_funcscan.csv`: 
 
 ```
 sample,fasta
@@ -93,10 +109,18 @@ executor >  slurm (1371)
 ```
 
 
-### `funcscan` outputs
+### `funcscan` results
 
-The main output of interest from this pipeline is a CSV file, which contains a summary of the results from all the AMR tools used 
-This summary is produced by a software called [_hAMRonization_](https://github.com/pha4ge/hAMRonization) and the corresponding CSV file is saved in `results/funcscan/reports/hamronization_summarize/hamronization_combined_report.tsv`. 
+We can look at the output directory (`results/funscan`) to see the various directories containing output files created by `funcscan`:
+
+| Directory | Description |
+|:-- | :---------- |
+|`arg` | Contains the results of running the ARG sub-workflow |
+|`reports` | Contains the `hamronization_combined_report.tsv` file |
+|`multiqc` | Contains a html file containing summaries of the various outputs |
+|`pipeline_info` | Contains information about the pipeline run |
+
+The main output of interest from this pipeline is the `hamronization_combined_report.tsv` file, which contains a summary of the results from all the AMR tools used. 
 You can open this file using any standard spreadsheet software such as _Excel_ (@fig-hamronization). 
 
 This file is quite large, containing many columns and rows (we detail these columns in the information box below). 

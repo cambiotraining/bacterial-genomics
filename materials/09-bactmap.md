@@ -15,7 +15,7 @@ title: "The nf-core/bactmap pipeline"
 
 ## Pipeline Overview
 
-nf-core/bactmap is a bioinformatics analysis pipeline for mapping short reads from bacterial WGS to a reference sequence, creating filtered VCF files, making pseudogenomes based on high quality positions in the VCF files and optionally creating a phylogeny from an alignment of the pseudogenomes.  
+[`nf-core/bactmap`](https://nf-co.re/bactmap/1.0.0) is a bioinformatics analysis pipeline for mapping short reads from bacterial WGS to a reference sequence, creating filtered VCF files, making pseudogenomes based on high quality positions in the VCF files and optionally creating a phylogeny from an alignment of the pseudogenomes.  
 
 ![nf-core/bactmap variant calling pipeline diagram from nf-core (https://nf-co.re/bactmap).](images/Bactmap_pipeline.png)
 
@@ -92,7 +92,7 @@ Launching `https://github.com/nf-core/bactmap` [cranky_swartz] DSL2 - revision: 
 :::
 :::
 
-## bactmap results
+## `bactmap` results
 
 Before the tea break, we left `bactmap` running.  Now, we can look at the output directory (`results/bactmap`) to see the various directories containing output files created by `bactmap`:
 
