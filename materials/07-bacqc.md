@@ -20,13 +20,13 @@ title: "The bacQC pipeline"
 - [`fastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) - assesses sequencing read quality
 - [`fastq-scan`](https://github.com/rpetit3/fastq-scan) - calculates FASTQ summary statistics
 - [`fastp`](https://github.com/OpenGene/fastp) - performs adapter/quality trimming on sequencing reads
-- [`Kraken2`](https://ccb.jhu.edu/software/kraken2/) - assigns taxonomic labels to reads
-- [`Bracken`](https://ccb.jhu.edu/software/bracken/) - refines `Kraken2` assignments
-- [`MultiQC`](https://multiqc.info/) - summarises and creates visualizations for outputs from `fastQC`, `fastp` and `MultiQC`
+- [`Kraken 2`](https://ccb.jhu.edu/software/kraken2/) - assigns taxonomic labels to reads
+- [`Bracken`](https://ccb.jhu.edu/software/bracken/) - refines `Kraken 2` assignments
+- [`MultiQC`](https://multiqc.info/) - summarises and creates visualizations for outputs from `fastQC`, `fastp` and `Kraken 2`
 
 See [Course Software](appendices/02-course_software.md) for a more detailed description of each tool.
 
-Along with the outputs produced by the above tools, the pipeline produces the following summaries containing results for all samples run through the pipeline:
+Along with the outputs produced by the above tools, the pipeline produces the following summaries containing results for all samples run through the pipeline (found in the `metadata` directory):
 
 - `raw_fastq-scan_summary.tsv` - final summary of FASTQ summary statistics for input files in TSV format
 - `trim_fastq-scan_summary.tsv` - final summary of FASTQ summary statistics for trimmed FASTQ files
@@ -36,25 +36,22 @@ Along with the outputs produced by the above tools, the pipeline produces the fo
 
 ## Preparing Files
 
-On our computers, for each of the three species we will be working with on the course, we have a directory in `~/Documents/bacterial_genomics` for each species where we will do all our analysis. 
-We already included the following in each species directory: 
+On our computers, for each of the three species we will be working with on the course, we have a directory in `~/Course_materials` for each species where we will do all our analysis. We already included the following in each species directory: 
  
-- `data` → contains the sequencing files we will be working with.
-- `preprocessed` → contains the results for all the analysis we'll be running during the course. We are aiming to fit a lot in this week so we may not always have time to wait for pipelines to finish running 
-- `resources` → where we include other files we will be using such as reference genomes, and some background datasets that will be used with some of the tools we will cover. 
-- `scripts` → where we include some scripts that we will use during the course. You will have to edit some of these scripts as part of the exercises 
-- `sample_info.csv` → a table with some metadata for our samples.
+- `data/` - contains the sequencing files we will be working with.
+- `preprocessed/` - contains the results for all the analysis we'll be running during the course. We are aiming to fit a lot in this week so we have provided the results for all the analyses we'll run this week. 
+- `resources/` - where we include other files we will be using such as reference genomes.
+- `scripts/` - where we include some scripts that we will use during the course. You will have to edit some of these scripts as part of the exercises. 
+- `sample_info.csv` - a table with some metadata for our samples.
 
-:::{.callout-exercise}
+:::{.callout-warning}
 
-Your first task is to **create two new directories** in each species folder called `report` and `results`. 
-You can do this either using the file explorer <i class="fa-solid fa-folder"></i> or from the command line (using the `mkdir` command). 
-
+We have a lot to fit in this week, and during testing, we found that running all the pipelines and tools on even the genomes we selected from larger datasets was going to take too long. So, what we decided, was to only analyse five samples during the exercises you'll be doing this week.  This will allow you to set up and run the various scripts, see the pipelines and tools running and see the outputs in the time we've set aside for each section.  The outputs will always be sent to a `results` directory.  However, we've provided the results you would have obtained if you'd run the scripts on all of the data in a `preprocessed` directory.  For some of the exercises, you'll be making use of the outputs in this directory instead of what you create yourselves as this will hopefully give you a more realistic set of results like the ones you may eventually generate when working with larger datasets. We will make it clear in the course materials and exercises when you should be working with the results in the `preprocessed` directory instead of the `results` directory.
 :::
 
 ### Data
 
-Your analysis starts with FASTQ files (if you need a reminder of what a FASTQ file is, look at the [Intro to NGS > FASTQ](01-intro_wgs.html#FASTQ_Files) section of the materials). The Illumina files come as compressed FASTQ files (`.fastq.gz` format) and there's two files per sample, corresponding to read 1 and read 2. 
+Your analysis starts with FASTQ files (if you need a reminder of what a FASTQ file is, look at the [Intro to NGS > FASTQ](01-intro_ngs.html#FASTQ_Files) section of the materials). The Illumina files come as compressed FASTQ files (`.fastq.gz` format) and there's two files per sample, corresponding to read 1 and read 2. 
 This is indicated by the file name suffix: 
 
 - `*_1.fastq.gz` for read 1
@@ -91,11 +88,11 @@ To make sure no date information is lost due to _Excel_'s behaviour, it's a good
 
 ## Prepare a samplesheet
 
-Before we run `bacQC`, we need to prepare a CSV file with information about our sequencing files which will be used as an input to the `bacQC` pipeline (for this exercise we're going to QC the TB dataset described in [Introduction to *Mycobacterium tuberculosis*](05-intro_tb.md)).  The pipeline's documentation gives details about the format of this samplesheet: https://github.com/avantonder/bacQC/blob/main/docs/usage.md.
+Before we run `bacQC`, we need to prepare a CSV file with information about our sequencing files which will be used as an input to the `bacQC` pipeline (for this exercise we're going to QC the TB dataset described in [Introduction to _Mycobacterium tuberculosis_](05-intro_tb.md)).  The pipeline's [documentation](https://github.com/avantonder/bacQC/blob/main/docs/usage.md) gives details about the format of this samplesheet.
 
 :::{.callout-exercise}
 
-Prepare the input samplesheet for `bacQC`.  You can do this using `Excel`, making sure you save it as a CSV file (<kbd>File</kbd> → <kbd>Save As...</kbd> and choose "CSV" as the file format).  Alternatively, you can use the `fastq_dir_to_samplesheet.py` script that can be found in the `scripts` directory:
+Prepare the input samplesheet for `bacQC`.  You can do this using _Excel_, making sure you save it as a CSV file (<kbd>File</kbd> → <kbd>Save As...</kbd> and choose "CSV" as the file format).  Alternatively, you can use the `fastq_dir_to_samplesheet.py` script that can be found in the `scripts` directory:
 
 ```bash
 python scripts/fastq_dir_to_samplesheet.py data/reads \
@@ -104,7 +101,7 @@ python scripts/fastq_dir_to_samplesheet.py data/reads \
     -r2 _2.fastq.gz
 ```
 
-Now, you can open this file in `Excel` and edit the path to the data (it's good practice to use the actual path rather than the relative path). 
+Now, you can open this file in _Excel_ and edit the path to the data (it's good practice to use the actual path rather than the relative path). 
 
 :::
 
@@ -143,15 +140,15 @@ The options we used are:
 :::{.callout-exercise}
 #### Running bacQC
 
-Your first task is to run the `bacQC` pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `01-run_bacqc.sh`. This script contains the code to run `bacQC`. Edit this script, adjusting it to fit your input files and the estimated genome size of _M. tuberculosis_.
+- Your first task is to run the `bacQC` pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `01-run_bacqc.sh`. This script contains the code to run `bacQC`. Edit this script, adjusting it to fit your input files and the estimated genome size of _M. tuberculosis_.
 
-Now, run the script using `bash scripts/01-run_bacqc.sh`.
+- Now, run the script using `bash scripts/01-run_bacqc.sh`.
   
-If the script is running successfully it should start printing the progress of each job in the bacQC pipeline. This will take a little while to finish. <i class="fa-solid fa-mug-hot"></i>
+- If the script is running successfully it should start printing the progress of each job in the bacQC pipeline. This will take a little while to finish. <i class="fa-solid fa-mug-hot"></i>
 
 :::{.callout-answer}
 
-The fixed script is: 
+- The fixed script is: 
 
 ```bash
 #!/bin/bash
@@ -166,13 +163,13 @@ nextflow run avantonder/bacQC \
   --genome_size 4300000
 ```
 
-We ran the script as instructed using:
+- We ran the script as instructed using:
 
 ```bash
 bash scripts/01-run_bacQC.sh
 ```
 
-While it was running it printed a message on the screen: 
+- While it was running it printed a message on the screen: 
 
 ```
 * Software dependencies
@@ -210,30 +207,30 @@ However, make sure to set these options to the maximum resources available on th
 
 :::
 
-## bacQC results
+## `bacQC` results
 
 Before lunch, we left `bacQC` running.  We can look at the output directory (`results/bacqc`) to see the various directories containing output files created by `bacQC`:
 
 | Directory | Description |
 |:-- | :---------- |
-| `bracken` | Contains the results of the re-estimation of taxonomic abundance by `Bracken` |
+|`bracken` | Contains the results of the re-estimation of taxonomic abundance by `Bracken` |
 |`fastp` | Contains the results of the trimming and adapter removal performed by `fastp` |
 |`fastqc` | Contains QC metrics for the FASTQ files generated with `fastQC` |
 |`fastqscan` | Contains summary statistics for the FASTQ files generated with `fastq-scan` |
 |`kraken2` | Contains the results of taxonomic assignment with `Kraken 2`  |
 |`metadata` | Contains summary files for outputs from `fastq-scan` and `Kraken 2` |
-|`multiqc` | Contains a html file containing summaries of the various outputs |
+|`multiqc` | Contains a HTML file containing summaries of the various outputs |
 |`pipeline_info` | Contains information about the pipeline run |
 
 Now that the `bacQC` pipeline has run, we can assess the quality of our sequence data.  At this stage, we want to identify issues such as:
 
-- Any samples that have very low read coverage i.e. less than 10x
-- Any samples where the majority of reads were removed during the trimming process
-- Any samples that are contaminated with species other than the target.  Typically the threshold for reads assigned to other species will vary depending on what you want to do with the data, e.g. for a _Mycobacterium tuberculosis_ dataset, we might aim for a maximum of 20% reads that map to other species
+- Any samples that have very low read coverage i.e. less than 10x.
+- Any samples where the majority of reads were removed during the trimming process.
+- Any samples that are contaminated with species other than the target.  Typically the threshold for reads assigned to other species will vary depending on what you want to do with the data, e.g. for a _Mycobacterium tuberculosis_ dataset, we might aim for a maximum of 20% reads that map to other species.
 
 ### The MultiQC summary report
 
-The first thing we'll check is the HTML report file created by `MultiQC`.  Go to `File Explorer`, navigate to `results/bactmap/multiqc/` and double click on `multiqc_report.html`.  This will open the file in your web browser of choice:
+The first thing we'll check is the HTML report file created by `MultiQC`.  Go to `File Explorer`, navigate to `preprocessed/bactmap/multiqc/` and double click on `multiqc_report.html`.  This will open the file in your web browser of choice:
 
 ![config](images/bacqc_multiqc.png)
 
@@ -243,7 +240,7 @@ Let's go through each section starting with the `General Statistics`:
 
 ![bacQC MultiQC General Statistics](images/bacqc_general_stats.png)
 
-This is a compilation of statistics collected from the outputs of fastp, fastQC and Kraken 2.  Sequencing metrics such as the % of duplicated reads and GC content of the reads are shown alongside the results of the taxonomic classification (% reads mapped, num). This is a useful way of quickly identifying samples that are of lower quality due to poor sequencing or species contamination. 
+This is a compilation of statistics collected from the outputs of `fastp`, `fastQC` and `Kraken 2`.  Sequencing metrics such as the % of duplicated reads and GC content of the reads are shown alongside the results of the taxonomic classification (% reads mapped, num). This is a useful way of quickly identifying samples that are of lower quality due to poor sequencing or species contamination. 
 
 #### fastQC
 
@@ -293,7 +290,7 @@ The final plot summarises the previous plots and highlights which samples may be
 
 #### fastp
 
-There are a number of plots showing the results of the fastp step in the pipeline.  The first shows the results of the read filtering step where reads are trimmed, adapters removed and low quality reads are thrown out.  The reads that passed this step are highlighted in blue.
+There are a number of plots showing the results of the `fastp` step in the pipeline.  The first shows the results of the read filtering step where reads are trimmed, adapters removed and low quality reads are thrown out.  The reads that passed this step are highlighted in blue.
 
 ![bacQC MultiQC fastp filtered reads](images/bacqc_fastp_filtered.png)
 
@@ -327,7 +324,7 @@ This section of the report shows the software run as part of `bacQC` and the ver
 
 ### The `read_stats_summary.tsv` file
 
-One of the outputs from running bacQC is a summary file summarising the reads in the FASTQ pre- and post-trimming with `fastp`.  This file can be found in `results/bacqc/metadata/read_stats_summary.tsv`.
+One of the outputs from running `bacQC` is a summary file summarising the reads in the FASTQ files pre- and post-trimming with `fastp`.  This file can be found in `preprocessed/bacqc/metadata/read_stats_summary.tsv`.
 
 You can open it with spreadsheet software such as _Excel_ from your file browser <i class="fa-solid fa-folder"></i>: 
 
@@ -356,11 +353,11 @@ The columns are:
 - **num_trim_reads** - the number of reads in our FASTQ files after trimming with `fastp`.
 - **%reads_after_trimmed** - the proportion of reads left in our FASTQ files after trimming with `fastp`.
 
-The main things to look out for in this file are the `trim_coverage` and `%reads_after_trimmed` columns.  The first gives us a rough idea of how well our reference genome will be covered during mapping or else how good our assemblies might turn out when we do _de novo_ assembly. Ideally, the higher this number, the better: at a minimum we want at least 30X coverage (less may suffice for mapping) whilst at the other end, more than 100X is unnecessary. In fact, both the mapping pipeline `bactmap` and the assembly pipeline `assembleBAC` we'll use this week downsample reads to remove any excess reads. This is mainly to speed up the steps in the pipeline and reduce the overall computational cost. The `%reads_after_trimmed` column gives an indication of the quality of the sequencing: the more reads that are removed by `fastp`, the lower the overall quality of the sequencing run. In this case, despite the removal of approximately 50% of the reads, we still have sufficient read coverage to proceed with any downstream analyses.
+The main things to look out for in this file are the `trim_coverage` and `%reads_after_trimmed` columns.  The first gives us a rough idea of how well our reference genome will be covered during mapping or else how good our assemblies might turn out to be when we do _de novo_ assembly. Ideally, the higher this number, the better: at a minimum we want at least 30X coverage (less may suffice for mapping) whilst at the other end, more than 100X is unnecessary. In fact, both the mapping pipeline `bactmap` and the assembly pipeline `assembleBAC` we'll use this week downsample reads to remove any excess reads. This is mainly to speed up the steps in the pipeline and reduce the overall computational cost. The `%reads_after_trimmed` column gives an indication of the quality of the sequencing: the more reads that are removed by `fastp`, the lower the overall quality of the sequencing run. In this case, despite the removal of approximately 50% of the reads, we still have sufficient read coverage to proceed with any downstream analyses.
 
 ### The `species_composition.tsv` file
 
-Another important output from the `bacQC` pipeline to consider is the `species_composition.tsv` file which summarises the results from `Kraken 2` and `Bracken` and can be found in `results/bacqc/metadata/read_stats_summary.tsv`.
+Another important output from the `bacQC` pipeline to consider is the `species_composition.tsv` file which summarises the results from `Kraken 2` and `Bracken` and can be found in `preprocessed/bacqc/metadata/read_stats_summary.tsv`.
 
 You can open it with spreadsheet software such as _Excel_ from your file browser <i class="fa-solid fa-folder"></i>:
 
@@ -405,9 +402,9 @@ Make a note of any samples you think should be removed from any downstream analy
 
 :::{.callout-answer}
 
-The `read_stats_summary.tsv` file showed that there were no samples with a post-trimming coverage less than 10X and 1 samples where the majority (>80%) of the reads had been removed as part of the trimming process. The predicted coverage of this sample is still 27X which is still ok but we should keep an eye on the results of the mapping.
+- The `read_stats_summary.tsv` file showed that there were no samples with a post-trimming coverage less than 10X and 1 samples where the majority (>80%) of the reads had been removed as part of the trimming process. The predicted coverage of this sample is still 27X which is still ok but we should keep an eye on the results of the mapping.
 
-With respect to potential species contamination, no samples contained more than 20% non-_M. tuberculosis_ reads.
+- With respect to potential species contamination, no samples contained more than 20% non-_M. tuberculosis_ reads.
 
 :::
 :::

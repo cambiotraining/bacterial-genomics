@@ -15,9 +15,9 @@ title: "The nf-core/bactmap pipeline"
 
 ## Pipeline Overview
 
-[`nf-core/bactmap`](https://nf-co.re/bactmap/1.0.0) is a bioinformatics analysis pipeline for mapping short reads from bacterial WGS to a reference sequence, creating filtered VCF files, making pseudogenomes based on high quality positions in the VCF files and optionally creating a phylogeny from an alignment of the pseudogenomes.  
-
 ![nf-core/bactmap variant calling pipeline diagram from nf-core (https://nf-co.re/bactmap).](images/Bactmap_pipeline.png)
+
+[`nf-core/bactmap`](https://nf-co.re/bactmap/1.0.0) is a bioinformatics analysis pipeline for mapping short reads from bacterial WGS to a reference sequence, creating filtered VCF files, making pseudogenomes based on high quality positions in the VCF files and optionally creating a phylogeny from an alignment of the pseudogenomes.  
 
 It runs the following tools:
 
@@ -36,13 +36,13 @@ It runs the following tools:
 
 See [Course Software](appendices/02-course_software.md) for a more detailed description of each tool.
 
-Along with the outputs produced by the above tools, the pipeline produces the following summaries containing results for all samples run through the pipeline:
+Along with the outputs produced by the above tools, the pipeline produces the following summary containing results for all samples run through the pipeline:
 
 - `multiqc_report.html` - final summary of trimming and mapping statistics for input files in HTML format
 
 ## Running nf-core/bactmap
 
-The bactmap pipeline requires a samplesheet CSV file in the same format as the one we used for bacQC so we can re-use that samplesheet CSV file. If you decided to remove any samples because they didn't pass the QC, then edit the samplesheet CSV file accordingly. There are [many options](https://github.com/nf-core/bactmap/blob/1.0.0/docs/usage.md) that can be used to customise the pipeline but a typical command is shown below (check that your nextflow environment is still active):
+The bactmap pipeline requires a samplesheet CSV file in the same format as the one we used for bacQC so we can re-use that samplesheet CSV file. If you decided to remove any samples because they didn't pass the QC, then edit the samplesheet CSV file accordingly. There are [many options](https://github.com/nf-core/bactmap/blob/1.0.0/docs/usage.md) that can be used to customise the pipeline but a typical command is shown below (check that your `nextflow` environment is still active):
 
 ```bash
 nextflow run nf-core/bactmap \
@@ -71,7 +71,7 @@ Your next task is to run the **bactmap** pipeline on your data.  In the folder `
 
 Now, run the script using `bash scripts/02-run_bactmap.sh`.
   
-If the script is running successfully it should start printing the progress of each job in the bactmap pipeline. The pipeline will take a while to run so we'll have a look at the results after lunch.
+If the script is running successfully it should start printing the progress of each job in the bactmap pipeline. The pipeline will take a while to run so we'll have a look at the results after the tea break.
 
 :::{.callout-answer}
 
@@ -134,7 +134,7 @@ Before the tea break, we left `bactmap` running.  Now, we can look at the output
 
 ### The MultiQC summary report
 
-The first thing we'll check is the HTML report file created by `MultiQC`.  Go to `File Explorer`, navigate to `results/bactmap/multiqc/` and double click on `multiqc_report.html`.  This will open the file in your web browser of choice:
+The first thing we'll check is the HTML report file created by `MultiQC`.  Go to `File Explorer`, navigate to `preprocessed/bactmap/multiqc/` and double click on `multiqc_report.html`.  This will open the file in your web browser of choice:
 
 ![config](images/bactmap_multiqc.png)
 
@@ -144,11 +144,11 @@ Let's go through each section starting with the `General Statistics`:
 
 ![nf-core/bactmap MultiQC General Statistics](images/bactmap_general_stats.png)
 
-This is a compilation of statistics collected from the outputs of tools such as fastp, samtools and BCFtools.  Sequencing metrics such as the % of duplicated reads and GC content of the reads are shown alongside the results of the mapping (% reads mapped, num). This is a useful way of quickly identifying samples that are of lower quality or perhaps didn't map very well due to species contamination. 
+This is a compilation of statistics collected from the outputs of tools such as `fastp`, `samtools` and `BCFtools`.  Sequencing metrics such as the % of duplicated reads and GC content of the reads are shown alongside the results of the mapping (% reads mapped, num). This is a useful way of quickly identifying samples that are of lower quality or perhaps didn't map very well due to species contamination. 
 
 #### fastp
 
-There are a number of plots showing the results of the fastp step in the pipeline.  These plots are explained in [The bacQC pipeline](07-bacqc.md).
+There are a number of plots showing the results of the `fastp` step in the pipeline.  These plots are explained in [The bacQC pipeline](07-bacqc.md).
 
 #### Samtools
 
@@ -236,7 +236,7 @@ This is more than 90% so we can proceed with the analysis of this sample.
 :::{.callout-exercise}
 #### How much of the reference was mapped?
 
-We have calculated the percentage of the reference mapped for a single sample.  However, we have 50 samples that we need to repeat the analysis on. To do this, we've provided a script that runs `seqtk comp` on all the samples in the `pseudogenomes` directory using a _for loop_.
+We have calculated the percentage of the reference mapped for a single sample.  However, we have five samples that we need to repeat the analysis on. To do this, we've provided a script that runs `seqtk comp` on all the samples in the `pseudogenomes` directory using a _for loop_.
 
 - In the folder `scripts` (inside your analysis directory), you'll find a script named `03-pseudogenome_check.sh`.
 - Open the script, which you will notice is composed of two sections: 

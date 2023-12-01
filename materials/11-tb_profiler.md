@@ -28,7 +28,7 @@ There is an online version of the tool which is very useful for analysing few ge
 
 ## Running TB-Profiler on the command line {#sec-tbprofiler}
 
-Given we have 50 TB genomes to analyse, we're going to run `TB-Profiler` on the command line instead of uploading the FASTQ files to the web version, starting with a single sample `ERX9450498_ERR9907670`.
+Given we have five TB genomes to analyse, we're going to run `TB-Profiler` on the command line instead of uploading the FASTQ files to the web version, starting with a single sample `ERX9450498_ERR9907670`.
 
 We'll start by activating the `tb-profiler` software environment:
 
@@ -116,7 +116,7 @@ Hopefully, we'll be able to successfully run `TB-Profiler` on all our samples bu
 
 #### Run TB-Profiler on all samples
 
-We have run `TB-Profiler` on a single sample.  However, we have 50 samples that we need to repeat the analysis on. To do this, we've provided a script that runs `TB-Profiler` on all the FASTQ files for all the samples in the `data/reads` directory using a _for loop_.
+We have run `TB-Profiler` on a single sample.  However, we have five samples that we need to repeat the analysis on. To do this, we've provided a script that runs `TB-Profiler` on all the FASTQ files for all the samples in the `data/reads` directory using a _for loop_.
 
 - In the folder `scripts` (inside your analysis directory), you'll find a script named `06-run_tb-profiler.sh`.
 - Open the script, which you will notice is composed of two sections: 
@@ -124,7 +124,7 @@ We have run `TB-Profiler` on a single sample.  However, we have 50 samples that 
     - `#### Analysis ####` this is where `TB-Profiler` is run on each sample as detailed in @sec-tbprofiler. You should not change the code in this section.
 - Activate the software environment: `mamba activate tb-profiler`
 - Run the script with `bash scripts/06-run_tb-profiler.sh`. If the script is running successfully it should print a message on the screen as the samples are processed.
-- Once the analysis finishes open the `Nam_TB.txt` file and copy/paste the data into _Excel_.
+- Once the analysis finishes open the `Nam_TB.txt` file and copy/paste the data into _Excel_ (we've provided the results for all 50 samples in the `preprocessed` directory).
 - How many Lineage 2 isolates are there in the dataset?
 - Are any of the isolates antimicrobial-susceptible?
 
@@ -155,7 +155,7 @@ Processing ERX9450498_ERR9907670.fas
            INFO     Trimming reads
 ...
 ```
-We opened the `Nam_TB.txt` file and copy/pasted the data into _Excel_ (only the first four columns shown for brevity):  
+For this part, we opened the `Nam_TB.txt` file in the `preprocessed/tb-profiler` directory and copy/pasted the data into _Excel_ (only the first four columns shown for brevity):  
 
 ```
 sample	main_lineage	sub_lineage	DR_type
@@ -182,15 +182,15 @@ We can see that there were three Lineage 2 isolates in our dataset and none of t
 The final thing we need to do before we visualize our TB phylogeny is to combine the metadata contained in `sample_info.csv` with the TB-profiler so we have some interesting information to annotate our tree with.  We've provided a simple `python` script to do this for you but you could, of course, do this yourself in _Excel_ or _Rstudio_.  You can run the script using the following command:
 
 ```bash
-python scripts/merge_tb_data.py -s sample_info.csv -t results/tb-profiler/Nam_TB.txt
+python scripts/merge_tb_data.py -s sample_info.csv -t preprocessed/tb-profiler/Nam_TB.txt
 ```
 
 The options we used are:
 
 - `-s` - the CSV file containing the metadata extracted from the publication.
-- `-t` - the TB-Profiler summary TSV file.
+- `-t` - the TB-Profiler summary TSV file (in this case the version in the `preprocessed` directory).
 
-This will create a TSV file called `TB_metadata.tsv` in your analysis directory.  We'll use this file along with the tree we built earlier in the next section.
+This will create a TSV file called `TB_metadata.tsv` in your analysis directory.  We'll use this file along with the TB phylogenetic tree in the next section.
 
 ## Summary
 

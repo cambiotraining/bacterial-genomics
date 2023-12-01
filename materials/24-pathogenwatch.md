@@ -31,7 +31,7 @@ In order to use this platform you will first need to [**create an account**](htt
 ## Uploading FASTA files
 
 Once you have logged in to Pathogenwatch, you can load the FASTA files with the sequences you want to analyse. 
-In our case, we will load the assemblies we produced with [assembleBAC](20-assemblebac.md). 
+In our case, we will load the assemblies we have provided in the `preprocessed` directory which were built using [assembleBAC](20-assemblebac.md). 
 
 1. Click the **Upload** link in the top-right corner of the page:
 
@@ -45,7 +45,7 @@ In our case, we will load the assemblies we produced with [assembleBAC](20-assem
 
 ![](images/pathogenwatch_upload3.png){#fig-pathogenwatch3}
 
-4. This will open a file browser, where you can select the FASTA files from your local machine. Go to the `results/assembleBAC/assemblies` folder where you have the results from your earlier genome assembly analysis. You can upload several files at once by clicking and selecting several FASTA files while holding the <kbd>Ctrl</kbd> key. Click **Open** on the dialogue window after you have selected all of your FASTA files.
+4. This will open a file browser, where you can select the FASTA files from your local machine. Go to the `preprocessed/assemblebac/assemblies` folder where you have the results from your earlier genome assembly analysis. You can upload several files at once by clicking and selecting several FASTA files while holding the <kbd>Ctrl</kbd> key. Click **Open** on the dialogue window after you have selected all of your FASTA files.
 
 ![](images/pathogenwatch_upload4.png){#fig-pathogenwatch4}
 
@@ -57,7 +57,7 @@ In our case, we will load the assemblies we produced with [assembleBAC](20-assem
 
 ![](images/pathogenwatch_upload6.png){#fig-pathogenwatch6}
 
-_Pathogenwatch_ performs the following major analyses useful for genomic surveillance: sequence typing (ST), antimicrobial resistance (AMR) analysis, phylogenetics, as well as reporting general statistics about your samples (such as genome completeness, which we also assessed with _checkM2_).
+_Pathogenwatch_ performs the following major analyses useful for genomic surveillance: sequence typing (ST), antimicrobial resistance (AMR) analysis, phylogenetics, as well as reporting general statistics about your samples (such as genome completeness, which we also assessed with `checkM2`).
 We will detail several of these analyses in the coming chapters, but here is a brief description of each column: 
 
 - **Name** - the names of the uploaded samples.

@@ -16,7 +16,7 @@ Whilst you can upload FASTQ files to Pathogenwatch, it's quicker if we work with
 
 - Upload the assembled _S. pneumoniae_ genomes to `Pathogenwatch`.
 - Once `Pathogenwatch` has finished processing the genomes, save the results to a collection called **Chaguza Serotype 1**.
-- Download the Typing and AMR profile tables to the `S_pneumoniae` directory.
+- Download the Typing and AMR profile tables to the `Course_materials/S_pneumoniae` directory.
 - Rename the tables to `chaguza-serotype-1-typing.csv` and `chaguza-serotype-1-amr-profile.csv` respectively.
 - Merge the two tables with `sample_info.csv` by running the `merge_pneumo_data.py` script in the `scripts` directory.
 

@@ -1,5 +1,5 @@
 ---
-title: "Introduction to *Staphylococcus aureus*"
+title: "Introduction to _Staphylococcus aureus_"
 ---
 
 ::: {.callout-tip}
@@ -17,7 +17,7 @@ Genomic epidemiological studies over last two decades have provided significant 
 
 ## Course dataset
 
-van Tonder 2023
+For this course we're going to analyse 30 isolates collected as part of a citizen science project that aimed to identify links between self-reported social networks and genome-linked transmission of _S. aureus_ in two Cambridgeshire schools (van Tonder 2023).
 
 ## Summary
 
@@ -28,26 +28,26 @@ van Tonder 2023
 
 #### References
 
-Bai AD, Lo CKL, Komorowski AS, Suresh M, Guo K, Garg A, et al. Staphylococcus aureus bacteraemia mortality: a systematic review and meta-analysis. Clin Microbiol Infect. 2022;28(8):1076-84.
+Bai AD, Lo CKL, Komorowski AS, Suresh M, Guo K, Garg A, et al. _Staphylococcus aureus_ bacteraemia mortality: a systematic review and meta-analysis. _Clin Microbiol Infect_. 2022. [DOI](https://doi.org/10.1016/j.cmi.2022.03.015)
 
-UKHSA. Annual epidemiological commentary: Gram-negative, MRSA, MSSA bacteraemia and C. difficile infections, up to and including financial year 2022 to 2023. 2023.
+UKHSA. Annual epidemiological commentary: Gram-negative, MRSA, MSSA bacteraemia and CDI infections, up to and including financial year 2022 to 2023. 2023. [Link](https://www.gov.uk/government/statistics/mrsa-mssa-and-e-coli-bacteraemia-and-c-difficile-infection-annual-epidemiological-commentary)
 
-Antimicrobial Resistance C. Global burden of bacterial antimicrobial resistance in 2019: a systematic analysis. Lancet. 2022;399(10325):629-55.
+Antimicrobial Resistance Collaborators. Global burden of bacterial antimicrobial resistance in 2019: a systematic analysis. _Lancet_. 2022. [DOI](https://doi.org/10.1016/s0140-6736(21)02724-0)
 
-UKHSA. 30 day all-cause mortality following MRSA, MSSA and Gram-negative bacteraemia and C. difficile infections: 2021 to 2022 report. 2023.
+UKHSA. 30 day all-cause mortality following MRSA, MSSA and Gram-negative bacteraemia and _C. difficile_ infections: 2021 to 2022 report. 2023. [Link](https://www.gov.uk/government/statistics/mrsa-mssa-and-e-coli-bacteraemia-and-c-difficile-infection-30-day-all-cause-fatality/30-day-all-cause-mortality-following-mrsa-mssa-and-gram-negative-bacteraemia-and-c-difficile-infections-2021-to-2022-report)
 
-Coll F, Harrison EM, Toleman MS, Reuter S, Raven KE, Blane B, et al. Longitudinal genomic surveillance of MRSA in the UK reveals transmission patterns in hospitals and the community. Sci Transl Med. 2017;9(413).
+Coll F, Harrison EM, Toleman MS, Reuter S, Raven KE, Blane B, et al. Longitudinal genomic surveillance of MRSA in the UK reveals transmission patterns in hospitals and the community. _Sci Transl Med_. 2017. [DOI](https://doi.org/10.1126/scitranslmed.aak9745)
 
-Harris SR, Cartwright EJ, Torok ME, Holden MT, Brown NM, Ogilvy-Stuart AL, et al. Whole-genome sequencing for analysis of an outbreak of meticillin-resistant Staphylococcus aureus: a descriptive study. Lancet Infect Dis. 2013;13(2):130-6.
+Harris SR, Cartwright EJ, Torok ME, Holden MT, Brown NM, Ogilvy-Stuart AL, et al. Whole-genome sequencing for analysis of an outbreak of meticillin-resistant _Staphylococcus aureus_: a descriptive study. _Lancet Infect Dis_. 2013. [DOI](https://doi.org/10.1016/s1473-3099(12)70268-2)
 
-Marks LR, Calix JJ, Wildenthal JA, Wallace MA, Sawhney SS, Ransom EM, et al. Staphylococcus aureus injection drug use-associated bloodstream infections are propagated by community outbreaks of diverse lineages. Commun Med (Lond). 2021;1:52.
+Marks LR, Calix JJ, Wildenthal JA, Wallace MA, Sawhney SS, Ransom EM, et al. _Staphylococcus aureus_ injection drug use-associated bloodstream infections are propagated by community outbreaks of diverse lineages. _Commun Med (Lond)_. 2021. [DOI](https://doi.org/10.1038/s43856-021-00053-9)
 
-van Tonder AJ, McCullagh F, McKeand H, Thaw S, Bellis K, Raisen C, et al. Colonization and transmission of Staphylococcus aureus in schools: a citizen science project. Microb Genom. 2023;9(4).
+van Tonder AJ, McCullagh F, McKeand H, Thaw S, Bellis K, Raisen C, et al. Colonization and transmission of _Staphylococcus aureus_ in schools: a citizen science project. _Microb Genom_. 2023. [DOI](https://doi.org/10.1099/mgen.0.000993)
 
-Uhlemann AC, McAdam PR, Sullivan SB, Knox JR, Khiabanian H, Rabadan R, et al. Evolutionary Dynamics of Pandemic Methicillin-Sensitive Staphylococcus aureus ST398 and Its International Spread via Routes of Human Migration. mBio. 2017;8(1).
+Uhlemann AC, McAdam PR, Sullivan SB, Knox JR, Khiabanian H, Rabadan R, et al. Evolutionary Dynamics of Pandemic Methicillin-Sensitive _Staphylococcus aureus_ ST398 and Its International Spread via Routes of Human Migration. _mBio_. 2017. [DOI](https://doi.org/10.1128/mbio.01375-16)
 
-Larsen J, Raisen CL, Ba X, Sadgrove NJ, Padilla-Gonzalez GF, Simmonds MSJ, et al. Emergence of methicillin resistance predates the clinical use of antibiotics. Nature. 2022;602(7895):135-41.
+Larsen J, Raisen CL, Ba X, Sadgrove NJ, Padilla-Gonzalez GF, Simmonds MSJ, et al. Emergence of methicillin resistance predates the clinical use of antibiotics. _Nature_. 2022. [DOI](https://doi.org/10.1038/s41586-021-04265-w)
 
-Young BC, Golubchik T, Batty EM, Fung R, Larner-Svensson H, Votintseva AA, et al. Evolutionary dynamics of Staphylococcus aureus during progression from carriage to disease. Proc Natl Acad Sci U S A. 2012;109(12):4550-5.
+Young BC, Golubchik T, Batty EM, Fung R, Larner-Svensson H, Votintseva AA, et al. Evolutionary dynamics of _Staphylococcus aureus_ during progression from carriage to disease. _Proc Natl Acad Sci U S A_. 2012. [DOI](https://doi.org/10.1073/pnas.1113219109)
 
-Durand G, Javerliat F, Bes M, Veyrieras JB, Guigon G, Mugnier N, et al. Routine Whole-Genome Sequencing for Outbreak Investigations of Staphylococcus aureus in a National Reference Center. Front Microbiol. 2018;9:511.
+Durand G, Javerliat F, Bes M, Veyrieras JB, Guigon G, Mugnier N, et al. Routine Whole-Genome Sequencing for Outbreak Investigations of _Staphylococcus aureus_ in a National Reference Center. _Front Microbiol._ 2018. [DOI](https://doi.org/10.3389/fmicb.2018.00511)

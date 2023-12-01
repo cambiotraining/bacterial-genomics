@@ -89,6 +89,8 @@ Sometimes, air bubbles occur in the flow cell, and this can manifest as false in
 
 ## Assessment of species composition
 
+Understanding the species composition of sequence data is crucial for the accuracy and reliability of bioinformatics analyses, especially in the context of _de novo_ genome assembly and metagenomics. In particular, for _de novo_ genome assembly, knowing the species present in a sample can help identify and filter out contaminant sequences that do not belong to the target organism, improving the quality of the assembly. An abundance of non-target sequences also means fewer reads belonging to the target species leading to lower coverage when mapping these reads to a reference genome.
+
 ## Summary
 
 ::: {.callout-tip}

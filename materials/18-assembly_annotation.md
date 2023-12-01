@@ -11,9 +11,9 @@ title: "de novo Assembly and Annotation"
 
 ## Introduction
 
-There are two approaches for genome assembly: reference-based (or comparative)  or *de novo*.  In a reference-based assembly, we use a reference genome as a guide to map our sequence data to and thus reassemble our sequence this way (this is what we did in the previous module).  Alternatively, we can create a 'new' (*de novo*) assembly that does not rely on a map or reference and more closely reflects the actual genome structure of the isolate that was sequenced.
+There are two approaches for genome assembly: reference-based (or comparative)  or *de novo*.  In a reference-based assembly, we use a reference genome as a guide to map our sequence data to and thus reassemble our sequence this way (this is what we did in the previous module).  Alternatively, we can create a 'new' (*de novo*) assembly that does not rely on a map or reference and more closely reflects the actual genome structure of the isolate that was sequenced. Genome assemblers work by calculating overlaps between reads and (usually) represent these as a graph or network.  They then "walk" the graph to determine the original sequence
 
-![Genome assembly](images/genome-assembly.jpeg)
+![Genome assembly (http://dx.doi.org/10.1007/s12575-009-9004-1)](images/genome_assembly.jpg)
 
 ## Genome assemblers
 
@@ -29,3 +29,9 @@ Genome annotation is a multi-level process that includes prediction of protein-c
 ## Key Points
 
 :::
+
+#### References
+
+https://mmbdtp.github.io/modules/comparative-genomics/programme/
+
+https://tinyurl.com/torstaseembler

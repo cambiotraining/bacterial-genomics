@@ -9,9 +9,9 @@ title: "Introduction to _Mycobacterium tuberculosis_"
 
 :::
 
-## *Mycobacterium tuberculosis*
+## _Mycobacterium tuberculosis_
 
-*Mycobacterium tuberculosis*, the bacterium that causes tuberculosis (TB) in humans, is a significant pathogen with a considerable global impact. In 2020, the World Health Organization estimated that TB was responsible for 10.6 million active cases and 1.6 million deaths across the globe.  This means that _M .tuberculosis_ causes greater mortality than any other single pathogen. _M. tuberculosis_ is a small, aerobic, nonmotile bacillus. The high lipid content of its cell wall makes the cell impervious to Gram staining, so it is classified as an acid-fast bacillus. The bacterium is able to survive and multiply within macrophages, which are cells that usually kill bacteria. This ability to evade the immune system contributes to its virulence. _M. tuberculosis_ is transmitted from person to person via droplets from the throat and lungs of people with active respiratory disease. In healthy individuals, the immune system can often wall off the bacteria and prevent them from spreading within the body. However, in immunocompromised individuals, such as those with HIV, the bacteria can spread and cause active disease.
+_Mycobacterium tuberculosis_, the bacterium that causes tuberculosis (TB) in humans, is a significant pathogen with a considerable global impact. In 2020, the World Health Organization estimated that TB was responsible for 10.6 million active cases and 1.6 million deaths across the globe.  This means that _M .tuberculosis_ causes greater mortality than any other single pathogen. _M. tuberculosis_ is a small, aerobic, nonmotile bacillus. The high lipid content of its cell wall makes the cell impervious to Gram staining, so it is classified as an acid-fast bacillus. The bacterium is able to survive and multiply within macrophages, which are cells that usually kill bacteria. This ability to evade the immune system contributes to its virulence. _M. tuberculosis_ is transmitted from person to person via droplets from the throat and lungs of people with active respiratory disease. In healthy individuals, the immune system can often wall off the bacteria and prevent them from spreading within the body. However, in immunocompromised individuals, such as those with HIV, the bacteria can spread and cause active disease.
 
 In 1998, the first complete genome sequence of a _M. tuberculosis_ strain, the virulent laboratory reference strain H37Rv, was published (Cole 1998).The genome of _M. tuberculosis_ is a single circular chromosome that is approximately 4.4 million base pairs in size and contains around 4000 genes.  _M. tuberculosis_ is a member of the Mycobacterium tuberculosis complex (MTBC), which includes different lineages, some referred to as _M. tuberculosis sensu stricto_ (lineage 1 to lineage 4 and lineage 7), others as _M. africanum_ (lineage 5 and lineage 6), two recently discovered lineages (lineage 8 and lineage 9), and several animal-associated ecotypes such as _M. bovis_ and _M. caprae_. Some lineages are geographically widespread, while others like L5 and L6 (mainly found in West Africa), are more restricted. A simplified phylogeny showing the relationship of the various MTBC lineages is shown below.
 
@@ -21,7 +21,7 @@ Increasingly, _M. tuberculosis_ is resistant to many of the frontline antimicrob
 
 ## Course dataset
 
-We will be analysing a dataset of Namibian _M. tuberculosis_ genomes that was recently published (Claasens 2022). The original dataset consisted of 136 drug-resistant TB isolates collected from patients between 2016-2018 across Namibia. For the purposes of this course, mainly to save time,  we're only going to analyse 50 genomes from the dataset.
+We will be analysing a dataset of Namibian _M. tuberculosis_ genomes that was recently published (Claasens 2022). The original dataset consisted of 136 drug-resistant TB isolates collected from patients between 2016-2018 across Namibia. For the purposes of this course, we're only going to analyse 50 genomes from the dataset.
 
 ## MTBC ancestral reference sequence
 

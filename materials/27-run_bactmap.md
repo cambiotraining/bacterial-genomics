@@ -13,7 +13,7 @@ title: "Run bactmap"
 
 **Remember to QC your data!**
 
-Remember, the first step of any analysis of a new sequence dataset is to perform Quality Control. For the purposes of time, we've run bacQC for you and the results are in `preprocessed/bacqc`.  Before you run `bactmap`, have a look at the read stats and species composition TSV files and make sure that the data looks good before we go ahead and map it to our reference. 
+Remember, the first step of any analysis of a new sequence dataset is to perform Quality Control. For the purposes of time, we've run `bacQC` for you and the results are in `preprocessed/bacqc`.  Before you run `bactmap`, have a look at the read stats and species composition TSV files and make sure that the data looks good before we go ahead and map it to our reference. 
 
 :::
 
@@ -22,6 +22,10 @@ Remember, the first step of any analysis of a new sequence dataset is to perform
 #### Running nf-core/bactmap
 
 - Your next task is to run the **bactmap** pipeline on the _S. pneumoniae_ data.  In the folder `scripts` (within the `S_pneumoniae` analysis directory) you will find a script named `01-run_bactmap.sh`. This script contains the code to run bactmap. Edit this script, adjusting it to fit your input files and the name and location of the reference you're going to map to (Hint: the reference sequence is located in `resources/reference`).
+
+- Activate the `nextflow`software environment. 
+
+- You will need to create the `samplesheet.csv` file. Refer back to [The bacQC pipeline](07-bacqc.md#prepare-a-samplesheet) page for how to do this if you've forgotten.
 
 - Now, run the script using `bash scripts/01-run_bactmap.sh`.
   
@@ -41,6 +45,21 @@ nextflow run nf-core/bactmap \
   --outdir results/bactmap \
   --reference resources/reference/GCF_000299015.1_ASM29901v1_genomic.fna \
   --genome_size 2.0M
+```
+
+- We activated the `nextflow` environment:
+
+```bash
+mamba activate nextflow
+```
+
+- We created the `samplesheet.csv` file by running the following command:
+
+```bash
+python scripts/fastq_dir_to_samplesheet.py data/reads \
+    samplesheet.csv \
+    -r1 _1.fastq.gz \
+    -r2 _2.fastq.gz
 ```
 
 - We ran the script as instructed using:

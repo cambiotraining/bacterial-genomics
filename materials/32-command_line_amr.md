@@ -11,10 +11,10 @@ title: "Command-line AMR prediction"
 
 ## _Funcscan_ workflow {#sec-funcscan}
 
-Here, we introduce an automated workflow called [`nf-core/funcscan`](https://nf-co.re/funcscan/1.1.2) (@fig-funcscan), which uses `Nextflow` to manage all the software and analysis steps (see information box above).
+Here, we introduce an automated workflow called [`nf-core/funcscan`](https://nf-co.re/funcscan/1.1.2) (@fig-funcscan), which uses `Nextflow` to manage all the software and analysis steps.
 
 This pipeline uses five different AMR screening tools:
- 
+
 - [`ABRicate`](https://github.com/tseemann/abricate) 
 - [`AMRFinderPlus` (NCBI Antimicrobial Resistance Gene Finder)](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/) 
 - [`fARGene` (Fragmented Antibiotic Resistance Gene idENntifiEr)](https://github.com/fannyhb/fargene) 
@@ -88,9 +88,9 @@ The options we used are:
 
 #### Running nf-core/funcscan
 
-Your next task is to run the **funcscan** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `05-run_funcscan.sh`. This script contains the code to run `funcscan`. Edit this script, adjusting it to fit your input files and the name of your output directory.
+- Your next task is to run the **funcscan** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `05-run_funcscan.sh`. This script contains the code to run `funcscan`. Edit this script, adjusting it to fit your input files and the name of your output directory.
 
-Now, run the script using `bash scripts/05-run_funcscan.sh`.
+- Now, run the script using `bash scripts/05-run_funcscan.sh`.
   
 While the pipeline runs, you will get a progress printed on the screen, and then a message once it finishes. 
 
@@ -159,7 +159,7 @@ We can look at the output directory (`results/funscan`) to see the various direc
 
 ### The `hamronization_combined_report.tsv` report
 
-The main output of interest from this pipeline is the `hamronization_combined_report.tsv` file, which contains a summary of the results from all the AMR tools used. 
+The main output of interest from this pipeline is the `hamronization_combined_report.tsv` file, which contains a summary of the results from all the AMR tools used (make sure to use the version in `preprocessed/funcscan/reports`). 
 You can open this file using any standard spreadsheet software such as _Excel_ (@fig-hamronization). 
 
 This file is quite large, containing many columns and rows (we detail these columns in the information box below). 
@@ -177,7 +177,7 @@ For reasons of space, we haven't provided a description of the column headers in
 
 ### Results from other tools
 
-You can also look at the detailed results of each individual tool, which can be found in the directory `results/funcscan/arg`. 
+You can also look at the detailed results of each individual tool, which can be found in the directory `preprocessed/funcscan/arg`. 
 This directory contains sub-directories for each of the 5 AMR tools used (in our case only 4 folders, because we skipped the _DeepARG_ step):
 
 ```bash
@@ -190,7 +190,7 @@ abricate  amrfinderplus  fargene  hamronization  rgi
 
 For each individual tool's output folder shown above, there is a report, which is associated with the predicted AMRs for each of our samples. 
 In most cases, the report is in tab-delimited TSV format, which can be opened in a standard spreadsheet software such as _Excel_. 
-For instance, the AMR report from _Abricate_ for one of our samples looks like this: 
+For instance, the AMR report from `Abricate` for one of our samples looks like this: 
 
 ```bash
 less -S preprocessed/funcscan/arg/abricate/ERX1501203_ERR1430825_T1/ERX1501203_ERR1430825_T1.txt
@@ -202,7 +202,7 @@ ERX1501203_ERR1430825_T1_contigs.fa	contig00008	81930	83849	+	tet(M)	1-1920/1920
 
 ```
 
-For this sample there was just one putative AMR gene detected by _Abricate_, associated with tetracycline resistance. 
+For this sample there was just one putative AMR gene detected by `Abricate`, associated with tetracycline resistance. 
 These genes were identified based on their similarity with annotated sequences from the NCBI database.
 For example, the gene _Tet(M)_ was detected in our sample, matching the NCBI accession [NG_048235.1](https://www.ncbi.nlm.nih.gov/nuccore/NG_048235.1/).
 This is annotated as as a reference for antimicrobial resistance, in this case to the drug "TETRACYCLINE".
@@ -232,5 +232,5 @@ The result of the above command is:
 
 ::: {.callout-tip}
 ## Key Points
-- The `nf-core/funcscan` workflow performs AMR analysis using several software tools and producing a summary of their results as a CSV file.
+- The `nf-core/funcscan` workflow performs AMR analysis using several software tools and producing a summary of their results as a TSV file.
 :::

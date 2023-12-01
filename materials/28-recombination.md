@@ -17,11 +17,13 @@ Recombination in bacteria is characterized by DNA transfer from one organism or 
 - Transduction: virus-mediated (phage) transfer of DNA between bacteria
 - Conjugation: the transfer of DNA from one bacterium to another via cell-to-cell contact
 
-The sequences transferred via recombination can influence genome-wide measures of sequence simularity more than vertically-inherited point mutations that are the signal of shared common ancestor.  Thus, identifying recombinant regions and accounting for their potentially different phylogenetic history is crucial when examining the evolutionary history of bacteria.  In practice, what this means is that we remove (mask) previously identified recombinant regions in our multiple sequence alignments before we proceed with phylogenetic tree inference.  The two most commonly used tools to do this are `Gubbins` and `ClonalFrameML`. It's important to note that `Gubbins` cannot be used on the core gene alignment produced by tools like `roary` or `panaroo` as Gubbins requires a whole genome alignment as input in order to analyse the spatial distribution of base substitutions.  For this reason, the finer scale phylogenetic structure of phylogenetic trees generated using a core gene alignment may be less accurate.  If we want to properly account for recombination in this instance, typically we would perform some kind of clustering on our initial tree, then map sequence data for the samples within a cluster to a suitable reference before running our recombination removal tool of choice.
+The sequences transferred via recombination can influence genome-wide measures of sequence simularity more than vertically-inherited point mutations that are the signal of shared common ancestor.  Thus, identifying recombinant regions and accounting for their potentially different phylogenetic history is crucial when examining the evolutionary history of bacteria.  In practice, what this means is that we remove (mask) previously identified recombinant regions in our multiple sequence alignments before we proceed with phylogenetic tree inference.  
+
+The two most commonly used tools to do this are `Gubbins` and `ClonalFrameML`. It's important to note that `Gubbins` cannot be used on the core gene alignment produced by tools like `roary` or `panaroo` as `Gubbins` requires a whole genome alignment as input in order to analyse the spatial distribution of base substitutions.  For this reason, the finer scale phylogenetic structure of phylogenetic trees generated using a core gene alignment may be less accurate.  If we want to properly account for recombination in this instance, typically we would perform some kind of clustering on our initial tree, then map sequence data for the samples within a cluster to a suitable reference before running our recombination removal tool of choice.
 
 ## Gubbins
 
-Gubbins (Genealogies Unbiased By recomBinations In Nucleotide Sequences) is an algorithm that iteratively identifies loci containing elevated densities of base substitutions while concurrently constructing a phylogeny based on the putative point mutations outside of these regions.  We're going to use Gubbins to identify the recombinant regions in the alignment we generated using `bactmap`.
+`Gubbins` (Genealogies Unbiased By recomBinations In Nucleotide Sequences) is an algorithm that iteratively identifies loci containing elevated densities of base substitutions while concurrently constructing a phylogeny based on the putative point mutations outside of these regions.  We're going to use Gubbins to identify the recombinant regions in the alignment we generated using `bactmap`.
 
 ## Running `Gubbins`
 
@@ -38,7 +40,7 @@ To run `Gubbins` on the `aligned_pseudogenomes.fas` file, the following commands
 mkdir -p results/gubbins/
 
 # run gubbins
-run_gubbins.py --prefix sero1 --tree-builder iqtree aligned_pseudogenomes_masked.fas
+run_gubbins.py --prefix sero1 --tree-builder iqtree results/bactmap/pseudogenomes/aligned_pseudogenomes.fas
 
 # move gubbins outputs to results directory
 mv sero1.* results/gubbins/
@@ -53,7 +55,7 @@ As it runs, `Gubbins` prints several messages to the screen.
 We moved the output files to `results/gubbins/` where we can see all the output files it generated:
 
 ```bash
-ls results/panaroo
+ls results/gubbins
 ```
 
 ```
@@ -65,7 +67,7 @@ sero1.filtered_polymorphic_sites.phylip
 
 ## Masking recombinant regions
 
-In a similar way to how we masked the TB alignment to remove certain regions of the reference genome from downstream analyses, the next step is to mask the recombinant regions in our `aligned_pseudogenomes.fas` file so these do not influence our phylogenetic tree inference.  Instead of using `remove_blocks_from_aln.py`, we will use `mask_gubbins_aln.py`:
+In a similar way to how we masked the TB alignment to remove certain regions of the reference genome from downstream analyses, the next step is to mask the recombinant regions in our `aligned_pseudogenomes.fas` file so these do not influence our phylogenetic tree inference.  Instead of using `remove_blocks_from_aln.py`, we will use `mask_gubbins_aln.py` (included with `Gubbins`):
 
 ```bash
 mask_gubbins_aln.py --aln results/bactmap/pseudogenomes/aligned_pseudogenomes.fas --gff results/gubbins/sero1.recombination_predictions.gff --out results/gubbins/aligned_pseudogenomes_masked.fas

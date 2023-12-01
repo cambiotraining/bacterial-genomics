@@ -172,7 +172,7 @@ mamba create -n tb-profiler tb-profiler pandas
 ```
 
 
-#### TB-Profiler
+#### Panaroo
 
 ```bash
 mamba create -n panaroo python=3.9 panaroo>=1.3 snp-sites

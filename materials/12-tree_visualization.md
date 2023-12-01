@@ -17,12 +17,12 @@ In order to use this platform you will first need to [**create an account**](htt
 
 ## Uploading tree files and metadata
 
-Once you've logged into Microreact, you can upload the Namibian tree file (`Nam_TB.treefile`) and combined metadata TSV file (`TB_metadata.tsv`) we created earlier. 
+Once you've logged into Microreact, you can upload the Namibian TB tree file (`Nam_TB.treefile`) and combined metadata TSV file (`TB_metadata.tsv`) we created earlier. 
 
-1. First, copy `Nam_TB.treefile` to the analysis directory so that both files are in the same location:
+1. First, copy `Nam_TB.treefile` from the `preprocessed` directory to the analysis directory so that both files are in the same location:
 
 ```bash
-cp results/iqtree/Nam_TB.treefile .
+cp preprocessed/iqtree/Nam_TB.treefile . 
 ```
 
 2. Click on the **UPLOAD** link in the top-right corner of the page:
@@ -33,7 +33,7 @@ cp results/iqtree/Nam_TB.treefile .
 
 ![](images/microreact_upload2.png)
 
-4. This will open a file browser, where you can select the tree file and metadata from your local machine. Go to the `M_tuberculosis` folder where you have the results we've generated so far this week. Click and select the `Nam_TB.treefile` and `TB_metadata.tsv` files while holding the <kbd>Ctrl</kbd> key. Click Open on the dialogue window after you have selected both files.
+4. This will open a file browser, where you can select the tree file and metadata from your local machine. Go to the `~Course_materials/M_tuberculosis` directory where you have the results we've generated so far this week. Click and select the `Nam_TB.treefile` and `TB_metadata.tsv` files while holding the <kbd>Ctrl</kbd> key. Click Open on the dialogue window after you have selected both files.
 
 ![](images/microreact_upload3.png)
 

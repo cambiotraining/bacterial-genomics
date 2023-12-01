@@ -63,16 +63,16 @@ nextflow run avantonder/assembleBAC \
 
 **Remember to QC your data!**
 
-Remember, the first step of any analysis of a new sequence dataset is to perform Quality Control. For the purposes of time, we've run bacQC for you and the results are in `preprocessed/bacqc`.  Before you run assembleBAC, have a look at the read stats and species composition TSV files and make sure that the data looks good before we go ahead and assemble it. 
+Remember, the first step of any analysis of a new sequence dataset is to perform Quality Control. For the purposes of time, we've run `bacQC` for you and the results are in `preprocessed/bacqc`.  Before you run `assembleBAC`, have a look at the read stats and species composition TSV files and make sure that the data looks good before we go ahead and assemble it. 
 
 :::
 
 :::{.callout-exercise}
 #### Running assembleBAC
 
-Your next task is to run the **assembleBAC** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `01-run_assemblebac.sh`. This script contains the code to run assembleBAC. Edit this script, adjusting it to fit your input files and the estimated genome size of _Staphylococcus aureus_.
+- Your next task is to run the **assembleBAC** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `01-run_assemblebac.sh`. This script contains the code to run assembleBAC. Edit this script, adjusting it to fit your input files and the estimated genome size of _Staphylococcus aureus_.
 
-Now, run the script using `bash scripts/01-run_assemblebac.sh`.
+- Now, run the script using `bash scripts/01-run_assemblebac.sh`.
   
 If the script is running successfully it should start printing the progress of each job in the assembleBAC pipeline. This will take a little while to finish. <i class="fa-solid fa-mug-hot"></i>
 

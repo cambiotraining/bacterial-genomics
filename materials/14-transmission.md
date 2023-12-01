@@ -14,9 +14,14 @@ title: "Building transmission networks"
 
 ## Transmission networks in bacteria
 
+Genomic data can be utilized to identify and understand the transmission of bacterial pathogens. In particular, SNP thresholds can be used to infer bacterial transmission networks by analyzing the genetic similarity between bacterial isolates from different individuals or sources. The underlying principle is that closely related bacterial strains will share a higher number of SNPs due to their recent common ancestry, while more distantly related strains will have accumulated more genetic differences over time. Putative transmission can be inferred by establishing a threshold for the number of SNPs that can be considered to indicate a transmission link. This threshold can be based on epidemiological data, previous studies, or statistical models.  These links can then be used to identify clusters and potential transmission network.  It's worth remembering that the actual SNP threshold for inferring transmission will vary depending on the organism, the population structure, and the specific context of the study. It is often determined empirically by analyzing the distribution of pairwise SNP differences among strains and identifying a natural cutoff point or through simulation studies that may incorporate information about the mutation rate of the organism and likely routes of transmission.
+
 ### Identifying transmission networks in TB
 
+The actual SNP threshold used to define a cluster can vary depending on the study and the population being analyzed and in TB there have been a number of different thresholds applied when trying to identify putative transmission clusters,  with the most commonly applied thresholds being 5, 10 and 12 SNPs.  For example the 12 SNP threshold is used for inferring likely transmission between a pair of TB cases by UKHSA and is the threshold applied in the paper describing the data we've been analysing (Walker 2014, Claasens 2022).  Given the slow mutation of _M. tuberculosis_, a stricter threshold of 5 SNPs is usually used to infer recent transmission.  In the exercise to follow, we will use both thresholds to examine the effect they have on the transmission networks we infer.
+
 ## Generating a pairwise SNP distance matrix
+
 The first step in building putative transmission networks is to calculate the pairwise SNP distances between all the samples in our dataset and we can do this by running a tool call `pairsnp` on the SNP alignment we used to build our phylogenetic tree.
 
 We'll start by activating the `pairsnp` software environment:
@@ -32,7 +37,7 @@ To run `pairsnp` on `aligned_pseudogenomes_masked_snps.fas`, the following comma
 mkdir -p results/transmission/
 
 # run pairsnp
-pairsnp results/snp-sites/aligned_pseudogenomes_masked_snps.fas -c > results/transmission/aligned_pseudogenomes_masked_snps.csv
+pairsnp preprocessed/snp-sites/aligned_pseudogenomes_masked_snps.fas -c > results/transmission/aligned_pseudogenomes_masked_snps.csv
 ```
 The option we used is:
 
@@ -77,3 +82,9 @@ As discussed in the introduction above, various SNP thresholds are used when inf
 ## Key Points
 
 :::
+
+#### References
+
+Walker TM, Lalor MK, Broda A, Ortega LS, Morgan M, Parker L, Churchill S, Bennett K, Golubchik T, Giess AP, Del Ojo Elias C, Jeffery KJ, Bowler ICJW, Laurenson IF, Barrett A, Drobniewski F, McCarthy ND, Anderson LF, Abubakar I, Thomas HL, Monk P, Smith EG, Walker AS, Crook DW, Peto TEA, Conlon CP. Assessment of _Mycobacterium tuberculosis_ transmission in Oxfordshire, UK, 2007-12, with whole pathogen genome sequences: an observational study. _Lancet Respir Med_. 2014. [DOI](https://doi.org/10.1016/s2213-2600(14)70027-x)
+
+Claasens M, _et al._ Whole-Genome Sequencing for Resistance Prediction and Transmission Analysis of _Mycobacterium tuberculosis_ Complex Strains from Namibia. _Microbiology Spectrum_. 2022. [DOI](https://doi.org/10.1128/spectrum.01586-22)

@@ -14,7 +14,7 @@ In the [Visualising phylogenies](12-tree_visualization.md) chapter we used `Micr
 1. First, copy `School_Staph.treefile` to the analysis directory so that it's in the same location as `Staph_metadata.tsv`:
 
 ```bash
-cp results/iqtree/School_Staph.treefile .
+cp preprocessed/iqtree/School_Staph.treefile .
 ```
 2. Upload the two files to `Microreact`:
 
@@ -32,7 +32,7 @@ cp results/iqtree/School_Staph.treefile .
 
 ![](images/microreact_upload8.png)
 
-6. We used `Pathogenwatch` to predict the AMR profile of our isolates. Let's go ahead and add that information as metadata blocks. Click on the **Metadata blocks** button in the top-right cornder and select all of the drugs in the list:
+6. We used `Pathogenwatch` to predict the AMR profile of our isolates. Let's go ahead and add that information as metadata blocks. Click on the **Metadata blocks** button in the top-right corner and select all of the drugs in the list:
 
 ![](images/microreact_metadata.png)
 

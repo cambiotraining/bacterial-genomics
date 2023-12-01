@@ -25,7 +25,6 @@ book:
     - part: "Transmission"
       chapters: 
         - materials/14-transmission.md
-        - materials/16-epi_data.md
     - part: "De-novo assembly and annotation"
       chapters: 
         - materials/17-intro_staph.md

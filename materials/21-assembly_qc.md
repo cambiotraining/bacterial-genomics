@@ -26,9 +26,9 @@ To assess the quality of an assembly, several key indicators can be examined:
 
 Evaluating these factors collectively provides insights into the reliability and utility of the genome assembly for further analysis and interpretation.
 
-For the purposes of time, we didn't run bacQC on our _Staphylococcus aureus dataset_. However, we've provided the results for our contamination check using `Kraken 2` in `results/bacQC/metadata/species_composition.tsv` along with the other summary results produced by bacQC.
+For the purposes of time, we didn't run bacQC on our _Staphylococcus aureus dataset_. However, we've provided the results for our contamination check using `Kraken 2` in `preprocessed/bacqc/metadata/species_composition.tsv` along with the other summary results produced by bacQC.
 
-Since our samples are taken from a published dataset, we expected little or no contamination but this is not always the case so it's important still to do quality control of data taken from public databases to ensure that it is suitable for the analysis you're running.  For instance, contamination with another *Staphylococcus* species or even another bacterial species altogether would have affected the accuracy of our assemblies.
+Since our samples are taken from a published dataset, we expected little or no contamination but this is not always the case so it's important still to do quality control of data taken from public databases to ensure that it is suitable for the analysis you're running.  For instance, contamination with another _Staphylococcus_ species or even another bacterial species altogether would have affected the accuracy of our assemblies.
 
 Let's now turn to some of the other metrics to help us assess our assemblies' quality.
 
@@ -37,7 +37,7 @@ Let's now turn to some of the other metrics to help us assess our assemblies' qu
 
 ## Contiguity
 
-One of the outputs from running `assembleBAC` is a summary file containing the `Quast` outputs for each sample.  This file can be found in `results/assembleBAC/metadata/transposed_report.tsv`.
+One of the outputs from running `assembleBAC` is a summary file containing the `Quast` outputs for each sample.  This file can be found in `preprocessed/assemblebac/metadata/transposed_report.tsv`.
 
 You can open it with a spreadsheet software such as _Excel_ from our file browser <i class="fa-solid fa-folder"></i> (for brevity, we only show the columns of most interest): 
 
@@ -68,7 +68,7 @@ For instance, isolates ERX3876936_ERR3864883 and ERX3876945_ERR3864892 were asse
 
 ## Completeness
 
-We now turn to assessing **genome completeness**, i.e. whether we managed to recover most of the known _Staphylococcus aureus_ genome, or whether we have large fractions missing. We can assess this by using [`CheckM2`](https://github.com/chklovski/CheckM2) which was run as part of the assembleBAC pipeline. This tool assesses the completeness of the assembled genomes based on other similar organisms in public databases, in addition to contamination scores. The output file from assembleBAC summarising the `CheckM2` results is a tab-delimited file called `checkm2_summary.tsv`. This file can be found in `results/assembleBAC/metadata/` and can be opened in a spreadsheet software such as _Excel_. Here is an example result (for brevity, we only show the columns of most interest):
+We now turn to assessing **genome completeness**, i.e. whether we managed to recover most of the known _Staphylococcus aureus_ genome, or whether we have large fractions missing. We can assess this by using [`CheckM2`](https://github.com/chklovski/CheckM2) which was run as part of the `assembleBAC` pipeline. This tool assesses the completeness of the assembled genomes based on other similar organisms in public databases, in addition to contamination scores. The output file from `assembleBAC` summarising the `CheckM2` results is a tab-delimited file called `checkm2_summary.tsv`. This file can be found in `preprocessed/assemblebac/metadata/` and can be opened in a spreadsheet software such as _Excel_. Here is an example result (for brevity, we only show the columns of most interest):
 
 ```
 Name	Completeness	Contamination	Genome_Size	GC_Content	Total_Coding_Sequences
@@ -92,7 +92,7 @@ These columns indicate:
 
 From this analysis, we can assess that our genome assemblies are good quality, with 100% of the genome assembled for all our isolates. 
 It is worth noting that the assessment from _CheckM2_ is an approximation based on other genomes in the database. 
-In diverse species such as _S. aureus_ the completeness may be underestimated, because each individual strain will only carry part of the _pangenome_ for that species.
+In diverse species such as _S. aureus_ the completeness may be underestimated, because each individual strain will only carry part of the _pan-genome_ for that species.
 
 ## Accuracy
 
@@ -109,14 +109,14 @@ Assessing these aspects of a genome assembly can be challenging, primarily becau
 :::{.callout-exercise}
 #### Assembly contiguity
 
-To assess the contiguity of your assemblies, you ran `QUAST` as part of the assembleBAC pipeline:Open the file `transposed_report.csv` in the metadata directory of your assembleBAC results directory. This should open the file in _Excel_. 
+To assess the contiguity of your assemblies, you ran `QUAST` as part of the assembleBAC pipeline. Open the file `transposed_report.tsv` in the `preprocessed/assemblebac/metadata` directory. This should open the file in _Excel_. 
 - Answer the following questions: 
   - Was the assembly length what you expect for _Staphylococcus aureus_?
   - Did your samples have good contiguity (number of fragments)?
   - Do you think any of the samples are not of sufficient quality to include in further analyses?
 
 :::{.callout-answer}
-For the dataset we are using, we had our file in `results/assembleBAC/transposed_report.csv`. 
+For the dataset we are using, we had our file in `processed/assembleBAC/transposed_report.tsv`. 
 We opened this table in _Excel_ and this is what we obtained: 
 
 ```
@@ -139,7 +139,7 @@ Isolate ERX3876939_ERR3864886_T1_contigs has more than 200 contigs. A this is hi
 #### Assembly completeness
 
 To assess the completeness of your assembly, we ran the _CheckM2_ software on your assembly files as part of the assembleBAC pipeline.
-Go to the output folder and open the `checkm2_summary.tsv` file in _Excel_. 
+Go to the ``preprocessed/assemblebac/metadata/`` directory and open the `checkm2_summary.tsv` file in _Excel_. 
   Answer the following questions: 
   - Did you manage to achieve >90% completeness for your genomes?
   - Was there evidence of substantial contamination in your assemblies?
@@ -147,7 +147,7 @@ Go to the output folder and open the `checkm2_summary.tsv` file in _Excel_.
 
 :::{.callout-answer}
 
-We opened the file `results/assembleBAC/metadata/checkm2_summary.tsv` in _Excel_ and this is what we obtained: 
+We opened the file `preprocessed/assemblebac/metadata/checkm2_summary.tsv` in _Excel_ and this is what we obtained: 
 
 ```
 Name	Completeness	Contamination	Completeness_Model_Used	Translation_Table_Used	Coding_Density	Contig_N50	Average_Gene_Length	Genome_Size	GC_Content	Total_Coding_Sequences	Additional_Notes
