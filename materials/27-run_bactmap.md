@@ -92,7 +92,7 @@ Launching `https://github.com/nf-core/bactmap` [cranky_swartz] DSL2 - revision: 
 :::{.callout-exercise}
 #### How much of the reference was mapped?
 
-- Use the `03-pseudogenome_check.sh` script we've provided in the `scripts` folder, which calculates how much missing data there is for each sample using `seqtk comp`. 
+- Use the `02-pseudogenome_check.sh` script we've provided in the `scripts` folder, which calculates how much missing data there is for each sample using `seqtk comp`. 
 - Once the analysis finishes open the `mapping_summary.tsv` file in _Excel_ from your file browser <i class="fa-solid fa-folder"></i>.
 - Sort the results by the `%ref mapped` column and identify the sample which has the lowest percentage of the reference mapped.
 
