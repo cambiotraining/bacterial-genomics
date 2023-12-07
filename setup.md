@@ -205,6 +205,31 @@ mamba create -n bakta bakta
 ```
 
 
+### R and RStudio
+
+_R_ and _RStudio_ are available for all major operating systems. 
+
+- **Windows:** download and install all these using default options:
+  - [R](https://cran.r-project.org/bin/windows/base/release.html)
+  - [RTools](https://cran.r-project.org/bin/windows/Rtools/)
+  - [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
+
+- **macOS:** download and install all these using default options:
+  - [R](https://cran.r-project.org/bin/macosx/)
+  - [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
+
+- **Linux**:
+  - Go to the [R installation](https://cran.r-project.org/bin/linux/) folder and look at the instructions for your distribution.
+  - Download the [RStudio](https://www.rstudio.com/products/rstudio/download/#download) installer for your distribution and install it using your package manager.
+
+After installing R, you will need to install a few packages. 
+Open _RStudio_ and on the console type the following command: 
+
+```r
+install.packages(c("tidyverse", "tidygraph", "ggraph", "igraph"))
+```
+
+
 ### Singularity
 
 We recommend that you install _Singularity_ and use the `-profile singularity` option when running _Nextflow_ pipelines. 
