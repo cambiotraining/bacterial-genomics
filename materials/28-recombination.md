@@ -5,7 +5,9 @@ title: "Introduction to recombination"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand what recombination is.
+- Describe what recombination in bacteria is.
+- Apply the _Gubbins_ software to generate recombination-free alignments. 
+- Build a phylogeny from a recombination-free alignment.
 
 :::
 
@@ -13,17 +15,17 @@ title: "Introduction to recombination"
 
 Recombination in bacteria is characterized by DNA transfer from one organism or strain (the donor) to another organism/strain (the recipient) or the uptake of exogenous DNA from the surrounding environment.  Broadly, there are three different types of bacterial recombination:
 
-- Transformation: the uptake of exogenous DNA from the environment
-- Transduction: virus-mediated (phage) transfer of DNA between bacteria
-- Conjugation: the transfer of DNA from one bacterium to another via cell-to-cell contact
+- **Transformation:** the uptake of exogenous DNA from the environment
+- **Transduction:** virus-mediated (phage) transfer of DNA between bacteria
+- **Conjugation:** the transfer of DNA from one bacterium to another via cell-to-cell contact
 
-The sequences transferred via recombination can influence genome-wide measures of sequence simularity more than vertically-inherited point mutations that are the signal of shared common ancestor.  Thus, identifying recombinant regions and accounting for their potentially different phylogenetic history is crucial when examining the evolutionary history of bacteria.  In practice, what this means is that we remove (mask) previously identified recombinant regions in our multiple sequence alignments before we proceed with phylogenetic tree inference.  
+The sequences transferred via recombination can influence genome-wide measures of sequence simularity more than vertically-inherited point mutations that are the signal of shared common ancestor.  Thus, identifying recombinant regions and accounting for their potentially different phylogenetic history is crucial when examining the evolutionary history of bacteria.  In practice, what this means is that we remove (mask) previously identified recombinant regions in our multiple sequence alignments, before we proceed with phylogenetic tree inference.  
 
-The two most commonly used tools to do this are `Gubbins` and `ClonalFrameML`. It's important to note that `Gubbins` cannot be used on the core gene alignment produced by tools like `roary` or `panaroo` as `Gubbins` requires a whole genome alignment as input in order to analyse the spatial distribution of base substitutions.  For this reason, the finer scale phylogenetic structure of phylogenetic trees generated using a core gene alignment may be less accurate.  If we want to properly account for recombination in this instance, typically we would perform some kind of clustering on our initial tree, then map sequence data for the samples within a cluster to a suitable reference before running our recombination removal tool of choice.
+The two most commonly used tools to do this are `Gubbins` and `ClonalFrameML`. It's important to note that `Gubbins` cannot be used on the core gene alignment produced by tools like `roary` or `panaroo`. Instead, `Gubbins` requires a whole-genome alignment as input, in order to analyse the spatial distribution of base substitutions.  For this reason, the finer-scale phylogenetic structure of trees generated using a core gene alignment may be less accurate.  If we want to properly account for recombination in this instance, typically we would perform clustering on our initial tree, then map sequence data for the samples within a cluster to a suitable reference before running our recombination removal tool of choice.
 
 ## Gubbins
 
-`Gubbins` (Genealogies Unbiased By recomBinations In Nucleotide Sequences) is an algorithm that iteratively identifies loci containing elevated densities of base substitutions while concurrently constructing a phylogeny based on the putative point mutations outside of these regions.  We're going to use Gubbins to identify the recombinant regions in the alignment we generated using `bactmap`.
+`Gubbins` (Genealogies Unbiased By recomBinations In Nucleotide Sequences) is an algorithm that iteratively identifies loci containing elevated densities of base substitutions, while concurrently constructing a phylogeny based on the putative point mutations outside of these regions.  We're going to use Gubbins to identify the recombinant regions in the alignment we generated using `bactmap`.
 
 ## Running `Gubbins`
 
@@ -67,7 +69,7 @@ sero1.filtered_polymorphic_sites.phylip
 
 ## Masking recombinant regions
 
-In a similar way to how we masked the TB alignment to remove certain regions of the reference genome from downstream analyses, the next step is to mask the recombinant regions in our `aligned_pseudogenomes.fas` file so these do not influence our phylogenetic tree inference.  Instead of using `remove_blocks_from_aln.py`, we will use `mask_gubbins_aln.py` (included with `Gubbins`):
+In a similar way to how we masked the TB alignment to remove certain regions of the reference genome from downstream analyses, the next step is to mask the recombinant regions in our `aligned_pseudogenomes.fas` file, so these do not influence our phylogenetic tree inference.  Instead of using `remove_blocks_from_aln.py`, we will use `mask_gubbins_aln.py` (included with `Gubbins`):
 
 ```bash
 mask_gubbins_aln.py --aln results/bactmap/pseudogenomes/aligned_pseudogenomes.fas --gff results/gubbins/sero1.recombination_predictions.gff --out results/gubbins/aligned_pseudogenomes_masked.fas
@@ -90,14 +92,14 @@ plot_gubbins.R -t results/gubbins/sero1.final_tree.tre -r results/gubbins/sero1.
 ```
 The options we used are:
 
-- `-t` - the recombination free phylogenetic tree created by `Gubbins`.
+- `-t` - the recombination-free phylogenetic tree created by `Gubbins`.
 - `-r` - the GFF file containing the coordinates for the recombinant regions identified by `Gubbins`.
 - `-a` - the GFF file for the reference genome containing the coordinates for the coding regions.
 - `-o` - the figure showing the recombinant regions identified by `Gubbins`.
 
 ![Recombinant regions](images/sero1.recombination.png)
 
-The panel on the left shows the maximum-likelihood phylogeny built from the clonal frame of serotype isolates. The scale below shows the length of branches in base substitutions. The tree is coloured according to the classification of isolates, each of which corresponds to a row in the panel on the right. Each column in this panel is a base in the reference annotation, the annotation of which is shown at the top of the figure. The panel shows the distribution of inferred recombination events, which are coloured blue is they are unique to a single isolate, or red, if they are shared by multiple isolates through common ancestry.
+The panel on the left shows the maximum-likelihood phylogeny built from the clonal frame of serotype isolates. The scale below shows the length of branches in base substitutions. The tree is coloured according to the classification of isolates, each of which corresponds to a row in the panel on the right. Each column in this panel is a base in the reference annotation, the annotation of which is shown at the top of the figure. The panel shows the distribution of inferred recombination events, which are coloured blue if they are unique to a single isolate, or red, if they are shared by multiple isolates through common ancestry.
 
 :::{.callout-exercise}
 #### Run `Gubbins`
@@ -124,6 +126,7 @@ Checking input alignment file...
 Filtering input alignment...
 ...
 ```
+
 In the `results/gubbins` directory we can see the following files:
 
 ```
@@ -133,15 +136,15 @@ sero1.filtered_polymorphic_sites.fasta   sero1.node_labelled.final_tree.tre  ser
 sero1.filtered_polymorphic_sites.phylip  sero1.per_branch_statistics.csv     sero1.summary_of_snp_distribution.vcf
 ```
 
-Along with the `Gubbins` outputs we also created the masked alignment file (`aligned_pseudogenomes_masked.fas`) and a figure showing the location of the recombinant regions in the reference genome (`sero1.recombination.png`).
-:::
+Along with the `Gubbins` outputs the script also created the masked alignment file (`aligned_pseudogenomes_masked.fas`) and a figure showing the location of the recombinant regions in the reference genome (`sero1.recombination.png`).
 
+:::
 :::
 
 :::{.callout-exercise}
 #### Build post-Gubbins phylogeny
 
-Now that we've created a recombination-masked alignment, we can extract the variant sites and count of constant sites and use these to build a recombination free phylogenetic tree with `IQ-TREE`.
+Now that we have created a recombination-masked alignment, we can extract the variant sites and count of constant sites and use these to build a recombination-free phylogenetic tree with `IQ-TREE`.
 
 - Activate the software environment: `mamba activate iqtree`.
 - Fix the script provided in `scripts/04-run_iqtree.sh`. See @sec-iqtree if you need a hint of how to fix the code in the script.
@@ -177,9 +180,10 @@ iqtree \
   -bb 1000
 ```
 
-- We specify as input the `aligned_pseudogenomes_masked_snps.fas` produced in the previous exercise by running `Gubbins` followed by `SNP-sites`.
-- We specify the number of constant sites, also generated from the previous exercise. We can use `$(cat results/snp-sites/constant_sites.txt)` to directly add the contents of `constant_sites.txt` without having to open the file to obtain these numbers.
-- We use as prefix for our output files "sero1" (since we are using the data from the Chaguza serotype 1 paper), so all the output file names will be named as such.
+- The script starts by extracting variable sites using _SNP-sites_. We used as input the `aligned_pseudogenomes_masked_snps.fas` file produced in the previous exercise.
+- The next step runs _IQ-tree_:
+  - We specify the number of constant sites, also generated from the previous exercise. We can use `$(cat results/snp-sites/constant_sites.txt)` to directly add the contents of `constant_sites.txt` without having to open the file to obtain these numbers.
+  - We use as prefix for our output files "sero1" (since we are using the data from the Chaguza serotype 1 paper), so all the output file names will be named as such.
 - We automatically detect the number of threads/CPUs for parallel computation.
 
 After the analysis runs we get several output files in our directory: 
@@ -201,6 +205,10 @@ The main file of interest is `sero1.treefile`, which contains our tree in the st
 ## Summary
 
 ::: {.callout-tip}
-## Key Points
+#### Key Points
 
+- In bacteria, recombination refers to the process of genetic material exchange between organisms, through processes such as transformation, transduction and conjugation.
+- The _Gubbins_ software can be to produce recombination-free alignments. It requires as input a multiple sequence alignment from whole genomes.
+- After identifying recombinant regions, these are masked from the alignment (i.e. converted to 'N's).
+- The output from _Gubbins_ can then be used as input to _SNP-sites_ and _IQ-tree_ as demonstrated before. 
 :::

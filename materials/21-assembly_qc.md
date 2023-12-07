@@ -5,12 +5,8 @@ title: "Assembly Quality"
 ::: {.callout-tip}
 ## Learning Objectives
 
-After this section you should be able to:
-
 - List common indicators to assess the quality of a genome assembly.
 - Discuss general assembly statistics that can be used to assess genome contiguity and completeness. 
-- Examine assembly graphs and use them to determine the contiguity of an assembly.
-- Apply specialised software to assess the genome completeness as well as potential contamination.
 
 :::
 
@@ -26,9 +22,9 @@ To assess the quality of an assembly, several key indicators can be examined:
 
 Evaluating these factors collectively provides insights into the reliability and utility of the genome assembly for further analysis and interpretation.
 
-For the purposes of time, we didn't run bacQC on our _Staphylococcus aureus dataset_. However, we've provided the results for our contamination check using `Kraken 2` in `preprocessed/bacqc/metadata/species_composition.tsv` along with the other summary results produced by bacQC.
+For the purposes of time, we didn't run `bacQC` on our _Staphylococcus aureus dataset_. However, we've provided the results for our contamination check using `Kraken 2` in `preprocessed/bacqc/metadata/species_composition.tsv` along with the other summary results produced by bacQC.
 
-Since our samples are taken from a published dataset, we expected little or no contamination but this is not always the case so it's important still to do quality control of data taken from public databases to ensure that it is suitable for the analysis you're running.  For instance, contamination with another _Staphylococcus_ species or even another bacterial species altogether would have affected the accuracy of our assemblies.
+Since our samples are taken from a published dataset, we expected little or no contamination, but this is not always the case. So, it is important still to do quality control of data taken from public databases, to ensure that it is suitable for the analysis you're running.  For instance, contamination with another _Staphylococcus_ species or even another bacterial species altogether would have affected the accuracy of our assemblies.
 
 Let's now turn to some of the other metrics to help us assess our assemblies' quality.
 
@@ -175,6 +171,6 @@ We can see from this that:
   - Contiguity: how continuous the final assembly is (the best assembly would be chromosome-level).
   - Completeness: whether the entire genome of the species was captured.
 - Common indicators for evaluating the contiguity of a genome assembly include metrics like N50, fragment count and total assembly size.
-- Specialised software tools, like _CheckM2_, enable the assessment of genome completeness and contamination by comparing the assembly to known reference genomes and identifying missing or unexpected genes and sequences.
+- Specialised software tools, like _QUAST_ and _CheckM2_, enable the assessment of genome completeness and contamination by comparing the assembly to known reference genomes and identifying missing or unexpected genes and sequences.
 
 :::

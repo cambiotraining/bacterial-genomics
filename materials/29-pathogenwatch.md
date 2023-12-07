@@ -5,7 +5,7 @@ title: "Pathogenwatch 2"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Obtain pneumo metadata from pneumowatch.
+- Analyse _S. penumoniae_ genomes on _Pathogenwatch_ and extract relevant information to use as metadata to annotate phylogenetic trees.
 
 :::
 
@@ -22,7 +22,7 @@ Whilst you can upload FASTQ files to Pathogenwatch, it's quicker if we work with
 
 :::{.callout-hint}
 
-Refer back to [Pathogenwatch](29-pathogenwatch.md) if you need a reminder on how to run a python script like `merge_pneumo_data.py`. 
+Refer back to [Pathogenwatch](29-pathogenwatch.md) if you need a reminder on how to perform these tasks.
 
 :::
 
@@ -46,11 +46,3 @@ python scripts/merge_pneumo_data.py -s sample_info.csv -t chaguza-serotype-1-typ
 
 :::
 
-
-
-## Summary
-
-::: {.callout-tip}
-## Key Points
-
-:::

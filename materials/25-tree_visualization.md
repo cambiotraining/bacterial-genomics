@@ -5,17 +5,18 @@ title: "Visualising phylogenies 2"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Visualize Staph phylogeny.
-
+- Visualise and annotate your _S. aureus_ tree with _Microreact_.
+- Explore the large number of features in _Micoreact_ that can be used to enrich your tree visualisations.
 :::
+
 
 In the [Visualising phylogenies](12-tree_visualization.md) chapter we used `Microreact` to visualize the phylogenetic tree of Namibian TB isolates. We're going to do the same with the _S.aureus_ phylogeny and metadata but use some of the other features in `Microreact` we didn't use before.
 
 1. First, copy `School_Staph.treefile` to the analysis directory so that it's in the same location as `Staph_metadata.tsv`:
 
-```bash
-cp preprocessed/iqtree/School_Staph.treefile .
-```
+    ```bash
+    cp preprocessed/iqtree/School_Staph.treefile .
+    ```
 2. Upload the two files to `Microreact`:
 
 ![](images/microreact_upload6.png)
@@ -58,5 +59,8 @@ cp preprocessed/iqtree/School_Staph.treefile .
 
 ::: {.callout-tip}
 ## Key Points
+
+- _Microreact_ is a user-friendly and flexible tool for tree visualisation. 
+- Several analysis results can be plotted alongside our tree, providing a richer view of our data.
 
 :::

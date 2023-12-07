@@ -22,9 +22,3 @@ Again, we're going to ask you split you into groups.  Feel free to work with any
 
 The point of the exercise is to synthesise what you've learnt this week and get used to presenting your work to different audiences who may have different backgrounds and expectations. You have until the tea break to prepare your presentations and we'll do the presentations with brief questions after tea before doing the final wrap up and Q&A.
 
-## Summary
-
-::: {.callout-tip}
-## Key Points
-
-:::

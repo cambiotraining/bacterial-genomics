@@ -5,11 +5,10 @@ title: "Pathogenwatch"
 ::: {.callout-tip}
 ## Learning Objectives
 
-After this section you should be able to:
-
 - Describe what _Pathogenwatch_ is and how it can be used to aid in genomic surveillance.
 - Upload files and create collections from our assemblies. 
 - Become familiar with the interface to _Pathogenwatch_.
+- Download and combine key results from _Pathogenwatch_.
 
 :::
 
@@ -135,9 +134,8 @@ For the next step, [visualising our phylogeny](25-tree_visualization), you will 
 - Download the Typing table 
 - Download the AMR profile.
 - Two CSV files will be downloaded.  Rename the appropriate files to the following as this will help with the next exercise:
-
-- `wbg-2023-typing.csv`
-- `wbg-2023-amr-profile.csv`
+  - `wbg-2023-typing.csv`
+  - `wbg-2023-amr-profile.csv`
 
 Now, move these two files into the `S_aureus` analysis directory.
 
@@ -166,7 +164,7 @@ mv pathogenwatch-saureus-pi6kp4oqdawi-wbg-2023-amr-profile wbg-2023-amr-profile.
 - We moved the files from the `Downloads` directory to our `S_aureus` directory (assuming we were in the `S_aureus` directory to start):
 
 ```bash
-mv ../../Downloads/wbg-2023* .
+mv ~/Downloads/wbg-2023* .
 ```
 
 :::
@@ -175,10 +173,10 @@ mv ../../Downloads/wbg-2023* .
 :::{.callout-exercise}
 #### Preparing data for _Microreact_
 
-Now that we have analysed our genomes with `Pathogenwatch` and downloaded the typing and AMR profiles, we need to merge this metadata with the existing information we have for the 30 _S. aureus_ genomes.  We could do this with _Excel_ or else use `Python` to do this so we've provided a python script called `merge_staph_data.py` in the `scripts` directory.
+Now that we have analysed our genomes with `Pathogenwatch` and downloaded the typing and AMR profiles, we need to merge this metadata with the existing information we have for the 30 _S. aureus_ genomes.  We could do this with _Excel_. Alternatively, we provide a _Python_ script called `merge_staph_data.py` in the `scripts` directory.
 
-- Activate the `tb-profiler` software environment (this contains the `Python pandas` library we need)
-- Run `merge_staph_data.py` to create the final metadata file we need for `Microreact`. You will need to specify the required inputs and output if necessary
+- Make sure you are in the `base` software environment (where we have the _Pandas_ library for _Python_).
+- Run `merge_staph_data.py` to create the final metadata file we need for `Microreact`. Look at the help documentation of this script to find out how to specify inputs and outputs to this script.
 
 :::{.callout-hint}
 
@@ -192,12 +190,12 @@ python scripts/merge_staph_data.py -h
 
 :::{.callout-answer}
 
-- We activated the `tb-profiler` software environment with `mamba activate tb-profiler`
+- We activated the `base` software environment with `mamba activate base`
 - We ran the `merge_staph_data.py` script to create a TSV file called `staph_metadata.tsv` in your analysis directory:
 
-```bash
-python scripts/merge_staph_data.py -s sample_info.csv -t wbg-2023-typing.csv -a wbg-2023-amr-profile.csv
-```
+    ```bash
+    python scripts/merge_staph_data.py -s sample_info.csv -t wbg-2023-typing.csv -a wbg-2023-amr-profile.csv
+    ```
 
 :::
 :::
@@ -211,4 +209,5 @@ python scripts/merge_staph_data.py -s sample_info.csv -t wbg-2023-typing.csv -a 
 - You can upload genome assemblies in FASTA format and accompanying metadata as CSV files.
 - Assemblies can be organized into collections, making it simpler to manage and analyze multiple samples together.
 - _Pathogenwatch_'s interface offers an intuitive user experience designed for users with varying levels of expertise, providing results such as biotype/serogroup, strain classification, antimicrobial resistance (AMR) and phylogenetic placement.
+- Downloading and combining the output files from _Pathogenwatch_ as well as any metadata can be of use to annotate phylogenetic trees.
 :::

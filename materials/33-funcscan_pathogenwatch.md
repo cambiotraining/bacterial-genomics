@@ -5,7 +5,8 @@ title: "funcscan versus Pathogenwatch"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Apply both command line and web applications to find potential AMR genes in a set of genomes.
+- Investigate and compare the results from different AMR-detection tools.
+- Recognise the importance that background databases and algorithms have in bioinformatic approaches for AMR detection.
 :::
 
 ## Which AMR do my isolates have?
@@ -64,6 +65,11 @@ If we look at the _funcscan_ results we can see that it identified Tetracycline 
 ## Summary
 
 ::: {.callout-tip}
-## Key Points
+#### Key Points
 
+- While there is overlap in the AMR results of different software, these results can be sometimes widely different.
+- Besides differences in the algorithms used, one key difference is the databases used to infer the presence of antimicrobial resistance.
+  - Tools designed to be more widely applicable, such as those used by `nf-core/funcscan`, may have less power to detect AMR.
+  - Tools such as _Pathogenwatch_, which uses curated databases for specific species, may identify a higher number of AMR genes. 
+- The best way to validate bioinformatic AMR results is with experimental validation.
 :::

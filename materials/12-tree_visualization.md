@@ -5,7 +5,7 @@ title: "Visualising phylogenies"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Visualize and annotate your tree with `Microreact`
+- Visualize and annotate your tree with `Microreact`.
 
 :::
 
@@ -33,7 +33,7 @@ cp preprocessed/iqtree/Nam_TB.treefile .
 
 ![](images/microreact_upload2.png)
 
-4. This will open a file browser, where you can select the tree file and metadata from your local machine. Go to the `~Course_materials/M_tuberculosis` directory where you have the results we've generated so far this week. Click and select the `Nam_TB.treefile` and `TB_metadata.tsv` files while holding the <kbd>Ctrl</kbd> key. Click Open on the dialogue window after you have selected both files.
+1. This will open a file browser, where you can select the tree file and metadata from your local machine. Go to the `M_tuberculosis` directory where you have the results we've generated so far this week. Click and select the `Nam_TB.treefile` and `TB_metadata.tsv` files while holding the <kbd>Ctrl</kbd> key. Click Open on the dialogue window after you have selected both files.
 
 ![](images/microreact_upload3.png)
 
@@ -86,4 +86,8 @@ cp preprocessed/iqtree/Nam_TB.treefile .
 ::: {.callout-tip}
 ## Key Points
 
+- Microreact is a free web app to visualise phylogenetic trees. 
+- It supports tree files in standard NEWICK format, as output by _IQ-Tree_. 
+- It also supports metadata for the samples, which can be used to configure the tree. 
+- Metadata such as latitude and longitude is also used to display the samples on a map. 
 :::

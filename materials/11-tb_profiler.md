@@ -5,9 +5,9 @@ title: "TB-Profiler"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand what TB-profiler does
-- Prepare TB-profiler data to plot with phylogenetic tree
-
+- Describe how TB-profiler can be used to further annotate _Mycobacterium tuberculosis_ genomes.
+- Run TB-profiler on a single sample and on multiple samples using a bespoke script. 
+- Prepare TB-profiler data to annotate phylogenetic trees.
 :::
 
 ## Introduction
@@ -19,18 +19,18 @@ title: "TB-Profiler"
 :::{.callout-tip}
 ## Keeping up to date
 
-Note that, like many other database-based tools TBProfiler is under constant rapid development. If you plan to use the program in your work please make sure you are using the most up to date version! Similarly, the database is not static and is continuously being improved so make sure you are using the most latest version. If you use TBProfiler in your work please state the version of both the tool and the database as they are developed independently from each other.
+Note that, like many other database-based tools TB-Profiler is under constant rapid development. If you plan to use the program in your work please make sure you are using the most up to date version! Similarly, the database is not static and is continuously being improved so make sure you are using the most latest version. If you use TBProfiler in your work please state the version of both the tool and the database as they are developed independently from each other.
 :::
 
 There is an online version of the tool which is very useful for analysing few genomes. You can try it out later at your free time by following this [link](https://tbdr.lshtm.ac.uk/). 
 
-![tb-profiler online tool](images/tb-profiler_online.png)
+![TB-Profiler online tool](images/tb-profiler_online.png)
 
 ## Running TB-Profiler on the command line {#sec-tbprofiler}
 
 Given we have five TB genomes to analyse, we're going to run `TB-Profiler` on the command line instead of uploading the FASTQ files to the web version, starting with a single sample `ERX9450498_ERR9907670`.
 
-We'll start by activating the `tb-profiler` software environment:
+We'll start by activating the software environment:
 
 ```bash
 mamba activate tb-profiler
@@ -73,7 +73,7 @@ While it was running it printed a message on the screen:
            INFO     Trimming reads
 ```
 
-You can open the results file (This file can be found in `results/tb-profiler/results/ERX9450498_ERR9907670.results.csv`.) with spreadsheet software such as _Excel_ from your file browser <i class="fa-solid fa-folder"></i>.  There is a lot of information in this file but `TB-Profiler` helpfully provides a summary of the most useful information at the top:
+You can open the results file (`results/tb-profiler/results/ERX9450498_ERR9907670.results.csv`) with a spreadsheet software such as _Excel_ from your file browser <i class="fa-solid fa-folder"></i>.  There is a lot of information in this file but `TB-Profiler` helpfully provides a summary of the most useful information at the top:
 
 ```
 TBProfiler report	
@@ -98,18 +98,16 @@ These key fields are:
 - **Drug-resistance** - the drug resistance profile of the sample.
 - **Median Depth** - the median read depth coverage across the reference genome.
 
-From these results we can see that sample `ERX9450498_ERR9907670` belongs to lineage 4.3.4.1 and is multi-drug resistant i.e. resistant to more than one drug, in this case Rifampicin, Isoniazid and Ethambutol.
+From these results we can see that sample `ERX9450498_ERR9907670` belongs to lineage 4.3.4.1 and is multi-drug resistant (MDR) i.e. resistant to more than one drug, in this case Rifampicin, Isoniazid and Ethambutol.
 
 ## TB-Profiler collate
 
 `TB-Profiler` has an option to collect the outputs from multiple samples and collate these together into a useful summary CSV file. We're going to use this command in the exercise below.
 
 :::{.callout-warning}
-
-**TB-Profiler sometimes fails**
+#### TB-Profiler sometimes fails
 
 Hopefully, we'll be able to successfully run `TB-Profiler` on all our samples but, unfortunately, sometimes it'll fail.  If this does happen, identify which sample didn't complete and re-run `TB-Profiler`. This is the reason we save the error messages to a log file.
-
 :::
 
 :::{.callout-exercise}
@@ -179,7 +177,7 @@ We can see that there were three Lineage 2 isolates in our dataset and none of t
 
 ## Data cleaning
 
-The final thing we need to do before we visualize our TB phylogeny is to combine the metadata contained in `sample_info.csv` with the TB-profiler so we have some interesting information to annotate our tree with.  We've provided a simple `python` script to do this for you but you could, of course, do this yourself in _Excel_ or _Rstudio_.  You can run the script using the following command:
+The final thing we need to do before we visualize our TB phylogeny is to combine the metadata contained in `sample_info.csv` with the TB-profiler so we have some interesting information to annotate our tree with.  We've provided a simple `python` script to do this for you but you could, of course, do this yourself in _Excel_ or using _R_.  You can run the script using the following command:
 
 ```bash
 python scripts/merge_tb_data.py -s sample_info.csv -t preprocessed/tb-profiler/Nam_TB.txt
@@ -196,5 +194,10 @@ This will create a TSV file called `TB_metadata.tsv` in your analysis directory.
 
 ::: {.callout-tip}
 ## Key Points
+
+- TB-profiler can be used to detect the presence of antimicrobial resistance genes in a genome, as well as assign it to its most likely lineage.
+- TB-profiler can be run from the command line to process a single sample. Multiple samples can be conveniently processed using a _for loop_. 
+- TB-profiler outputs a CSV file with information about lineages and drug resistance genes.
+- Multiple output files from TB-profiler can be combined with metadata of our samples to generate a TSV file to annotate phylogenetic trees. 
 
 :::

@@ -5,7 +5,8 @@ title: "Command-line AMR prediction"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand how to predict AMR on command line.
+- Apply a standardised workflow to predict AMR.
+- Interpret the summarised results from multiple AMR-detection tools.
 
 :::
 
@@ -16,9 +17,9 @@ Here, we introduce an automated workflow called [`nf-core/funcscan`](https://nf-
 This pipeline uses five different AMR screening tools:
 
 - [`ABRicate`](https://github.com/tseemann/abricate) 
-- [`AMRFinderPlus` (NCBI Antimicrobial Resistance Gene Finder)](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/) 
-- [`fARGene` (Fragmented Antibiotic Resistance Gene idENntifiEr)](https://github.com/fannyhb/fargene) 
-- [`RGI` (Resistance Gene Identifier)](https://card.mcmaster.ca/analyze/rgi)
+- [`AMRFinderPlus`](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/)  (NCBI Antimicrobial Resistance Gene Finder)
+- [`fARGene`](https://github.com/fannyhb/fargene) (Fragmented Antibiotic Resistance Gene idENntifiEr)
+- [`RGI`](https://card.mcmaster.ca/analyze/rgi) (Resistance Gene Identifier)
 - [`DeepARG`](https://readthedocs.org/projects/deeparg/)
 
 See [Course Software](appendices/02-course_software.md) for a more detailed description of each tool.
@@ -85,12 +86,15 @@ The options we used are:
 - `--arg_skip_deeparg` - this skips a step in the analysis which uses the software _DeepARG_. We did this simply because this software takes a very long time to run. But in a real analysis you may want to leave this option on. 
 
 :::{.callout-exercise}
-
 #### Running nf-core/funcscan
 
-- Your next task is to run the **funcscan** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `05-run_funcscan.sh`. This script contains the code to run `funcscan`. Edit this script, adjusting it to fit your input files and the name of your output directory.
+Your next task is to run the **funcscan** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `05-run_funcscan.sh`. This script contains the code to run `funcscan`. 
 
-- Now, run the script using `bash scripts/05-run_funcscan.sh`.
+- Edit this script, adjusting it to fit your input files and the name of your output directory.
+
+- Activate the `nextflow` software environment.
+
+- Run the script using `bash scripts/05-run_funcscan.sh`.
   
 While the pipeline runs, you will get a progress printed on the screen, and then a message once it finishes. 
 
@@ -162,18 +166,13 @@ We can look at the output directory (`results/funscan`) to see the various direc
 The main output of interest from this pipeline is the `hamronization_combined_report.tsv` file, which contains a summary of the results from all the AMR tools used (make sure to use the version in `preprocessed/funcscan/reports`). 
 You can open this file using any standard spreadsheet software such as _Excel_ (@fig-hamronization). 
 
-This file is quite large, containing many columns and rows (we detail these columns in the information box below). 
+This file is quite large, containing many columns and rows. 
+You can find information about the column headers on the [nf-core/funscan "Output" documentation page](https://nf-co.re/funcscan/1.1.3/docs/output#hamronization).
 The easiest way to query this table is to filter the table based on the column "antimicrobial_agent" to remove rows where no AMR gene was detected (@fig-hamronization). 
 This way you are left with only the results which were positive for the AMR analysis. 
 
 ![To analyse the table output by _hAMRonization_ in _Excel_ you can go to "Data" --> "Auto-filter". Then, select the dropdown button on the "antimicrobial_agent" column and untick the box "(Blanks)". This will only show the genes associated with resistance to antimicrobial drugs.](images/amr_hamronization.png){#fig-hamronization}
 
-:::{.callout-note collapse=true}
-#### _hAMRonization_ report columns (click to expand)
-
-For reasons of space, we haven't provided a description of the column headers included in the _hAMRonization_ report but this can be found on the [nf-core/funscan Output page](https://nf-co.re/funcscan/1.1.3/docs/output).
-
-:::
 
 ### Results from other tools
 
@@ -231,6 +230,8 @@ The result of the above command is:
 ## Summary
 
 ::: {.callout-tip}
-## Key Points
-- The `nf-core/funcscan` workflow performs AMR analysis using several software tools and producing a summary of their results as a TSV file.
+#### Key Points
+
+- The `nf-core/funcscan` workflow performs AMR analysis using several software tools. It requires as input a samplesheet with sample names and their respective FASTA files. 
+- The results from the several AMR tools are summarised in a single report, which can be conveniently used to filter for putative resistance to antimicrobial agents. 
 :::

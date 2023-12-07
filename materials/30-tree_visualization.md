@@ -5,7 +5,7 @@ title: "Visualising phylogenies 3"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand how to visualize Pneumo tree
+- Visualise and annotate a _S. pneumoniae_ phylogenetic tree.
 
 :::
 
@@ -26,9 +26,10 @@ title: "Visualising phylogenies 3"
 
 - We copied `sero1.treefile` to the analysis directory:
 
-```bash
-cp preprocessed/iqtree/sero1.treefile .
-```
+    ```bash
+    cp preprocessed/iqtree/sero1.treefile .
+    ```
+
 - We uploaded the two files to `Microreact` by clicking **Upload** then the **+** button on the bottom-right corner then **Browse Files** to upload the files.
 - We clicked on the **Eye** icon and changed the **Colour Column** to `MLST ST (PubMLST)`.
 - We clicked on the left-hand of the two buttons in the phylogeny window then the drop down arrow next to **Nodes & Labels**, clicked the slider next to **Leaf Labels** and moved the slider next to **Leaf Nodes** to reduce the size.
@@ -41,11 +42,4 @@ cp preprocessed/iqtree/sero1.treefile .
 ![](images/microreact_pneumo.png)
 
 :::
-:::
-
-## Summary
-
-::: {.callout-tip}
-## Key Points
-
 :::

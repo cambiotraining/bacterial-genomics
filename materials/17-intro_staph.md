@@ -5,15 +5,20 @@ title: "Introduction to _Staphylococcus aureus_"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand what Staphylococcus aureus is.
+- State some of the main features of _Staphylococcus aureus_.
+- Recall the main cause of public health concern related to this species.
 
 :::
 
 ## _Staphylococcus aureus_
 
-_Staphylococcus aureus_ is an important human pathogen that colonises approximately 30% of the population. It is a major cause of multiple infections with varying degrees of severity including skin and soft tissue, bone and joint, endocarditis, device and prosthesis, line-related, pneumonia, and bacteraemia. Mortality from bacteraemia is reported at approximately 30% (Bai 2022) with approximately 14,000 cases from 2022 to 2023 (UKHSA 2023). Antimicrobial drug resistance (AMR) is an important factor in increasing mortality resulting from _S. aureus_ infections; in the global burden of disease study from 2019, _S. aureus_ was the second highest contributing pathogen to AMR related deaths (_Lancet_ 2022). Meticillin resistant _S. aureus_ (MRSA) is a primary concern of resistance amongst _S. aureus_ infections and accounted for the pathogen-drug combination, across all bacteria, with the highest attributable deaths, whilst resulting in a higher mortality when compared to methicillin sensitive _S. aureus_ (UKHSA 2023).
+_Staphylococcus aureus_ is an important human pathogen that colonises approximately 30% of the population. It is a major cause of multiple infections with varying degrees of severity including skin and soft tissue, bone and joint, endocarditis, device and prosthesis, line-related, pneumonia, and bacteraemia. Mortality from bacteraemia is reported at approximately 30% (Bai 2022) with approximately 14,000 cases from 2022 to 2023 (UKHSA 2023). Antimicrobial drug resistance (AMR) is an important factor in increasing mortality resulting from _S. aureus_ infections. In the global burden of disease study from 2019, _S. aureus_ was the second highest contributing pathogen to AMR-related deaths (_Lancet_ 2022). Meticillin resistant _S. aureus_ (MRSA) is a primary concern of resistance amongst _S. aureus_ infections and accounted for the pathogen-drug combination, across all bacteria, with the highest attributable deaths, whilst resulting in a higher mortality when compared to methicillin sensitive _S. aureus_ (MSSA) (UKHSA 2023).
 
-Genomic epidemiological studies over last two decades have provided significant insights into the transmission dynamics of _S. aureus_ and aided targeted control strategies. Whole-genome sequences from _S. aureus_ isolates derived from hospitals and the community have provided insights outbreaks related to critical care wards, care homes, intravenous drug user networks, and schools, for example (Harris, 2013, Coll 2017, Marks 2021, van Tonder 2023). It has helped detail the emergence of human-adapted clades, such as CC398, facilitated a one-health approach to understanding transmission, and identified key virulence traits (Young 2012, Uhlemann 2017, Larsen 2022). There is an increasing body of evidence that routine use of whole-genome sequencing can aid infection prevention control and public health decision making, and this is being increasingly investigated and implemented (Durand 2018). That said, there is a significant disparity in sequences generated between regions and an under-representation of sequences from MSSA, which can bias our understanding of the population dynamics and evolutionary selection pressures shaping _S. aureus_ populations.
+Genomic epidemiological studies over the last two decades have provided significant insights into the transmission dynamics of _S. aureus_ and aided targeted control strategies. Whole-genome sequences from _S. aureus_ isolates derived from hospitals and the community have provided insights outbreaks related to critical care wards, care homes, intravenous drug user networks and schools (Harris, 2013, Coll 2017, Marks 2021, van Tonder 2023). It has helped detail the emergence of human-adapted clades, such as CC398, facilitated a one-health approach to understanding transmission, and identified key virulence traits (Young 2012, Uhlemann 2017, Larsen 2022). 
+
+There is an increasing body of evidence that routine use of whole-genome sequencing can aid infection prevention control and public health decision making, and this is being increasingly investigated and implemented (Durand 2018). That said, there is a significant disparity in sequences generated between regions and an under-representation of sequences from MSSA, which can bias our understanding of the population dynamics and evolutionary selection pressures shaping _S. aureus_ populations.
+
+<!-- TODO: add more info about the genome and the diversity in this species. Similar to what was done for TB and to connect with the "know your bug" section, justifying why it is we need to use de novo approach. -->
 
 ## Course dataset
 
@@ -24,6 +29,9 @@ For this course we're going to analyse 30 isolates collected as part of a citize
 ::: {.callout-tip}
 ## Key Points
 
+- _Staphylococcus aureus_ is a bacterium species that is a part of the human microbiota. However, it can also cause a range of infections, from minor skin infections to more serious conditions like pneumonia, endocarditis, and sepsis.
+- Methicillin-Resistant _Staphylococcus aureus_ (MRSA) are of primary concern, as they are resistant to common antibiotics such as methicillin. 
+- Genome sequencing and assembly of this species can aid in identifying clonal clusters and presence of antimicrobial resistance genes.  
 :::
 
 #### References

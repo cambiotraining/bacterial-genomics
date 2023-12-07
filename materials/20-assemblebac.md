@@ -5,7 +5,8 @@ title: "The assembleBAC pipeline"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand what the assembleBAC pipeline does.
+- Describe what the `assembleBAC` pipeline does.
+- Run a _de novo_ assembly workflow from raw sequencing data.
 
 :::
 
@@ -32,11 +33,11 @@ Along with the outputs produced by the above tools, the pipeline produces the fo
 
 ## Prepare a samplesheet
 
-As with `bacQC` and `bactmap`, we need to prepare a CSV file containing the information about our sequencing files which will be used as an input to the `assembleBAC` pipeline.  Refer back to [The bacQC pipeline](07-bacqc.md#prepare-a-samplesheet) page for how to do this if you've forgotten.
+As with `bacQC` and `bactmap`, we need to prepare a CSV file containing the information about our sequencing files, which will be used as an input to the `assembleBAC` pipeline.  Refer back to the [bacQC pipeline](07-bacqc.md#prepare-a-samplesheet) page for how to do this.
 
 ## Running assembleBAC
 
-Now that we have the samplesheet, we can run the `assembleBAC` pipeline.  There are [many options](https://github.com/avantonder/assembleBAC/blob/main/docs/parameters.md) that can be used to customise the pipeline but a typical command is shown below:
+Now that we have the samplesheet, we can run the `assembleBAC` pipeline.  There are [many options](https://github.com/avantonder/assembleBAC/blob/main/docs/parameters.md) that can be used to customise the pipeline, but a typical command is shown below:
 
 ```bash
 nextflow run avantonder/assembleBAC \
@@ -50,7 +51,7 @@ nextflow run avantonder/assembleBAC \
   --checkm2db databases/checkme2/uniref100.KO.1.dmnd
 ```
 
-- `-r` - tells `Nextflow` to pull the `main` version of `bacQC` from Github
+- `-r` - tells Nextflow to pull the main version of `assembleBAC` from Github
 - `-profile singularity` - indicates we want to use the _Singularity_ program to manage all the software required by the pipeline (another option is to use `docker`). See [Data & Setup](../setup.md) for details about their installation.
 - `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
 - `--input` - the samplesheet with the input files, as explained above.
@@ -59,22 +60,29 @@ nextflow run avantonder/assembleBAC \
 - `--genome_size` - estimated size of the genome - `Shovill` uses this value to calculate the genome coverage.
 - `--checkm2db` - the path to the diamond file required by `CheckM2`. 
 
-:::{.callout-warning}
-
-**Remember to QC your data!**
+:::{.callout-important}
+#### Remember to QC your sequencing reads
 
 Remember, the first step of any analysis of a new sequence dataset is to perform Quality Control. For the purposes of time, we've run `bacQC` for you and the results are in `preprocessed/bacqc`.  Before you run `assembleBAC`, have a look at the read stats and species composition TSV files and make sure that the data looks good before we go ahead and assemble it. 
-
 :::
 
 :::{.callout-exercise}
 #### Running assembleBAC
 
-- Your next task is to run the **assembleBAC** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `01-run_assemblebac.sh`. This script contains the code to run assembleBAC. Edit this script, adjusting it to fit your input files and the estimated genome size of _Staphylococcus aureus_.
+Your next task is to run the **assembleBAC** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `01-run_assemblebac.sh`. This script contains the code to run this pipeline. 
 
-- Now, run the script using `bash scripts/01-run_assemblebac.sh`.
+- Edit this script, adjusting it to fit your input files and the estimated genome size of _Staphylococcus aureus_.
+
+- Activate the Nextflow software environment (`mamba activate nextflow`).
+
+- Run the script using `bash scripts/01-run_assemblebac.sh`.
   
 If the script is running successfully it should start printing the progress of each job in the assembleBAC pipeline. This will take a little while to finish. <i class="fa-solid fa-mug-hot"></i>
+
+:::{.callout-hint}
+- Do a web search to find what the aproximate genome size of _S. aureus_ is.
+- Look at the pipeline help (`nextflow run avantonder/assembleBAC -r main --help`) to find out what the format should be to specify the genome size in megabase pairs.
+:::
 
 :::{.callout-answer}
 
@@ -94,7 +102,7 @@ nextflow run avantonder/assembleBAC \
   --checkm2db databases/checkme2/uniref100.KO.1.dmnd
 ```
 
-We ran the script as instructed using:
+After activating the software environment, we ran the script as instructed using:
 
 ```bash
 bash scripts/01-run_assemblebac.sh
@@ -129,4 +137,14 @@ Succeeded   : 126
 ::: {.callout-tip}
 ## Key Points
 
+- The `assembleBAC` workflow performs _de novo_ assembly of bacterial genomes. 
+- In addition, it also:
+  - Annotates the assembly.
+  - Performs sequence typing (using PubMLST schemes).
+  - Determines assembly completeness.
+  - Collects several quality statistics into a report.
+- Running the `assembleBAC` workflow requires:
+  - A samplesheet detailing the sample names and their respective FASTQ files. 
+  - Directories to databases used for gene annotation (for Bakta) and genome completeness (for CheckM2).
+  - An approximate genome size.
 :::
