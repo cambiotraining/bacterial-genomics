@@ -5,8 +5,8 @@ title: "Mapping to a reference"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand what mapping is and why the need to map to a reference genome.
-- To recognise what the main steps are in processing raw sequencing short read data to generate consensus genome sequences.
+- Describe how reference-based mapping can be used to reconstruct genomes of new bacterial isolates.
+- Summarise the main steps used in processing short read data to generate new consensus genome sequences.
 
 :::
 
@@ -17,7 +17,7 @@ There are two main approaches that are used for reconstructing bacterial genomes
 - *de novo* assembly
 - reference-based assembly
 
-Each approach has its benefits and limitations and will be appropriate to the species and analysis you'd like to perform.  We'll cover *de novo* assembly later in the week and, for now, will focus on reference-based assembly or mapping.  When it comes to mapping, regardless of whether we're dealing with viruses, bacteria or even much larger genomes, the concepts are essentially the same. Instead of *de novo* (i.e. without any prior knowledge of the genome structure) assembling sequence reads to reconstruct a genome, it is often easier and faster to map/align the sequence data to a previously constructed reference genome.  From there we can easily identify SNPs or INDELs that clearly distinguish closely related populations or individuals and use this information to identify genetic differences that may, for instance, cause drug resistance or increase virulence in pathogens.  It is important to remember that for the mapping of sequence data to work, the reference and resequenced target must have the same genome architecture.  There are a number of different tools for mapping sequence data to a reference genome (`bwa`, `bowtie2`) and calling variants (`bcftools`, `freebayes`).   
+Each approach has its benefits and limitations and will be appropriate to the species and analysis you'd like to perform.  We'll cover *de novo* assembly later in the week and, for now, will focus on reference-based assembly or mapping.  When it comes to mapping, regardless of whether we're dealing with viruses, bacteria or even much larger genomes, the concepts are essentially the same. Instead of *de novo* (i.e. without any prior knowledge of the genome structure) assembling sequence reads to reconstruct a genome, it is often easier and faster to map/align the sequence data to a previously constructed reference genome.  From there we can easily identify SNPs or INDELs that clearly distinguish closely related populations or individuals and use this information to identify genetic differences that may, for instance, cause drug resistance or increase virulence in pathogens.  It is important to remember that for the mapping of sequence data to work, the reference and resequenced target must have the same genome architecture.  There are a number of different tools for mapping sequence data to a reference genome (e.g. `bwa`, `bowtie2`) and calling variants (e.g. `bcftools`, `freebayes`, `gatk`).
 
 ![Mapping: Consensus Assembly](images/mapping_consensus.png)
 
@@ -59,6 +59,9 @@ Once the variants have been identified, we can apply this information to the ref
 
 ::: {.callout-tip}
 ## Key Points
+
+- Bacterial genomes of low-diversity species can be reconstructed through reference-based alignment. 
+- This approach consists of aligning the sequencing reads against a suitable reference genome, identifying potential variants/mutations and creating a consensus sequence by replacing the newly identified variants in the reference genome.
 
 :::
 

@@ -5,8 +5,8 @@ title: "Workflow management"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand what a workflow management system is.
-- Understand the benefits of using a workflow management system.
+- Define what a workflow management system is.
+- List the benefits of using a workflow management system.
 - Explain the benefits of using Nextflow as part of your bioinformatics workflow.
 
 :::
@@ -15,7 +15,7 @@ title: "Workflow management"
 
 Analysing data involves a sequence of tasks, including gathering, cleaning, and processing data. These sequence of tasks are called a workflow or a pipeline. These workflows typically require executing multiple software packages, sometimes running on different computing environments, such as a desktop or a compute cluster. Traditionally these workflows have been joined together in scripts using general purpose programming languages such as Bash or Python.
 
-![Example bioinformatics variant calling workflow/pipeline diagram from nf-core (https://nf-co.re/bactmap).](images/Bactmap_pipeline.png)
+![Example bioinformatics variant calling workflow/pipeline diagram from nf-core ([bactmap](https://nf-co.re/bactmap)).](images/Bactmap_pipeline.png)
 
 However, as workflows become larger and more complex, the management of the programming logic and software becomes difficult.
 
@@ -31,8 +31,7 @@ Key features include;
 - **Software management**: Use of technology like containers, such as [Docker](https://www.docker.com) or [Singularity](https://sylabs.io/singularity), that packages up code and all its dependencies so the application runs reliably from one computing environment to another.
 - **Portability & Interoperability**: Workflows written on one system can be run on another computing infrastructure e.g., local computer, compute cluster, or cloud infrastructure.
 - **Reproducibility**: The use of software management systems and a pipeline specification means that the workflow will produce the same results when re-run, including on different computing platforms.
-- **Reentrancy**: Continuous checkpoints allow workflows to resume
-from the last successfully executed steps.
+- **Reentrancy**: Continuous checkpoints allow workflows to resume from the last successfully executed steps.
 
 ## Nextflow basic concepts
 
@@ -42,7 +41,7 @@ Nextflow is built around the idea that Linux is the lingua franca of data scienc
 
 Nextflow extends this approach, adding the ability to define complex program interactions and an accessible (high-level) parallel computational environment based on the [dataflow programming model](https://devopedia.org/dataflow-programming), whereby `processes` are connected via their `outputs` and `inputs` to other `processes`, and run as soon as they receive an input.  The diagram below illustrates the differences between a dataflow model and a simple linear program .
 
-![A simple program (a) and its dataflow equivalent (b) https://doi.org/10.1145/1013208.1013209.](images/dataflow.png)
+![A simple program (a) and its dataflow equivalent (b). Adapted from [Johnston, Hanna and Millar 2004](https://doi.org/10.1145/1013208.1013209).](images/dataflow.png)
 
 In a simple program **(a)**, these statements would be executed sequentially. Thus, the program would execute in three units of time. In the dataflow programming model **(b)**, this program takes only two units of time. This is because the read quantitation and QC steps have no dependencies on each other and therefore can execute simultaneously in parallel.
 
@@ -102,13 +101,21 @@ Nextflow provides out-of-the-box support for major batch schedulers and cloud pl
 
 ## Snakemake
 
-In this tutorial we've focused on Nextflow but many people in the bioinformatics community use Snakemake.  Similar to Nextflow, the Snakemake workflow management system is a tool for creating reproducible and scalable data analyses. The main difference is that workflows are described via a human readable, Python based language. They can be seamlessly scaled to server, cluster, grid and cloud environments, without the need to modify the workflow definition. Finally, Snakemake workflows can entail a description of required software, which will be automatically deployed to any execution environment.
+In this section we've focused on Nextflow but many people in the bioinformatics community use [Snakemake](https://snakemake.readthedocs.io/en/stable/).  Similar to Nextflow, the Snakemake workflow management system is a tool for creating reproducible and scalable data analyses and it supports all the same features mentioned above. Perhaps the most noticeable difference for users is that Snakemake is based on the Python programming language. This makes it more approachable for those already familiar with this language. 
+
 
 ## Summary
 
 ::: {.callout-tip}
 ## Key Points
 
+- Workflow management software is designed to simplify the process of orchestrating complex computational pipelines that involve various tasks, inputs and outputs, and parallel processing. 
+- Using workfow managent software to manage complex pipelines has several advantages: reproducibility, parallel task execution, automatic software management, scalability (from a local computer to cloud and HPC cluster servers) and "checkpoint and resume" ability. 
+- Nextflow and Snakemake are two of the most popular workflow managers used in bioinformatics, with an active community of developers and several useful features: 
+  - Flexible syntax that can be adapted to any task.
+  - The ability to reuse and share modules written by the community.
+  - Integration with code sharing platforms such as GitHub and GitLab.
+  - Use of containerisation solutions (Docker and Singularity) and software package managers such as Conda.
 :::
 
 ## Credit

@@ -5,9 +5,10 @@ title: "The bacQC pipeline"
 ::: {.callout-tip}
 #### Learning Objectives
 
-- Understand what the bacQC pipeline can do.
-- Learn to identify poor quality sequence data
-- Learn to identify contamination by non-target species in sequence data
+- Run a QC workflow on raw sequencing data.
+- Describe what the bacQC pipeline does.
+- Identify poor quality sequence data.
+- Identify contamination by non-target species in sequence data.
 
 :::
 
@@ -36,11 +37,12 @@ Along with the outputs produced by the above tools, the pipeline produces the fo
 
 ## Preparing Files
 
-On our computers, for each of the three species we will be working with on the course, we have a directory in `~/Course_materials` for each species where we will do all our analysis. We already included the following in each species directory: 
+On our computers, for each of the three species we will be working with on the course, we have a directory in `~/Course_Materials` for each species where we will do all our analysis. We already included the following in each species directory: 
  
 - `data/` - contains the sequencing files we will be working with.
-- `preprocessed/` - contains the results for all the analysis we'll be running during the course. We are aiming to fit a lot in this week so we have provided the results for all the analyses we'll run this week. 
+- `preprocessed/` - contains the results for all the analysis we'll be running during the course (see box below). 
 - `resources/` - where we include other files we will be using such as reference genomes.
+- `databases/` - where we include public databases needed by some tools.
 - `scripts/` - where we include some scripts that we will use during the course. You will have to edit some of these scripts as part of the exercises. 
 - `sample_info.csv` - a table with some metadata for our samples.
 
@@ -74,15 +76,14 @@ A critical step in any analysis is to make sure that our samples have all the re
 Of course, this is the **minimum** metadata we need for a useful analysis. The more information you collect about each sample, the more questions you can ask from your data -- so always remember to record as much information as possible for each sample. 
 
 :::{.callout-warning}
-
-**Dates in Spreadsheet Programs**
+#### Dates in Spreadsheet Programs
 
 Note that programs such as _Excel_ often convert date columns to their own format, and this can cause problems when analysing data later on. 
-For example, GISAID wants dates in the format YYYY-MM-DD, but by default _Excel_ displays dates as DD/MM/YYYY.  
+The ISO standard for dates is YYYY-MM-DD and this is how we recommend you store your dates. However, by default _Excel_ displays dates as DD/MM/YYYY.  
 You can change how _Excel_ displays dates by highlighting the date column, right-clicking and selecting <kbd>Format cells</kbd>, then select "Date" and pick the format that matches YYYY-MM-DD. 
 However, every time you open the CSV file, _Excel_ annoyingly converts it back to its default format!
 
-To make sure no date information is lost due to _Excel_'s behaviour, it's a good idea to store information about year, month and day in separate columns (stored just as regular numbers).
+To make sure no date information is lost due to _Excel_'s behaviour, it's a good idea to **store information about year, month and day in separate columns** (stored just as regular numbers).
 
 :::
 
@@ -101,7 +102,9 @@ python scripts/fastq_dir_to_samplesheet.py data/reads \
     -r2 _2.fastq.gz
 ```
 
-Now, you can open this file in _Excel_ and edit the path to the data (it's good practice to use the actual path rather than the relative path). 
+By default the script will add names to each sample based on the name of the FASTQ files. 
+However, you may want to use more meaningful names to each sample. 
+If that were the case, you could open the file in _Excel_ and edit it further. 
 
 :::
 
@@ -133,16 +136,18 @@ The options we used are:
 - `-profile singularity` - indicates we want to use the _Singularity_ program to manage all the software required by the pipeline (another option is to use `docker`). See [Data & Setup](../setup.md) for details about their installation.
 - `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
 - `--input` - the samplesheet with the input files, as explained above.
-- `--kraken2db` - the path to the directory containing the `Kraken 2` database files.
-- `--brackendb` - the path to the directory containing the `Kraken 2` database files. 
-- `--genome_size` - the estimated genome size of your samples - `fastq-scan` uses this to calculate the depth of coverage across the genome.  
+- `--kraken2db` - the path to the directory containing the Kraken2 database files.
+- `--brackendb` - the path to the directory containing the Kraken2 database files. 
+- `--genome_size` - the estimated genome size of your samples - `fastq-scan` uses this to calculate the depth of coverage across the genome.
 
 :::{.callout-exercise}
 #### Running bacQC
 
-- Your first task is to run the `bacQC` pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `01-run_bacqc.sh`. This script contains the code to run `bacQC`. Edit this script, adjusting it to fit your input files and the estimated genome size of _M. tuberculosis_.
+Your first task is to run the `bacQC` pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `01-run_bacqc.sh`. This script contains the code to run `bacQC`. 
 
-- Now, run the script using `bash scripts/01-run_bacqc.sh`.
+- Edit this script, adjusting it to fit your input files and the estimated genome size of _M. tuberculosis_.
+
+- Run the script using `bash scripts/01-run_bacqc.sh`.
   
 - If the script is running successfully it should start printing the progress of each job in the bacQC pipeline. This will take a little while to finish. <i class="fa-solid fa-mug-hot"></i>
 
@@ -197,19 +202,17 @@ executor >  local (1), slurm (100)
 :::
 :::
 
-:::{.callout-warning}
-
-**Maximum Memory and CPUs**
+:::{.callout-note}
+#### Maximum Memory and CPUs
 
 In our `Nextflow` command above we have set `--max_memory '16.GB' --max_cpus 8` to limit the resources used in the analysis. 
 This is suitable for the computers we are using in this workshop. 
 However, make sure to set these options to the maximum resources available on the computer where you process your data.
-
 :::
 
 ## `bacQC` results
 
-Before lunch, we left `bacQC` running.  We can look at the output directory (`results/bacqc`) to see the various directories containing output files created by `bacQC`:
+In the previous exercise, we left `bacQC` running. While it runs, we can look at the preprocessed output (`preprocessed/bacqc`) to see the various directories containing output files created by `bacQC`:
 
 | Directory | Description |
 |:-- | :---------- |
@@ -230,13 +233,13 @@ Now that the `bacQC` pipeline has run, we can assess the quality of our sequence
 
 ### The MultiQC summary report
 
-The first thing we'll check is the HTML report file created by `MultiQC`.  Go to `File Explorer`, navigate to `preprocessed/bactmap/multiqc/` and double click on `multiqc_report.html`.  This will open the file in your web browser of choice:
+The first thing we'll check is the HTML report file created by `MultiQC`.  Go to the File Explorer aplication <i class="fa-solid fa-folder"></i>, navigate to `preprocessed/bacqc/multiqc/` and double click on `multiqc_report.html`.  This will open the file in your web browser:
 
-![config](images/bacqc_multiqc.png)
+![](images/bacqc_multiqc.png)
 
 #### General statistics
 
-Let's go through each section starting with the `General Statistics`:
+Let's go through each section starting with the "**General Statistics**":
 
 ![bacQC MultiQC General Statistics](images/bacqc_general_stats.png)
 
@@ -244,71 +247,73 @@ This is a compilation of statistics collected from the outputs of `fastp`, `fast
 
 #### fastQC
 
-These plots will resemble some of the plots we showed you in [Introduction to QC](06-intro_qc.md) with the main difference being that they contain the results for all samples in summary plots generated by `MultiQC`.  The first plot shows the number of sequences in each sample (there is a bar for each FASTQ file - there should be the same number of forward and reverse reads if it's paired-end sequencing) and estimates the number of duplicate reads.
+These plots will resemble some of the plots we showed you in [Introduction to QC](06-intro_qc.md) with the main difference being that they contain the results for all samples in summary plots generated by `MultiQC`.  The first plot shows the number of sequences in each sample as a barplot (there should be the same number of forward and reverse reads if it's paired-end sequencing). An estimate of duplicated reads - i.e. reads that are exactly the same - is also shown.
 
-![bacQC MultiQC fastQC sequence counts](images/bacqc_fastqc_seq_counts.png)
+![Barplot of sequence counts.](images/bacqc_fastqc_seq_counts.png)
 
 The next plot shows the mean Phred score across each base in all the reads for all samples. You'll notice that the sequence quality tends to be lower at the beginning and end of reads - this is why we tend to trim the ends of reads to improve the overall quality.
 
-![bacQC MultiQC fastQC sequence quality histograms](images/bacqc_fastqc_seq_qual_hists.png)
+![Sequence quality histograms.](images/bacqc_fastqc_seq_qual_hists.png)
 
 The third plot shows the frequency distribution of per sequence Phred scores for each sample. Samples with a larger number of lower-quality reads will be shifted to the left. 
 
-![bacQC MultiQC fastQC per sequence quality scores](images/bacqc_fastqc_seq_qual_scores.png)
+![Per sequence quality scores.](images/bacqc_fastqc_seq_qual_scores.png)
 
-Next we have a plot showing the proportion of each base position for which each of the four normal DNA bases has been called. If you click on a line in the plot, it'll bring the result for one of your samples which will make a bit more sense than the MultiQC summary plot!
+Next we have a plot showing the proportion of each base position for which each of the four normal DNA bases has been called. If you click on a line in the plot, it'll bring the result for one of your samples, which will make a bit more sense than the MultiQC summary plot.
 
-![bacQC MultiQC fastQC per base sequence content](images/bacqc_fastqc_base_seq_content.png)
+![Per base sequence content.](images/bacqc_fastqc_base_seq_content.png)
 
 The fifth plot shows the percentage of bases called G or C in each sample.  The peak should match the approximate %GC content of your organism. In this case the peak is around 65-66% which is what we expect from _M. tuberculosis_.  Contaminated samples will show up as the %GC content is likely to be different from the target species. 
 
-![bacQC MultiQC fastQC per sequence GC content](images/bacqc_fastqc_seq_gc_content.png)
+![Per sequence GC content.](images/bacqc_fastqc_seq_gc_content.png)
 
 The sixth plot shows the proportion of N's across the sequences. There may be a higher proportion of Ns at the beginning and end of reads but we don't want to see N's in the middle of reads as this implies something has gone wrong during sequencing.
 
-![bacQC MultiQC fastQC per base N content](images/bacqc_fastqc_base_n_content.png)
+![Per base N content.](images/bacqc_fastqc_base_n_content.png)
 
 Now, we have the distribution of sequence lengths. Our dataset was sequenced in the same facility so the most common sequence length for all samples is 150 bp.  If you're analysing sequences from different studies you may see different sequence lengths.
 
-![bacQC MultiQC fastQC sequence length distribution](images/bacqc_fastqc_seq_length_dist.png)
+![Sequence length distribution.](images/bacqc_fastqc_seq_length_dist.png)
 
 The eighth plot shows the number of duplicated reads in each sample. Ideally, you want to see that the majority of your reads are only found once.
 
-![bacQC MultiQC fastQC sequence duplication levels](images/bacqc_fastqc_seq_duplication.png)
+![Sequence duplication levels.](images/bacqc_fastqc_seq_duplication.png)
 
 This plot shows the percentage of overrepresented sequences in each sample. Samples with a higher percentage of overrepresented sequences may suggest an issue with library construction like over-amplification of particular DNA fragments.
 
-![bacQC MultiQC fastQC overrepresented sequences](images/bacqc_fastqc_overrepresented.png)
+![Barplot of overrepresented sequences.](images/bacqc_fastqc_overrepresented.png)
 
 Now we have a plot showing the cumulative percentage count of the proportion of your sequences which has seen adapter sequences at each position. Typically we should only see adapter sequences at the beginning and end of reads. If there is a higher proportion of adapter sequences in the middle of reads, then something seriously wrong has occurred during sequencing!
 
-![bacQC MultiQC fastQC adapter content](images/bacqc_fastqc_adapter_content.png)
+![Adapter content.](images/bacqc_fastqc_adapter_content.png)
 
 The final plot summarises the previous plots and highlights which samples may be worth investigating further or discarding altogether.
 
-![bacQC MultiQC fastQC status checks](images/bacqc_fastqc_status_checks.png)
+![Status checks.](images/bacqc_fastqc_status_checks.png)
 
 #### fastp
 
 There are a number of plots showing the results of the `fastp` step in the pipeline.  The first shows the results of the read filtering step where reads are trimmed, adapters removed and low quality reads are thrown out.  The reads that passed this step are highlighted in blue.
 
-![bacQC MultiQC fastp filtered reads](images/bacqc_fastp_filtered.png)
+![Barplot of filtered read counts.](images/bacqc_fastp_filtered.png)
 
 The second plot shows the distribution of insert sizes for each set of sequence files.
 
-![bacQC MultiQC fastp insert sizes](images/bacqc_fastp_insert_sizes.png)
+<!-- TODO: this plot looks strange, we should explain what is expected and why it looks the way it does -->
+
+![Insert sizes.](images/bacqc_fastp_insert_sizes.png)
 
 The next plot shows the average sequence quality across the reads in each sample. You can see we have drop offs in quality at the beginning and end of reads; this is pretty typical and is an artefact of the sequencing process.
 
-![bacQC MultiQC fastp sequence quality](images/bacqc_fastp_sequence_quality.png)
+![Sequence quality.](images/bacqc_fastp_sequence_quality.png)
 
 The fourth plot shows the average GC content across the reads in each sample.  As you might expect, the average GC content is conserved across all the samples as they are all from the same organism (_M. tuberculosis_).
 
-![bacQC MultiQC fastp GC](images/bacqc_fastp_GC.png)
+![GC content across the reads.](images/bacqc_fastp_GC.png)
 
 The final fastp plot shows the average N content across the reads in each sample.  Similar to what we see in the sequence quality plot, the number of Ns tends to increase towards the end of reads.
 
-![bacQC MultiQC fastp N's](images/bacqc_fastp_N.png)
+![Average missing bases (N's) across the reads.](images/bacqc_fastp_N.png)
 
 #### Kraken 2
 
@@ -387,7 +392,7 @@ This quite a simple output and shows that there was very little contamination or
 :::{.callout-exercise}
 #### Check the bacQC results
 
-To assess the quality of our sequence data, we can use the outputs generated by **bacQC**.  
+To assess the quality of our sequence data, we can use the outputs generated by **bacQC**, found in `preprocessed/bacqc`. 
 
 Open `read_stats_summary.tsv` and try to answer the following questions:
 
@@ -410,8 +415,7 @@ Make a note of any samples you think should be removed from any downstream analy
 :::
 
 :::{.callout-warning}
-
-**The Nextflow work directory**
+#### The Nextflow work directory
 
 Each step of the pipeline produces one or more files that are not saved to the results directory but are kept in the work directory.  This means that if, for whatever reason, the pipeline doesn't finish successfully you can resume it.  However, once the pipeline has completed successfully, you no longer need this directory (it can take up a lot of space) so you can delete it:
 
@@ -426,6 +430,10 @@ rm -rf work
 ::: {.callout-tip}
 ## Key Points
 
-- Quality Control of sequencing reads can be automated using a pipeline like bacQC
-
+- Quality Control of sequencing reads can be automated using a Nextflow pipeline like bacQC
+- This pipeline uses:
+  - _FastQC_ to assess the quality of sequencing reads.
+  - _fastp_ for quality trimming and adapter removal.
+  - _Kraken2_ to determine species composition.
+- The results from the pipeline are aggregated in an interactive _MultiQC_ report, which can be used to identify problematic samples. 
 :::

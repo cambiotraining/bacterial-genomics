@@ -5,7 +5,9 @@ title: "Know your bug"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand that there are different ways to approach your analyses depending on which species you're analysing
+- Recognise that there are different ways to approach your analyses depending on which species you're analysing.
+- List the three main questions that should be asked about the organism you are working with, which will determine downstream analyses steps.
+- Describe, at a high-level, the main analyses steps involved in each case.
 
 :::
 
@@ -24,4 +26,12 @@ This week, we're going to work with three different bacterial species that each 
 ::: {.callout-tip}
 ## Key Points
 
+- Three main things should be considered when choosing an analysis workflow for bacterial sequencing data:
+  - How diverse is the species? Monoclonal species usually have lower diversity in the population.
+  - Do your isolates likely come from multiple lineages?
+  - Is bacterial recombination common in your species (transformation, transduction, conjugation)?
+- Depending on the answer to these questions, your analyses workflow may involve: 
+  - Mapping to a reference genome or using a pan-genome approach.
+  - Including a recombination removal step.
+- The end goal of most bacterial genomics projects is the generation of a phylogenetic tree representing the relationships and diversity of your isolates.
 :::

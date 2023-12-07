@@ -5,7 +5,8 @@ title: "Building phylogenetic trees"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Understand the basics of how phylogeny trees are constructed using maximum likelihood methods.
+- Differentiate between common methods of tree inference and recognise why maximum likelihood is generally a preferable method of inference.
+- Describe what are the key steps in creating a phylogenetic tree. 
 - Use `IQ-TREE` for phylogenetic tree inference from an alignment.
 
 :::
@@ -18,19 +19,19 @@ A node can represent an extant species, and extinct one, or a sampled pathogen: 
 
 A tree also contains "internal" nodes: these usually represent most recent common ancestors (MRCAs) of groups of terminal nodes, and are typically not associated with observed data, although genome sequences and other features of these ancestors can be statistically inferred. An internal node is most often connected to 3 branches (two descendants and one ancestral), but a multifurcation node can have any number >2 of descendant branches.
 
-![Newick Format Example tree](images/NewickExample.png)
+![Example tree. The terminal nodes of this tree - A, B, C and D - represent sampled organisms. The internal nodes - E and F - are inferred from the data. In this case, there is also a multifurcation: nodes A, B and E all coalesce to the base of the tree. This can happen due to poor resolution in the data.](images/NewickExample.png)
 
 ### Tree topology
 
 A clade is the set of all terminal nodes descending from the same ancestor. Each branch and internal node in a tree is associated with a clade. If two trees have the same clades, we say that they have the same topology. If they have the same clades and the same branch lengths, the two tree are equivalent, that is, they represent the same evolutionary history.
 
-### Uses of phlogenetic trees
+### Uses of phylogenetic trees
 
-In may cases, the phylogenetic tree represents the end results of an analysis, for example if we are interested in the evolutionary history of a set of species.
+In many cases, the phylogenetic tree represents the end result of an analysis, for example if we are interested in the evolutionary history of a set of species.
 
 However, in many cases a phylogenetic tree represents an intermediate step, and there are many ways in which phylogenetic trees can be used to help understand evolution and the spread of infectious disease.
 
-In many cases, we may want to know more about genome evolution, for example about mutational pressures, but more frequently about selective pressures. Selection can affect genome evolution in many ways such as slowing down evolution of portion of the genome in which changes are deleterious ("purifying selection"). Instead, "positive selection" can favor changes at certain positions of the genome, effectively accelerating their evolution. Using genome data and phylogenetic trees, molecular evolution methods can infer different types of selection acting in different parts of the genome and different branches of a tree.
+In other cases, we may want to know more about genome evolution, for example about mutational pressures, but more frequently about selective pressures. Selection can affect genome evolution in many ways such as slowing down evolution of a portion of the genome in which changes are deleterious ("purifying selection"). Conversely, "positive selection" can favor changes at certain positions of the genome, effectively accelerating their evolution. Using genome data and phylogenetic trees, molecular evolution methods can infer different types of selection acting in different parts of the genome and different branches of a tree.
 
 ### Newick format
 
@@ -69,7 +70,7 @@ Typically, we have multiple sequences in an alignment so here we would generate 
 
 Maximum parsimony methods assume that the best phylogenetic tree requires the fewest number of mutations to explain the data (i.e. the simplest explanation is the most likely one).  By reconstructing the ancestral sequences (at each node), maximum parsimony methods evaluate the number of mutations required by a tree then modify the tree a little bit at a time to improve it.
 
-![Maximum parsimony](images/phylo_max_parsimony.png)
+![Example of a maximum parsimony tree. In this case the tree topology on the left only requires one mutation to explain the data, whereas the tree on the right would require two mutations. Therefore, the maximum parsimony tree would be the one on the left.](images/phylo_max_parsimony.png)
 
 Maximum parsimony is an intuitive and simple method and is reasonably fast to run.  However, because the most parsimonius tree is always the shortest tree, compared to the hypothetical "true" tree it will often underestimate the actual evolutionary change that may have occurred.
 
@@ -78,7 +79,7 @@ Maximum parsimony is an intuitive and simple method and is reasonably fast to ru
 
 The most commonly encountered phylogenetic method when working with bacterial genome datasets is maximum likelihood.  These methods use probabilistic models of genome evolution to evaluate trees and whilst similar to maximum parsimony, they allow statistical flexibility by permitting varying rates of evolution across different lineages and sites.  This additional complexity means that maximum likelihood models are much slower than the previous two models discussed.  Maximum likelihood methods make use of substitution models (models of DNA sequence evolution) that describe changes over evolutionary time. Two commonly used substitution models, Jukes-Cantor (JC69; assumes only one mutation rate) and Hasegawa, Kishino and Yano (HKY85; assumes different mutation rates - transitions have different rates) are depicted below:
 
-![Two DNA substitution models](images/phylo_max_likelihood.png)
+![Two commonly-used DNA substitution models](images/phylo_max_likelihood.png)
 
 It is also possible to incorporate additional assumptions about your data e.g. assuming that a proportion of the the alignment columns (the invariant or constant sites) cannot mutate or that there is rate variation between the different alignment columns (columns may evolve at different rates).  The choice of which is the best model to use is often a tricky one; generally starting with one of the simpler models e.g. General time reversible (GTR) or HKY is the best way to proceed.  Accounting for rate variation and invariant sites is an important aspect to consider so using models like HKY+G4+I (G4 = four types of rate variation allowed; I = invariant sites don't mutate) should also be considered.
 
@@ -89,7 +90,7 @@ There are a number of different tools for phylogenetic inference via maximum-lik
 All the methods for phylogenetic inference that we discussed so far aim at estimating a single realistic tree, but they don't automatically tell us how confident we should be in the tree, or in individual branches of the tree.
 
 One common way to address this limitation is using the phylogenetic bootstrap approach (Felsenstein, 1985).
-This consist first in sampling a large number (say, 1000) of bootstrap alignments.
+This consists of first sampling a large number (say, 1000) of bootstrap alignments.
 Each of these alignments has the same size as the original alignment, and is obtained by sampling with replacement the columns of the original alignment; in each bootstrap alignment some of the columns of the original alignment will usually be absent, and some other columns would be represented multiple times.
 We then infer a bootstrap tree from each bootstrap alignment.
 Because the bootstrap alignments differ from each other and from the original alignment, the bootstrap trees might different between each other and from the original tree.
@@ -108,7 +109,7 @@ AACGTGT
 
 `N` and `-` characters represent missing data and are interpreted by phylogenetic methods as such.
 
-The two most commonly used muliple sequence alignments in bacterial genomics are reference-based whole genome alignments and core genome alignments generated by comparing genes between different isolates and identifying the genes found in all or nearly all isolates (the core genome).  As a broad rule of thumb, if your species is not genetically diverse and doesn't recombine (TB, *Brucella*) then picking a suitable good-quality reference and generating a whole genome alignment is appropriate.  However, when you have a lot of diversity or multiple divergent lineages (*E. coli*) the a single reference may not represent all the diversity in your dataset.  Here it would be more typical to create *de novo* assemblies, annotate them and then use a tool like `roary` or `panaroo` to infer the pan-genome and create a core genome alignment.  The same phylogenetic methods are then applied to either type of multiple sequence alignment.
+The two most commonly used muliple sequence alignments in bacterial genomics are reference-based whole genome alignments and core genome alignments generated by comparing genes between different isolates and identifying the genes found in all or nearly all isolates (the core genome).  As a broad rule of thumb, if your species is not genetically diverse and doesn't recombine (TB, *Brucella*) then picking a suitable good-quality reference and generating a whole genome alignment is appropriate.  However, when you have a lot of diversity or multiple divergent lineages (*E. coli*) then a single reference may not represent all the diversity in your dataset.  Here it would be more typical to create *de novo* assemblies, annotate them and then use a tool like `roary` or `panaroo` to infer the pan-genome and create a core genome alignment.  The same phylogenetic methods are then applied to either type of multiple sequence alignment.
 
 ## Building a phylogenetic tree
 
@@ -141,7 +142,7 @@ seq2  T A G
 seq3  T A A
 ```
 
-This example is very small, but when you have a 4.3Mb genome, this can make a big difference. To extract variable sites from an alignment we can use the `SNP-sites` software: 
+This example is very small, but when you have megabase-sized genomes, this can make a big difference. To extract variable sites from an alignment we can use the `snp-sites` software: 
 
 ```bash
 # create output directory
@@ -151,7 +152,7 @@ mkdir results/snp-sites
 snp-sites results/bactmap/masked_alignment/aligned_pseudogenomes_masked.fas -o results/snp-sites/aligned_pseudogenomes_masked_snps.fas
 ```
 
-This command simply takes as input the alignment FASTA file and produces a new file with only the variable sites - which we save (`-o`) to an output file. This is the file we will use as input to constructing our tree. However, before we move on to that step, we need another piece of information: the **number of constant sites** in the initial alignment (sites that didn't vary in our alignment). Phylogenetically, it makes a difference if we have 3 mutations in 10 sites (30% variable sites, as in our small example above) or 3 mutations in 1000 sites (0.3% mutations). The `IQ-TREE`` software we will use for tree inference can accept as input 4 numbers, counting the number of A, C, G and T that were constant in the alignment. For our small example above these would be, respectively: 1, 2, 2, 2.
+This command simply takes as input the alignment FASTA file and produces a new file with only the variable sites - which we save (`-o`) to an output file. This is the file we will use as input to constructing our tree. However, before we move on to that step, we need another piece of information: the **number of constant sites** in the initial alignment (sites that didn't vary in our alignment). Phylogenetically, it makes a difference if we have 3 mutations in 10 sites (30% variable sites, as in our small example above) or 3 mutations in 1000 sites (0.3% mutations). The `IQ-TREE` software we will use for tree inference can accept as input 4 numbers, counting the number of A, C, G and T that were constant in the alignment. For our small example above these would be, respectively: 1, 2, 2, 2.
 
 Fortunately, the `snp-sites` command can also produce these numbers for us (you can check this in the help page by running `snp-sites -h`). 
 This is how you would do this: 
@@ -298,5 +299,9 @@ The main file of interest is `Nam_TB.treefile`, which contains our tree in the s
 ::: {.callout-tip}
 #### Key Points
 
-- To reduce the computational burden of the analysis, we can extract variable sites from our alignment using the `snp-sites` software. Its output can be used with the `IQ-TREE` mentioned above.
+- Tree inference methods include neighbor-joining, maximum parsimony and maximum likelihood. The first two are simpler and computationally faster, but do not accurately capture relevant features of sequence evolution. 
+- Maximum likelihood methods are recommended, as they incorporate relevant parameters such as different substitution rates, invariant sites and variable mutation rates across the sequence. 
+- Phylogenetic tree inference requires a multiple sequence alignment as input, regardless of which method of inference is used. 
+- To reduce the computational burden of the analysis when using whole-genome alignments, we can extract variable sites from our alignment using the `snp-sites` software. 
+- IQ-Tree is a popular software for maximum likelihood tree inference and can take as input the variable sites from the previous step.
 :::

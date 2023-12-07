@@ -5,15 +5,15 @@ title: "Introduction to QC"
 ::: {.callout-tip}
 ## Learning Objectives
 
-- To perform a QC assessment of high throughput next generation sequence data
-- Interpret and critically evaluate data quality reports
-- To identify possible contamination in high throughput sequence data
+- Assess the quality of sequencing data based on common quality metrics and graphs. 
+- Interpret and critically evaluate data quality reports.
+- Recognise why contamination poses a problem in bacterial genomics applications.
 
 :::
 
 ## Introduction
 
-Before we delve into having a look at our own genomic data. Lets take time to explore what to look out for when performing **Q**uality **C**ontrol **(QC)** checks on our sequence data. 
+Before we look at our genomic data, lets take time to explore what to look out for when performing **Q**uality **C**ontrol **(QC)** checks on our sequence data. 
 For this course, we will largely focus on next generation sequences obtained from Illumina sequencers. 
 As you may already know from [Introduction to NGS](01-intro_ngs.md), the main output files expected from our Illumina sequencer are FASTQ files.
 
@@ -44,12 +44,13 @@ In addition to __Phasing noise__ and __signal decay__ resulting from dephasing i
 
 ### Mismatches per cycle
 
-Aligning reads to a high-quality reference genome can provide insights into the quality of a sequencing run by showing you the mismatches to the reference sequence. In particular, this can help you detect cycle-specific errors. Mismatches can occur due to two main causes: sequencing errors and differences between your sample and the reference genome; this is important to bear in mind when interpreting mismatch graphs. The figures below show an example of a good run (top) and a bad one (bottom). In the first figure, the distribution of the number of mismatches is even between the cycles, which is what we would expect from a good run. However, in the second figure, two cycles stand out with a lot of mismatches compared to the other cycles.
+Aligning reads to a high-quality reference genome can provide insights into the quality of a sequencing run by showing you the mismatches to the reference sequence. In particular, this can help you detect cycle-specific errors. Mismatches can occur due to two main causes: sequencing errors and differences between your sample and the reference genome; this is important to bear in mind when interpreting mismatch graphs. The figures below show an example of a good run and a bad one. In the first figure, the distribution of the number of mismatches is even between the cycles, which is what we would expect from a good run. However, in the second figure, two cycles stand out with a lot of mismatches compared to the other cycles.
 
+::: {layout-ncol=2}
 ![Good run](images/mismatch_per_cycle_pass.png)
 
 ![Poor run](images/mismatch_per_cycle_fail.png)
-
+:::
 
 ### GC bias
 It is a good idea to compare the GC content of the reads against the expected distribution in a reference sequence. The GC content varies between species, so a shift in GC content like the one seen below (right image) could be an indication of sample contamination. In the left image below, we can see that the GC content of the sample is about the same as for the theoretical reference, at ~65%. However, in the right figure, the GC content of the sample shows two distributions: one is closer to 40% and the other closer to 65%, indicating that there is an issue with this sample, likely contamination. 
@@ -66,26 +67,31 @@ It is a good idea to compare the GC content of the reads against the expected di
 ### GC content by cycle
 Looking at the GC content per cycle can help detect if the adapter sequence was trimmed. For a random library, there is expected to be little to no difference between the different bases of a sequence run, so the lines in this plot should be parallel with each other like in the first of the two figures below. In the second of the figures, the initial spikes are likely due to adapter sequences that have not been removed. 
 
+::: {layout-ncol=2}
 ![Good run](images/acgt_per_cycle_pass.png)
 
 ![Poor run](images/acgt_per_cycle_fail.png)
+:::
 
+<!-- TODO - the second figure is not really a poor run, it's very common due to non-random shearing of DNA fragments. Barcode issues would show up at the end of the sequences. We should clarify this or find a different example. -->
 
-#### Insert size
+### Insert size
 For paired-end sequencing the size of DNA fragments also matters. In the first of the examples below, the insert size peaks around 440 bp. In the second however, there is also a peak at around 200 bp. This indicates that there was an issue with the fragment size selection during library prep.
 
+::: {layout-ncol=2}
 ![Good run](images/insert_size_pass.png)
 
 ![Poor run](images/insert_size_fail.png)
-
+:::
 
 ### Insertions/Deletions per cycle
 Sometimes, air bubbles occur in the flow cell, and this can manifest as false indels. The spike in the second image provides an example of how this can look.
 
+::: {layout-ncol=2}
 ![Good run](images/indels-per-cycle.pass.png)
 
 ![Poor run](images/indels-per-cycle.fail.png)
-
+:::
 
 ## Assessment of species composition
 
@@ -94,8 +100,11 @@ Understanding the species composition of sequence data is crucial for the accura
 ## Summary
 
 ::: {.callout-tip}
-## Key Points
+#### Key Points
 
+- Common metrics to assess the quality of raw sequencing data include: base quality, mismatches per cycle, GC bias, GC content per cycle, insert size and indels per cycle.
+- Contamination of sequencing data with other organisms is problematic for applications such as _de novo_ genome assembly. 
+- Screening the sequencing data for known species can help to remove potential contaminants.
 :::
 
 ## References
