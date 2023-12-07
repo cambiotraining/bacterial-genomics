@@ -177,7 +177,7 @@ We can see that there were three Lineage 2 isolates in our dataset and none of t
 
 ## Data cleaning
 
-The final thing we need to do before we visualize our TB phylogeny is to combine the metadata contained in `sample_info.csv` with the TB-profiler so we have some interesting information to annotate our tree with.  We've provided a simple `python` script to do this for you but you could, of course, do this yourself in _Excel_ or using _R_.  You can run the script using the following command:
+The final thing we need to do before we visualize our TB phylogeny is to combine the metadata contained in `sample_info.csv` with the TB-profiler so we have some interesting information to annotate our tree with.  We provide a `python` script to do this for you but you could, of course, do this yourself in _Excel_ or using _R_.  You can run the script using the following command (make sure to `mamba activate tb-profiler`):
 
 ```bash
 python scripts/merge_tb_data.py -s sample_info.csv -t preprocessed/tb-profiler/Nam_TB.txt
