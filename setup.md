@@ -111,6 +111,14 @@ conda config --set remote_read_timeout_secs 1000
 Due to the complexities of the different tools we will use, there are several software dependency incompatibilities between them.
 Therefore, rather than creating a single software environment with all the tools, we will create separate environments for different applications. 
 
+#### Pandas
+
+For convenience, we recommend installing the popular Pandas package in the base (default) environment:
+
+```bash
+mamba install -n base pandas
+```
+
 #### Nextflow
 
 ```bash
