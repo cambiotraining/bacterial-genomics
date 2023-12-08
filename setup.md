@@ -295,7 +295,7 @@ You can follow the same instructions as for "Ubuntu".
 The data used in these materials is provided as an archive file (`bacterial-genomics-data.tar`). 
 You can download it from the link below and extract the files from the archive into a directory of your choice.
 
-<a href="https://www.dropbox.com/scl/fi/ixw6vi6332mpoxo6yizti/bacterial-genomics-data.tar?rlkey=usr0hgvhktysxmt9ju0m3kds0&dl=1">
+<a href="https://www.dropbox.com/scl/fo/k2jyjgfsblfxjcktwlsmg/h?rlkey=6qov67ani513j2tom8pjl9ncm&dl=0">
   <button class="btn"><i class="fa fa-download"></i> Download</button>
 </a>
 
@@ -307,7 +307,7 @@ datadir="$HOME/Desktop/bacterial_genomics"
 
 # download and extract to directory
 mkdir $datadir
-wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/ixw6vi6332mpoxo6yizti/bacterial-genomics-data.tar?rlkey=usr0hgvhktysxmt9ju0m3kds0&dl=1"
+wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/ba1ws6jx045jjq96m4bum/bacterial-genomics-data.tar?rlkey=thssczgyl9n32gvtdjwi1673f&dl=1"
 tar -xvf $datadir/bact-data.tar -C $datadir
 rm $datadir/bact-data.tar
 ```
@@ -323,9 +323,9 @@ This is optional, you can download the databases where it is most convenient for
 If you work in a research group, it's a good idea to have a shared storage where everyone can access the same copy of the databases. 
 
 ```bash
-# create directory for public resources
-mkdir resources
-cd resources
+# create directory for public DBs
+mkdir databases
+cd databases
 ```
 
 #### Kraken2
