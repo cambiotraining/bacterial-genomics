@@ -12,7 +12,7 @@ title: "Run bactmap"
 :::{.callout-important}
 #### Remember to QC your sequencing reads
 
-Remember, the first step of any analysis of a new sequence dataset is to perform Quality Control. For the purposes of time, we've run `bacQC` for you and the results are in `preprocessed/bacqc`.  Before you run `assembleBAC`, have a look at the read stats and species composition TSV files and make sure that the data looks good before we go ahead and assemble it. 
+Remember, the first step of any analysis of a new sequence dataset is to perform Quality Control. For the purposes of time, we've run `bacQC` for you and the results are in `preprocessed/bacqc`.  Before you run `bactmap`, have a look at the read stats and species composition TSV files and make sure that the data looks good before we go ahead and map it. 
 :::
 
 

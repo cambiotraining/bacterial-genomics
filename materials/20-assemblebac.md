@@ -12,7 +12,7 @@ title: "The assembleBAC pipeline"
 
 ## Pipeline Overview
 
-![The assembleBAC pipeline](images/assembleBAC-ONT_metromap.png)
+![The assembleBAC pipeline](images/assembleBAC_metromap.png)
 
 **assembleBAC** is a bioinformatics analysis pipeline written in Nextflow for assembling and annotating bacterial genomes. It also predicts the Sequence Type (ST) and provides QC metrics with `Quast` and `CheckM2`.  It runs the following tools: 
 

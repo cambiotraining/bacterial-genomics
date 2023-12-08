@@ -57,6 +57,13 @@ ERX1501207_ERR1430829_T1,preprocessed/assemblebac/assemblies/ERX1501207_ERR14308
 ERX1501208_ERR1430830_T1,preprocessed/assemblebac/assemblies/ERX1501208_ERR1430830_T1_contigs.fa
 ERX1501212_ERR1430834_T1,preprocessed/assemblebac/assemblies/ERX1501212_ERR1430834_T1_contigs.fa
 ```
+To save time, we're only going to run `funcscan` on **five** assemblies so you'll need to edit the `samplesheet_funcscan.csv` file. You can do this in _Excel_, deleting all samples except the first five or use `head` to extract the header and five samples on the command line (you'll need to save the output with a different filename and then overwrite the original samplesheet with `mv`):
+
+```bash
+head -n 6 samplesheet_funcscan.csv > samplesheet_funcscan.csv.1
+
+mv samplesheet_funcscan.csv.1 samplesheet_funcscan.csv
+```
 
 Once we have the samplesheet ready, we can run the `nf-core/funcscan` workflow using the following commands:
 
