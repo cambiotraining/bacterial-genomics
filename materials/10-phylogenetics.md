@@ -272,8 +272,9 @@ iqtree \
 ```
 
 - We extract the variant sites and count of invariant sites using `SNP-sites`.
-- We specify as input the `aligned_pseudogenomes_masked_snps.fas` produced in the previous step of the script by running `SNP-sites`.
-- We specify the number of constant sites, also generated from the previous exercise. We can use `$(cat results/snp-sites/constant_sites.txt)` to directly add the contents of `constant_sites.txt` without having to open the file to obtain these numbers.
+- As input to both `snp-sites` steps, we use the `aligned_pseudogenomes_masked_snps.fas` produced in the previous step of our analysis.
+- The input alignment used in `iqtree` is the one from the previous step. 
+- The number of constant sites was specified in the script as `$(cat results/snp-sites/constant_sites.txt)`. This allows to directly add the contents of the `constant_sites.txt` file, without having to open the file to obtain these numbers.
 - We use as prefix for our output files "Nam_TB" (since we are using the "Namibian TB" data), so all the output file names will be named as such.
 - We automatically detect the number of threads/CPUs for parallel computation.
 - We specify the maximum amount of memory and threads/CPUs to use for computation.

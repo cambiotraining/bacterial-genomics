@@ -150,6 +150,12 @@ Now that we have created a recombination-masked alignment, we can extract the va
 - Fix the script provided in `scripts/04-run_iqtree.sh`. See @sec-iqtree if you need a hint of how to fix the code in the script.
 - Run the script using `bash scripts/04-run_iqtree.sh`. Several messages will be printed on the screen while `IQ-TREE` runs. 
 
+:::{.callout-hint}
+For _SNP-sites_: 
+
+- The input alignment should be the output from the `gubbins` program found in `results/gubbins/` (or in the `preprocessed` folder if you are still waiting for your analysis to finish).
+:::
+
 :::{.callout-answer}
 
 The fixed script is: 
@@ -180,7 +186,8 @@ iqtree \
   -bb 1000
 ```
 
-- The script starts by extracting variable sites using _SNP-sites_. We used as input the `aligned_pseudogenomes_masked_snps.fas` file produced in the previous exercise.
+- We extract the variant sites and count of invariant sites using `SNP-sites`.
+- As input to both `snp-sites` steps, we use the `aligned_pseudogenomes_masked_snps.fas` file produced in the previous exercise.
 - The next step runs _IQ-tree_:
   - We specify the number of constant sites, also generated from the previous exercise. We can use `$(cat results/snp-sites/constant_sites.txt)` to directly add the contents of `constant_sites.txt` without having to open the file to obtain these numbers.
   - We use as prefix for our output files "sero1" (since we are using the data from the Chaguza serotype 1 paper), so all the output file names will be named as such.
