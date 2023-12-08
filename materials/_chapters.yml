@@ -3,8 +3,8 @@ book:
     # Edit this to include links to markdowns, which may be organised in different parts
     - part: "Introduction"
       chapters:
-        - materials/01-intro_ngs.md
         - materials/02-know_your_bug.md
+        - materials/01-intro_ngs.md
         - materials/03-nextflow.md
         - materials/04-nf_core.md
     - part: "Sequence quality control"
