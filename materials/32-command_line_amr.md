@@ -68,7 +68,8 @@ mamba activate nextflow
 mkdir results/funcscan
 
 # run the pipeline
-nextflow run nf-core/funcscan -profile singularity \
+nextflow run nf-core/funcscan \
+  -profile singularity \
   --max_memory 16.GB --max_cpus 8 \
   --input SAMPLESHEET \
   --outdir OUTPUT_DIRECTORY \
@@ -109,7 +110,8 @@ The fixed script is:
 mkdir results/funcscan
 
 # run the pipeline
-nextflow run nf-core/funcscan -profile singularity \
+nextflow run nf-core/funcscan \
+  -profile singularity \
   --max_memory 16.GB --max_cpus 8 \
   --input samplesheet_funcscan.csv \
   --outdir results/funcscan \

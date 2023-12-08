@@ -161,6 +161,7 @@ Your first task is to run the `bacQC` pipeline on your data.  In the folder `scr
 nextflow run avantonder/bacQC \
   -r main \
   -profile singularity \
+  --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \
   --outdir results/bacqc \
   --kraken2db databases/minikraken2_v1_8GB \
