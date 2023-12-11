@@ -69,14 +69,18 @@ Remember, the first step of any analysis of a new sequence dataset is to perform
 :::{.callout-exercise}
 #### Running assembleBAC
 
-Your next task is to run the **assembleBAC** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `01-run_assemblebac.sh`. This script contains the code to run this pipeline. 
+Your next task is to run the **assembleBAC** pipeline on your data. Make sure you start this exercise from the `S_aureus` directory.
 
-- Edit this script, adjusting it to fit your input files and the estimated genome size of _Staphylococcus aureus_.
+- If you haven't done so already, make sure to create a samplesheet for your samples. 
+  This follows the same format as detailed for the [bacQC pipeline](07-bacqc.md#prepare-a-samplesheet), so you can use the same python script as shown in that section.
+
+- In the folder `scripts` (within your analysis directory) you will find a script named `01-run_assemblebac.sh`. This script contains the code to run this pipeline. 
+  Edit this script, adjusting it to fit your input files and the estimated genome size of _Staphylococcus aureus_.
 
 - Activate the Nextflow software environment (`mamba activate nextflow`).
 
 - Run the script using `bash scripts/01-run_assemblebac.sh`.
-  
+
 If the script is running successfully it should start printing the progress of each job in the assembleBAC pipeline. This will take a little while to finish. <i class="fa-solid fa-mug-hot"></i>
 
 :::{.callout-hint}
@@ -98,8 +102,8 @@ nextflow run avantonder/assembleBAC \
   --input samplesheet.csv \
   --outdir results/assemblebac \
   --baktadb databases/db-light \
-  --genome_size 2M
-  --checkm2db databases/checkme2/uniref100.KO.1.dmnd
+  --genome_size 2M \
+  --checkm2db databases/CheckM2_database/uniref100.KO.1.dmnd
 ```
 
 After activating the software environment, we ran the script as instructed using:
