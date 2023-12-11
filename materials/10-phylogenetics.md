@@ -239,8 +239,8 @@ The main files of interest are the report file (`.iqtree`) and the tree file (`.
 Produce a tree from the masked pseudogenome alignment from we created in the [previous section](09-bactmap.md). 
 
 - Activate the software environment: `mamba activate iqtree`.
-- Fix the script provided in `scripts/06-iqtree.sh`. See @sec-iqtree if you need a hint of how to fix the code in the script.
-- Run the script using `bash scripts/06-iqtree.sh`. Several messages will be printed on the screen while `iqtree` runs.
+- Fix the script provided in `scripts/05-iqtree.sh`. See @sec-iqtree if you need a hint of how to fix the code in the script.
+- Run the script using `bash scripts/05-iqtree.sh`. Several messages will be printed on the screen while `iqtree` runs.
 
 :::{.callout-answer}
 
