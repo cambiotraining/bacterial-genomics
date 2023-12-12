@@ -212,6 +212,7 @@ The fixed script is:
 #!/bin/bash
 
 # create output directory
+mkdir -p results/snp-sites/
 mkdir -p results/iqtree/
 
 # extract variable sites

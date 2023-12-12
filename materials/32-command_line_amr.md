@@ -42,7 +42,18 @@ Two columns are required:
 - `sample` --> a sample name of our choice (we will use the same name that we used for the assembly).
 - `fasta` --> the path to the FASTA file corresponding to that sample.
 
-You can create this file using a spreadsheet software such as _Excel_, making sure to save the file as a CSV. Here is an example of our samplesheet, which we saved in a file called `samplesheet_funcscan.csv`: 
+You can create this file using a spreadsheet software such as _Excel_, making sure to save the file as a CSV. 
+To to get you started in creating this file, we can save a list of our assembly file names into a file:
+
+```bash
+ls preprocessed/assemblebac/assemblies/*.fa | head -n 5 > samplesheet_funcscan.csv
+```
+
+In this case, we only list the first **five** files (`head -n 5`), to save time when running the pipeline. 
+In your own data, you should get all the files. 
+
+We then open this file in _Excel_ and edit it further to have the two columns examplined above. 
+Here is our final samplesheet: 
 
 ```
 sample,fasta
@@ -51,18 +62,6 @@ ERX1265488_ERR1192104_T1,preprocessed/assemblebac/assemblies/ERX1265488_ERR11921
 ERX1501202_ERR1430824_T1,preprocessed/assemblebac/assemblies/ERX1501202_ERR1430824_T1_contigs.fa
 ERX1501203_ERR1430825_T1,preprocessed/assemblebac/assemblies/ERX1501203_ERR1430825_T1_contigs.fa
 ERX1501204_ERR1430826_T1,preprocessed/assemblebac/assemblies/ERX1501204_ERR1430826_T1_contigs.fa
-ERX1501205_ERR1430827_T1,preprocessed/assemblebac/assemblies/ERX1501205_ERR1430827_T1_contigs.fa
-ERX1501206_ERR1430828_T1,preprocessed/assemblebac/assemblies/ERX1501206_ERR1430828_T1_contigs.fa
-ERX1501207_ERR1430829_T1,preprocessed/assemblebac/assemblies/ERX1501207_ERR1430829_T1_contigs.fa
-ERX1501208_ERR1430830_T1,preprocessed/assemblebac/assemblies/ERX1501208_ERR1430830_T1_contigs.fa
-ERX1501212_ERR1430834_T1,preprocessed/assemblebac/assemblies/ERX1501212_ERR1430834_T1_contigs.fa
-```
-To save time, we're only going to run `funcscan` on **five** assemblies so you'll need to edit the `samplesheet_funcscan.csv` file. You can do this in _Excel_, deleting all samples except the first five or use `head` to extract the header and five samples on the command line (you'll need to save the output with a different filename and then overwrite the original samplesheet with `mv`):
-
-```bash
-head -n 6 samplesheet_funcscan.csv > samplesheet_funcscan.csv.1
-
-mv samplesheet_funcscan.csv.1 samplesheet_funcscan.csv
 ```
 
 Once we have the samplesheet ready, we can run the `nf-core/funcscan` workflow using the following commands:
@@ -72,7 +71,7 @@ Once we have the samplesheet ready, we can run the `nf-core/funcscan` workflow u
 mamba activate nextflow
 
 # create output directory
-mkdir results/funcscan
+mkdir -p results/funcscan
 
 # run the pipeline
 nextflow run nf-core/funcscan \

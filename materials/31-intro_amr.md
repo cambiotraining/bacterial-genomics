@@ -26,6 +26,18 @@ Numerous software tools have been created to predict the presence of genes linke
 Estimating the function of a gene or protein solely from its sequence is complex, leading to varying outcomes across different software tools. 
 It is advisable to employ multiple tools and compare their findings, thus increasing our confidence in identifying which antimicrobial drugs might be more effective for treating patients infected with the strains we're studying.
 
+:::{.callout-warning}
+#### Do not use reference-based pseudogenomes for AMR analysis
+
+Genome consensus sequences, obtained using reference-based alignment, are a fast method to obtain the mutations in a large number of isolates. 
+However, these pseudogenomes are biased to the reference genome used. 
+For example, if a particular sequence is missing from the reference genome, it will not be present in the pseudogenome. 
+
+The bias created by using a reference genome is tolerable for phylogenetic applications. 
+However, when our goal is to find antimicrobial resistance factors, we need to have as much as possible a complete genome for each isolate. 
+Therefore, for **AMR scans we should use a pipeline such as `avantonder/assembleBAC` for _de novo_ genome assembly**.
+:::
+
 ## Summary
 
 ::: {.callout-tip}

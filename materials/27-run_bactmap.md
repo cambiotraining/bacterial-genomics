@@ -20,11 +20,13 @@ Remember, the first step of any analysis of a new sequence dataset is to perform
 
 #### Running nf-core/bactmap
 
-Your next task is to run the **bactmap** pipeline on the _S. pneumoniae_ data.  In the folder `scripts` (within the `S_pneumoniae` analysis directory) you will find a script named `01-run_bactmap.sh`. This script contains the code to run bactmap. Edit this script, adjusting it to fit your input files and the name and location of the reference you're going to map to (Hint: the reference sequence is located in `resources/reference`).
+Your next task is to run the **bactmap** pipeline on the _S. pneumoniae_ data.  In the folder `scripts` (within the `S_pneumoniae` analysis directory) you will find a script named `01-run_bactmap.sh`. This script contains the code to run bactmap. 
+
+- First, create a `samplesheet.csv` file for `bactmap`. Refer back to [The bacQC pipeline](07-bacqc.md#prepare-a-samplesheet) page for how to do this, if you've forgotten.
+
+- Edit the `01-run_bactmap.sh` script, adjusting it to fit your input files and the name and location of the reference you're going to map to (Hint: the reference sequence is located in `resources/reference`).
 
 - Activate the `nextflow` software environment. 
-
-- You will need to create the `samplesheet.csv` file. Refer back to [The bacQC pipeline](07-bacqc.md#prepare-a-samplesheet) page for how to do this, if you've forgotten.
 
 - Run the script using `bash scripts/01-run_bactmap.sh`.
   
@@ -32,7 +34,16 @@ Your next task is to run the **bactmap** pipeline on the _S. pneumoniae_ data.  
 
 :::{.callout-answer}
 
-The fixed script is: 
+First, we created our samplesheet using the helper python script, as explained for the bacQC pipeline: 
+
+```bash
+python scripts/fastq_dir_to_samplesheet.py data/reads \
+    samplesheet.csv \
+    -r1 _1.fastq.gz \
+    -r2 _2.fastq.gz
+```
+
+Next, we fixed the script:
 
 ```bash
 #!/bin/bash
@@ -46,28 +57,19 @@ nextflow run nf-core/bactmap \
   --genome_size 2.0M
 ```
 
-- We activated the `nextflow` environment:
+Then, we activated the `nextflow` environment:
 
 ```bash
 mamba activate nextflow
 ```
 
-- We created the `samplesheet.csv` file by running the following command:
-
-```bash
-python scripts/fastq_dir_to_samplesheet.py data/reads \
-    samplesheet.csv \
-    -r1 _1.fastq.gz \
-    -r2 _2.fastq.gz
-```
-
-- We ran the script as instructed using:
+Finally, we ran the script as instructed using:
 
 ```bash
 bash scripts/01-run_bactmap.sh
 ```
 
-- While it was running it printed a message on the screen: 
+While it was running it printed a message on the screen: 
 
 ```bash
 N E X T F L O W  ~  version 23.04.1
@@ -84,7 +86,7 @@ Launching `https://github.com/nf-core/bactmap` [cranky_swartz] DSL2 - revision: 
 ------------------------------------------------------
 ```
 
-- The results for all the samples looked really good so we can keep all of them for the next steps of our analyses.
+The results for all the samples looked really good so we can keep all of them for the next steps of our analyses.
 
 :::
 :::
@@ -92,13 +94,14 @@ Launching `https://github.com/nf-core/bactmap` [cranky_swartz] DSL2 - revision: 
 :::{.callout-exercise}
 #### How much of the reference was mapped?
 
-- Use the `02-pseudogenome_check.sh` script we've provided in the `scripts` folder, which calculates how much missing data there is for each sample using `seqtk comp`. 
-- Once the analysis finishes open the `mapping_summary.tsv` file in _Excel_ from your file browser <i class="fa-solid fa-folder"></i>.
+- Activate the `seqtk` software environment.
+- Run the `02-pseudogenome_check.sh` script we've provided in the `scripts` folder, which calculates how much missing data there is for each sample using `seqtk comp`. 
+- Once the analysis finishes, open the `mapping_summary.tsv` file in _Excel_ from your file browser <i class="fa-solid fa-folder"></i>.
 - Sort the results by the `%ref mapped` column and identify the sample which has the lowest percentage of the reference mapped.
 
 :::{.callout-answer}
 - We activated the software environment: `mamba activate seqtk`
-- We then ran the script using `bash scripts/03-pseudogenome_check.sh`. The script prints a message while it's running:
+- We then ran the script using `bash scripts/02-pseudogenome_check.sh`. The script prints a message while it's running:
 
     ```bash
     Processing ERX1265396_ERR1192012.fas
