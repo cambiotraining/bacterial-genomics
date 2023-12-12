@@ -217,8 +217,8 @@ ls results/iqtree
 ```
 
 ```
-Nam_TB.bionj   Nam_TB.log     Nam_TB.model.gz    Nam_TB.treefile
-Nam_TB.ckp.gz  Nam_TB.iqtree  Nam_TB.mldist 
+Nam_TB.bionj   Nam_TB.log     Nam_TB.mldist
+Nam_TB.ckp.gz  Nam_TB.iqtree  Nam_TB.treefile
 ```
 
 There are several files with the following extensions: 
@@ -229,7 +229,7 @@ There are several files with the following extensions:
 - `.bionj` - the initial tree estimated by neighbour joining (NEWICK format).
 - `.mldist` - the maximum likelihood distances between every pair of sequences.
 - `.ckp.gz` - this is a "checkpoint" file, which IQ-Tree uses to resume a run in case it was interrupted (e.g. if you are estimating very large trees and your job fails half-way through).
-- `.model.gz` - this is also a "checkpoint" file for the model testing step.
+<!-- - `.model.gz` - this is also a "checkpoint" file for the model testing step. -->
 
 The main files of interest are the report file (`.iqtree`) and the tree file (`.treefile`) in standard [Newick format](https://en.wikipedia.org/wiki/Newick_format).
 
@@ -286,8 +286,8 @@ ls results/iqtree/
 ```
 
 ```
-Nam_TB.bionj   Nam_TB.log     Nam_TB.model.gz    Nam_TB.treefile
-Nam_TB.ckp.gz  Nam_TB.iqtree  Nam_TB.mldist 
+Nam_TB.bionj   Nam_TB.log     Nam_TB.mldist
+Nam_TB.ckp.gz  Nam_TB.iqtree  Nam_TB.treefile
 ```
 
 The main file of interest is `Nam_TB.treefile`, which contains our tree in the standard [Newick format](https://en.wikipedia.org/wiki/Newick_format). We will visualize this tree alongside relevant metadata in [Visualising phylogenies](12-tree_visualization.md).
