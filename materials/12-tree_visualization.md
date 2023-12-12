@@ -80,7 +80,26 @@ cp preprocessed/iqtree/Nam_TB.treefile .
 15. The last thing we're going to do is add a histogram to show the frequency of lineages across the different regions to our Microreact window. Click on the **Pencil** icon on the top-right corner and click **Create New Chart** then move your mouse into the right hand side of the metadata box at the bottom of the window and click when you see the blue box appear. A blank chart should appear. Click **Chart Type** and select **Bar chart** and change the **X Axis Column** to `Region`.  The plot should auto populate with the region on the X-axis and the Number of entries on the Y-axis.  The bars are coloured according to `main_lineage` which is what we're currently using to colour our plots:
 
 ![](images/microreact_hist.png)
- 
+
+:::{.callout-tip}
+#### Latitude and longitude for countries
+
+If you have information about which countries your samples come from, you can obtain latitude and longitude coordinates by using the Data-flo web application.
+Data-flo provides several convenience data transformation applications, one of which is called "Geocoder".
+
+- Go to [data-flo.io](https://data-flo.io/)
+- On the top toolbar click on "Transformations"
+- Search for "Geocoder"
+- Click on "Run"
+- Paste your country names in the "Inputs" box (you can copy these from your metadata table)
+- Click "Run"
+- Once it finishes, scroll all the way down and click on the file link "locations.csv" to download a file containing all the country coordinates
+- You can then open your original metadata file and add these two columns to your metadata
+
+Once you have this information, it will be possible to display your samples on a map using Microreact. 
+:::
+
+
 ## Summary
 
 ::: {.callout-tip}
