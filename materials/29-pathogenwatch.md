@@ -16,9 +16,9 @@ Whilst you can upload FASTQ files to Pathogenwatch, it's quicker if we work with
 
 - Upload the assembled _S. pneumoniae_ genomes to `Pathogenwatch`.
 - Once `Pathogenwatch` has finished processing the genomes, save the results to a collection called **Chaguza Serotype 1**.
-- Download the Typing and AMR profile tables to the `Course_materials/S_pneumoniae` directory.
+- Download the Typing and AMR profile tables to the `S_pneumoniae` directory.
 - Rename the tables to `chaguza-serotype-1-typing.csv` and `chaguza-serotype-1-amr-profile.csv` respectively.
-- Merge the two tables with `sample_info.csv` by running the `merge_pneumo_data.py` script in the `scripts` directory.
+- Merge the two tables with `sample_info.csv` by running the `merge_pneumo_data.py` script in the `scripts` directory. Make sure you are on the `base` software environment.
 
 :::{.callout-hint}
 
@@ -36,7 +36,7 @@ Refer back to [Pathogenwatch](29-pathogenwatch.md) if you need a reminder on how
 - We clicked on the **download** icon in the top right-hand corner and selected **Typing table**.
 - We clicked on the **download** icon in the top right-hand corner and selected **AMR profile**.
 - We renamed the files to `chaguza-serotype-1-typing.csv` and `chaguza-serotype-1-amr-profile.csv` respectively and moved them to the `S_pneumoniae` directory.
-- We activated the `tb-profiler` software environment with `mamba activate tb-profiler`
+- We went back to the `base` software environment with `mamba activate base`
 - We ran the `merge_pneumo_data.py` script to create a TSV file called `pneumo_metadata.tsv` in your analysis directory:
 
 ```bash
