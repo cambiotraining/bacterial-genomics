@@ -161,10 +161,14 @@ mv pathogenwatch-saureus-pi6kp4oqdawi-wbg-2023-typing.csv wbg-2023-typing.csv
 mv pathogenwatch-saureus-pi6kp4oqdawi-wbg-2023-amr-profile wbg-2023-amr-profile.csv
 ```
 
-- We moved the files from the `Downloads` directory to our `S_aureus` directory (assuming we were in the `S_aureus` directory to start):
+- We moved the files from the `Downloads` (or `Desktop`, depending on your browser settings) directory to our `S_aureus` directory.
+  The following command assumes we were in the `S_aureus` directory to start with:
 
 ```bash
+# if your browser downloads to "Downloads" folder:
 mv ~/Downloads/wbg-2023* .
+# if your browser downloads to the "Desktop" folder:
+mv ~/Desktop/wbg-2023* .
 ```
 
 :::
