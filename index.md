@@ -7,7 +7,7 @@ number-sections: false
 
 ## Overview 
 
-This comprehensive course equips you with essential skills and knowledge in bacterial genomics analysis, primarily using Illumina-sequenced samples. You'll gain an understanding of how to select the most appropriate analysis workflow, tailored to the genome diversity of a given bacterial species. Through hands-on training, you'll apply both _de novo_ assembly and reference-based mapping approaches to obtain bacterial genomes for your isolates. You will apply standardised workflows for genome assembly and annotation, including quality assessment criteria to ensure the reliability of your results. Furthermore, you'll learn how to construct phylogenetic trees using whole genome and core genome alignments, enabling you to explore the evolutionary relationships among bacterial isolates. Lastly, you'll apply methods to detect antimicrobial resistance genes. As examples we will use _Mycobacterium tuberculosis_, _Staphylococcus aureus_ and _Streptococcus pneumoniae_, allowing you to become well-equipped to conduct bacterial genomics analyses on a range of species. 
+This comprehensive course equips you with essential skills and knowledge in bacterial genomics analysis, primarily using Illumina-sequenced samples. You'll gain an understanding of how to select the most appropriate analysis workflow, tailored to the genome diversity of a given bacterial species. Through hands-on training, you'll apply both de novo assembly and reference-based mapping approaches to obtain bacterial genomes for your isolates. You will apply standardised workflows for genome assembly and annotation, including quality assessment criteria to ensure the reliability of your results. Along with typing bacteria using methods such as MLST, you'll learn how to construct phylogenetic trees using whole genome and core genome alignments, enabling you to explore the evolutionary relationships among bacterial isolates. You’ll extend this to estimate a time-scaled phylogeny using a starting phylogenetic tree. Lastly, you'll apply methods to detect antimicrobial resistance genes. As examples we will use _Mycobacterium tuberculosis_, _Staphylococcus aureus_ and _Streptococcus pneumoniae_, allowing you to become well-equipped to conduct bacterial genomics analyses on a range of species. 
 
 ::: {.callout-tip}
 ### Learning Objectives
@@ -20,6 +20,8 @@ By the end of this course, you will be able to:
 - Evaluate the quality of assembled genomes and determine their suitability for downstream analysis.
 - Detect and remove recombinant regions.
 - Construct phylogenetic trees using both whole genome and core genome alignments.
+- Estimate a time-scaled phylogeny using and initial maximum likelihood phylogenetic tree and sample dates.
+- Conduct genomic epidemiology and strain typing.
 - Detect the presence of antimicrobial resistance genes in your isolates.
 :::
 

@@ -3,55 +3,63 @@ book:
     # Edit this to include links to markdowns, which may be organised in different parts
     - part: "Introduction"
       chapters:
-        - materials/02-know_your_bug.md
-        - materials/01-intro_ngs.md
-        - materials/03-nextflow.md
-        - materials/04-nf_core.md
+        - materials/01-know_your_bug.md
+        - materials/02-preparing_data.md
+        - materials/03-intro_ngs.md
+        - materials/04-nextflow.md
+        - materials/05-nf_core.md
+        - materials/06-downloading.md
     - part: "Sequence quality control"
       chapters: 
-        - materials/05-intro_tb.md
-        - materials/06-intro_qc.md
-        - materials/07-bacqc.md
+        - materials/07-intro_tb.md
+        - materials/08-intro_qc.md
+        - materials/09-bacqc.md
     - part: "Reference-based assembly"
       chapters: 
-        - materials/08-mapping.md
-        - materials/09-bactmap.md
+        - materials/10-mapping.md
+        - materials/11-bactmap.md
     - part: "Phylogenetics"
       chapters: 
-        - materials/10-phylogenetics.md
-        - materials/11-tb_profiler.md
-        - materials/12-tree_visualization.md
-        - materials/13-group_exercise_1.md
+        - materials/12-phylogenetics.md
+        - materials/13-tb_profiler.md
+        - materials/14-tree_visualization.md
+        - materials/15-group_exercise_1.md
+        - materials/16-dating.md
     - part: "Transmission"
       chapters: 
-        - materials/14-transmission.md
+        - materials/17-transmission.md
     - part: "De-novo assembly and annotation"
       chapters: 
-        - materials/17-intro_staph.md
-        - materials/18-assembly_annotation.md
+        - materials/18-intro_staph.md
+        - materials/19-assembly_annotation.md
         - materials/20-assemblebac.md
         - materials/21-assembly_qc.md
+        - materials/22-strain_typing.md
     - part: "Pan-genome analysis"
       chapters:
-        - materials/22-pan_genomes.md
-        - materials/23-panaroo.md
-        - materials/24-pathogenwatch.md
-        - materials/25-tree_visualization.md
+        - materials/23-pan_genomes.md
+        - materials/24-panaroo.md
+        - materials/25-pathogenwatch.md
+        - materials/26-tree_visualization.md
     - part: "Recombination"
       chapters: 
-        - materials/26-intro_pneumo.md
-        - materials/27-run_bactmap.md
-        - materials/28-recombination.md
-        - materials/29-pathogenwatch.md
-        - materials/30-tree_visualization.md
+        - materials/27-intro_pneumo.md
+        - materials/28-run_bactmap.md
+        - materials/29-recombination.md
+        - materials/30-poppunk.md
+        - materials/31-pathogenwatch.md
+        - materials/32-tree_visualization.md
     - part: "Antimicrobial Resistance"
       chapters:
-        - materials/31-intro_amr.md
-        - materials/32-command_line_amr.md
-        - materials/33-funcscan_pathogenwatch.md
+        - materials/33-intro_amr.md
+        - materials/34-command_line_amr.md
+        - materials/35-funcscan_pathogenwatch.md
+    - part: "Outbreak!"
+      chapters:
+        - materials/36-outbreak.md
     - part: "Reporting"
       chapters:
-        - materials/34-group_exercise_2.md
+        - materials/37-group_exercise_2.md
   appendices: 
     - materials/appendices/01-file_formats.md
     - materials/appendices/02-course_software.md

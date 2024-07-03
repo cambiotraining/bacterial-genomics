@@ -33,7 +33,7 @@ Along with the outputs produced by the above tools, the pipeline produces the fo
 
 ## Prepare a samplesheet
 
-As with `bacQC` and `bactmap`, we need to prepare a CSV file containing the information about our sequencing files, which will be used as an input to the `assembleBAC` pipeline.  Refer back to the [bacQC pipeline](07-bacqc.md#prepare-a-samplesheet) page for how to do this.
+As with `bacQC` and `bactmap`, we need to prepare a CSV file containing the information about our sequencing files, which will be used as an input to the `assembleBAC` pipeline.  Refer back to the [bacQC pipeline](09-bacqc.md#prepare-a-samplesheet) page for how to do this.
 
 ## Running assembleBAC
 
@@ -67,12 +67,12 @@ Remember, the first step of any analysis of a new sequence dataset is to perform
 :::
 
 :::{.callout-exercise}
-#### Running assembleBAC
+#### Exercise: Running assembleBAC
 
 Your next task is to run the **assembleBAC** pipeline on your data. Make sure you start this exercise from the `S_aureus` directory.
 
 - If you haven't done so already, make sure to create a samplesheet for your samples. 
-  This follows the same format as detailed for the [bacQC pipeline](07-bacqc.md#prepare-a-samplesheet), so you can use the same python script as shown in that section.
+  This follows the same format as detailed for the [bacQC pipeline](09-bacqc.md#prepare-a-samplesheet), so you can use the same python script as shown in that section.
 
 - In the folder `scripts` (within your analysis directory) you will find a script named `01-run_assemblebac.sh`. This script contains the code to run this pipeline. 
   Edit this script, adjusting it to fit your input files and the estimated genome size of _Staphylococcus aureus_.
