@@ -14,6 +14,6 @@ nextflow run avantonder/bacQC \
   --max_memory '16.GB' --max_cpus 8 \
   --input FIX_SAMPLESHEET \
   --outdir results/bacqc \
-  --kraken2db databases/minikraken2_v1_8GB \
-  --brackendb databases/minikraken2_v1_8GB \
+  --kraken2db databases/k2_standard_08gb_20240605 \
+  --brackendb databases/k2_standard_08gb_20240605 \
   --genome_size FIX_GENOME_SIZE

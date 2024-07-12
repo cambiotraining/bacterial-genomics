@@ -9,6 +9,6 @@ nextflow run avantonder/assembleBAC \
   --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \
   --outdir results/assemblebac \
-  --baktadb databases/db-light \
+  --baktadb databases/bakta_light_20240119 \
   --genome_size GENOME_SIZE \
-  --checkm2db databases/CheckM2_database/uniref100.KO.1.dmnd
+  --checkm2db databases/checkm2_v2_20210323/uniref100.KO.1.dmnd

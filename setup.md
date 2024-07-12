@@ -310,7 +310,7 @@ You can follow the same instructions as for "Ubuntu".
 The data used in these materials is provided as an archive file (`bacterial-genomics-data.tar`). 
 You can download it from the link below and extract the files from the archive into a directory of your choice.
 
-<a href="https://www.dropbox.com/scl/fo/k2jyjgfsblfxjcktwlsmg/h?rlkey=6qov67ani513j2tom8pjl9ncm&dl=0">
+<a href="https://www.dropbox.com/scl/fi/7o4ikj191mijxisu5tp50/bacterial-genomics-data.tar?rlkey=cosadfqhmp1qdgahlqnh2vtrz&dl=0">
   <button class="btn"><i class="fa fa-download"></i> Download</button>
 </a>
 
@@ -322,7 +322,7 @@ datadir="$HOME/Desktop/bacterial_genomics"
 
 # download and extract to directory
 mkdir $datadir
-wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/ba1ws6jx045jjq96m4bum/bacterial-genomics-data.tar?rlkey=thssczgyl9n32gvtdjwi1673f&dl=1"
+wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/7o4ikj191mijxisu5tp50/bacterial-genomics-data.tar?rlkey=cosadfqhmp1qdgahlqnh2vtrz&dl=1"
 tar -xvf $datadir/bact-data.tar -C $datadir
 rm $datadir/bact-data.tar
 ```
@@ -333,7 +333,7 @@ rm $datadir/bact-data.tar
 We include a copy of public databases used in the exercises in the dropbox link above. 
 However, for your analyses you should always download the most up-to-date databases. 
 
-Our convention is to download these databases into a directory called `resources`. 
+In the code below we download these databases into a directory called `databases`. 
 This is optional, you can download the databases where it is most convenient for you. 
 If you work in a research group, it's a good idea to have a shared storage where everyone can access the same copy of the databases. 
 
@@ -345,36 +345,50 @@ cd databases
 
 #### Kraken2
 
+We use a small version of the database for teaching purposes, whereas you may want to use the full version in your work. 
+Look at the [Kraken2 indexes page](https://benlangmead.github.io/aws-indexes/k2) for the latest versions available. 
+
 ```bash
-wget ftp://ftp.ccb.jhu.edu/pub/data/kraken2_dbs/old/minikraken2_v1_8GB_201904.tgz
-tar -xzf minikraken2_v1_8GB_201904.tgz
-rm minikraken2_v1_8GB_201904.tgz
+wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20240605.tar.gz
+mkdir k2_standard_08gb_20240605
+tar -xzvf k2_standard_08gb_20240605.tar.gz -C k2_standard_08gb_20240605
+rm k2_standard_08gb_20240605.tar.gz
 ```
 
 #### Bakta
 
+We use the "light" version of the database for teaching purposes, whereas you may want to use the full version in your work. 
+Look at the [Bakta Zenodo repository](https://zenodo.org/records/10522951) for the latest versions available.
+
 ```bash
-wget https://zenodo.org/record/7669534/files/db-light.tar.gz
-tar -xzf db-light.tar.gz
+wget https://zenodo.org/records/10522951/files/db-light.tar.gz
+tar -xzvf db-light.tar.gz
+mv db-light  bakta_light_20240119
 rm db-light.tar.gz
 
 # make sure to activate bakta environment
 mamba activate bakta
-amrfinder_update --force_update --database db-light/amrfinderplus-db/
+amrfinder_update --force_update --database bakta_light_20240119/amrfinderplus-db/
 ```
 
 #### CheckM2
 
+CheckM2 also provides a command `checkm2 database --download` to download the latest version of the database [from Zenodo](https://zenodo.org/records/5571251).
+
 ```bash
-wget https://zenodo.org/records/5571251/files/checkm2_database.tar.gz?download=1
-tar -xzf checkm2_database.tar.gz
+wget https://zenodo.org/records/5571251/files/checkm2_database.tar.gz
+tar -xzvf checkm2_database.tar.gz
+mv CheckM2_database checkm2_v2_20210323
+rm checkm2_database.tar.gz CONTENTS.json
 ```
 
 #### GPSCs
 
 ```bash
 wget https://gps-project.cog.sanger.ac.uk/GPS_v8_ref.tar.gz
-tar -xzf GPS_v8_ref.tar.gz
+mkdir poppunk
+tar -xzvf GPS_v8_ref.tar.gz -C poppunk
+rm GPS_v8_ref.tar.gz
 
-wget https://gps-project.cog.sanger.ac.uk/GPS_v8_external_clusters.csv
+wget -O poppunk/GPS_v8_external_clusters.csv https://gps-project.cog.sanger.ac.uk/GPS_v8_external_clusters.csv
 ```
