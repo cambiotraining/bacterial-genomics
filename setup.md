@@ -199,7 +199,7 @@ mamba create -n poppunk python=3.10 poppunk
 
 ```bash
 mamba create -n remove_blocks python=2.7
-$HOME/miniforge3/envs/remove_blocks/bin/pip git+https://github.com/sanger-pathogens/remove_blocks_from_aln.git
+$HOME/miniforge3/envs/remove_blocks/bin/pip install git+https://github.com/sanger-pathogens/remove_blocks_from_aln.git
 ```
 
 #### Seqtk
