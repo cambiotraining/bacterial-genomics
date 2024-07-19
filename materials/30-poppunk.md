@@ -49,7 +49,7 @@ To run PopPUNK on our assemblies, the following commands can be used:
 mkdir -p results/poppunk
 
 # run PopPUNK
-poppunk_assign --db GPS_v8_ref --external-clustering GPS_v8_external_clusters.csv --query qfile.txt --output results/poppunk --threads 8
+poppunk_assign --db GPS_v8_ref --external-clustering GPS_v8_external_clusters.csv --query assemblies.txt --output results/poppunk --threads 8
 ```
 The options we used are:
 
