@@ -70,6 +70,12 @@ The command line version of `mlst` also reports when an allele has an inexact ma
 
 The third column of the output indicates the Sequence Type (ST) of our samples based on the combination of the 7 alleles identified by `mlst`.
 
+:::{.callout-tip}
+#### MLST schemes available
+
+To check the list of MLST schemes available, you can use the command `mlst --list`.
+:::
+
 :::{.callout-exercise}
 #### Exercise: MLST with assemblebac
 

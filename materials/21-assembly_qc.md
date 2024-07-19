@@ -110,7 +110,7 @@ To assess the contiguity of your assemblies, you ran `QUAST` as part of the asse
   - Do you think any of the samples are not of sufficient quality to include in further analyses?
 
 :::{.callout-answer}
-For the dataset we are using, we had our file in `processed/assembleBAC/transposed_report.tsv`. 
+For the dataset we are using, we had our file in `preprocessed/assembleBAC/transposed_report.tsv`. 
 We opened this table in _Excel_ and this is what we obtained: 
 
 ```
