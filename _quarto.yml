@@ -33,6 +33,7 @@ book:
   search:
     location: sidebar
   favicon: "_extensions/cambiotraining/courseformat/img/university-of-cambridge-favicon.ico"
+  bread-crumbs: false
   page-navigation: true
   page-footer: 
     center: |
@@ -42,6 +43,9 @@ book:
   navbar:
     pinned: true
     logo: "_extensions/cambiotraining/courseformat/img/university_crest_reversed.png"
+    left:
+      - text: "Slides"
+        href: https://docs.google.com/presentation/d/1ynCdmlIAT68uVEPxfCM1vHXdQxMYlpVNJo7aeJGMsDY/edit?usp=sharing
     right:
       - icon: github
         href: https://github.com/cambiotraining/bacterial-genomics
@@ -49,6 +53,9 @@ book:
       - icon: twitter
         href: https://twitter.com/bioinfocambs
         aria-label: Bioinformatics Training Facility Twitter
+      - icon: mastodon
+        href: https://genomic.social/@BioInfoCambs
+        aria-label: Bioinformatics Training Facility Mastodon
     title: "Working with Bacterial Genomes"
   chapters:
     - part: "Welcome"
