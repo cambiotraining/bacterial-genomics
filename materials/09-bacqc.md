@@ -304,7 +304,7 @@ The main things to look out for in this file are the `trim_coverage` and `%reads
 
 ### The `species_composition.tsv` file
 
-Another important output from the `bacQC` pipeline to consider is the `species_composition.tsv` file which summarises the results from `Kraken 2` and `Bracken` and can be found in `preprocessed/bacqc/metadata/read_stats_summary.tsv`.
+Another important output from the `bacQC` pipeline to consider is the `species_composition.tsv` file which summarises the results from `Kraken 2` and `Bracken` and can be found in `preprocessed/bacqc/metadata/species_composition.tsv`.
 
 You can open it with spreadsheet software such as _Excel_ from your file browser <i class="fa-solid fa-folder"></i>:
 
