@@ -168,10 +168,10 @@ mkdir -p results/snp-sites/
 mkdir -p results/iqtree/
 
 # extract variable sites
-snp-sites results/gubbins/aligned_pseudogenomes_masked.fas > results/snp-sites/aligned_pseudogenomes_masked_snps.fas
+snp-sites preprocessed/gubbins/aligned_pseudogenomes_masked.fas > results/snp-sites/aligned_pseudogenomes_masked_snps.fas
 
 # count invariant sites
-snp-sites -C results/gubbins/aligned_pseudogenomes_masked.fas > results/snp-sites/constant_sites.txt
+snp-sites -C preprocessed/gubbins/aligned_pseudogenomes_masked.fas > results/snp-sites/constant_sites.txt
 
 # FIX!!
 # Run iqtree

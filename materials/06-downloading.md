@@ -65,7 +65,9 @@ nextflow run nf-core/fetchngs \
   --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLES \
   --outdir results/fetchngs \
-  --nf_core_pipeline viralrecon
+  --nf_core_pipeline viralrecon \
+  --download_method sratools \
+  -resume
 ```
 
 The options we used are: 
@@ -74,6 +76,8 @@ The options we used are:
 - `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
 - `--input` - the samples file with the accessions to be downloaded, as explained above.
 - `--nf_core_pipeline` - Name of supported nf-core pipeline e.g. 'viralrecon'. A samplesheet for direct use with the pipeline will be created with the appropriate columns.
+- `--download_method` - forces the pipeline to use `sratools` instead of a direct FTP download.
+- `-resume` - all Nextflow pipelines can be resumed. It isn't necessary for the force run of the pipeline but it's good practice to include it in the command.
 
 :::{.callout-note}
 #### Maximum Memory and CPUs
@@ -106,7 +110,9 @@ nextflow run nf-core/fetchngs \
   --max_memory '16.GB' --max_cpus 8 \
   --input samples.csv \
   --outdir results/fetchngs \
-  --nf_core_pipeline viralrecon
+  --nf_core_pipeline viralrecon \
+  --download_method sratools \
+  -resume
 ```
 
 - We ran the script as instructed using:

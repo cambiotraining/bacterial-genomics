@@ -290,7 +290,7 @@ We can see that `ERX9450520_ERR9907692` only mapped to 79.9% of the reference. W
 
 Now that we've mapped our sequence data to the ancestral reference, called and filtered variants and created consensus pseudogenomes that we checked, we can create the final alignment we will use for inferring a phylogenetic tree.  As we are not excluding any samples based on the pseudogenome check we did above, we can use the `aligned_pseudogenomes.fas` file that was created by `bactmap` (it's worth remembering that this alignment includes the reference as well as the pseudogenomes).  If any of the pseudogenomes contained more than 25% missing data and were removed, we could create our final alignment with `cat` as described below.
 
-:::{.callout-tip}
+:::{.callout-hint}
 ### Building a final alignment from pseudogenome FASTA files
 One of the advantages of working with pseudogenome FASTA files is that the files are all the same length i.e. the length of the reference.  This means that they are effectively already aligned so we don't need to do any additional aligning like we might do with gene sequences from different isolates.  If you need to create a final alignment from the pseudogenome files, it's as simple as using `cat`:
 
