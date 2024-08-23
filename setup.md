@@ -327,6 +327,13 @@ tar -xvf $datadir/bact-data.tar -C $datadir
 rm $datadir/bact-data.tar
 ```
 
+::: {.callout-tip}
+#### Note for training facility
+
+We also need to include preprocessed data for the outbreak exercise. 
+See the [download script](https://github.com/cambiotraining/bacterial-genomics/blob/main/utils/download_data.sh) in the repo for details.
+:::
+
 
 ### Databases
 

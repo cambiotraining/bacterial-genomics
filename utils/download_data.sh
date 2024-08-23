@@ -11,9 +11,16 @@ fi
 
 # Download and extract course data
 echo "Downloading and extracting course files"
-wget -O bact-data.tar.gz "https://www.dropbox.com/scl/fi/osjpmst8i2919fv3by3eh/bact-data.tar.gz?rlkey=iddkexnnm6ccsx8prfcay259u&dl=1"
-tar -xzf bact-data.tar.gz
-rm bact-data.tar.gz
+wget -O bact-data.tar "https://www.dropbox.com/scl/fi/gdqf3y3toot2hjtivhlpk/bact-data.tar?rlkey=udjh38aqd05eg3r8klw5mguld&dl=1"
+tar -xf bact-data.tar
+rm bact-data.tar
+
+# Download and extract preprocessed files for outbreak exercise
+echo "Downloading and extracting preprocessed outbreak exercise files"
+wget -O preprocessed-outbreak.tar "https://www.dropbox.com/scl/fi/axj9ur03hhe78d9dvbak3/preprocessed-outbreak.tar?rlkey=1ftvheba6ak3b7k20nls2ijkh&st=mbnd6lfw&dl=1"
+tar -xf preprocessed-outbreak.tar
+mv preprocessed-outbreak ~/Course_Share/
+rm preprocessed-outbreak.tar
 
 # Download and extract public databases
 mkdir databases
