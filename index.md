@@ -48,55 +48,24 @@ The course is aimed at biologists interested in microbiology, prokaryotic genomi
 - A working knowledge of running analysis on High Performance Computing (HPC) clusters (course registration page).
 
 
-## Authors
-<!-- 
-The listing below shows an example of how you can give more details about yourself.
-These examples include icons with links to GitHub and Orcid. 
--->
+## Citation & Authors
 
-About the authors:
-
-- **Andries van Tonder**
-  <a href="https://orcid.org/0000-0002-4380-5250" target="_blank"><i class="fa-brands fa-orcid" style="color:#a6ce39"></i></a> 
-  <a href="https://github.com/avantonder" target="_blank"><i class="fa-brands fa-github" style="color:#4078c0"></i></a>  
-  _Affiliation_: Department of Veterinary Medicine, University of Cambridge  
-  _Roles_: writing - original draft; conceptualisation; coding
-- **Hugo Tavares**
-  <a href="https://orcid.org/0000-0001-9373-2726" target="_blank"><i class="fa-brands fa-orcid" style="color:#a6ce39"></i></a> 
-  <a href="https://github.com/tavareshugo" target="_blank"><i class="fa-brands fa-github" style="color:#4078c0"></i></a>  
-  _Affiliation_: Bioinformatics Training Facility, University of Cambridge  
-  _Roles_: writing - review & editing
-- **Bajuna Salehe**
-  <a href="https://github.com/bsalehe" target="_blank"><i class="fa-brands fa-github" style="color:#4078c0"></i></a>  
-  _Affiliation_: Bioinformatics Training Facility, University of Cambridge  
-  _Roles_: writing - original content; conceptualisation; coding; data curation
-
-
-## Citation
-
-<!-- We can do this at the end -->
+:::{.callout-important}
+These materials are a fork of the [Carpentries Shell Lesson](https://swcarpentry.github.io/shell-novice/).  
+As such, please make sure to cite both works if you use these materials (see [Acknowledgements]).
+:::
 
 Please cite these materials if:
 
 - You adapted or used any of them in your own teaching.
-- These materials were useful for your research work. For example, you can cite us in the methods section of your paper: "We carried our analyses based on the recommendations in _TODO_.".
+- These materials were useful for your research work. For example, you can cite us in the methods section of your paper: "We carried our analyses based on the recommendations in _YourReferenceHere_".
 
-You can cite these materials as:
+<!-- 
+This is generated automatically from the CITATION.cff file. 
+If you think you should be added as an author, please get in touch with us.
+-->
 
-> TODO
-
-Or in BibTeX format:
-
-```
-@Misc{,
-  author = {},
-  title = {},
-  month = {},
-  year = {},
-  url = {},
-  doi = {}
-}
-```
+{{< citation CITATION.cff >}}
 
 
 ## Acknowledgements

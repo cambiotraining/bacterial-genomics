@@ -1,0 +1,30 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Working with Bacterial Genomes
+message: >-
+  You may cite these materials using the metadata in this
+  file. Please cite our materials if you publish materials
+  derived from these, run a workshop using them, or use
+  the   information in your own work.
+type: dataset
+authors:
+  - given-names: Andries
+    family-names: van Tonder
+    orcid: 'https://orcid.org/0000-0002-4380-5250'
+    affiliation: >-
+      Department of Veterinary Medicine, University of
+      Cambridge
+  - given-names: Hugo
+    family-names: Tavares
+    affiliation: Cambridge Centre for Research Informatics Training
+    orcid: 'https://orcid.org/0000-0001-9373-2726'
+  - given-names: Bajuna
+    family-names: Salehe
+    affiliation: Cambridge Centre for Research Informatics Training
+repository-code: 'https://github.com/cambiotraining/bacterial-genomics'
+url: 'https://cambiotraining.github.io/bacterial-genomics/'
+license: CC-BY-4.0
+commit: TODO
+date-released: '2024-07-22'
