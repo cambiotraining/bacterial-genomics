@@ -9,7 +9,6 @@ project:
   render:
     - index.md
     - setup.md
-    - materials.md
     - materials/*
     - "!materials/*/no_render"
 

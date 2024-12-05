@@ -13,4 +13,5 @@ nextflow run nf-core/fetchngs \
   --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLES \
   --outdir results/fetchngs \
-  --nf_core_pipeline viralrecon
+  --nf_core_pipeline viralrecon \
+  --download_method sratools
