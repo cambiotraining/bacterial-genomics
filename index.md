@@ -50,11 +50,6 @@ The course is aimed at biologists interested in microbiology, prokaryotic genomi
 
 ## Citation & Authors
 
-:::{.callout-important}
-These materials are a fork of the [Carpentries Shell Lesson](https://swcarpentry.github.io/shell-novice/).  
-As such, please make sure to cite both works if you use these materials (see [Acknowledgements]).
-:::
-
 Please cite these materials if:
 
 - You adapted or used any of them in your own teaching.
