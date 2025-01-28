@@ -23,7 +23,6 @@ nextflow run avantonder/bacQC \
   --input "samplesheet.csv" \
   --outdir "results/bacqc" \
   --kraken2db "databases/k2_standard_08gb_20240605" \
-  --brackendb "databases/k2_standard_08gb_20240605" \
   --genome_size "3200000"
 ```
 
