@@ -15,4 +15,5 @@ nextflow run avantonder/bacQC \
   --input FIX_SAMPLESHEET \
   --outdir results/bacqc \
   --kraken2db databases/k2_standard_08gb_20240605 \
+  --kronadb databases/krona/taxonomy.tab \
   --genome_size FIX_GENOME_SIZE

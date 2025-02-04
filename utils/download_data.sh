@@ -9,6 +9,12 @@ if ! command -v "amrfinder_update" &> /dev/null; then
   exit 1
 fi
 
+# check for krona
+if ! command -v "ktUpdateTaxonomy.sh" &> /dev/null; then
+  echo "Error: ktUpdateTaxonomy.sh is not available on the PATH. You can install it with: mamba create -n krona krona" >&2
+  exit 1
+fi
+
 # Download and extract course data
 echo "Downloading and extracting course files"
 wget -O bact-data.tar "https://www.dropbox.com/scl/fi/gdqf3y3toot2hjtivhlpk/bact-data.tar?rlkey=udjh38aqd05eg3r8klw5mguld&dl=1"
@@ -58,3 +64,7 @@ tar -xzf GPS_v8_ref.tar.gz -C poppunk
 rm GPS_v8_ref.tar.gz
 
 wget -O poppunk/GPS_v8_external_clusters.csv https://gps-project.cog.sanger.ac.uk/GPS_v8_external_clusters.csv
+
+
+# krona
+ktUpdateTaxonomy.sh krona

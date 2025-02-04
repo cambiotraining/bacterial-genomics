@@ -125,6 +125,12 @@ mamba install -n base pandas
 mamba create -n bakta bakta
 ```
 
+#### Krona
+
+```bash
+mamba create -n krona krona
+```
+
 #### Gubbins
 
 ```bash
@@ -398,4 +404,12 @@ tar -xzvf GPS_v8_ref.tar.gz -C poppunk
 rm GPS_v8_ref.tar.gz
 
 wget -O poppunk/GPS_v8_external_clusters.csv https://gps-project.cog.sanger.ac.uk/GPS_v8_external_clusters.csv
+```
+
+#### Krona
+
+```bash
+# make sure to activate krona environment
+mamba activate krona
+ktUpdateTaxonomy.sh krona/
 ```

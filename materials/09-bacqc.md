@@ -75,6 +75,7 @@ nextflow run avantonder/bacQC \
   --input SAMPLESHEET \
   --outdir results/bacqc \
   --kraken2db databases/k2_standard_08gb_20240605 \
+  --kronadb databases/krona/taxonomy.tab \
   --genome_size GENOME_SIZE 
 ```
 
@@ -85,6 +86,7 @@ The options we used are:
 - `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
 - `--input` - the samplesheet with the input files, as explained above.
 - `--kraken2db` - the path to the directory containing the Kraken2 database files.
+- `--kronadb` - the path to Krona's database file (with the `.tab` extension).
 - `--genome_size` - the estimated genome size of your samples - `fastq-scan` uses this to calculate the depth of coverage across the genome.
 
 :::{.callout-exercise}
@@ -112,6 +114,7 @@ nextflow run avantonder/bacQC \
   --input samplesheet.csv \
   --outdir results/bacqc \
   --kraken2db databases/k2_standard_08gb_20240605 \
+  --kronadb databases/krona/taxonomy.tab \
   --genome_size 4300000
 ```
 
