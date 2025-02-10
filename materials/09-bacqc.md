@@ -23,11 +23,12 @@ title: "The bacQC pipeline"
 - [`fastp`](https://github.com/OpenGene/fastp) - performs adapter/quality trimming on sequencing reads
 - [`Kraken 2`](https://ccb.jhu.edu/software/kraken2/) - assigns taxonomic labels to reads
 - [`Bracken`](https://ccb.jhu.edu/software/bracken/) - refines `Kraken 2` assignments
-- [`MultiQC`](https://multiqc.info/) - summarises and creates visualizations for outputs from `fastQC`, `fastp` and `Kraken 2`
+- [`Krona`](https://github.com/marbl/Krona) - provides visualisations of `Bracken` outputs
+- [`MultiQC`](https://multiqc.info/) - summarises and creates visualizations for outputs from `fastQC`, `fastp`, `Kraken 2` and `Bracken`
 
 See [Course Software](appendices/02-course_software.md) for a more detailed description of each tool.
 
-Along with the outputs produced by the above tools, the pipeline produces the following summaries containing results for all samples run through the pipeline (found in the `metadata` directory):
+Along with the outputs produced by the above tools, the pipeline produces the following summaries containing results for all samples run through the pipeline (found in the `metadata` and `multiqc` directories):
 
 - `raw_fastq-scan_summary.tsv` - final summary of FASTQ summary statistics for input files in TSV format
 - `trim_fastq-scan_summary.tsv` - final summary of FASTQ summary statistics for trimmed FASTQ files
@@ -163,6 +164,7 @@ In the previous exercise, we left `bacQC` running. While it runs, we can look at
 |`fastqc` | Contains QC metrics for the FASTQ files generated with `fastQC` |
 |`fastqscan` | Contains summary statistics for the FASTQ files generated with `fastq-scan` |
 |`kraken2` | Contains the results of taxonomic assignment with `Kraken 2`  |
+|`krona` | Contains HTML files with visual representations of taxonomic assignments with `Bracken`  |
 |`metadata` | Contains summary files for outputs from `fastq-scan` and `Kraken 2` |
 |`multiqc` | Contains a HTML file containing summaries of the various outputs |
 |`pipeline_info` | Contains information about the pipeline run |
@@ -185,7 +187,7 @@ Let's go through each section starting with the "**General Statistics**":
 
 ![bacQC MultiQC General Statistics](images/bacqc_general_stats.png)
 
-This is a compilation of statistics collected from the outputs of `fastp`, `fastQC` and `Kraken 2`.  Sequencing metrics such as the % of duplicated reads and GC content of the reads are shown alongside the results of the taxonomic classification (% reads mapped, num). This is a useful way of quickly identifying samples that are of lower quality due to poor sequencing or species contamination. 
+This is a compilation of statistics collected from the outputs of `fastp` and `fastQC`.  Sequencing metrics such as the % of duplicated reads and GC content of the reads are shown. This is a useful way of quickly identifying samples that are of lower quality due to poor sequencing. 
 
 #### fastQC
 
@@ -259,15 +261,27 @@ The final fastp plot shows the average N content across the reads in each sample
 
 #### Kraken 2
 
-The final results section of the `MultiQC` report is a summary of the outputs from `Kraken 2`. It's important to note that these results are generated before `Bracken` is run to refine the species assignment of the reads thus the proportion of reads assigned to the target species may be much lower than the results found in the `species_composition.tsv` file you'll mostly be working with.
+The next results section of the `MultiQC` report is a summary of the outputs from `Kraken 2`. It's important to note that these results are generated before `Bracken` is run to refine the species assignment of the reads thus the proportion of reads assigned to the target species may be much lower than the results found in the `species_composition.tsv` file you'll mostly be working with.
 
 ![bacQC MultiQC Kraken Top Taxa](images/bacqc_kraken_taxa.png)
+
+#### Bracken 
+
+The final results section of the `MultiQC` report is a summary of the outputs from `Bracken`. You will see that there are much fewer reads assigned to Other and more reads assigned to *Mycobacterium tuberculosis* as Bracken has probabilistically re-distributed the `Kraken 2` read assignments.
+
+![bacQC MultiQC Bracken Top Taxa](images/bacqc_bracken_taxa.png)
 
 #### Software versions
 
 This section of the report shows the software run as part of `bacQC` and the versions used.  This is particularly important when reproducing the analysis on a different system or when writing the methods section of a paper.
 
 ![bacQC MultiQC software versions](images/bacqc_software_versions.png)
+
+#### Methods description
+
+A brief description of the methods used in the pipeline is provided with the relevant citations.
+
+![bacQC MultiQC methods descriptions](images/bacqc_methods_descriptions.png)
 
 ### The `read_stats_summary.tsv` file
 
