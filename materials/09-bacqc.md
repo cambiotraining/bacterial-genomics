@@ -128,26 +128,21 @@ bash scripts/02-run_bacQC.sh
 - While it was running it printed a message on the screen: 
 
 ```
-* Software dependencies
-  https://github.com/avantonder/bacQC/blob/master/CITATIONS.md
-------------------------------------------------------
-executor >  local (1), slurm (100)
-[47/6583cc] process > BACQC:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)    [100%] 1 of 1 ✔
-[09/26ad12] process > BACQC:FASTQSCAN_RAW (ERX9450607_ERR9907779_T1)           [  0%] 0 of 50
-[-        ] process > BACQC:FASTQSCANPARSE_RAW                                 -
-[aa/921858] process > BACQC:FASTQC_FASTP:FASTQC_RAW (ERX9450499_ERR9907671_T1) [  0%] 0 of 50
-[b7/ba46e0] process > BACQC:FASTQC_FASTP:FASTP (ERX9450611_ERR9907783_T1)      [  0%] 0 of 50
-[-        ] process > BACQC:FASTQC_FASTP:FASTQC_TRIM                           -
-[-        ] process > BACQC:MULTIQC_TSV_FAIL_READS                             -
-[-        ] process > BACQC:FASTQSCAN_TRIM                                     -
-[-        ] process > BACQC:FASTQSCANPARSE_TRIM                                -
-[-        ] process > BACQC:READ_STATS                                         -
-[-        ] process > BACQC:READSTATS_PARSE                                    -
-[-        ] process > BACQC:KRAKEN2_KRAKEN2                                    -
-[-        ] process > BACQC:BRACKEN_BRACKEN                                    -
-[-        ] process > BACQC:KRAKENPARSE                                        -
-[-        ] process > BACQC:CUSTOM_DUMPSOFTWAREVERSIONS                        -
-[-        ] process > BACQC:MULTIQC                                            -
+executor >  slurm (15)
+[80/fd97e3] AVANTONDER_BACQC:BACQC:FASTQSCAN_RAW (ERX9450496)                      [  0%] 0 of 5
+[-        ] AVANTONDER_BACQC:BACQC:FASTQSCANPARSE_RAW                              -
+[29/21b759] AVANTONDER_BACQC:BACQC:FASTQ_TRIM_FASTP_FASTQC:FASTQC_RAW (ERX9450497) [  0%] 0 of 5
+[5b/7c3de6] AVANTONDER_BACQC:BACQC:FASTQ_TRIM_FASTP_FASTQC:FASTP (ERX9450496)      [  0%] 0 of 5
+[-        ] AVANTONDER_BACQC:BACQC:FASTQ_TRIM_FASTP_FASTQC:FASTQC_TRIM             -
+[-        ] AVANTONDER_BACQC:BACQC:FASTQSCAN_TRIM                                  -
+[-        ] AVANTONDER_BACQC:BACQC:FASTQSCANPARSE_TRIM                             -
+[-        ] AVANTONDER_BACQC:BACQC:READ_STATS                                      -
+[-        ] AVANTONDER_BACQC:BACQC:READSTATS_PARSE                                 -
+[-        ] AVANTONDER_BACQC:BACQC:KRAKEN2_KRAKEN2                                 -
+[-        ] AVANTONDER_BACQC:BACQC:BRACKEN_BRACKEN                                 -
+[-        ] AVANTONDER_BACQC:BACQC:KRAKENPARSE                                     -
+[-        ] AVANTONDER_BACQC:BACQC:KRONA_KTIMPORTTAXONOMY                          -
+[-        ] AVANTONDER_BACQC:BACQC:MULTIQC
 ```
 
 :::
