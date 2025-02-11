@@ -49,6 +49,10 @@ This page lists the tools used during this course (listed alphabetically). The h
 
 `Kraken 2` is a powerful bioinformatics tool used for taxonomic classification of sequencing reads from metagenomic or genomic datasets. It rapidly assigns taxonomic labels to reads based on k-mer matches to a user-defined reference database, facilitating the characterization of microbial communities and the detection of pathogens in complex samples.
 
+### [`Krona`](https://github.com/marbl/Krona) 
+
+`Krona` is a set of scripts to create Krona charts from several bioinformatics tools as well as from text and XML files.
+
 ### [`mash`](https://mash.readthedocs.io/en/latest/index.html) 
 
 `mash` is a computational tool used for fast genome and metagenome distance estimation based on k-mer similarity. It enables rapid comparison of large genomic datasets by compressing sequences into sketch files, allowing efficient retrieval of pairwise distances between genomes or metagenomes.
