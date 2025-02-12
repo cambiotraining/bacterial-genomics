@@ -112,7 +112,7 @@ Hopefully, we'll be able to successfully run `TB-Profiler` on all our samples bu
 
 :::{.callout-exercise}
 
-#### Exercise: Run TB-Profiler on all samples
+#### Run TB-Profiler on all samples
 
 We have run `TB-Profiler` on a single sample.  However, we have five samples that we need to repeat the analysis on. To do this, we've provided a script that runs `TB-Profiler` on all the FASTQ files for all the samples in the `data/reads` directory using a _for loop_.
 

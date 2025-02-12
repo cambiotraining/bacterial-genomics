@@ -133,7 +133,7 @@ This is a bit more advanced, and is included here for interested users. We alrea
 :::
 
 :::{.callout-exercise}
-#### Exercise: Core genome alignment
+#### Core genome alignment
 
 Using Panaroo, perform a core genome alignment for your assembled sequences.
 
@@ -186,7 +186,7 @@ core_alignment_filtered_header.embl   gene_presence_absence.csv
 :::
 
 :::{.callout-exercise}
-#### Exercise: Tree inference
+#### Tree inference
 
 <i class="fa-solid fa-triangle-exclamation"></i> 
 Because `Panaroo` takes a long time to run, we provide pre-processed results in the folder `preprocessed/panaroo`, which you can use as input to `IQ-TREE` in this exercise.

@@ -60,7 +60,7 @@ The options we used are:
 - `--threads 8` - specifies how many CPUs to use.
 
 :::{.callout-exercise}
-#### Exercise: Run `PopPUNK`
+#### Run `PopPUNK`
 
 Using `PopPUNK`, assign your Pneumococcal genomes to GPSCs.
 

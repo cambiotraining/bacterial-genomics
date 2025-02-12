@@ -106,7 +106,7 @@ There are several files produced by TreeTime but the most useful ones for our pu
 - `timetree.nexus` - contains the time-scaled phylogeny in NEXUS format.
 
 :::{.callout-exercise}
-#### Exercise: Build a time-scaled phylogenetic tree
+#### Build a time-scaled phylogenetic tree
 
 We've provided a script, `08-run_treetime.sh`, to remove the outgroup from the alignment and tree and then run `TreeTime`. 
 

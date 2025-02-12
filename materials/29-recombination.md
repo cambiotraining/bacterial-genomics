@@ -102,7 +102,7 @@ The options we used are:
 The panel on the left shows the maximum-likelihood phylogeny built from the clonal frame of serotype isolates. The scale below shows the length of branches in base substitutions. The tree is coloured according to the classification of isolates, each of which corresponds to a row in the panel on the right. Each column in this panel is a base in the reference annotation, the annotation of which is shown at the top of the figure. The panel shows the distribution of inferred recombination events, which are coloured blue if they are unique to a single isolate, or red, if they are shared by multiple isolates through common ancestry.
 
 :::{.callout-exercise}
-#### Exercise: Run `Gubbins`
+#### Run `Gubbins`
 
 Using Gubbins, create a recombination-masked alignment.
 
@@ -142,7 +142,7 @@ Along with the `Gubbins` outputs the script also created the masked alignment fi
 :::
 
 :::{.callout-exercise}
-#### Exercise: Build post-Gubbins phylogeny
+#### Build post-Gubbins phylogeny
 
 Now that we have created a recombination-masked alignment, we can extract the variant sites and count of constant sites and use these to build a recombination-free phylogenetic tree with `IQ-TREE`.
 

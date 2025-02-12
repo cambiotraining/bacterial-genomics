@@ -127,7 +127,7 @@ You will see a table containing the drugs that **Pathogenwatch** is able to iden
 We will add some of this information to our phylogenetic tree in the next section. 
 
 :::{.callout-exercise}
-#### Exercise: Downloading data from _Pathogenwatch_
+#### Downloading data from _Pathogenwatch_
 
 For the next step, [visualising our phylogeny](25-tree_visualization), you will need to download the results of the lineage typing and antibiotic susceptibility from `Pathogenwatch`:
 
@@ -175,7 +175,7 @@ mv ~/Desktop/wbg-2023* .
 :::
 
 :::{.callout-exercise}
-#### Exercise: Preparing data for _Microreact_
+#### Preparing data for _Microreact_
 
 Now that we have analysed our genomes with `Pathogenwatch` and downloaded the typing and AMR profiles, we need to merge this metadata with the existing information we have for the 30 _S. aureus_ genomes.  We could do this with _Excel_. Alternatively, we provide a _Python_ script called `merge_staph_data.py` in the `scripts` directory.
 

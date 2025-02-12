@@ -36,7 +36,7 @@ Ultimately, the safest way to assess AMR is with **experimental validation**, by
 However, computational analysis such as what we did can help inform these experiments and treatment decisions.
 
 :::{.callout-exercise}
-#### Exercise: AMR with _Pathogenwatch_
+#### AMR with _Pathogenwatch_
 
 Following from the _Pathogenwatch_ exercise in [Analysing Pneumococcal genomes with Pathogenwatch](31-pathogenwatch.md), open the "Chaguza Serotype 1" collection that you created and answer the following questions:
 

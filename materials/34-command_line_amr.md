@@ -93,7 +93,7 @@ The options we used are:
 - `--arg_skip_deeparg` - this skips a step in the analysis which uses the software _DeepARG_. We did this simply because this software takes a very long time to run. But in a real analysis you may want to leave this option on. 
 
 :::{.callout-exercise}
-#### Exercise: Running funcscan
+#### Running funcscan
 
 Your next task is to run the **funcscan** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `07-run_funcscan.sh`. This script contains the code to run `funcscan`. 
 

@@ -40,7 +40,7 @@ In the [Visualising phylogenies](14-tree_visualization.md) chapter we used `Micr
 7. Save your project calling it something helpful like "School Staph".
 
 :::{.callout-exercise}
-#### Exercise: Add Legend and bar plot to the window
+#### Add Legend and bar plot to the window
 
 - Add a legend to the window so you can identify what each colour corresponds to.
 - Add a bar chart to the window showing the distribution of STs in each school.

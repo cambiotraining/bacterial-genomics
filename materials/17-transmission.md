@@ -63,7 +63,7 @@ Now that we've generated a pairwise SNP distance matrix, we can use **R** to cal
 ![Putative transmission networks generated using a 5 SNP threshold](images/5_snp_network.png)
 
 :::{.callout-exercise}
-#### Exercise: Adjust the pairwise SNP threshold
+#### Adjust the pairwise SNP threshold
 
 As discussed in the introduction above, various SNP thresholds are used when inferring putative transmission networks in TB.  We used the most conservative threshold of 5 SNPs.  For this exercise:
 

@@ -77,7 +77,7 @@ To check the list of MLST schemes available, you can use the command `mlst --lis
 :::
 
 :::{.callout-exercise}
-#### Exercise: MLST with assemblebac
+#### MLST with assemblebac
 
 The sharp-eyed amongst you may have noticed that `assemblebac` runs `mlst` alongside assembly and annotation.
 

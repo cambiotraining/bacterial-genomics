@@ -18,7 +18,7 @@ Remember, the first step of any analysis of a new sequence dataset is to perform
 
 :::{.callout-exercise}
 
-#### Exercise: Running nf-core/bactmap
+#### Running nf-core/bactmap
 
 Your next task is to run the **bactmap** pipeline on the _S. pneumoniae_ data.  In the folder `scripts` (within the `S_pneumoniae` analysis directory) you will find a script named `01-run_bactmap.sh`. This script contains the code to run bactmap. 
 
@@ -92,7 +92,7 @@ The results for all the samples looked really good so we can keep all of them fo
 :::
 
 :::{.callout-exercise}
-#### Exercise: How much of the reference was mapped?
+#### How much of the reference was mapped?
 
 - Activate the `seqtk` software environment.
 - Run the `02-pseudogenome_check.sh` script we've provided in the `scripts` folder, which calculates how much missing data there is for each sample using `seqtk comp`. 

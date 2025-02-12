@@ -28,7 +28,7 @@ ERR9907672
 ```
 
 :::{.callout-exercise}
-#### Exercise: Preparing a samples file
+#### Preparing a samples file
 
 Your first task is to create a `samples.csv` file to be used as input for `fetchngs`.  Use the following accessions:
 
@@ -88,7 +88,7 @@ However, make sure to set these options to the maximum resources available on th
 :::
 
 :::{.callout-exercise}
-#### Exercise: Running fetchngs
+#### Running fetchngs
 
 Your next task is to download sequence data with the `fetchngs`.  In the folder `scripts` (in the `M_tuberculosis` analysis directory) you will find a script named `01-run_fetchngs.sh`. This script contains the code to run `fetchngs`. 
 

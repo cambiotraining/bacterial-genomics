@@ -65,7 +65,7 @@ The options we used are:
 
 :::{.callout-exercise}
 
-#### Exercise: Running nf-core/bactmap
+#### Running nf-core/bactmap
 
 Your next task is to run the **bactmap** pipeline on your data.  In the folder `scripts` (within your analysis directory) you will find a script named `03-run_bactmap.sh`. This script contains the code to run bactmap. 
 
@@ -245,7 +245,7 @@ To calculate the percentage of the reference mapped we divide the sum of 'A's, '
 This is more than 90% so we can proceed with the analysis of this sample.
 
 :::{.callout-exercise}
-#### Exercise: How much of the reference was mapped?
+#### How much of the reference was mapped?
 
 We have calculated the percentage of the reference mapped for a single sample.  However, we have five samples that we need to repeat the analysis on. 
 To do this, we've provided a script that runs `seqtk comp` on all the samples in the `pseudogenomes` directory using a _for loop_.

@@ -101,7 +101,7 @@ Assessing the accuracy of our genome includes addressing issues such as:
 Assessing these aspects of a genome assembly can be challenging, primarily because the true state of the organism's genome is often unknown, especially in the case of new genome assemblies. 
 
 :::{.callout-exercise}
-#### Exercise: Assembly contiguity
+#### Assembly contiguity
 
 To assess the contiguity of your assemblies, you ran `QUAST` as part of the assembleBAC pipeline. Open the file `transposed_report.tsv` in the `preprocessed/assemblebac/metadata` directory. This should open the file in _Excel_. 
 - Answer the following questions: 
@@ -130,7 +130,7 @@ Isolate ERX3876939_ERR3864886_T1_contigs has more than 200 contigs. A this is hi
 :::
 
 :::{.callout-exercise}
-#### Exercise: Assembly completeness
+#### Assembly completeness
 
 To assess the completeness of your assembly, we ran the _CheckM2_ software on your assembly files as part of the assembleBAC pipeline.
 Go to the ``preprocessed/assemblebac/metadata/`` directory and open the `checkm2_summary.tsv` file in _Excel_. 

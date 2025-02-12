@@ -67,7 +67,7 @@ Remember, the first step of any analysis of a new sequence dataset is to perform
 :::
 
 :::{.callout-exercise}
-#### Exercise: Running assembleBAC
+#### Running assembleBAC
 
 Your next task is to run the **assembleBAC** pipeline on your data. Make sure you start this exercise from the `S_aureus` directory.
 
