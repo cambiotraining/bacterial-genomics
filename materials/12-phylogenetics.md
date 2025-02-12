@@ -234,7 +234,7 @@ There are several files with the following extensions:
 The main files of interest are the report file (`.iqtree`) and the tree file (`.treefile`) in standard [Newick format](https://en.wikipedia.org/wiki/Newick_format).
 
 :::{.callout-exercise}
-#### Exercise: Tree inference
+#### Tree inference
 
 Produce a tree from the masked pseudogenome alignment from we created in the [previous section](11-bactmap.md). 
 
@@ -300,7 +300,7 @@ The main file of interest is `Nam_TB.treefile`, which contains our tree in the s
 Rooting a phylogenetic tree is essential for making sense of evolutionary relationships and for providing a temporal context to the diversification of species. It transforms an unrooted tree, which simply shows relationships without direction, into a meaningful representation of evolutionary history. The most common way to accurately root a phylogenetic tree is to include an outgroup that is known to be more distantly related to the taxa included as part of the analysis. In our example we mapped our TB sequences to the MTBC0 reference, which is an outgroup to all members of the MTBC, so we'll use this to root our tree before visualizing it.  There are a few different tools that could be used to root a phylogenetic tree but we've provided a python script, `root_tree.py` to do this. You can run the script using the following command (we're going to root the tree we've provided in the **preprocessed** directory so you don't need to edit the command):
 
 ```bash
-python scripts/root_tree.py -i preprocessed/iqtree/Nam_TB.treefile -g MTBC0 -o Nam_TB_rooted.treefile
+python scripts/root_tree.py -i preprocessed/iqtree/Nam_TB.treefile -g MTBC0 -o results/iqtree/Nam_TB_rooted.treefile
 ```
 The options we used are:
 
@@ -308,7 +308,7 @@ The options we used are:
 - `-g` - the name of the outgroup to root the tree with (in this case MTBC0).
 - `-o` - the rooted phylogenetic tree.
 
-This will create a NEWICK file called `Nam_TB_rooted.treefile` in your analysis directory.
+This will create a NEWICK file called `Nam_TB_rooted.treefile` in your results directory.
 
 ## Summary
 

@@ -99,7 +99,9 @@ Your first task is to run the `bacQC` pipeline on your data.  In the folder `scr
 
 - Run the script using `bash scripts/02-run_bacqc.sh`.
   
-- If the script is running successfully it should start printing the progress of each job in the bacQC pipeline. This will take a little while to finish. <i class="fa-solid fa-mug-hot"></i>
+If the script is running successfully it should start printing the progress of each job in the bacQC pipeline. This will take a little while to finish. 
+<i class="fa-solid fa-mug-hot"></i> 
+You can continue working through the materials by using preprocessed data detailed in the following sections. 
 
 :::{.callout-answer}
 

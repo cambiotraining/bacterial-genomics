@@ -50,15 +50,15 @@ The option we used is:
 
 The pairwise SNP matrix will be saved to the `results/transmission/` directory.  
 
-Alternatively we've provided a script, `08-run_pairsnp.sh` in the `scripts` directory which could be used instead with `bash`:
+Alternatively we've provided a script, `09-run_pairsnp.sh` in the `scripts` directory which could be used instead with `bash`:
 
 ```bash
-bash scripts/08-run_pairsnp.sh
+bash scripts/09-run_pairsnp.sh
 ```
 
 ## Calculating and plotting transmission networks in R
 
-Now that we've generated a pairwise SNP distance matrix, we can use **R** to calculate and plot our transmission network using a pre-determined threshold of **5** SNPs to identify putative transmission events. Open RStudio then open the script `09-transmission.R` in the `scripts` directory. Run the code in the script, going line by line (remember in RStudio you can run code from the script panel using <kbd>Ctrl</kbd> + <kbd>Enter</kbd>). As you run the code check the tables that are created (in your "Environment" panel on the top-right) and see if the SNP matrix was correctly imported.  Once you reach the end of the script, you should have created a plot showing the putative transmission networks identified in the data with the nodes coloured by Sex and the pairwise SNP distances shown along the edges:
+Now that we've generated a pairwise SNP distance matrix, we can use **R** to calculate and plot our transmission network using a pre-determined threshold of **5** SNPs to identify putative transmission events. Open RStudio then open the script `10-transmission.R` in the `scripts` directory. Run the code in the script, going line by line (remember in RStudio you can run code from the script panel using <kbd>Ctrl</kbd> + <kbd>Enter</kbd>). As you run the code check the tables that are created (in your "Environment" panel on the top-right) and see if the SNP matrix was correctly imported.  Once you reach the end of the script, you should have created a plot showing the putative transmission networks identified in the data with the nodes coloured by Sex and the pairwise SNP distances shown along the edges:
 
 ![Putative transmission networks generated using a 5 SNP threshold](images/5_snp_network.png)
 

@@ -77,7 +77,10 @@ Your next task is to run the **bactmap** pipeline on your data.  In the folder `
 
 - Run the script using `bash scripts/03-run_bactmap.sh`.
   
-If the script is running successfully it should start printing the progress of each job in the bactmap pipeline. The pipeline will take a while to run.
+If the script is running successfully it should start printing the progress of each job in the bactmap pipeline. 
+The pipeline will take a while to run. <i class="fa-solid fa-mug-hot"></i> 
+You can continue working through the materials by using preprocessed data detailed in the following sections. 
+
 
 :::{.callout-answer}
 
@@ -209,7 +212,7 @@ To run `seqtk comp` on a single sample (in this example we'll analyse `ERX945049
 mkdir -p results/bactmap/pseudogenomes_check
 
 # run seqtk comp
-seqtk comp results/bactmap/pseudogenomes/ERX9450498_ERR9907670.fas > results/bactmap/pseudogenomes_check/ERX9450498_ERR9907670.tsv
+seqtk comp preprocessed/bactmap/pseudogenomes/ERX9450498_ERR9907670.fas > results/bactmap/pseudogenomes_check/ERX9450498_ERR9907670.tsv
 ```
 
 If you open the output file `ERX9450498_ERR9907670.tsv` in the terminal with `cat`:
@@ -223,6 +226,7 @@ You should see output like this:
 ```bash
 ERX9450498_ERR9907670	4435783	715550	1348517	1343684	715401	0	0	312631	1040588	0	0	0
 ```
+
 There are no headers in the output but the important information is contained in the first six columns:
 
 - **Column 1** - our sample ID.
@@ -243,7 +247,8 @@ This is more than 90% so we can proceed with the analysis of this sample.
 :::{.callout-exercise}
 #### Exercise: How much of the reference was mapped?
 
-We have calculated the percentage of the reference mapped for a single sample.  However, we have five samples that we need to repeat the analysis on. To do this, we've provided a script that runs `seqtk comp` on all the samples in the `pseudogenomes` directory using a _for loop_.
+We have calculated the percentage of the reference mapped for a single sample.  However, we have five samples that we need to repeat the analysis on. 
+To do this, we've provided a script that runs `seqtk comp` on all the samples in the `pseudogenomes` directory using a _for loop_.
 
 - In the folder `scripts` (inside your analysis directory), you'll find a script named `04-pseudogenome_check.sh`.
 - Open the script, which you will notice is composed of two sections: 
@@ -258,7 +263,7 @@ We have calculated the percentage of the reference mapped for a single sample.  
 
 We opened the script `04-pseudogenome_check.sh` and these are the settings we used:
 
-- `fasta_dir="results/bactmap/pseudogenomes"` - the name of the directory with the pseudogenomes produced by `bactmap` in it.
+- `fasta_dir="preprocessed/bactmap/pseudogenomes"` - the name of the directory with the pseudogenomes produced by `bactmap` in it.
 - `outdir="results/bactmap/pseudogenomes_check"` - the name of the directory where we want to save our results.
 - `parser="scripts/seqtk_parser.py"` - the path to a python script that takes the `seqtk` TSV files as input and does the calculation we performed above for all the samples.
 
@@ -290,8 +295,8 @@ We can see that `ERX9450520_ERR9907692` only mapped to 79.9% of the reference. W
 
 Now that we've mapped our sequence data to the ancestral reference, called and filtered variants and created consensus pseudogenomes that we checked, we can create the final alignment we will use for inferring a phylogenetic tree.  As we are not excluding any samples based on the pseudogenome check we did above, we can use the `aligned_pseudogenomes.fas` file that was created by `bactmap` (it's worth remembering that this alignment includes the reference as well as the pseudogenomes).  If any of the pseudogenomes contained more than 25% missing data and were removed, we could create our final alignment with `cat` as described below.
 
-:::{.callout-hint}
-### Building a final alignment from pseudogenome FASTA files
+:::{.callout-tip collapse=true}
+### **Tip**: Building a final alignment from pseudogenome FASTA files
 One of the advantages of working with pseudogenome FASTA files is that the files are all the same length i.e. the length of the reference.  This means that they are effectively already aligned so we don't need to do any additional aligning like we might do with gene sequences from different isolates.  If you need to create a final alignment from the pseudogenome files, it's as simple as using `cat`:
 
 First create a `tmp` directory and move the pseudogenome files you want to include to the `tmp directory`:
@@ -333,7 +338,7 @@ To run `remove_blocks_from_aln.py` on `aligned_pseudogenomes.fas`, the following
 mkdir -p results/bactmap/masked_alignment
 
 # remove_blocks_from_aln.py
-remove_blocks_from_aln.py -a results/bactmap/pseudogenomes/aligned_pseudogenomes.fas -t resources/masking/MTBC0_Goigetal_regions_toDiscard.bed -o results/bactmap/masked_alignment/aligned_pseudogenomes_masked.fas
+remove_blocks_from_aln.py -a preprocessed/bactmap/pseudogenomes/aligned_pseudogenomes.fas -t resources/masking/MTBC0_Goigetal_regions_toDiscard.bed -o results/bactmap/masked_alignment/aligned_pseudogenomes_masked.fas
 ```
 The options we used are:
 
