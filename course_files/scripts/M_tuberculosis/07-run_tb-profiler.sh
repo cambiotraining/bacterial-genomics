@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# before running this script make sure to
-# mamba activate tb-profiler
+# check if environment has been activated
+if ! command -v tb-profiler 2>&1 >/dev/null
+then
+    echo "ERROR: tb-profiler not available, make sure to run 'mamba activate tb-profiler'"
+    exit 1
+fi
 
 #### Settings #####
 

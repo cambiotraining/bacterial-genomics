@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# before running this script make sure to
-# mamba activate panaroo
+# check if environment has been activated
+if ! command -v panaroo 2>&1 >/dev/null
+then
+    echo "ERROR: panaroo not available, make sure to run 'mamba activate panaroo'"
+    exit 1
+fi
 
 # create output directory
 mkdir -p results/panaroo/

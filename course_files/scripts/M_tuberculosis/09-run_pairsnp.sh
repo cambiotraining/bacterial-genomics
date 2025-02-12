@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# before running this script make sure to
-# mamba activate pairsnp
+# check if environment has been activated
+if ! command -v pairsnp 2>&1 >/dev/null
+then
+    echo "ERROR: pairsnp not available, make sure to run 'mamba activate pairsnp'"
+    exit 1
+fi
 
 # create output directory
 mkdir -p results/transmission/

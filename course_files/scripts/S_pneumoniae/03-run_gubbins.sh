@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# before running this script make sure to
-# mamba activate gubbins
+# check if environment has been activated
+if ! command -v gubbins 2>&1 >/dev/null
+then
+    echo "ERROR: gubbins not available, make sure to run 'mamba activate gubbins'"
+    exit 1
+fi
 
 # create output directory
 mkdir -p results/gubbins/

@@ -1,13 +1,17 @@
 #!/bin/bash
 
-# before running this script make sure to
-# mamba activate remove_blocks
+# check if environment has been activated
+if ! command -v remove_blocks_from_aln.py 2>&1 >/dev/null
+then
+    echo "ERROR: remove_blocks_from_aln.py not available, make sure to run 'mamba activate remove_blocks'"
+    exit 1
+fi
 
 #### Settings #####
 
 # directory with pseudogenome FASTA
 
-fasta_dir="results/bactmap/pseudogenomes"
+fasta_dir="preprocessed/bactmap/pseudogenomes"
 
 # output directory for results
 outdir="results/bactmap/masked_alignment"

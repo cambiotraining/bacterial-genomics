@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# before running this script make sure to
-# mamba activate poppunk
+# check if environment has been activated
+if ! command -v poppunk 2>&1 >/dev/null
+then
+    echo "ERROR: poppunk not available, make sure to run 'mamba activate poppunk'"
+    exit 1
+fi
 
 # create output directory
 mkdir -p results/poppunk/

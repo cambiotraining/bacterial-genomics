@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# before running this script make sure to
-# mamba activate nextflow
+# check if environment has been activated
+if ! command -v nextflow 2>&1 >/dev/null
+then
+    echo "ERROR: nextflow not available, make sure to run 'mamba activate nextflow'"
+    exit 1
+fi
 
 # create output directory
 mkdir -p results/fetchngs

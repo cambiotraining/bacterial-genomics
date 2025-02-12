@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# before running this script make sure to
-# mamba activate iqtree
+# check if environment has been activated
+if ! command -v iqtree 2>&1 >/dev/null
+then
+    echo "ERROR: iqtree not available, make sure to run 'mamba activate iqtree'"
+    exit 1
+fi
 
 # create output directory
 mkdir -p results/snp-sites/

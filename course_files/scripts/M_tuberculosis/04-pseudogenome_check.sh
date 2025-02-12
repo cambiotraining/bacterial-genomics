@@ -1,13 +1,17 @@
 #!/bin/bash
 
-# before running this script make sure to
-# mamba activate seqtk
+# check if environment has been activated
+if ! command -v seqtk 2>&1 >/dev/null
+then
+    echo "ERROR: seqtk not available, make sure to run 'mamba activate seqtk'"
+    exit 1
+fi
 
 #### Settings #####
 
 # directory with pseudogenome FASTA
 
-fasta_dir="results/bactmap/pseudogenomes"
+fasta_dir="preprocessed/bactmap/pseudogenomes"
 
 # output directory for results
 outdir="results/bactmap/pseudogenomes_check"
