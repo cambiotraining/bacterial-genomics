@@ -24,7 +24,7 @@ def make_dir(path):
     """
     if not len(path) == 0:
         try:
-            os.makedirs(path)
+            os.makedirs(path, exist_ok=True)
         except OSError as exception:
             if exception.errno != errno.EEXIST:
                 raise

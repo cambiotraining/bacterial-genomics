@@ -14,7 +14,7 @@ mkdir -p results/treetime/
 seqkit grep -v -p MTBC0 preprocessed/bactmap/masked_alignment/aligned_pseudogenomes_masked.fas > results/treetime/aligned_pseudogenomes_masked_no_outgroups.fas 
 
 # Remove outgroup from rooted tree
-python scripts/remove_outgroup.py -i Nam_TB_rooted.treefile -g MTBC0 -o results/treetime/Nam_TB_rooted_no_outgroup.treefile
+python scripts/remove_outgroup.py -i results/iqtree/Nam_TB_rooted.treefile -g MTBC0 -o results/treetime/Nam_TB_rooted_no_outgroup.treefile
 
 # Run TreeTime
 treetime --tree results/treetime/Nam_TB_rooted_no_outgroup.treefile \
