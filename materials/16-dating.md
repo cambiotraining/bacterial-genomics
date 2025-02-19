@@ -35,11 +35,14 @@ Estimating a molecular clock signal in genome data involves determining the rate
 
 ## TreeTime
 
-`TreeTime` is a computational tool designed to estimate time-scaled phylogenies with a focus on efficiency and simplicity. It employs a maximum likelihood framework to integrate molecular sequence data with temporal information, such as sampling dates, to infer the timing of evolutionary events. `TreeTime` optimizes the placement of mutations along the phylogenetic tree while simultaneously adjusting branch lengths to reflect chronological time. This method leverages a relaxed molecular clock model, allowing for variations in the rate of evolution across different branches. By combining sequence data with temporal constraints, `TreeTime` rapidly produces time-calibrated phylogenies that are both accurate and computationally efficient, making it particularly useful for analyzing large datasets, such as those encountered in viral and bacterial evolution studies. Its user-friendly interface and robust performance make `TreeTime` an accessible and valuable tool for researchers aiming to elucidate the temporal dynamics of evolutionary processes.
+TreeTime is a computational tool designed to estimate time-scaled phylogenies with a focus on efficiency and simplicity. It employs a maximum likelihood framework to integrate molecular sequence data with temporal information, such as sampling dates, to infer the timing of evolutionary events. TreeTime optimizes the placement of mutations along the phylogenetic tree while simultaneously adjusting branch lengths to reflect chronological time. This method leverages a relaxed molecular clock model, allowing for variations in the rate of evolution across different branches. By combining sequence data with temporal constraints, TreeTime rapidly produces time-calibrated phylogenies that are both accurate and computationally efficient, making it particularly useful for analyzing large datasets, such as those encountered in viral and bacterial evolution studies. Its user-friendly interface and robust performance make TreeTime an accessible and valuable tool for researchers aiming to elucidate the temporal dynamics of evolutionary processes.
 
-### Running `TreeTime`
+### Running TreeTime
 
-We're going to run `TreeTime` on the rooted phylogenetic tree of our Namibian TB genomes.  As well as the tree, we also need the masked alignment we created in [The nf-core/bactmap pipeline](11-bactmap.md) and, as we're inferring a time-scaled phylogenetic tree, the sample collection dates that can be found in the `TB_metadata.tsv` file.  Before we run `TreeTime`, we need to remove the outgroup MTBC0 from both the alignment and the phylogenetic tree:
+We're going to run TreeTime on the rooted phylogenetic tree of our Namibian TB genomes (see [Building phylogenetic trees - Rooting a phylogenetic tree](12-phylogenetics.md#rooting-a-phylogenetic-tree)).
+As well as the tree, we also need the masked alignment we created in [The nf-core/bactmap pipeline](11-bactmap.md) and, as we're inferring a time-scaled phylogenetic tree, the sample collection dates that can be found in the `TB_metadata.tsv` file.  
+
+Before we run TreeTime, we need to remove the outgroup MTBC0 from both the alignment and the rooted phylogenetic tree (you can find all this code in the script `08-run_treetime.sh`):
 
 ```bash
 mamba activate treetime
@@ -51,13 +54,10 @@ mkdir -p results/treetime/
 seqkit grep -v -p MTBC0 preprocessed/bactmap/masked_alignment/aligned_pseudogenomes_masked.fas > results/treetime/aligned_pseudogenomes_masked_no_outgroups.fas 
 
 # Remove outgroup from rooted tree
-python scripts/remove_outgroup.py -i Nam_TB_rooted.treefile -g MTBC0 -o Nam_TB_rooted_no_outgroup.treefile
-
-# Move no outgroup tree to results/treetime
-mv Nam_TB_rooted_no_outgroup.treefile results/treetime
+python scripts/remove_outgroup.py -i results/iqtree/Nam_TB_rooted.treefile -g MTBC0 -o results/treetime/Nam_TB_rooted_no_outgroup.treefile
 ```
 
-Now we can run `TreeTime`:
+Now we can run TreeTime:
 
 ```bash
 # Run TreeTime
@@ -108,10 +108,10 @@ There are several files produced by TreeTime but the most useful ones for our pu
 :::{.callout-exercise}
 #### Build a time-scaled phylogenetic tree
 
-We've provided a script, `08-run_treetime.sh`, to remove the outgroup from the alignment and tree and then run `TreeTime`. 
+We've provided a script, `08-run_treetime.sh`, to remove the outgroup from the alignment and tree and then run TreeTime. 
 
 - Activate the software environment: `mamba activate treetime`.
-- Run the script with `bash scripts/08-run_treetime.sh`. If the script is running successfully it should print a message on the screen as `TreeTime` constructs a time-scaled phylogenetic tree.
+- Run the script with `bash scripts/08-run_treetime.sh`. If the script is running successfully it should print a message on the screen as TreeTime constructs a time-scaled phylogenetic tree.
 - Assess the strength of the molecular clock signal in the data.
 - Examine the dates estimated by TreeTime. Do these seem reasonable based on what we know about the MTBC?
 
@@ -152,11 +152,11 @@ We can see that the date of the MRCA for the genomes we included in our analysis
 
 ### Visualizing time-scaled phylogenetic trees
 
-Now that we've generated a time-scaled phylogenetic tree with `TreeTime`, we can use `FigTree` to visualize the tree (the PDF produced by `TreeTime` doesn't include the sample ids and we can't edit it). You can open `FigTree` from the terminal by running the command `figtree`.
+Now that we've generated a time-scaled phylogenetic tree with TreeTime, we can use FigTree to visualize the tree (the PDF produced by TreeTime doesn't include the sample ids and we can't edit it). You can open FigTree from the terminal by running the command `figtree`.
 
 To open the tree:
 
-1. Go to <kbd><kbd>File</kbd> > <kbd>Open...</kbd></kbd> and browse to the `results/treetime` folder with the `TreeTime` output files.
+1. Go to <kbd><kbd>File</kbd> > <kbd>Open...</kbd></kbd> and browse to the `results/treetime` folder with the TreeTime output files.
 
 2. Select the `timetree.nexus` file and click <kbd>Open</kbd>. You will be presented with a visual representation of the tree:
 

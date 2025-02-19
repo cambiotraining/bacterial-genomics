@@ -32,7 +32,7 @@ This is convenient, as we can obtain the results from multiple approaches in one
 
 ## Running nf-core/funcscan
 
-![Overview of the `nf-core/funcscan` workflow. In our case we will run the "Antimicrobial Resistance Genes (ARGs)" analysis, shown in yellow. Image source: https://nf-co.re/funcscan/1.1.2](https://raw.githubusercontent.com/nf-core/funcscan/1.1.2/docs/images/funcscan_metro_workflow.png){#fig-funcscan}
+![Overview of the `nf-core/funcscan` workflow. In our case we will run the "Antimicrobial Resistance Genes (ARGs)" analysis, shown in yellow. Image source: https://nf-co.re/funcscan/1.1.2](https://raw.githubusercontent.com/nf-core/funcscan/2.0.0//docs/images/funcscan_metro_workflow.png){#fig-funcscan}
 
 We are going to use the assemblies we generated for _S. pneumoniae_ using the `assembleBAC` pipeline as input for `funcscan` and these are located in `preprocessed/assemblebac/assemblies`
 
@@ -160,11 +160,12 @@ executor >  slurm (1371)
 
 ### `funcscan` results
 
-We can look at the output directory (`results/funscan`) to see the various directories containing output files created by `funcscan`:
+After running the pipeline, we can look at the output directory in `results/funcscan` (if your pipeline finished running), or you can also use the `preprocessed/funcscan` results.
+There are various directories containing output files:
 
 | Directory | Description |
 |:-- | :---------- |
-|`arg` | Contains the results of running the ARG sub-workflow |
+|`arg` | Contains the results of running the ARG (Antibiotic Resistance Genes) sub-workflow |
 |`reports` | Contains the `hamronization_combined_report.tsv` file |
 |`multiqc` | Contains a html file containing summaries of the various outputs |
 |`pipeline_info` | Contains information about the pipeline run |
@@ -188,7 +189,7 @@ You can also look at the detailed results of each individual tool, which can be 
 This directory contains sub-directories for each of the 5 AMR tools used (in our case only 4 folders, because we skipped the _DeepARG_ step):
 
 ```bash
-ls results/funcscan/arg
+ls preprocessed/funcscan/arg
 ```
 
 ```
