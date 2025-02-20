@@ -3,41 +3,50 @@
 #############################
 
 library(tidyverse)
+library(janitor) # to clean column names
+library(ape)
 library(ggtree)
 library(ggnewscale)
+
+# working directory
+setwd("S_pneumoniae")
 
 #################################
 ## Assign colours for metadata ##
 #################################
 
-colourList <- c("#0000cc","#ff0000","#660000","#9900ff","#ff66cc","#006600","#9999ff","#996600","#663366","#99cc66",
-                "#c4dc00","#ff6600","#666600","#cc9933","#99cc00","#cc99ff","#ccccff","#ffcc66","#336666","#000066","#666666","#663300","#1dc39f",
-                "#ddff33","#ffd700","#ffac2a","#c4dc00","#8f007f","#444c04","#e8ff2a","#8f0038","#388f00","#dc00c4","#1dc34f","#c34c1d","#ff6666",
-                "#ffcccc", "#FFFFD9", "#EDF8B1", "#C7E9B4", "#7FCDBB")
+# colour blind-friendly palette
+colour_list <- RColorBrewer::brewer.pal(8, "Dark2")
 
 ##########################
 ## Read in metadata TSV ##
 ##########################
 
-# Update the path
+# read the metadata table
 metadata <- read_tsv("pneumo_metadata.tsv")
 
 ############################################
 ## Create metadata df for ggtree plotting ##
 ############################################
 
-metadataDF <- as.data.frame(metadata[2:10])
-
-metadataDF$`MLST ST (PubMLST)` <- as.factor(metadataDF$`MLST ST (PubMLST)`)
-
-rownames(metadataDF) <- metadata$sample
+metadata_ggtree <- metadata %>% 
+  # clean the column names
+  clean_names() %>% 
+  # rename some columns for convenience
+  rename(mlst_st = mlst_st_streptococcus_pneumoniae_pub_mlst,
+         mlst_profile = mlst_profile_streptococcus_pneumoniae_pub_mlst) %>% 
+  # make sure strain type is treated as a categorical for plotting
+  mutate(mlst_st = factor(mlst_st)) %>% 
+  # move sample names to rownames (for ggtree)
+  column_to_rownames("sample")
+  
 
 ##############################
 ## Read in IQTREE phylogeny ##
 ##############################
 
-# Update the path
-pneumo_phylogeny <- read.tree("sero1.treefile")
+# read the tree
+pneumo_phylogeny <- read.tree("preprocessed/iqtree/sero1.treefile")
 
 #####################################
 ## Root with reference as outgroup ##
@@ -51,17 +60,19 @@ pneumo_phylogeny <- root(pneumo_phylogeny, outgroup = "NC_018630.1", resolve.roo
 
 pneumo_phylogeny_plot <- ggtree(pneumo_phylogeny) +
   geom_tiplab(align = F, 
-              size = 2) +
+              size = 4) +
   xlim_tree(0.002) +
   geom_treescale(x = 0, y = 25) +
   theme_tree()
+
+pneumo_phylogeny_plot
 
 ##############################################
 ## Plot phylogeny with ST as metadata strip ##
 ##############################################
 
 pneumo_phylogeny_plot_meta <- gheatmap(pneumo_phylogeny_plot, 
-                                       metadataDF[9],
+                                       metadata_ggtree["mlst_st"],
                                        offset = 0.0005,
                                        width = 0.05,
                                        color = NA,
@@ -70,5 +81,7 @@ pneumo_phylogeny_plot_meta <- gheatmap(pneumo_phylogeny_plot,
                                        colnames_position = "top",
                                        hjust = 0,
                                        font.size = 4) +
-  scale_fill_manual(values = colourList, name = "MLST ST (PubMLST)") +
+  scale_fill_manual(values = colour_list, name = "MLST ST (PubMLST)") +
   coord_cartesian(clip = "off")
+
+pneumo_phylogeny_plot_meta
