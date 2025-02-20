@@ -10,7 +10,7 @@ ERR1485235
 ERR1485237
 ERR1485301
 ERR1485299
-SRR26899141" > samples2.csv
+SRR26899141" > samples.csv
 
 # download data
 nextflow run nf-core/fetchngs \
