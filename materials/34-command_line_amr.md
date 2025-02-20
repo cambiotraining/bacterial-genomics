@@ -176,7 +176,7 @@ The main output of interest from this pipeline is the `hamronization_combined_re
 You can open this file using any standard spreadsheet software such as _Excel_ (@fig-hamronization). 
 
 This file is quite large, containing many columns and rows. 
-You can find information about the column headers on the [nf-core/funscan "Output" documentation page](https://nf-co.re/funcscan/1.1.3/docs/output#hamronization).
+You can find information about the column headers on the [nf-core/funscan "Output" documentation page](https://nf-co.re/funcscan/2.0.0/docs/output#hamronization).
 The easiest way to query this table is to filter the table based on the column "antimicrobial_agent" to remove rows where no AMR gene was detected (@fig-hamronization). 
 This way you are left with only the results which were positive for the AMR analysis. 
 
