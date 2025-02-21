@@ -11,14 +11,17 @@ title: "Visualising phylogenies with ggtree"
 
 ## Plotting phylogenetic trees with R
 
-Plotting phylogenetic trees with `ggtree` in R offers a powerful and flexible approach for visualizing evolutionary relationships. 
-The `ggtree` package, built on the ggplot2 framework, enables the creation of complex and highly customizable phylogenetic tree plots. 
-With `ggtree`, users can manipulate tree layouts, annotate nodes and branches, and incorporate additional data layers such as heatmaps or bar charts. 
-The package supports various tree formats, including Newick, Nexus, and PhyloXML, making it versatile for different datasets. 
-Researchers can enhance their plots with a wide array of aesthetic options, such as color coding by clade, adding tip labels, and highlighting specific evolutionary events or traits. 
-This flexibility makes `ggtree` an essential tool for evolutionary biologists and bioinformaticians, facilitating the clear and informative presentation of phylogenetic data.
+Although trees can be visualised with software such as FigTree or Microreact, these tools can be limited in their customisation options. 
+In particular, to produce publication-ready figures, where you may want to produce trees that fit a certain size, resolution, font size, etc. 
 
-The package developer has written a book - [Data Integration, Manipulation and Visualization of Phylogenetic Trees](https://yulab-smu.top/treedata-book/index.html) -, which goes through the many functions this package offers. 
+An alternative for tree visualisation is the R package `ggtree`, which provides many functions to customise your trees. 
+It can produce trees in a range of layouts, as well as display additional information (such as metadata) alongside the tree. 
+This includes basic configuration such as colouring the branches and tips of the tree, to more advanced displays such as adding heatmaps and barplots aligned with the tree branches. 
+
+The package supports common tree formats (such as Newick, produced by IQ-Tree), making it easy to integrate into your R analysis workflows. 
+In the following practical/exercise, we will demonstrate the basic usage of this package, to visualise the tree and MLST typing we produced for _S. pneumoniae_.
+However, the package developer has written a book, which offers an extensive manual to using this package: [Data Integration, Manipulation and Visualization of Phylogenetic Trees](https://yulab-smu.top/treedata-book/index.html).
+
 
 :::{.callout-exercise}
 #### Plot the Pneumococcal tree with `ggtree`
