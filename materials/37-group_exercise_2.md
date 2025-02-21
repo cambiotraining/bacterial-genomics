@@ -1,24 +1,26 @@
 ---
-title: "Group Exercise 2"
+title: "Communicating your findings"
 ---
 
 ::: {.callout-tip}
 ## Learning Objectives
 
-- Group exercise - bring all the information together to prepare a presentation to be fed back to different stakeholders
+- Collect and synthesise the findings of a full analysis, to prepare a presentation aimed at different stakeholders.
+- Acknowledge that different audiences may have different backgrounds and expectations when learning about your analysis and findings. 
 
 :::
 
 ## Final presentation
 
-The final exercise we're going to get you to do this week is to prepare a 5 minute presentation to be presented to one of the audiences we used in [Group Exercise 1](15-group_exercise_1.md):
+In this final exercise, you will prepare a 5 minute presentation aimed at one of the following audiences:
 
 - Field epidemiologist
 - Head of a public health lab
 - Minister of Health
 - Concerned citizen
 
-Again, we're going to ask you split you into groups.  Feel free to work with any of the three datasets we've worked with this week.  Your presentation should include a brief background/introduction, a methods section (remember the Minister of Health may not care which version of TB-Profiler you used!), your results and some interpretation.  Remember that the information you'll be presenting needs to be tailored to your audience, which for the purposes of this exercise will consist of one of the presenters who will be briefed to try and behave realistically (within reason of course!).
+Participants will be split into groups and assigned one of the audiences. 
+Feel free to work with any of the four datasets we've worked with this week (including the outbreak). 
+Your presentation should include a brief background/introduction, a methods section (remember the Minister of Health may not care which version of TB-Profiler you used!), your results and some interpretation. 
 
-The point of the exercise is to synthesise what you've learnt this week and get used to presenting your work to different audiences who may have different backgrounds and expectations. You have until the tea break to prepare your presentations and we'll do the presentations with brief questions after tea before doing the final wrap up and Q&A.
-
+Remember that the presentation should be tailored to your audience.

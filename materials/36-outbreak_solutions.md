@@ -176,7 +176,9 @@ Participants can upload their FASTA assemblies to Pathogenwatch, which implement
 
 In addition, they can use the funcscan workflow ([link to section](34-command_line_amr.md)). 
 First we need to create the funcscan samplesheet with two columns: "sample" and "fasta".
-This can be done manually, but we provide some code here as a (slightly convoluted) way to do this with the command line:
+
+This can be done manually, but we provide some code here as a (slightly convoluted) way to do this with the command line. 
+We do not expect you to share this with the participants, it's here for trainers' convenience, if you want to copy/paste to run the workflow quicker.
 
 ```bash
 # get sample names into temporary file - excluding isolate02 and isolate08
