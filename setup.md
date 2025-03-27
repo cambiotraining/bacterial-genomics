@@ -258,7 +258,7 @@ On Ubuntu/WSL2, you can install _Singularity_ using the following commands:
 
 ```bash
 sudo apt install -y runc cryptsetup-bin uidmap
-wget -O singularity.deb https://github.com/sylabs/singularity/releases/download/v4.0.2/singularity-ce_4.0.2-$(lsb_release -cs)_amd64.deb
+wget -O singularity.deb https://github.com/sylabs/singularity/releases/download/v4.3.0/singularity-ce_4.3.0-$(lsb_release -cs)_amd64.deb
 sudo dpkg -i singularity.deb
 rm singularity.deb
 ```
