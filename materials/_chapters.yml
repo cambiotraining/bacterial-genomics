@@ -54,12 +54,16 @@ book:
         - materials/33-intro_amr.md
         - materials/34-command_line_amr.md
         - materials/35-funcscan_pathogenwatch.md
+    - part: "Plasmid analysis"
+      chapters:
+        - materials/36-working_ont.md
+        - materials/37-plasmids.md
     - part: "Outbreak!"
       chapters:
-        - materials/36-outbreak.md
+        - materials/38-outbreak.md
     - part: "Reporting"
       chapters:
-        - materials/37-group_exercise_2.md
+        - materials/39-group_exercise_2.md
   appendices: 
     - materials/appendices/01-file_formats.md
     - materials/appendices/02-course_software.md

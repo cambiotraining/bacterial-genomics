@@ -18,7 +18,7 @@ The data for this exercise can be found in the `outbreak` directory.
 - Have a think about what key information the WHO will want to know
 - Feel free to consult your colleagues if you need some help
 
-::{.callout-tip}
+:::{.callout-tip}
 #### Long-running pipelines
 
 One of the pipelines that we expect you to run takes a long time to complete. 
