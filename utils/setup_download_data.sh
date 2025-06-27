@@ -68,3 +68,10 @@ wget -O poppunk/GPS_v8_external_clusters.csv https://gps-project.cog.sanger.ac.u
 
 # krona
 ktUpdateTaxonomy.sh krona
+
+
+# MOB-suite
+echo "Downloading and extracting MOB-suite database"
+wget -O mobsuite.zip https://zenodo.org/api/records/3785351/files-archive
+unzip mobsuite.zip -d mob_suite
+rm mobsuite.zip

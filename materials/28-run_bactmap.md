@@ -49,6 +49,7 @@ Next, we fixed the script:
 #!/bin/bash
 
 nextflow run nf-core/bactmap \
+  -r "{{< var version.bactmap >}}" \
   -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \

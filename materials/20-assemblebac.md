@@ -41,7 +41,7 @@ Now that we have the samplesheet, we can run the `assembleBAC` pipeline.  There 
 
 ```bash
 nextflow run avantonder/assembleBAC \
-  -r main \
+  -r "{{< var version.assembleBAC >}}" \
   -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \
@@ -85,7 +85,7 @@ If the script is running successfully it should start printing the progress of e
 
 :::{.callout-hint}
 - Do a web search to find what the aproximate genome size of _S. aureus_ is.
-- Look at the pipeline help (`nextflow run avantonder/assembleBAC -r main --help`) to find out what the format should be to specify the genome size in megabase pairs.
+- Look at the pipeline help (`nextflow run avantonder/assembleBAC -r "{{< var version.assembleBAC >}}" --help`) to find out what the format should be to specify the genome size in megabase pairs.
 :::
 
 :::{.callout-answer}
@@ -96,7 +96,7 @@ The fixed script is:
 #!/bin/bash
 
 nextflow run avantonder/assembleBAC \
-  -r main \
+  -r "{{< var version.assembleBAC >}}" \
   -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \

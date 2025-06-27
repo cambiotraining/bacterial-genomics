@@ -13,6 +13,7 @@ mkdir -p results/funcscan
 # FIX!!
 # run the pipeline
 nextflow run nf-core/funcscan \
+  -r 2.1.0 \
   -resume -profile singularity \
   --max_memory 16.GB --max_cpus 8 \
   --input FIX_PATH_TO_SAMPLESHEET \

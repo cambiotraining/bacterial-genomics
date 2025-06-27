@@ -9,7 +9,7 @@ fi
 
 # run the pipeline
 nextflow run avantonder/assembleBAC \
-  -r main \
+  -r 2.0.2 \
   -resume -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \

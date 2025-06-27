@@ -1,0 +1,11 @@
+# Versions of workflows and software used in the materials
+# these can be used as dynamic variables in the markdown documents
+# see https://quarto.org/docs/authoring/variables.html
+version:
+  bacQC: v2.0.1
+  bacQC-ONT: v2.0.2
+  assembleBAC: v2.0.2
+  assembleBAC-ONT: v2.0.3
+  bactmap: 1.0.0
+  funcscan: 2.1.0
+  fetchngs: 1.12.0

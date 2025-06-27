@@ -226,6 +226,13 @@ mamba create -n tb-profiler tb-profiler pandas
 mamba create -n treetime treetime seqkit biopython
 ```
 
+#### MOB-suite & Pling
+
+```bash
+mamba create -n mob_suite mob_suite
+mamba create -n pling pling
+```
+
 ### R and RStudio
 
 _R_ and _RStudio_ are available for all major operating systems. 
@@ -412,4 +419,22 @@ wget -O poppunk/GPS_v8_external_clusters.csv https://gps-project.cog.sanger.ac.u
 # make sure to activate krona environment
 mamba activate krona
 ktUpdateTaxonomy.sh krona/
+```
+
+#### MOB-suite
+
+MOB-suite has a generic database available, which can be downloaded using:
+
+```bash
+mamba activate mob_suite
+mob_init -d mob_suite -v
+```
+
+The MOB-suite developers also provide a [collection of Enterobacteriacea genomes](https://github.com/phac-nml/mob-suite?tab=readme-ov-file#using-mob-recon-to-reconstruct-plasmids-from-draft-assemblies) for organisms such as E. coli. 
+These can be downloaded separately from Zenodo, like so:
+
+```bash
+wget -O mobsuite.zip https://zenodo.org/api/records/3785351/files-archive
+unzip mobsuite.zip -d mob_suite
+rm mobsuite.zip
 ```

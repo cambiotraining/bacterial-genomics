@@ -46,6 +46,7 @@ The bactmap pipeline requires a samplesheet CSV file in the same format as the o
 
 ```bash
 nextflow run nf-core/bactmap \
+  -r "{{< var version.bactmap >}}" \
   -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \
@@ -90,6 +91,7 @@ The fixed script is:
 #!/bin/bash
 
 nextflow run nf-core/bactmap \
+  -r "{{< var version.bactmap >}}" \
   -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \

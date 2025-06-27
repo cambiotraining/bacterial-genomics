@@ -61,6 +61,7 @@ There are [many options](https://nf-co.re/fetchngs/1.12.0/parameters) that can b
 
 ```bash
 nextflow run nf-core/fetchngs \
+  -r "{{< var version.fetchngs >}}" \
   -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLES \
@@ -106,6 +107,7 @@ Your next task is to download sequence data with the `fetchngs`.  In the folder 
 #!/bin/bash
 
 nextflow run nf-core/fetchngs \
+  -r "{{< var version.fetchngs >}}" \
   -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input samples.csv \

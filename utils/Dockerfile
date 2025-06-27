@@ -48,27 +48,22 @@ RUN mamba install -y -n base pandas && \
 
 # Setup Nextflow config
 RUN mkdir -p /home/participant/.nextflow && \
-    echo "\
-conda { \
-  conda.enabled = true \
-  singularity.enabled = false \
-  docker.enabled = false \
-  useMamba = true \
-  createTimeout = '4 h' \
-  cacheDir = '/home/participant/.nextflow-conda-cache/' \
-} \
-singularity { \
-  singularity.enabled = true \
-  conda.enabled = false \
-  docker.enabled = false \
-  pullTimeout = '4 h' \
-  cacheDir = '/home/participant/.nextflow-singularity-cache/' \
-} \
-docker { \
-  docker.enabled = true \
-  singularity.enabled = false \
-  conda.enabled = false \
-}" >> /home/participant/.nextflow/config
+    cat <<EOF >> /home/participant/.nextflow/config
+    process {
+      resourceLimits = [
+        cpus: 8,
+        memory: 20.GB,
+        time: 12.h
+      ]
+    }
+    singularity { 
+      singularity.enabled = true 
+      conda.enabled = false 
+      docker.enabled = false 
+      pullTimeout = '4 h' 
+      cacheDir = '/home/participant/.nextflow-singularity-cache/' 
+    }
+    EOF
 
 # Set the default command
 CMD ["/bin/bash"]

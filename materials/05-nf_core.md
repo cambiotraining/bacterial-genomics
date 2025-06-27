@@ -125,7 +125,7 @@ Be clever with multiple Nextflow configuration locations. For example, use `-pro
 The nf-core config profile `test` is a special profile, which defines a minimal data set and configuration, that runs quickly and tests the workflow from beginning to end. Since the data is minimal, the output is often nonsense. Real world  example output are instead linked on the nf-core pipeline web page, where the workflow has been run with a full size data set:
 
 ```bash
-$ nextflow run nf-core/<pipeline_name -profile test
+$ nextflow run nf-core/<pipeline_name> -r "<pipeline_version>" -profile test
 ```
 
 :::{.callout-tip}

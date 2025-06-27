@@ -75,6 +75,7 @@ mkdir -p results/funcscan
 
 # run the pipeline
 nextflow run nf-core/funcscan \
+  -r "{{< var version.funcscan >}}" \
   -profile singularity \
   --max_memory 16.GB --max_cpus 8 \
   --input SAMPLESHEET \
@@ -117,6 +118,7 @@ mkdir results/funcscan
 
 # run the pipeline
 nextflow run nf-core/funcscan \
+  -r "{{< var version.funcscan >}}" \
   -profile singularity \
   --max_memory 16.GB --max_cpus 8 \
   --input samplesheet_funcscan.csv \

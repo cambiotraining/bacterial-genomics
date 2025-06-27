@@ -20,7 +20,7 @@ The genome size is not critical for the analysis.
 
 ```bash
 nextflow run avantonder/bacQC \
-  -r "v1.2" \
+  -r "{{< var version.fetchngs >}}" \
   -resume -profile "singularity" \
   --input "samplesheet.csv" \
   --outdir "results/bacqc" \
@@ -49,7 +49,7 @@ Run `avantonder/assembleBAC` ([link to section](20-assemblebac.md)):
 
 ```bash
 nextflow run avantonder/assembleBAC \
-  -r "v1.2.1" \
+  -r "{{< var version.assembleBAC >}}" \
   -resume -profile "singularity" \
   --input "samplesheet.csv" \
   --outdir "results/assemblebac" \
@@ -199,7 +199,7 @@ The following can be used in a shell script to run the workflow:
 
 ```bash
 nextflow run nf-core/funcscan \
-  -r "1.1.6" \
+  -r "{{< var version.funcscan >}}" \
   -resume -profile "singularity" \
   --input "samplesheet_funcscan.csv" \
   --outdir "results/funcscan" \
@@ -229,13 +229,14 @@ The genome size is not critical for the analysis.
 
 ```bash
 nextflow run avantonder/bacQC-ONT \
-   -profile singularity \
-   --input samplesheet.csv \
-   --summary_file sequencing_summary.txt \
-   --genome_size 4000000 \
-   --kraken2db databases/k2_standard_08gb_20240605/ \
-   --kronadb databases/krona/taxonomy.tab \
-   --outdir results/bacqc-ont
+  -r "{{< var version.bacQC-ONT >}}" \
+  -profile singularity \
+  --input samplesheet.csv \
+  --summary_file sequencing_summary.txt \
+  --genome_size 4000000 \
+  --kraken2db databases/k2_standard_08gb_20240605/ \
+  --kronadb databases/krona/taxonomy.tab \
+  --outdir results/bacqc-ont
 ```
 
 ## Assembly
@@ -244,13 +245,14 @@ Run `avantonder/assembleBAC-ONT` ([link to section](37-plasmids.md)):
 
 ```bash
 nextflow run avantonder/assembleBAC-ONT \
-    -profile singularity \
-    --input samplesheet.csv \
-    --genome_size 4M \
-    --medaka_model r941_min_fast_g507 \
-    --outdir results/assemblebac \
-    --baktadb databases/bakta_light_20240119/ \
-    --checkm2db databases/checkm2_v2_20210323/uniref100.KO.1.dmnd
+  -r "{{< var version.assembleBAC-ONT >}}" \
+  -profile singularity \
+  --input samplesheet.csv \
+  --genome_size 4M \
+  --medaka_model r941_min_fast_g507 \
+  --outdir results/assemblebac \
+  --baktadb databases/bakta_light_20240119/ \
+  --checkm2db databases/checkm2_v2_20210323/uniref100.KO.1.dmnd
 ```
 
 :::{.callout-warning}

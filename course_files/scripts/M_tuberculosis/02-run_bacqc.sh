@@ -13,7 +13,7 @@ mkdir -p results/bacqc
 # FIX!!
 # run the pipeline
 nextflow run avantonder/bacQC \
-  -r main \
+  -r 2.0.1 \
   -resume -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input FIX_SAMPLESHEET \

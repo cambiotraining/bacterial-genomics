@@ -70,7 +70,7 @@ There are [many options](https://github.com/avantonder/bacQC/blob/main/docs/para
 
 ```bash
 nextflow run avantonder/bacQC \
-  -r main \
+  -r "{{< var version.bacQC >}}" \
   -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \
@@ -111,7 +111,7 @@ You can continue working through the materials by using preprocessed data detail
 #!/bin/bash
 
 nextflow run avantonder/bacQC \
-  -r main \
+  -r "{{< var version.bacQC >}}" \
   -profile singularity \
   --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \
