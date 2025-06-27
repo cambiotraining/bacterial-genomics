@@ -25,7 +25,6 @@ The `MOB-suite` is designed to be a modular set of tools for the typing and reco
 
 ### Running MOB-suite {#sec-mobsuite}
 
-<!-- still need to figure out which dataset to use - requires ONT data for species with plasmid -->
 We are going to use _E.coli_ assemblies we've provided for you as input for `MOB-suite` and these are located in `data/assemblies`. These assemblies were generated from ONT data using the `assembleBAC-ONT` pipeline.
 
 First activate the `mobsuite` software environment:
@@ -64,7 +63,7 @@ contig_report.txt     mobtyper_results.txt  plasmid_AA170.fasta  plasmid_AA474.f
 :::{.callout-exercise}
 #### Running MOB-suite
 
-We have run `MOB-suite` on a single sample.  However, we have five samples that we need to repeat the analysis on. To do this, we've provided a script that runs `MOB-suite` on all the FASTA files for all the samples in the `preprocessed/mobsuite/assemblies` directory using a _for loop_.
+We have run `MOB-suite` on a single sample.  However, we have ten samples that we need to repeat the analysis on. To do this, we've provided a script that runs `MOB-suite` on all the FASTA files for all the samples in the `data/assemblies` directory using a _for loop_.
 
 - In the folder `scripts` (inside your analysis directory), you'll find a script named `01-run_mobsuite.sh`.
 - Open the script, which you will notice is composed of two sections: 
