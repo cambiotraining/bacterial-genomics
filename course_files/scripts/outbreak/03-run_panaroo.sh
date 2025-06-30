@@ -14,7 +14,7 @@ mkdir -p results/snp-sites/
 # FIX!!
 # Run panaroo
 panaroo \
-  --input results/assemblebac/annotation/*.gff3 \
+  --input results/assemblebac/bakta/*.gff3 \
   --out_dir results/panaroo \
   --clean-mode strict \
   --alignment core \
