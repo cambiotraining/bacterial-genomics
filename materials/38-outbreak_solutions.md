@@ -93,7 +93,7 @@ mamba activate panaroo
 mkdir results/panaroo
 
 # ensure isolate02 is not being used - they might do this in a more "manual" way
-gffs=$(ls results/assemblebac/annotation/*.gff3 | grep -v "isolate02")
+gffs=$(ls results/assemblebac/bakta/*.gff3 | grep -v "isolate02")
 
 # run panaroo
 panaroo \

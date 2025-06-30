@@ -32,7 +32,7 @@ mkdir results/panaroo
 
 # run panaroo
 panaroo \
-  --input results/assemblebac/annotation/*.gff3 \
+  --input results/assemblebac/bakta/*.gff3 \
   --out_dir results/panaroo \
   --clean-mode strict \
   --alignment core \
@@ -156,7 +156,7 @@ mkdir -p results/panaroo/
 
 # Run panaroo
 panaroo \
-  --input results/assemblebac/annotation/*.gff3 \
+  --input results/assemblebac/bakta/*.gff3 \
   --out_dir results/panaroo \
   --clean-mode strict \
   --alignment core \
