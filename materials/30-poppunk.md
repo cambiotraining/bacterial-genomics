@@ -26,20 +26,40 @@ PopPUNK has been instrumental in assigning Global Pneumococcal Sequence Clusters
 
 ## Running PopPUNK
 
-We'll start by activating the `poppunk` software environment:
+### Creating assembly sheet {.unnumbered}
+
+First we need to create a tab-delimited file (called `assemblies.txt`) containing the samples we want to assign GPSCs to and where the assemblies are located:
+
+<!-- workaround to make sure tabs are rendered as tabs instead of spaces - thanks ChatGPT! -->
+
+::: {.only-html}
+<pre id="tabbed-block" style="tab-size: 4; white-space: pre; font-family: monospace;"></pre>
+
+<script type="text/javascript">
+// Construct the string manually to avoid Quarto or Pandoc escaping
+let tabbedText = [
+  "ERX1265396_ERR1192012_T1\tpreprocessed/assemblebac/assemblies/ERX1265396_ERR1192012_T1_contigs.fa",
+  "ERX1265488_ERR1192104_T1\tpreprocessed/assemblebac/assemblies/ERX1265488_ERR1192104_T1_contigs.fa",
+  "ERX1501202_ERR1430824_T1\tpreprocessed/assemblebac/assemblies/ERX1501202_ERR1430824_T1_contigs.fa",
+  "ERX1501203_ERR1430825_T1\tpreprocessed/assemblebac/assemblies/ERX1501203_ERR1430825_T1_contigs.fa",
+  "ERX1501204_ERR1430826_T1\tpreprocessed/assemblebac/assemblies/ERX1501204_ERR1430826_T1_contigs.fa"
+].join('\n');
+
+document.getElementById('tabbed-block').textContent = tabbedText;
+</script>
+:::
+
+
+
+
+This file can be created in a standard spreadsheet software such as Excel, as long as you save the file in tab-delimited format. 
+
+### Running PopPUNK {.unnumbered}
+
+Before running the `poppunk` command, we start by activating the respective software environment:
 
 ```bash
 mamba activate poppunk
-```
-
-Now we need to create a tab-delimited file (called `assemblies.txt`) containing the samples we want to assign GPSCs to and where the assemblies are located:
-
-```
-ERX1265396_ERR1192012_T1	preprocessed/assemblebac/assemblies/ERX1265396_ERR1192012_T1_contigs.fa
-ERX1265488_ERR1192104_T1	preprocessed/assemblebac/assemblies/ERX1265488_ERR1192104_T1_contigs.fa
-ERX1501202_ERR1430824_T1	preprocessed/assemblebac/assemblies/ERX1501202_ERR1430824_T1_contigs.fa
-ERX1501203_ERR1430825_T1	preprocessed/assemblebac/assemblies/ERX1501203_ERR1430825_T1_contigs.fa
-ERX1501204_ERR1430826_T1	preprocessed/assemblebac/assemblies/ERX1501204_ERR1430826_T1_contigs.fa
 ```
 
 To run PopPUNK on our assemblies, the following commands can be used:
@@ -51,6 +71,7 @@ mkdir -p results/poppunk
 # run PopPUNK
 poppunk_assign --db GPS_v8_ref --external-clustering GPS_v8_external_clusters.csv --query assemblies.txt --output results/poppunk --threads 8
 ```
+
 The options we used are:
 
 - `--db` - GPSC reference database.
@@ -64,6 +85,7 @@ The options we used are:
 
 Using `PopPUNK`, assign your Pneumococcal genomes to GPSCs.
 
+- Make sure you have created an `assemblies.txt` file with your assembly files (see above).
 - Activate the software environment: `mamba activate poppunk`.
 - Run the script we provide in `scripts` using `bash scripts/05-run_poppunk.sh`.
 - When the analysis starts you will get several messages print on the screen.
@@ -72,7 +94,7 @@ Using `PopPUNK`, assign your Pneumococcal genomes to GPSCs.
 :::{.callout-answer}
 We ran the script using `bash scripts/05-run_poppunk.sh`. The script prints a message while it's running:
 
-```bash
+```
 PopPUNK: assign
 	(with backend: sketchlib v2.1.4
 	 sketchlib: /rds/user/ajv37/hpc-work/micromamba/envs/poppunk/lib/python3.10/site-packages/pp_sketchlib.cpython-310-x86_64-linux-gnu.so)
@@ -110,7 +132,8 @@ ERX1265396_ERR1192012_T1,2
 ERX1265488_ERR1192104_T1,2
 ERX1501204_ERR1430826_T1,2
 ```
-- We can see that all the genomes were assigned to GPSC2.
+
+We can see that all the genomes were assigned to GPSC2.
 
 :::
 
