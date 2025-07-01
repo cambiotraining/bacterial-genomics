@@ -186,7 +186,7 @@ mkdir results/iqtree
 
 # run iqtree2
 iqtree \
-  -s results/snp-sites/aligned_pseudogenomes_masked.fas \
+  -s results/snp-sites/aligned_pseudogenomes_masked_snps.fas \
   -fconst 692240,1310839,1306835,691662 \
   --prefix results/iqtree/Nam_TB \
   -nt AUTO \
@@ -239,8 +239,8 @@ The main files of interest are the report file (`.iqtree`) and the tree file (`.
 Produce a tree from the masked pseudogenome alignment from we created in the [previous section](11-bactmap.md). 
 
 - Activate the software environment: `mamba activate iqtree`.
-- Fix the script provided in `scripts/06-iqtree.sh`. See @sec-iqtree if you need a hint of how to fix the code in the script.
-- Run the script using `bash scripts/06-iqtree.sh`. Several messages will be printed on the screen while `iqtree` runs.
+- Fix the script provided in `scripts/06-run_iqtree.sh`. See @sec-iqtree if you need a hint of how to fix the code in the script.
+- Run the script using `bash scripts/06-run_iqtree.sh`. Several messages will be printed on the screen while `iqtree` runs.
 
 :::{.callout-answer}
 
