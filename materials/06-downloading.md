@@ -63,7 +63,6 @@ There are [many options](https://nf-co.re/fetchngs/1.12.0/parameters) that can b
 nextflow run nf-core/fetchngs \
   -r "{{< var version.fetchngs >}}" \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLES \
   --outdir results/fetchngs \
   --nf_core_pipeline viralrecon \
@@ -74,19 +73,11 @@ nextflow run nf-core/fetchngs \
 The options we used are: 
 
 - `-profile singularity` - indicates we want to use the _Singularity_ program to manage all the software required by the pipeline (another option is to use `docker`). See [Data & Setup](../setup.md) for details about their installation.
-- `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
 - `--input` - the samples file with the accessions to be downloaded, as explained above.
 - `--nf_core_pipeline` - Name of supported nf-core pipeline e.g. 'viralrecon'. A samplesheet for direct use with the pipeline will be created with the appropriate columns.
 - `--download_method` - forces the pipeline to use `sratools` instead of a direct FTP download.
 - `-resume` - all Nextflow pipelines can be resumed. It isn't necessary for the force run of the pipeline but it's good practice to include it in the command.
 
-:::{.callout-note}
-#### Maximum Memory and CPUs
-
-In our `Nextflow` command above we have set `--max_memory '16.GB' --max_cpus 8` to limit the resources used in the analysis. 
-This is suitable for the computers we are using in this workshop. 
-However, make sure to set these options to the maximum resources available on the computer where you process your data.
-:::
 
 :::{.callout-exercise}
 #### Running fetchngs
@@ -109,7 +100,6 @@ Your next task is to download sequence data with the `fetchngs`.  In the folder 
 nextflow run nf-core/fetchngs \
   -r "{{< var version.fetchngs >}}" \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input samples.csv \
   --outdir results/fetchngs \
   --nf_core_pipeline viralrecon \

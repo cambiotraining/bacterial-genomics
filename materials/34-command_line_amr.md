@@ -77,7 +77,6 @@ mkdir -p results/funcscan
 nextflow run nf-core/funcscan \
   -r "{{< var version.funcscan >}}" \
   -profile singularity \
-  --max_memory 16.GB --max_cpus 8 \
   --input SAMPLESHEET \
   --outdir OUTPUT_DIRECTORY \
   --run_arg_screening \
@@ -87,7 +86,6 @@ nextflow run nf-core/funcscan \
 The options we used are: 
 
 - `-profile singularity` - indicates we want to use the _Singularity_ program to manage all the software required by the pipeline (another option is to use `docker`). See [Data & Setup](../setup.md) for details about their installation.
-- `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
 - `--input` - the samplesheet with the input files, as explained above.
 - `--outdir` - the output directory for the results. 
 - `--run_arg_screening` - indicates we want to run the "antimicrobial resistance gene screening tools". There are also options to run antimicrobial peptide and biosynthetic gene cluster screening ([see documentation](https://nf-co.re/funcscan/1.1.2/parameters#screening-type-activation)).
@@ -120,7 +118,6 @@ mkdir results/funcscan
 nextflow run nf-core/funcscan \
   -r "{{< var version.funcscan >}}" \
   -profile singularity \
-  --max_memory 16.GB --max_cpus 8 \
   --input samplesheet_funcscan.csv \
   --outdir results/funcscan \
   --run_arg_screening \

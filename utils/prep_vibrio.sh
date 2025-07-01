@@ -15,7 +15,6 @@ SRR26899141" > samples.csv
 # download data
 nextflow run nf-core/fetchngs \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input samples.csv \
   --outdir tmp/
 

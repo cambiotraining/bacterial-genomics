@@ -51,7 +51,6 @@ Next, we fixed the script:
 nextflow run nf-core/bactmap \
   -r "{{< var version.bactmap >}}" \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \
   --outdir results/bactmap \
   --reference resources/reference/GCF_000299015.1_ASM29901v1_genomic.fna \

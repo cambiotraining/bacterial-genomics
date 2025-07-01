@@ -13,9 +13,8 @@ mkdir -p results/bacqc
 # FIX!!
 # run the pipeline
 nextflow run avantonder/bacQC \
-  -r 2.0.1 \
+  -r "2.0.1" \
   -resume -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input FIX_SAMPLESHEET \
   --outdir results/bacqc \
   --kraken2db databases/k2_standard_08gb_20240605 \

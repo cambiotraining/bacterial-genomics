@@ -48,7 +48,6 @@ The bactmap pipeline requires a samplesheet CSV file in the same format as the o
 nextflow run nf-core/bactmap \
   -r "{{< var version.bactmap >}}" \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \
   --outdir results/bactmap \
   --reference REFERENCE \
@@ -58,7 +57,6 @@ nextflow run nf-core/bactmap \
 The options we used are: 
 
 - `-profile singularity` - indicates we want to use the _Singularity_ program to manage all the software required by the pipeline (another option is to use `docker`). See [Data & Setup](../setup.md) for details about their installation.
-- `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
 - `--input` - the samplesheet with the input files, as explained above.
 - `--outdir` - the output directory for the results.
 - `--reference` - the path and name of the reference genome.
@@ -93,7 +91,6 @@ The fixed script is:
 nextflow run nf-core/bactmap \
   -r "{{< var version.bactmap >}}" \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \
   --outdir results/bactmap \
   --reference resources/reference/MTBC0.fasta \

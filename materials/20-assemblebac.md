@@ -43,7 +43,6 @@ Now that we have the samplesheet, we can run the `assembleBAC` pipeline.  There 
 nextflow run avantonder/assembleBAC \
   -r "{{< var version.assembleBAC >}}" \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \
   --outdir results/assemblebac \
   --baktadb databases/bakta_light_20240119 \
@@ -53,7 +52,6 @@ nextflow run avantonder/assembleBAC \
 
 - `-r` - tells Nextflow to pull the main version of `assembleBAC` from Github
 - `-profile singularity` - indicates we want to use the _Singularity_ program to manage all the software required by the pipeline (another option is to use `docker`). See [Data & Setup](../setup.md) for details about their installation.
-- `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
 - `--input` - the samplesheet with the input files, as explained above.
 - `--outdir` - the output directory for the results.
 - `--baktadb` - the path to the directory containing the `Bakta ` database files.
@@ -98,7 +96,6 @@ The fixed script is:
 nextflow run avantonder/assembleBAC \
   -r "{{< var version.assembleBAC >}}" \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \
   --outdir results/assemblebac \
   --baktadb databases/bakta_light_20240119 \

@@ -13,9 +13,8 @@ mkdir results/bactmap
 # FIX!!
 # run the pipeline
 nextflow run nf-core/bactmap \
-  -r 1.0.0 \
+  -r "1.0.0" \
   -resume -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \
   --outdir results/bactmap \
   --reference REFERENCE \

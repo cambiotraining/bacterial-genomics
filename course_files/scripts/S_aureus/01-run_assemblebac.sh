@@ -9,9 +9,8 @@ fi
 
 # run the pipeline
 nextflow run avantonder/assembleBAC \
-  -r 2.0.2 \
+  -r "2.0.2" \
   -resume -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \
   --outdir results/assemblebac \
   --baktadb databases/bakta_light_20240119 \

@@ -72,7 +72,6 @@ There are [many options](https://github.com/avantonder/bacQC/blob/main/docs/para
 nextflow run avantonder/bacQC \
   -r "{{< var version.bacQC >}}" \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input SAMPLESHEET \
   --outdir results/bacqc \
   --kraken2db databases/k2_standard_08gb_20240605 \
@@ -84,7 +83,6 @@ The options we used are:
 
 - `-r` - tells `Nextflow` to pull the `main` version of `bacQC` from Github
 - `-profile singularity` - indicates we want to use the _Singularity_ program to manage all the software required by the pipeline (another option is to use `docker`). See [Data & Setup](../setup.md) for details about their installation.
-- `--max_memory` and `--max_cpus` - sets the available RAM memory and CPUs. You can check this with the commands `free -h` and `nproc --all`, respectively.
 - `--input` - the samplesheet with the input files, as explained above.
 - `--kraken2db` - the path to the directory containing the Kraken2 database files.
 - `--kronadb` - the path to Krona's database file (with the `.tab` extension).
@@ -113,7 +111,6 @@ You can continue working through the materials by using preprocessed data detail
 nextflow run avantonder/bacQC \
   -r "{{< var version.bacQC >}}" \
   -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \
   --outdir results/bacqc \
   --kraken2db databases/k2_standard_08gb_20240605 \

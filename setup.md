@@ -155,32 +155,24 @@ mamba create -n mlst mlst
 mamba create -n nextflow nextflow
 ```
 
-Also run these commands to set a basic _Nextflow_ configuration file (copy/paste this entire code):
+Also run the following commands to set a basic _Nextflow_ configuration file. 
+Make sure to adjust the resource limits to fit with your workstation or HPC (maximum values for `cpus`, `memory` and `time`).
 
 ```bash
 mkdir -p $HOME/.nextflow
-echo "
-conda {
-  conda.enabled = true
-  singularity.enabled = false
-  docker.enabled = false
-  useMamba = true
-  createTimeout = '4 h'
-  cacheDir = '$HOME/.nextflow-conda-cache/'
+cat <<EOF >> $HOME/.nextflow/config
+process {
+  resourceLimits = [
+    cpus: 8,
+    memory: 20.GB,
+    time: 12.h
+  ]
 }
-singularity {
-  singularity.enabled = true
-  conda.enabled = false
-  docker.enabled = false
-  pullTimeout = '4 h'
-  cacheDir = '$HOME/.nextflow-singularity-cache/'
+singularity { 
+  pullTimeout = '4 h' 
+  cacheDir = '$HOME/.nextflow-singularity-cache/' 
 }
-docker {
-  docker.enabled = true
-  singularity.enabled = false
-  conda.enabled = false
-}
-" >> $HOME/.nextflow/config
+EOF
 ```
 
 #### pairsnp
@@ -226,11 +218,12 @@ mamba create -n tb-profiler tb-profiler pandas
 mamba create -n treetime treetime seqkit biopython
 ```
 
-#### MOB-suite & Pling
+#### MOB-suite & Pling & mashtree
 
 ```bash
 mamba create -n mob_suite mob_suite
 mamba create -n pling pling
+mamba create -n mashtree mashtree
 ```
 
 ### R and RStudio

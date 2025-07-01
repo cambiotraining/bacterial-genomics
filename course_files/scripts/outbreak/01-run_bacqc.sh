@@ -16,9 +16,8 @@ python scripts/fastq_dir_to_samplesheet.py data/reads samplesheet.csv -r1 _1.fas
 # FIX!!
 # run the pipeline
 nextflow run avantonder/bacQC \
-  -r 2.0.1 \
+  -r "2.0.1" \
   -resume -profile singularity \
-  --max_memory '16.GB' --max_cpus 8 \
   --input samplesheet.csv \
   --outdir results/bacqc \
   --kraken2db databases/k2_standard_08gb_20240605 \
