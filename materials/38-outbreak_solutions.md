@@ -1,8 +1,16 @@
----
-title: "OUTBREAK ALERT! - Trainer solutions"
----
+## Outbreak alert - trainer solutions
 
-# Illumina data analysis
+Below we have quick solutions for the outbreak exercise. 
+These are guidelines, the participants are welcome to explore other approaches. 
+
+Some general notes: 
+
+- **Preprocessed data**: Some of these pipeline steps take quite a while to run (especially de-novo assembly). To avoid having the participants waiting for too long, there is a hidden folder with preprocessed results in `outbreak/illumina/.preprocessed` and `outbreak/ont/.preprocessed`. Participants can be told about this folder once their first pipeline is running successfully, so they can advance with the rest of the exercise. 
+- **Shell scripts**: Encourage participants to write their commands in a shell script for reproducibility and documentation. 
+
+
+::: {.panel-tabset group="platform"}
+# Illumina
 
 ## QC
 
@@ -36,12 +44,6 @@ From the QC participants should notice:
 - However, isolate08 is _Vibrio parahaemolyticus_. The GC content was also slightly different for this isolate. 
   - again, they can choose to proceed with this sample or not - however proceeding is nice to use as an outgroup for phylogeny later on.
 
-::: callout-tip
-#### Shell scripts
-
-Encourage participants to write their commands in a shell script for reproducibility and documentation. 
-:::
-
 
 ## Assembly
 
@@ -62,12 +64,8 @@ nextflow run avantonder/assembleBAC \
 #### Preprocessed data
 
 `assembleBAC` takes a long time to run (up to 1h). 
-To avoid waiting for that long, there is a preprocessed folder in a shared drive on the training machines. 
-Files can be copied from there, once they are running the pipeline successfully: 
+Make sure to point the participants to the `.preprocessed` hidden folder. 
 
-```bash
-cp -r ~/Course_Share/preprocessed-outbreak ~/Course_Materials/outbreak/preprocessed
-```
 :::
 
 From the assemblies participants should notice: 
@@ -114,6 +112,87 @@ However, it's worth noting that by doing so we may be reducing the number of cor
 One possibility would be to lower the `--core_threshold` to include a few more genes. 
 
 There is no clear "right" answer, but this could be a good discussion to have with the participants. 
+:::
+
+# ONT
+
+## QC
+
+Run `avantonder/bacQC-ONT` (takes ~20 minutes).
+
+Start by creating the samplesheet: 
+
+```
+sample,fastq
+sample1,data/fastq_pass/barcode01/ERR10146532.fastq.gz
+sample2,data/fastq_pass/barcode06/ERR10146521.fastq.gz
+sample3,data/fastq_pass/barcode02/ERR10146551.fastq.gz
+sample4,data/fastq_pass/barcode09/ERR10146531.fastq.gz
+sample5,data/fastq_pass/barcode05/ERR10146520.fastq.gz
+```
+
+Then run bacQC-ONT, with the command below.
+Participants will need to "guess" a genome size, as they won't know what it is. 
+The genome size is not critical for the analysis.
+
+```bash
+nextflow run avantonder/bacQC-ONT \
+  -r "{{< var version.bacQC-ONT >}}" \
+  -profile singularity \
+  --input samplesheet.csv \
+  --summary_file sequencing_summary.txt \
+  --genome_size 4000000 \
+  --kraken2db databases/k2_standard_08gb_20240605/ \
+  --kronadb databases/krona/taxonomy.tab \
+  --outdir results/bacqc-ont
+```
+
+## Assembly
+
+Run `avantonder/assembleBAC-ONT` (takes ~2h - point participants to hidden `.preprocessed` folder):
+
+```bash
+nextflow run avantonder/assembleBAC-ONT \
+  -r "{{< var version.assembleBAC-ONT >}}" \
+  -profile singularity \
+  --input samplesheet.csv \
+  --genome_size 4M \
+  --medaka_model r941_min_fast_g507 \
+  --outdir results/assemblebac \
+  --baktadb databases/bakta_light_20240119/ \
+  --checkm2db databases/checkm2_v2_20210323/uniref100.KO.1.dmnd
+```
+
+:::{.callout-warning}
+#### Preprocessed data
+
+`assembleBAC-ONT` takes a long time to run (up to 2h). 
+Make sure to point the participants to the `.preprocessed` hidden folder. 
+:::
+
+
+## Core genome alignemnt
+
+Create a script to run Panaroo ([link to section](24-panaroo.md)).
+This takes a while to run, but we provide preprocessed files if they want to proceed from there once their command is working and running.
+
+```bash
+mamba activate panaroo
+
+# create output directory
+mkdir results/panaroo
+
+# run panaroo
+panaroo \
+  --input results/assemblebac/bakta/*.gff3 \
+  --out_dir results/panaroo \
+  --clean-mode strict \
+  --alignment core \
+  --core_threshold 0.98 \
+  --remove-invalid-genes \
+  --threads 8
+```
+
 :::
 
 
@@ -205,86 +284,4 @@ nextflow run nf-core/funcscan \
   --outdir "results/funcscan" \
   --run_arg_screening \
   --arg_skip_deeparg
-```
-# ONT data analysis
-
-## QC
-
-Run `avantonder/bacQC-ONT` ([link to section](37-plasmids.md)). 
-
-Start by creating the samplesheet: 
-
-```
-sample,fastq
-sample1,data/fastq_pass/barcode01/ERR10146532.fastq.gz
-sample2,data/fastq_pass/barcode06/ERR10146521.fastq.gz
-sample3,data/fastq_pass/barcode02/ERR10146551.fastq.gz
-sample4,data/fastq_pass/barcode09/ERR10146531.fastq.gz
-sample5,data/fastq_pass/barcode05/ERR10146520.fastq.gz
-```
-
-Then run bacQC-ONT, with command below.
-Participants will need to "guess" a genome size, as they won't know what it is. 
-The genome size is not critical for the analysis.
-
-```bash
-nextflow run avantonder/bacQC-ONT \
-  -r "{{< var version.bacQC-ONT >}}" \
-  -profile singularity \
-  --input samplesheet.csv \
-  --summary_file sequencing_summary.txt \
-  --genome_size 4000000 \
-  --kraken2db databases/k2_standard_08gb_20240605/ \
-  --kronadb databases/krona/taxonomy.tab \
-  --outdir results/bacqc-ont
-```
-
-## Assembly
-
-Run `avantonder/assembleBAC-ONT` ([link to section](37-plasmids.md)):
-
-```bash
-nextflow run avantonder/assembleBAC-ONT \
-  -r "{{< var version.assembleBAC-ONT >}}" \
-  -profile singularity \
-  --input samplesheet.csv \
-  --genome_size 4M \
-  --medaka_model r941_min_fast_g507 \
-  --outdir results/assemblebac \
-  --baktadb databases/bakta_light_20240119/ \
-  --checkm2db databases/checkm2_v2_20210323/uniref100.KO.1.dmnd
-```
-
-:::{.callout-warning}
-#### Preprocessed data
-
-`assembleBAC` takes a long time to run (up to 2h). 
-To avoid waiting for that long, there is a preprocessed folder in a shared drive on the training machines. 
-Files can be copied from there, once they are running the pipeline successfully: 
-
-```bash
-cp -r ~/Course_Share/preprocessed-outbreak ~/Course_Materials/outbreak/preprocessed
-```
-:::
-
-## Core genome alignemnt
-
-Create a script to run Panaroo ([link to section](24-panaroo.md)).
-This takes a while to run, but we provide preprocessed files if they want to proceed from there once their command is working and running.
-
-```bash
-mamba activate panaroo
-
-# create output directory
-mkdir results/panaroo
-
-# run panaroo
-panaroo \
-  --input results/assemblebac/bakta/*.gff3 \
-  --out_dir results/panaroo \
-  --clean-mode strict \
-  --alignment core \
-  --core_threshold 0.98 \
-  --remove-invalid-genes \
-  --threads 8
 ```
