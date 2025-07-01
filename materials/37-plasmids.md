@@ -30,7 +30,7 @@ We are going to use _E.coli_ assemblies we've provided for you as input for `MOB
 First activate the `mobsuite` software environment:
 
 ```bash
-mamba activate mobsuite
+mamba activate mob_suite
 ```
 
 To run `MOB-suite` on a single assembly, the following command can be used:
@@ -69,7 +69,7 @@ We have run `MOB-suite` on a single sample.  However, we have ten samples that w
 - Open the script, which you will notice is composed of two sections: 
     - `#### Settings ####` where we define some variables for input and output files names. If you were running this script on your own data, you may want to edit the directories in this section.
     - `#### Analysis ####` this is where `MOB-suite` is run on each sample as detailed in @sec-mobsuite. You should not change the code in this section.
-- Activate the software environment: `mamba activate mobsuite`
+- Activate the software environment: `mamba activate mob_suite`
 - Run the script with `bash scripts/01-run_mobsuite.sh`. If the script is running successfully it should print a message on the screen as the samples are processed.
 - How many different plasmids were identified in sample SRX23625854?
 - Which contig(s) were identified as `chromosome` for sample SRX23625854?
