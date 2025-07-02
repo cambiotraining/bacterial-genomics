@@ -213,7 +213,7 @@ cp results/mobsuite/*/*_plasmid_*.fasta results/pling/
 ls -d -1 results/pling/*.fasta > input.txt
 
 # run Pling
-pling input.txt output align
+pling input.txt results/pling/output align
 ```
 
 We ran the script as instructed using:
@@ -239,9 +239,8 @@ Completed distance calculations and clustering.
 
 ### Pling results
 
-Now that `Pling` has run we can look at the results. 
-The file we'll have a look at is `index.html` which can be found in the `communities` directory in `results/mobsuite/course/results/pling/output/dcj_thresh_4_graph/visualisations/`. 
-Go to the File Explorer application <i class="fa-solid fa-folder"></i>, navigate to `results/mobsuite/course/results/pling/output/dcj_thresh_4_graph/visualisations/communities/` and double click on `index.html`.  
+Now that Pling has run we can look at the results. 
+The file we'll have a look at is `index.html`: go to the File Explorer application <i class="fa-solid fa-folder"></i>, navigate to `results/pling/output/dcj_thresh_4_graph/visualisations/communities/` and double click on `index.html`.  
 This will open the file in your web browser:
 
 ![](images/pling_index.png)

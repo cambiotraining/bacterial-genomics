@@ -67,7 +67,7 @@ cp results/mobsuite/*/*_plasmid_*.fasta results/pling/
 ls -d -1 results/pling/*.fasta > input.txt
 
 # run Pling
-pling input.txt output align
+pling input.txt results/pling/output align
 
 
 ## 03-run_mashtree.sh
