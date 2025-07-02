@@ -182,6 +182,8 @@ Now that we have analysed our genomes with `Pathogenwatch` and downloaded the ty
 - Make sure you are in the `base` software environment (where we have the _Pandas_ library for _Python_).
 - Run `merge_staph_data.py` to create the final metadata file we need for `Microreact`. Look at the help documentation of this script to find out how to specify inputs and outputs to this script.
 
+**Note:** If you have not managed to run the Pathogenwatch analysis, we provide the output files from the previous exercise in `preprocessed/pathogenwatch` that you can use instead. 
+
 :::{.callout-hint}
 
 Depending on how they are written, most `Python` scripts will print the available options if you use the help flag (`--help` or `-h`):
