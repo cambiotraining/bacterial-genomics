@@ -80,6 +80,7 @@ nextflow run nf-core/funcscan \
   --input SAMPLESHEET \
   --outdir OUTPUT_DIRECTORY \
   --run_arg_screening \
+  --arg_rgi_db databases/card/ \
   --arg_skip_deeparg
 ```
 
@@ -89,6 +90,7 @@ The options we used are:
 - `--input` - the samplesheet with the input files, as explained above.
 - `--outdir` - the output directory for the results. 
 - `--run_arg_screening` - indicates we want to run the "antimicrobial resistance gene screening tools". There are also options to run antimicrobial peptide and biosynthetic gene cluster screening ([see documentation](https://nf-co.re/funcscan/1.1.2/parameters#screening-type-activation)).
+- `--arg_rgi_db databases/card/` - indicates we want to use a pre-downloaded version of the CARD database. This is optional, and the workflow will download this automatically if you don't include this option. However, if you run this workflow regularly, it is a good idea to pre-download the database as it saves time and bandwidth. 
 - `--arg_skip_deeparg` - this skips a step in the analysis which uses the software _DeepARG_. We did this simply because this software takes a very long time to run. But in a real analysis you may want to leave this option on. 
 
 :::{.callout-exercise}
@@ -121,6 +123,7 @@ nextflow run nf-core/funcscan \
   --input samplesheet_funcscan.csv \
   --outdir results/funcscan \
   --run_arg_screening \
+  --arg_rgi_db databases/card/ \
   --arg_skip_deeparg
 ```
 

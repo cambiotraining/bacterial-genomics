@@ -18,4 +18,5 @@ nextflow run nf-core/funcscan \
   --input FIX_PATH_TO_SAMPLESHEET \
   --outdir FIX_PATH_TO_OUTPUT_DIRECTORY \
   --run_arg_screening \
+  --arg_rgi_db databases/card/ \
   --arg_skip_deeparg

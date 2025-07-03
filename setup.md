@@ -431,3 +431,19 @@ wget -O mobsuite.zip https://zenodo.org/api/records/3785351/files-archive
 unzip mobsuite.zip -d mob_suite
 rm mobsuite.zip
 ```
+
+
+#### CARD
+
+This database is used by the Nextflow workflow `nf-core/funcscan`. 
+The database is downloaded by the workflow itself, but if you run this workflow regularly, it might be best to download it once, to save time and bandwidth.
+
+Instructions for this are given in the [workflow documentation page](https://nf-co.re/funcscan/usage#rgi). 
+Here is how we did it for our workshop:
+
+```bash
+mkdir card
+wget -O card.tar.bz2 https://card.mcmaster.ca/latest/data
+tar -xjvf card.tar.bz2 -C card
+rm card.tar.bz2
+```
