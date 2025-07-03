@@ -247,7 +247,7 @@ After installing R, you will need to install a few packages.
 Open _RStudio_ and on the console type the following command: 
 
 ```r
-install.packages(c("tidyverse", "tidygraph", "ggraph", "igraph", "ggtree", "ggnewscale"))
+install.packages(c("tidyverse", "tidygraph", "ggraph", "igraph", "ggtree", "ggnewscale", "phytools"))
 ```
 
 

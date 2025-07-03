@@ -58,7 +58,7 @@ EOF
 
 #### R packages ####
 
-Rscript -e "install.packages(c("tidyverse", "tidygraph", "ggraph", "igraph", "ggtree", "ggnewscale"))"
+Rscript -e 'install.packages(c("tidyverse", "tidygraph", "ggraph", "igraph", "ggtree", "ggnewscale", "phytools"))'
 
 
 #### Cache Nextflow workflows ####
