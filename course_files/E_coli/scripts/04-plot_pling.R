@@ -6,6 +6,13 @@ library(tidyverse)
 library(ggtree)
 library(ggnewscale)
 
+#################################
+## Assign colours for metadata ##
+#################################
+
+# colour blind-friendly palette
+colour_list <- RColorBrewer::brewer.pal(8, "Dark2")
+
 #########################
 ## Parse pling results ##
 #########################
