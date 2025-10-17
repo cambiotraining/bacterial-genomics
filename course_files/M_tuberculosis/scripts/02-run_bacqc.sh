@@ -13,7 +13,7 @@ mkdir -p results/bacqc
 # FIX!!
 # run the pipeline
 nextflow run avantonder/bacQC \
-  -r "2.0.1" \
+  -r "v2.0.1" \
   -resume -profile singularity \
   --input FIX_SAMPLESHEET \
   --outdir results/bacqc \

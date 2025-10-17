@@ -9,7 +9,7 @@ fi
 
 # run the pipeline
 nextflow run avantonder/assembleBAC \
-  -r "2.0.2" \
+  -r "v2.0.2" \
   -resume -profile singularity \
   --input SAMPLESHEET \
   --outdir results/assemblebac \

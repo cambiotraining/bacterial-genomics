@@ -16,7 +16,7 @@ python scripts/fastq_dir_to_samplesheet.py data/reads samplesheet.csv -r1 _1.fas
 # FIX!!
 # run the pipeline
 nextflow run avantonder/bacQC \
-  -r "2.0.1" \
+  -r "v2.0.1" \
   -resume -profile singularity \
   --input samplesheet.csv \
   --outdir results/bacqc \

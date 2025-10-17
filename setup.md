@@ -316,7 +316,7 @@ You can follow the same instructions as for "Ubuntu".
 The data used in these materials is provided as an archive file (`bact-data.tar`). 
 You can download it from the link below and extract the files from the archive into a directory of your choice.
 
-<a href="https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=cjtedg9v&dl=1">
+<a href="https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=npkdafbs&dl=1">
   <button class="btn"><i class="fa fa-download"></i> Download</button>
 </a>
 
@@ -328,7 +328,7 @@ datadir="$HOME/Desktop/bacterial_genomics"
 
 # download and extract to directory
 mkdir $datadir
-wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=cjtedg9v&dl=1"
+wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=npkdafbs&dl=1"
 tar -xvf $datadir/bact-data.tar -C $datadir
 rm $datadir/bact-data.tar
 ```
