@@ -7,13 +7,13 @@ set -euo pipefail
 
 # Download and extract course data
 echo "Downloading and extracting course files"
-wget -O bact-data.tar "https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=cjtedg9v&dl=1"
+wget -O bact-data.tar "https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=7v87dtxu&dl=1"
 tar -xf bact-data.tar
 rm bact-data.tar
 
 # Download and extract public databases
 echo "Downloading and extracting public databases"
-wget -O bact-databases.tar "https://www.dropbox.com/scl/fi/ljwypmwetfu6o6pe3fwff/bact-databases.tar?rlkey=yyg3q7w0s47ildzad5sfftr1x&st=qtmbfnch&dl=1"
+wget -O bact-databases.tar "https://www.dropbox.com/scl/fi/ljwypmwetfu6o6pe3fwff/bact-databases.tar?rlkey=yyg3q7w0s47ildzad5sfftr1x&st=dpvr7mgm&dl=1"
 tar -xf bact-databases.tar
 rm bact-databases.tar
 
