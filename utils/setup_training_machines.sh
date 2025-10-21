@@ -38,7 +38,7 @@ mamba create -y -n mob_suite mob_suite
 mamba create -y -n pling pling
 mamba create -y -n mashtree mashtree
 
-mamba create -y -n nextflow nextflow
+mamba create -y -n nextflow nextflow==24.10.6
 
 mkdir -p $HOME/.nextflow
 cat <<EOF >> $HOME/.nextflow/config
