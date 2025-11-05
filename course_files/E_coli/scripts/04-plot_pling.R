@@ -2,9 +2,13 @@
 ## Load required libraries ##
 #############################
 
+library(phytools)
 library(tidyverse)
 library(ggtree)
 library(ggnewscale)
+
+# make sure the working directory is set correctly
+setwd("E_coli")
 
 #################################
 ## Assign colours for metadata ##
@@ -26,7 +30,7 @@ pling_results <- pling_results %>%
     col = plasmid,
     into = c("sample", "plasmid"),
     sep = "_",
-    extra = "merge"  # Handles cases with multiple underscores
+    extra = "merge" # Handles cases with multiple underscores
   )
 
 # Filter rows where 'type' contains "community_0"
@@ -36,10 +40,10 @@ filtered_pling_results <- pling_results %>%
 # Select most common plasmid for each sample
 filtered_pling_results <- filtered_pling_results %>%
   group_by(sample) %>%
-  add_count(plasmid) %>%  # Count occurrences of each plasmid per sample
-  arrange(desc(n)) %>%    # Sort by count descending
-  slice(1) %>%            # Take the first (most common) plasmid
-  select(-n) %>%          # Remove the count column
+  add_count(plasmid) %>% # Count occurrences of each plasmid per sample
+  arrange(desc(n)) %>% # Sort by count descending
+  slice(1) %>% # Take the first (most common) plasmid
+  select(-n) %>% # Remove the count column
   ungroup()
 
 # Create dataframe for plotting with ggtree
@@ -56,15 +60,14 @@ phylogeny <- read.tree("results/mashtree/tree.nwk")
 ## Midpoint root ##
 ###################
 
-phylogeny_rooted <- midpoint.root(phylogeny)
+phylogeny_rooted <- midpoint_root(phylogeny)
 
 ############################
 ## Plot phylogenetic tree ##
 ############################
 
 phylogeny_plot <- ggtree(phylogeny_rooted) +
-  geom_tiplab(align = F, 
-              size = 3) +
+  geom_tiplab(align = F, size = 3) +
   xlim_tree(0.001) +
   geom_treescale(x = 0, y = 5) +
   theme_tree()
@@ -73,30 +76,34 @@ phylogeny_plot <- ggtree(phylogeny_rooted) +
 ## Plot phylogeny with metadata ##
 ##################################
 
-phylogeny_plot_meta <- gheatmap(phylogeny_plot, 
-                                        filtered_pling_results_df[1],
-                                        offset = 0.002,
-                                        width = 0.05,
-                                        color = NA,
-                                        colnames = T,
-                                        colnames_angle=90,
-                                        colnames_position = "top",
-                                        hjust = 0,
-                                        font.size = 4) +
+phylogeny_plot_meta <- gheatmap(
+  phylogeny_plot,
+  filtered_pling_results_df[1],
+  offset = 0.002,
+  width = 0.05,
+  color = NA,
+  colnames = T,
+  colnames_angle = 90,
+  colnames_position = "top",
+  hjust = 0,
+  font.size = 4
+) +
   scale_fill_manual(values = colour_list, name = "Plasmid") +
   coord_cartesian(clip = "off")
 
 phylogeny_plot_meta_2 <- phylogeny_plot_meta + new_scale_fill()
 
-phylogeny_plot_meta_3 <- gheatmap(phylogeny_plot_meta_2, 
-                                        filtered_pling_results_df[2],
-                                        offset = 0.003,
-                                        width = 0.05,
-                                        color = NA,
-                                        colnames = T,
-                                        colnames_angle=90,
-                                        colnames_position = "top",
-                                        hjust = 0,
-                                        font.size = 4) +
+phylogeny_plot_meta_3 <- gheatmap(
+  phylogeny_plot_meta_2,
+  filtered_pling_results_df[2],
+  offset = 0.003,
+  width = 0.05,
+  color = NA,
+  colnames = T,
+  colnames_angle = 90,
+  colnames_position = "top",
+  hjust = 0,
+  font.size = 4
+) +
   scale_fill_manual(values = colour_list, name = "Cluster") +
   coord_cartesian(clip = "off")
