@@ -248,7 +248,10 @@ Open _RStudio_ and on the console type the following commands:
 
 ```r
 install.packages("BiocManager")
-BiocManager::install(c("data.table", "ggraph", "igraph", "tidygraph", "tidyverse", "ape", "ggnewscale", "ggtree", "janitor"))
+BiocManager::install(c("data.table", "ggraph", "igraph", 
+                       "tidygraph", "tidyverse", "ape", 
+                       "phytools", "ggnewscale", "ggtree", 
+                       "janitor"))
 ```
 
 
