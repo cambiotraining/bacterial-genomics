@@ -58,7 +58,7 @@ EOF
 
 #### R packages ####
 
-Rscript -e 'install.packages(c("tidyverse", "tidygraph", "ggraph", "igraph", "ggtree", "ggnewscale", "phytools"))'
+Rscript -e 'install.packages("BiocManager"); BiocManager::install(c("data.table", "ggraph", "igraph", "tidygraph", "tidyverse", "ape", "ggnewscale", "ggtree", "janitor"))'
 
 
 #### Cache Nextflow workflows ####

@@ -244,10 +244,11 @@ _R_ and _RStudio_ are available for all major operating systems.
   - Download the [RStudio](https://www.rstudio.com/products/rstudio/download/#download) installer for your distribution and install it using your package manager.
 
 After installing R, you will need to install a few packages. 
-Open _RStudio_ and on the console type the following command: 
+Open _RStudio_ and on the console type the following commands: 
 
 ```r
-install.packages(c("tidyverse", "tidygraph", "ggraph", "igraph", "ggtree", "ggnewscale", "phytools"))
+install.packages("BiocManager")
+BiocManager::install(c("data.table", "ggraph", "igraph", "tidygraph", "tidyverse", "ape", "ggnewscale", "ggtree", "janitor"))
 ```
 
 
