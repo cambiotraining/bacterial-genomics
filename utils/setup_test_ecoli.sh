@@ -78,3 +78,8 @@ mkdir -p results/mashtree
 
 # run mashtree on the assemblies
 mashtree --mindepth 0 --numcpus 12 data/assemblies/*.fa > results/mashtree/tree.nwk
+
+
+## 04-plot_pling.R
+
+Rscript scripts/04-plot_pling.R

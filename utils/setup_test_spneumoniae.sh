@@ -157,6 +157,11 @@ outdir="results/poppunk"
 poppunk_assign --db $db --external-clustering $clusters --query $assemblies --output $outdir --threads 8
 
 
+## 06-plot_phylogeny.R
+
+Rscript scripts/06-plot_phylogeny.R
+
+
 ## 07-run_funcscan.sh
 mamba activate nextflow
 
