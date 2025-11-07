@@ -7,7 +7,7 @@ set -euo pipefail
 
 # Download and extract course data
 echo "Downloading and extracting course files"
-wget -O bact-data.tar "https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=7v87dtxu&dl=1"
+wget -O bact-data.tar "https://www.dropbox.com/scl/fi/s88w1cdiqtygnepbff858/bact-data.tar?rlkey=xifz132zgjt7hj8oj38ef9o00&st=v6n7b811&dl=1"
 tar -xf bact-data.tar
 rm bact-data.tar
 
