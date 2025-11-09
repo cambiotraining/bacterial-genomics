@@ -226,6 +226,28 @@ mamba create -n pling pling
 mamba create -n mashtree mashtree
 ```
 
+#### Reverse vaccinology
+
+```bash
+mamba create -n reverse-vaccinology bakta diamond cd-hit pandas
+```
+
+#### PSORTb
+
+Running PSORTb requires Apptainer and a wrapper script.  The container is available from our Dropbox.
+
+```bash
+wget -O psortb.sif "https://www.dropbox.com/ #add link here"
+wget https://raw.githubusercontent.com/brinkmanlab/psortb_commandline_docker/master/psortb_app
+chmod +x psortb_app
+```
+
+#### Accessory genome vaccine workflow
+
+```bash
+micromamba create -n accessory-vaccinology -c bioconda -c conda-forge mash pyseer python=3.6 openssl=1.0
+```
+
 ### R and RStudio
 
 _R_ and _RStudio_ are available for all major operating systems. 
@@ -430,6 +452,20 @@ These can be downloaded separately from Zenodo, like so:
 wget -O mobsuite.zip https://zenodo.org/api/records/3785351/files-archive
 unzip mobsuite.zip -d mob_suite
 rm mobsuite.zip
+```
+
+#### SWISS-PROT and Human proteome
+
+```bash
+# download Swiss-Prot and Human Proteome from UniProt
+wget "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz"
+wget "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/reference_proteomes/Eukaryota/UP000005640/UP000005640_9606.fasta.gz"
+gunzip *.gz
+# make sure to activate reverse-vaccinology environment
+mamba activate reverse-vaccinology
+# create DIAMOND-formatted databases
+diamond makedb --in uniprot_sprot.fasta -d swissprot
+diamond makedb --in UP000005640_9606.fasta -d human_proteome
 ```
 
 

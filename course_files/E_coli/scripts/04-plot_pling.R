@@ -5,6 +5,7 @@
 library(tidyverse)
 library(ggtree)
 library(ggnewscale)
+library(phytools)
 
 #################################
 ## Assign colours for metadata ##
