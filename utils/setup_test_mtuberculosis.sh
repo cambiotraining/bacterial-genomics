@@ -247,3 +247,8 @@ outfile="results/transmission/aligned_pseudogenomes_masked_snps.csv"
 
 # Run pairsnp
 pairsnp $snp_file -c > $outfile
+
+
+## 10-transmission.R
+
+Rscript scripts/10-transmission.R

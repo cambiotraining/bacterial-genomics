@@ -7,13 +7,13 @@ set -euo pipefail
 
 # Download and extract course data
 echo "Downloading and extracting course files"
-wget -O bact-data.tar "https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=cjtedg9v&dl=1"
+wget -O bact-data.tar "https://www.dropbox.com/scl/fi/s88w1cdiqtygnepbff858/bact-data.tar?rlkey=xifz132zgjt7hj8oj38ef9o00&st=v6n7b811&dl=1"
 tar -xf bact-data.tar
 rm bact-data.tar
 
 # Download and extract public databases
 echo "Downloading and extracting public databases"
-wget -O bact-databases.tar "https://www.dropbox.com/scl/fi/ljwypmwetfu6o6pe3fwff/bact-databases.tar?rlkey=yyg3q7w0s47ildzad5sfftr1x&st=qtmbfnch&dl=1"
+wget -O bact-databases.tar "https://www.dropbox.com/scl/fi/ljwypmwetfu6o6pe3fwff/bact-databases.tar?rlkey=yyg3q7w0s47ildzad5sfftr1x&st=dpvr7mgm&dl=1"
 tar -xf bact-databases.tar
 rm bact-databases.tar
 
@@ -38,7 +38,7 @@ mamba create -y -n mob_suite mob_suite
 mamba create -y -n pling pling
 mamba create -y -n mashtree mashtree
 
-mamba create -y -n nextflow nextflow
+mamba create -y -n nextflow nextflow==24.10.6
 
 mkdir -p $HOME/.nextflow
 cat <<EOF >> $HOME/.nextflow/config
@@ -58,7 +58,7 @@ EOF
 
 #### R packages ####
 
-Rscript -e 'install.packages(c("tidyverse", "tidygraph", "ggraph", "igraph", "ggtree", "ggnewscale", "phytools"))'
+Rscript -e 'install.packages("BiocManager"); BiocManager::install(c("data.table", "ggraph", "igraph", "tidygraph", "tidyverse", "ape", "phytools", "ggnewscale", "ggtree", "janitor"))'
 
 
 #### Cache Nextflow workflows ####

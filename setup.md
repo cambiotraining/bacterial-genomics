@@ -266,10 +266,14 @@ _R_ and _RStudio_ are available for all major operating systems.
   - Download the [RStudio](https://www.rstudio.com/products/rstudio/download/#download) installer for your distribution and install it using your package manager.
 
 After installing R, you will need to install a few packages. 
-Open _RStudio_ and on the console type the following command: 
+Open _RStudio_ and on the console type the following commands: 
 
 ```r
-install.packages(c("tidyverse", "tidygraph", "ggraph", "igraph", "ggtree", "ggnewscale", "phytools"))
+install.packages("BiocManager")
+BiocManager::install(c("data.table", "ggraph", "igraph", 
+                       "tidygraph", "tidyverse", "ape", 
+                       "phytools", "ggnewscale", "ggtree", 
+                       "janitor"))
 ```
 
 
@@ -338,7 +342,7 @@ You can follow the same instructions as for "Ubuntu".
 The data used in these materials is provided as an archive file (`bact-data.tar`). 
 You can download it from the link below and extract the files from the archive into a directory of your choice.
 
-<a href="https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=cjtedg9v&dl=1">
+<a href="https://www.dropbox.com/scl/fi/s88w1cdiqtygnepbff858/bact-data.tar?rlkey=xifz132zgjt7hj8oj38ef9o00&st=v6n7b811&dl=0">
   <button class="btn"><i class="fa fa-download"></i> Download</button>
 </a>
 
@@ -350,7 +354,7 @@ datadir="$HOME/Desktop/bacterial_genomics"
 
 # download and extract to directory
 mkdir $datadir
-wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/6168oq4npclpmihyg7z74/bact-data.tar?rlkey=pjb17bbj5r1cynnxeprl47mwf&st=cjtedg9v&dl=1"
+wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/s88w1cdiqtygnepbff858/bact-data.tar?rlkey=xifz132zgjt7hj8oj38ef9o00&st=v6n7b811&dl=1"
 tar -xvf $datadir/bact-data.tar -C $datadir
 rm $datadir/bact-data.tar
 ```
