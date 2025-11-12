@@ -6,6 +6,7 @@ library(phytools)
 library(tidyverse)
 library(ggtree)
 library(ggnewscale)
+library(phytools)
 
 # make sure the working directory is set correctly
 setwd("E_coli")
