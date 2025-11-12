@@ -7,9 +7,15 @@ set -euo pipefail
 
 # Download and extract course data
 echo "Downloading and extracting course files"
-wget -O bact-data.tar "https://www.dropbox.com/scl/fi/s88w1cdiqtygnepbff858/bact-data.tar?rlkey=xifz132zgjt7hj8oj38ef9o00&st=v6n7b811&dl=1"
+wget -O bact-data.tar "https://www.dropbox.com/scl/fi/s88w1cdiqtygnepbff858/bact-data.tar?rlkey=xifz132zgjt7hj8oj38ef9o00&st=izvooc62&dl=1"
 tar -xf bact-data.tar
 rm bact-data.tar
+
+# Download and extract outbreak exercise data
+echo "Downloading and extracting outbreak exercise files"
+wget -O bact-outbreak.tar "https://www.dropbox.com/scl/fi/tio9qtcuwvv86nwfckezl/bact-outbreak.tar?rlkey=khcb6nsvj3mpsvfbsv97q467e&st=r9vj0dm9&dl=1"
+tar -xf bact-outbreak.tar
+rm bact-outbreak.tar
 
 # Download and extract public databases
 echo "Downloading and extracting public databases"

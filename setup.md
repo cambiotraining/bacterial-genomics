@@ -317,10 +317,15 @@ You can follow the same instructions as for "Ubuntu".
 
 ## Data
 
-The data used in these materials is provided as an archive file (`bact-data.tar`). 
-You can download it from the link below and extract the files from the archive into a directory of your choice.
+The data used in these materials are provided as archive files:
 
-<a href="https://www.dropbox.com/scl/fi/s88w1cdiqtygnepbff858/bact-data.tar?rlkey=xifz132zgjt7hj8oj38ef9o00&st=v6n7b811&dl=0">
+- `bact-data.tar` contains the main course data.
+- `bact-outbreak.tar` contains the data for the final capstone exercise.
+- `bact-databases.tar` contains a copy of the databases used by some of the programs. **Note:** we do not recommend that you use this copy in your own work, always download the latest database versions following the instructions given below. 
+
+You can download these files from the link below and extract the files from the archive into a directory of your choice.
+
+<a href="https://www.dropbox.com/scl/fo/0n0bqxv45yzase59pc0cc/AE1gDC1LJTP2igyMOJ1dels?rlkey=0c1t11dyag7iunm06xscdbj1k&st=1xobj371&dl=0">
   <button class="btn"><i class="fa fa-download"></i> Download</button>
 </a>
 
@@ -329,12 +334,20 @@ You can also download them using the command line:
 ```bash
 # directory for saving the data - change this to suit your needs
 datadir="$HOME/Desktop/bacterial_genomics"
+mkdir $datadir
 
 # download and extract to directory
-mkdir $datadir
-wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/s88w1cdiqtygnepbff858/bact-data.tar?rlkey=xifz132zgjt7hj8oj38ef9o00&st=v6n7b811&dl=1"
+wget -O $datadir/bact-data.tar "https://www.dropbox.com/scl/fi/s88w1cdiqtygnepbff858/bact-data.tar?rlkey=xifz132zgjt7hj8oj38ef9o00&st=izvooc62&dl=1"
 tar -xvf $datadir/bact-data.tar -C $datadir
 rm $datadir/bact-data.tar
+
+wget -O $datadir/bact-outbreak.tar "https://www.dropbox.com/scl/fi/tio9qtcuwvv86nwfckezl/bact-outbreak.tar?rlkey=khcb6nsvj3mpsvfbsv97q467e&st=r9vj0dm9&dl=1"
+tar -xvf $datadir/bact-outbreak.tar -C $datadir
+rm $datadir/bact-outbreak.tar
+
+wget -O $datadir/bact-databases.tar "https://www.dropbox.com/scl/fi/ljwypmwetfu6o6pe3fwff/bact-databases.tar?rlkey=yyg3q7w0s47ildzad5sfftr1x&st=y381n5nj&dl=1"
+tar -xvf $datadir/bact-databases.tar -C $datadir
+rm $datadir/bact-databases.tar
 ```
 
 ::: {.callout-tip}
