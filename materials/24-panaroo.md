@@ -51,7 +51,7 @@ The options used are:
 - `--remove-invalid-genes` - this is recommended to remove annotations that are incompatible with the annotation format expected by `Panaroo`. 
 - `--threads` - how many CPUs we want to use for parallel computations.
 
-`Panaroo` can takle a long time to run, so be prepared to wait a while for its analysis to finish <i class="fa-solid fa-mug-hot"></i>. 
+`Panaroo` can take a long time to run, so be prepared to wait a while for its analysis to finish <i class="fa-solid fa-mug-hot"></i>. 
 
 Once it finishes, we can see the output it produces:
 

@@ -33,7 +33,7 @@ human_db="databases/human_proteome.dmnd"
 mkdir -p $outdir
 
 # extract accessory gene sequences using Pyseer results
-python scripts/extract_gwas_hits.py \
+python3 scripts/extract_gwas_hits.py \
     --hits_file $pyseer_dir/significant_hits.tsv \
     --pan_fasta $panaroo_dir/pan_genome_reference.fa \
     --output_fasta $panaroo_dir/gwas_hit_sequences.fa \
@@ -58,7 +58,7 @@ diamond blastp -d $swissprot_db -q $panaroo_dir/gwas_hit_sequences.fa -o $outdir
 diamond blastp -d $human_db -q $panaroo_dir/gwas_hit_sequences.fa -o $outdir/human_homology.tsv --outfmt 6 qseqid stitle evalue pident
 
 # identify potential vaccine candidates
-python scripts/combine_results_core.py \
+python3 scripts/combine_results_core.py \
   --core_fasta $panaroo_dir/gwas_hit_sequences.fa \
   --locations $outdir/accessory_locations.csv \
   --function $outdir/function.tsv \

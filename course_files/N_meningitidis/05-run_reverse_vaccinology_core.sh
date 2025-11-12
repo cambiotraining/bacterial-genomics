@@ -10,7 +10,7 @@ fi
 #### Settings ####
 
 # directory with core genome amino acid sequences from Panaroo
-aa_dir="results/panaroo"
+aa_dir="preprocessed/panaroo"
 
 # output directory for results
 outdir="results/reverse_vaccinology_accessory"
@@ -47,7 +47,7 @@ diamond blastp -d $swissprot_db -q $aa_dir/core_genome_protein_sequences.fa -o $
 diamond blastp -d $human_db -q $aa_dir/core_genome_protein_sequences.fa -o $outdir/human_homology.tsv --outfmt 6 qseqid stitle evalue pident
 
 # identify potential vaccine candidates
-python scripts/combine_results_core.py \
+python3 scripts/combine_results_core.py \
   --core_fasta $aa_dir/core_genome_protein_sequences.fa \
   --locations $outdir/panaroo_locations.csv \
   --function $outdir/function.tsv \

@@ -8,7 +8,7 @@ then
 fi
 
 # create output directory
-mkdir results/bactmap
+mkdir -p results/bactmap
 
 # FIX!!
 # run the pipeline

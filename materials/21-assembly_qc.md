@@ -124,7 +124,7 @@ The assembly lengths obtained were all around 2.7 to 2.8 Mb, which is expected f
 
 The contiguity of our assemblies seemed excellent, with only up to 205 fragments. Some samples even had fewer than 50 fragments assembled, suggesting we managed to mostly reassemble our genomes. 
 
-Isolate ERX3876939_ERR3864886_T1_contigs has more than 200 contigs. A this is higher than the number obtained for the rest of our assembled genomeWe may want to consider removing this isolate as it may affect our pan-genome calculation in the next section. However, as the rest of the metrics for this genome look alright, let's leave it in for now.
+Isolate ERX3876939_ERR3864886_T1_contigs has more than 200 contigs. A this is higher than the number obtained for the rest of our assembled genome, we may want to consider removing this isolate as it may affect our pan-genome calculation in the next section. However, as the rest of the metrics for this genome look alright, let's leave it in for now.
 
 :::
 :::
